@@ -1,0 +1,503 @@
+fileFormatVersion: 2
+guid: 9cbc2c59a1f28064a80e1e0852ad3e53
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5875292566862353207
+    second: FireCamp_0
+  - first:
+      213: 4807602985383540144
+    second: FireCamp_1
+  - first:
+      213: -5010917089875186571
+    second: FireCamp_2
+  - first:
+      213: 7430328577816094057
+    second: FireCamp_3
+  - first:
+      213: -8833255068068435641
+    second: FireCamp_4
+  - first:
+      213: 5579961433870745696
+    second: FireCamp_5
+  - first:
+      213: 745832294466127208
+    second: FireCamp_6
+  - first:
+      213: 6681459727293987884
+    second: FireCamp_7
+  - first:
+      213: 332825317602865267
+    second: FireCamp_8
+  - first:
+      213: 8367617689407464266
+    second: FireCamp_9
+  - first:
+      213: -2338774769204836357
+    second: FireCamp_10
+  - first:
+      213: -8995175734374093683
+    second: FireCamp_11
+  - first:
+      213: -4486825089671808141
+    second: FireCamp_12
+  - first:
+      213: 1965747484359701267
+    second: FireCamp_13
+  - first:
+      213: -8472011502741681614
+    second: FireCamp_14
+  - first:
+      213: 4950690645106707563
+    second: FireCamp_15
+  - first:
+      213: 3332523877428242805
+    second: FireCamp_16
+  - first:
+      213: -3114605382156912605
+    second: FireCamp_17
+  - first:
+      213: -4057162975857813524
+    second: FireCamp_18
+  - first:
+      213: 8146364205211081329
+    second: FireCamp_19
+  - first:
+      213: 3635836472518093260
+    second: FireCamp_20
+  - first:
+      213: 8092340067834165680
+    second: FireCamp_21
+  - first:
+      213: 5266554999408590031
+    second: FireCamp_22
+  - first:
+      213: 8920151412212098770
+    second: FireCamp_23
+  - first:
+      213: -5287174660717447626
+    second: FireCamp_0
+  - first:
+      213: -5867199944517638042
+    second: FireCamp_1
+  - first:
+      213: 4127793386185067737
+    second: FireCamp_2
+  - first:
+      213: 3769019194475034705
+    second: FireCamp_3
+  - first:
+      213: 1289859685926415718
+    second: FireCamp_4
+  - first:
+      213: 8639256717014526988
+    second: FireCamp_5
+  - first:
+      213: -1164557125276097680
+    second: FireCamp_6
+  - first:
+      213: 6373135089843298919
+    second: FireCamp_7
+  - first:
+      213: 3372507800369819457
+    second: FireCamp_8
+  - first:
+      213: -3255168096865274392
+    second: FireCamp_9
+  - first:
+      213: -6920154579946097467
+    second: FireCamp_10
+  - first:
+      213: 8776034283847122707
+    second: FireCamp_11
+  - first:
+      213: 226930762770011418
+    second: FireCamp_12
+  - first:
+      213: -4641572681160405825
+    second: FireCamp_13
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 320
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FireCamp_0
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 0
+        width: 407
+        height: 496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6367d72a8ae20a6b0800000000000000
+      internalID: -5287174660717447626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_1
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 396
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 668a5d87cb4839ea0800000000000000
+      internalID: -5867199944517638042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_2
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 0
+        width: 395
+        height: 496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dc84c9f63ed84930800000000000000
+      internalID: 4127793386185067737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_3
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 0
+        width: 395
+        height: 496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 158305efcfe3e4430800000000000000
+      internalID: 3769019194475034705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_4
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 0
+        width: 1414
+        height: 496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66dadb5ec8086e110800000000000000
+      internalID: 1289859685926415718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_5
+      rect:
+        serializedVersion: 2
+        x: 3133
+        y: 0
+        width: 395
+        height: 496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0cee0d163ec4e770800000000000000
+      internalID: 8639256717014526988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_6
+      rect:
+        serializedVersion: 2
+        x: 3629
+        y: 0
+        width: 395
+        height: 496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 073a443f679a6dfe0800000000000000
+      internalID: -1164557125276097680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_7
+      rect:
+        serializedVersion: 2
+        x: 4141
+        y: 0
+        width: 396
+        height: 496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 762efaf099ce17850800000000000000
+      internalID: 6373135089843298919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_8
+      rect:
+        serializedVersion: 2
+        x: 4652
+        y: 0
+        width: 395
+        height: 496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14fe643e9fd8dce20800000000000000
+      internalID: 3372507800369819457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_9
+      rect:
+        serializedVersion: 2
+        x: 5164
+        y: 0
+        width: 846
+        height: 496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e5392eccd153d2d0800000000000000
+      internalID: -3255168096865274392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_10
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 0
+        width: 394
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c43587f21ca6ff90800000000000000
+      internalID: -6920154579946097467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_11
+      rect:
+        serializedVersion: 2
+        x: 2098
+        y: 0
+        width: 395
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f7b590facbac970800000000000000
+      internalID: 8776034283847122707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireCamp_12
+      rect:
+        serializedVersion: 2
+        x: 5163
+        y: 0
+        width: 395
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a15d38f8358362300800000000000000
+      internalID: 226930762770011418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
