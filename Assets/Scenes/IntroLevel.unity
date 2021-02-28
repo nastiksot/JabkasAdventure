@@ -285,9 +285,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 519420032}
     m_Modifications:
-    - target: {fileID: 8231351277977568870, guid: 55951229be12e2542ab594a7363970eb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 552143910, guid: 55951229be12e2542ab594a7363970eb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 254.99997
       objectReference: {fileID: 0}
     - target: {fileID: 8231351278294067442, guid: 55951229be12e2542ab594a7363970eb, type: 3}
       propertyPath: m_RootOrder
@@ -345,9 +345,5 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 8231351278890228787, guid: 55951229be12e2542ab594a7363970eb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55951229be12e2542ab594a7363970eb, type: 3}
