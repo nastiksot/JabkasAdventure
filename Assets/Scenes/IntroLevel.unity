@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 402586791}
   - component: {fileID: 402586790}
   - component: {fileID: 402586792}
+  - component: {fileID: 402586793}
   m_Layer: 0
   m_Name: RightArrow
   m_TagString: Untagged
@@ -345,6 +346,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &402586793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402586788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Horizontal
+  axisValue: 1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,6 +464,8 @@ GameObject:
   - component: {fileID: 550020743}
   - component: {fileID: 550020742}
   - component: {fileID: 550020744}
+  - component: {fileID: 550020745}
+  - component: {fileID: 550020746}
   m_Layer: 0
   m_Name: JumpArrow
   m_TagString: Untagged
@@ -555,6 +574,83 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &550020745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550020740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85bf3be603548374ca46f521a3aa7fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Jump
+--- !u!114 &550020746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550020740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 550020745}
+          m_TargetAssemblyTypeName: UnityStandardAssets.CrossPlatformInput.ButtonHandler,
+            Assembly-CSharp-firstpass
+          m_MethodName: SetDownState
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 550020745}
+          m_TargetAssemblyTypeName: UnityStandardAssets.CrossPlatformInput.ButtonHandler,
+            Assembly-CSharp-firstpass
+          m_MethodName: SetUpState
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &969327838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8231351279139419404, guid: 55951229be12e2542ab594a7363970eb, type: 3}
+  m_PrefabInstance: {fileID: 8231351278679107374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &969327841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969327838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db77f78cc126c9f45945123f1b266863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1338172088
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +729,7 @@ GameObject:
   - component: {fileID: 1829155392}
   - component: {fileID: 1829155391}
   - component: {fileID: 1829155393}
+  - component: {fileID: 1829155394}
   m_Layer: 0
   m_Name: LeftArrow
   m_TagString: Untagged
@@ -741,6 +838,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1829155394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829155389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Horizontal
+  axisValue: -1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1001 &8231351278679107374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -750,11 +863,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 552143910, guid: 55951229be12e2542ab594a7363970eb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 254.99995
+      value: 254.99957
       objectReference: {fileID: 0}
-    - target: {fileID: 8231351278079138796, guid: 55951229be12e2542ab594a7363970eb, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -421.2
+    - target: {fileID: 8231351277814479156, guid: 55951229be12e2542ab594a7363970eb, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8231351278294067442, guid: 55951229be12e2542ab594a7363970eb, type: 3}
       propertyPath: m_RootOrder
@@ -808,13 +921,13 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 8231351278509075433, guid: 55951229be12e2542ab594a7363970eb, type: 3}
-      propertyPath: m_PixelPerfect
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8231351278890228748, guid: 55951229be12e2542ab594a7363970eb, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 8231351279139419404, guid: 55951229be12e2542ab594a7363970eb, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55951229be12e2542ab594a7363970eb, type: 3}
