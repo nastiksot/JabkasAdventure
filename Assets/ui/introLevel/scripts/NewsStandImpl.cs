@@ -22,7 +22,8 @@ public class NewsStandImpl : BaseMono, NewsStand
     {
         if (col.gameObject.GetComponent<PlayerBehaviourImpl>())
         {
-            dlog("collited stand news");
+            dlog("collited stand news"); 
+            GetComponent<AudioSource>().Play();
             bubbleMessage.SetActive(true);
             StartCoroutine(HideBubble());
         }

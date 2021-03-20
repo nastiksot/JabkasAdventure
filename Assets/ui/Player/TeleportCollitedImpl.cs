@@ -16,7 +16,8 @@ public class TeleportCollitedImpl : BaseMono, TeleportCollited
     {
         if (col.gameObject.GetComponent<PlayerBehaviourImpl>())
         {
-            dlog("Collited and destroyed!");
+            dlog("Collited and destroyed!"); 
+            GetComponent<AudioSource>().Play();
             //Destroy(sceneDestroyer);
         }
     }
