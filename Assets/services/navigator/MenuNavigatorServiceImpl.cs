@@ -40,6 +40,11 @@ public class MenuNavigatorServiceImpl : MenuNavigatorService
     {
         getMainNavigation().closeAll();
         var introGame = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.INTRO_GAME_LEVEL));
-        getMainNavigation().addActionForClose(() => BaseMono.Destroy(introGame));
+        var controllers = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.CONTROLS));
+        getMainNavigation().addActionForClose(() =>
+        {
+            BaseMono.Destroy(introGame);
+            BaseMono.Destroy(controllers);
+        });
     }
 }

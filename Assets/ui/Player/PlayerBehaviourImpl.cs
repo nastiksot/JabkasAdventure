@@ -5,25 +5,25 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
 {
-    private int playerSpeed = 10;
-    public bool isGrounded;
+    private int playerSpeed = 6;
+    private bool isGrounded;
     private static int playerJumpPower = 390;
     private float moveX;
     private const int groundLayer = 3;
 
-    // Update is called once per frame
+ 
     void Update()
     {
-        MoveFrog();
+        MovePlayer();
     }
 
-    void MoveFrog()
+    void MovePlayer()
     {
         //controllers and directions
         moveX = CrossPlatformInputManager.GetAxis("Horizontal");
         if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded)
         {
-            JumpFrog();
+            Jump();
         }
         if (moveX < 0.0f)
         {
@@ -34,28 +34,19 @@ public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
             GetComponent<SpriteRenderer>().flipX = false;
         }
         
-        //ANIMATION
-        // if (moveX != 0)
-        // {
-        //     GetComponent<Animator>().SetBool("isRunning", true);
-        // }
-        // else
-        // {
-        //     GetComponent<Animator>().SetBool("isRunning", false);
-        // }
- 
+        //animation of running
+        GetComponent<Animator>().SetBool("isRunning", moveX != 0);
+        
+        GetComponent<Animator>().SetBool("isJumping", !isGrounded  );
 
-        // if (isGrounded)
-        // {
-        //     //jumping anmation
-        //     GetComponent<Animator>().SetBool("isJumping", false);
-        // }
+
+        
  
         gameObject.GetComponent<Rigidbody2D>().velocity =
             new Vector2(moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
     }
 
-    void JumpFrog()
+    void Jump()
     {
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower);
         // GetComponent<Animator>().SetBool("isJumping", true);
@@ -75,7 +66,6 @@ public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
         if (collision.gameObject.layer == groundLayer && isGrounded)
         {
             isGrounded = false;
-            dlog("Exit");
         }
     }
 
