@@ -11,7 +11,7 @@ public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
     private float moveX;
     private const int groundLayer = 3;
 
- 
+
     void Update()
     {
         MovePlayer();
@@ -25,6 +25,7 @@ public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
         {
             Jump();
         }
+
         if (moveX < 0.0f)
         {
             GetComponent<SpriteRenderer>().flipX = true;
@@ -33,15 +34,11 @@ public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = false;
         }
-        
+
         //animation of running
         GetComponent<Animator>().SetBool("isRunning", moveX != 0);
-        
-        GetComponent<Animator>().SetBool("isJumping", !isGrounded  );
+        GetComponent<Animator>().SetBool("isJumping", !isGrounded);
 
-
-        
- 
         gameObject.GetComponent<Rigidbody2D>().velocity =
             new Vector2(moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
     }
@@ -60,7 +57,7 @@ public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
     //         isGrounded = true;
     //     }
     // }
-    
+
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == groundLayer && isGrounded)
