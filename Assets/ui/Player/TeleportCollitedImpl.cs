@@ -18,7 +18,7 @@ public class TeleportCollitedImpl : BaseMono, TeleportCollited
         {
             dlog("Collited and destroyed!"); 
             GetComponent<AudioSource>().Play();
-            //Destroy(sceneDestroyer);
+            MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().openMarioGame();
         }
     }
 }

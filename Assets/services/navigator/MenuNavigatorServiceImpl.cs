@@ -18,23 +18,7 @@ public class MenuNavigatorServiceImpl : MenuNavigatorService
            
             var mainMenu = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.MAIN_MENU));
             getMainNavigation().addActionForClose(() => BaseMono.Destroy(mainMenu));
-        // MainDependencyImpl.getInstance().GetServiceManager().GetDataService().GetUser(profile =>
-        // {
-        //     Debug.Log("Now user is " + profile.nickname);
-        // }, error =>
-        // {
-        //     Debug.LogError(error.errorMessage);
-        // });
-        //
-        // MainDependencyImpl.getInstance().GetServiceManager().GetDataService().GetUserProgress(profile =>
-        // {
-        //     Debug.Log("UserProgress");
-        // }, error =>
-        // {
-        //     Debug.LogError(error.errorMessage);
-        // });
-
-    }
+ }
 
     public void openIntroGame()
     {
@@ -44,6 +28,18 @@ public class MenuNavigatorServiceImpl : MenuNavigatorService
         getMainNavigation().addActionForClose(() =>
         {
             BaseMono.Destroy(introGame);
+            BaseMono.Destroy(controllers);
+        });
+    }
+
+    public void openMarioGame()
+    {
+        getMainNavigation().closeAll();
+        var marioGame = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.MARIO_GAME_LEVEL));
+        var controllers = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.CONTROLS));
+        getMainNavigation().addActionForClose(() =>
+        {
+            BaseMono.Destroy(marioGame);
             BaseMono.Destroy(controllers);
         });
     }

@@ -5,6 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
 {
+    private const int dieCoordinat = -7;
     private int playerSpeed = 6;
     private bool isGrounded;
     private static int playerJumpPower = 390;
@@ -14,6 +15,7 @@ public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
 
     void Update()
     {
+        Death();
         MovePlayer();
     }
 
@@ -72,6 +74,15 @@ public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
             && !isGrounded)
         {
             isGrounded = true;
+        }
+    }
+
+    void Death()
+    {
+        if (gameObject.transform.position.y < dieCoordinat)
+        {
+            
+            MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().openMarioGame();
         }
     }
 }

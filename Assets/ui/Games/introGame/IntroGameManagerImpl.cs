@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IntroLevelImpl : BaseMono,IntroLevel
+public class IntroGameManagerImpl : BaseMono
 {
-    [SerializeField] private GameObject newsStandObject;
-    [SerializeField] private GameObject gameLevelObject;
+    [SerializeField] private GameObject newsStandObject; 
     [SerializeField] private GameObject messagePanelObject;
     private NewsStand newsStand;
     private MessagePanel messagePanel;
@@ -14,7 +13,7 @@ public class IntroLevelImpl : BaseMono,IntroLevel
         init();
     }
 
-    public void init()
+    private void init()
     {
         newsStand = newsStandObject.GetComponent<NewsStandImpl>();
         messagePanel = messagePanelObject.GetComponent<MessagePanelImpl>();
