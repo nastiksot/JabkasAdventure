@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LibraryBook : MonoBehaviour
+public class LibraryBook : BaseMono
 {
     private bool isContainSheet = true;
     [SerializeField] private Sprite[] shelfSprite;

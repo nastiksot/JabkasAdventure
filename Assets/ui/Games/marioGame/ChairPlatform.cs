@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChairPlatform : MonoBehaviour
+public class ChairPlatform : BaseMono
 {
     private void OnCollisionEnter2D(Collision2D col)
     {

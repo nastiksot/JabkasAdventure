@@ -15,6 +15,7 @@ public class PlayerBehaviourImpl : BaseMono
 
     void Update()
     {
+        PlayerRayCast();
         Death();
         MovePlayer();
     }
@@ -47,18 +48,9 @@ public class PlayerBehaviourImpl : BaseMono
 
     void Jump()
     {
-        GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower);
-        // GetComponent<Animator>().SetBool("isJumping", true);
+        GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower); 
     }
 
-    // private void OnCollisionEnter2D(Collision2D col)
-    // {
-    //     //cheks collision of objects
-    //     if (!col.gameObject.CompareTag("Enemy"))
-    //     {
-    //         isGrounded = true;
-    //     }
-    // }
 
     void OnCollisionExit2D(Collision2D collision)
     {
@@ -70,8 +62,8 @@ public class PlayerBehaviourImpl : BaseMono
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == groundLayer
-            && !isGrounded)
+        //checks collision of objects
+        if (collision.gameObject.layer == groundLayer && !isGrounded || collision.gameObject.GetComponent<EnemyBehaivourImpl>())
         {
             isGrounded = true;
         }
@@ -82,6 +74,21 @@ public class PlayerBehaviourImpl : BaseMono
         if (gameObject.transform.position.y < dieCoordinat)
         {
             MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().openProgressBar();
+        }
+    }
+    void PlayerRayCast()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
+         
+        if (hit.distance <1f && hit.collider.CompareTag("Enemy") )
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (playerJumpPower * 1.5f));
+            //die animation of enemy
+            //enemyKill.Play();
+            hit.collider.gameObject.GetComponent<Rigidbody2D>().gravityScale = 8;
+            hit.collider.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+            hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            hit.collider.gameObject.GetComponent<EnemyBehaivourImpl>().enabled = false;
         }
     }
 }

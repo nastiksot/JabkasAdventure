@@ -425,9 +425,105 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1198124245, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
-      propertyPath: m_Name
-      value: RightBlock
+    - target: {fileID: 143633736, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 143633741, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 147395399, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 147395404, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 217491068, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 217491073, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 712583804, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 712583809, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 744421607, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 744421612, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080239728, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080239733, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106947039, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106947044, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164707874, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164707879, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401161090, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401161091, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401161091, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401161095, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818808680, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818808685, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024837897318569096, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024837897318569096, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024837897318569099, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6588995166944914494, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
       propertyPath: m_Name

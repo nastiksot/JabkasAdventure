@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-public class BlockSwitcher : MonoBehaviour
+public class BlockSwitcher : BaseMono
 {
     [SerializeField] Sprite[] blockSprite;
     private SwitchController switchController;
