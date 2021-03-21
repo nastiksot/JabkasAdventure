@@ -15,8 +15,7 @@ public class MenuNavigatorServiceImpl : MenuNavigatorService
     public void openMainMenu()
     {
         getMainNavigation().closeAll();
-           
-            var mainMenu = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.MAIN_MENU));
+        var mainMenu = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.MAIN_MENU));
             getMainNavigation().addActionForClose(() => BaseMono.Destroy(mainMenu));
  }
 
@@ -41,6 +40,16 @@ public class MenuNavigatorServiceImpl : MenuNavigatorService
         {
             BaseMono.Destroy(marioGame);
             BaseMono.Destroy(controllers);
+        });
+    }
+    public void openProgressBar()
+    {
+        getMainNavigation().closeAll();
+        var progressBar = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.PROGRESS_BAR));
+       
+        getMainNavigation().addActionForClose(() =>
+        {
+            BaseMono.Destroy(progressBar); 
         });
     }
 }

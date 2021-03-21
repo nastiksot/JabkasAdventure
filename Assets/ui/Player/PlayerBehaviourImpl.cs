@@ -81,8 +81,7 @@ public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
     {
         if (gameObject.transform.position.y < dieCoordinat)
         {
-            
-            MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().openMarioGame();
+            MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().openProgressBar();
         }
     }
 }

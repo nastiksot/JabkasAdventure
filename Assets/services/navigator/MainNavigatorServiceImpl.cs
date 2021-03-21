@@ -12,22 +12,17 @@
             this.menuNavigatorService = menuNavigatorService;
         }
         
-
-
         public MenuNavigatorService GetMenuNavigatorService()
         {
             return menuNavigatorService;
         }
-        
-        
-        
+
         public void closeAll()
         {
             foreach (var action in needToClose)
             {
                 action.Invoke();
             }
-
             needToClose.Clear();
         }
 

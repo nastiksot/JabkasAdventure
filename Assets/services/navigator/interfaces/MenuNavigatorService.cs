@@ -8,4 +8,5 @@ public interface MenuNavigatorService
     void openMainMenu();
     void openIntroGame();
     void openMarioGame();
+    void openProgressBar();
 }

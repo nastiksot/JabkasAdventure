@@ -411,6 +411,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2024837897318569096, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024837897318569096, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.35
+      objectReference: {fileID: 0}
     - target: {fileID: 6588995166944914494, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
       propertyPath: m_Name
       value: MarioGame
@@ -459,5 +467,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6588995166944914492, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 02bfe64abc341f143b9bf705d41c0459, type: 3}
