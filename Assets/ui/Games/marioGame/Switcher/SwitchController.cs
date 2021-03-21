@@ -3,7 +3,8 @@ using UnityEngine;
 public class SwitchController : BaseMono
 {
     public static SwitchController instance = null;
-    public bool isOn ;
+    public bool isOn;
+
     void Awake()
     {
         if (instance == null)
@@ -15,6 +16,7 @@ public class SwitchController : BaseMono
             Destroy(gameObject);
         }
     }
+
     public void FlipSwitch()
     {
         isOn = !isOn;

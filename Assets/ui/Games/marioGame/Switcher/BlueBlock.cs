@@ -9,7 +9,7 @@ public class BlueBlock : BaseMono
     private Color semiVisible = new Color(1, 1, 1, 0.5f);
     private bool setOn;
     private bool setOff;
- 
+
 
     void Update()
     {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeleportCollitedImpl : BaseMono, TeleportCollited
+public class TeleportCollitedImpl : BaseMono
 {
     [SerializeField] private GameObject sceneDestroyer;
 

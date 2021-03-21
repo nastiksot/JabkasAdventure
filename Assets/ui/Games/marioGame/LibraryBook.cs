@@ -2,23 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class LibraryBook : MonoBehaviour
 {
     private bool isContainSheet = true;
     [SerializeField] private Sprite[] shelfSprite;
-
     [SerializeField] private GameObject CVSheet;
+    
     //public AudioSource hitBlock;
-
     private bool isShelfClosed = true;
-
-
-    void Start()
-    {
-    }
-
-
     private void OnCollisionEnter2D(Collision2D col)
     {
         //compare collision BonusBlock and Player
@@ -31,7 +22,7 @@ public class LibraryBook : MonoBehaviour
             if (isContainSheet)
             {
                 //hitBlock.Play();
-                gameObject.GetComponent<SpriteRenderer>().sprite = shelfSprite[0]; 
+                gameObject.GetComponent<SpriteRenderer>().sprite = shelfSprite[0];
                 isContainSheet = false;
             }
 

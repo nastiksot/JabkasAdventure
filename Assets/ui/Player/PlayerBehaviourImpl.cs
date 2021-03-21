@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class PlayerBehaviourImpl : BaseMono, PlayerBehaviour
+public class PlayerBehaviourImpl : BaseMono
 {
     private const int dieCoordinat = -7;
     private int playerSpeed = 6;
     private bool isGrounded;
-    private static int playerJumpPower = 390;
+    public static int playerJumpPower = 390;
     private float moveX;
     private const int groundLayer = 3;
 

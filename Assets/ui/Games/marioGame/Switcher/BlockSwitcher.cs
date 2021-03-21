@@ -18,7 +18,7 @@ public class BlockSwitcher : MonoBehaviour
     void Update()
     {
         isOnSprite = SwitchController.instance.isOn;
-        
+
         if (!setOnSprite && isOnSprite)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = blockSprite[1];
