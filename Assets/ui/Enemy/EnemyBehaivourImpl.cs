@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyBehaivourImpl : BaseMono
 {
-    private int enemySpeed = 1;
-
-    //move direction default = right
+    private int enemySpeed = 1; 
     private int XMoveDirection = 1;
     private bool isTouched;
     private bool facingRight = false;
+    private const int groundLayer = 3;
+    private static int wallsLayer = 8;
 
     void Update()
     {
@@ -42,10 +42,11 @@ public class EnemyBehaivourImpl : BaseMono
         if (collision2D.gameObject.GetComponent<PlayerBehaviourImpl>())
         {
             //animation frog dies
-           dlog("DIE");
+            dlog("DIE");
             // MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().openProgressBar();
         }
-        else
+
+        if (collision2D.gameObject.layer == wallsLayer && !isTouched || collision2D.gameObject.layer == groundLayer && !isTouched)
         {
             isTouched = true;
         }
