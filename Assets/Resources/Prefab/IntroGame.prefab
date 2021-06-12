@@ -2370,6 +2370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleMessage: {fileID: 8231351278580950704}
+  audioSource: {fileID: 8231351278679107376}
+  newsStandButton: {fileID: 1539564921}
 --- !u!50 &6633187516580567705
 Rigidbody2D:
   serializedVersion: 4
@@ -4818,6 +4820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b454f0c61ec1144384337326d93f916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSprite: {fileID: 8231351277941064982}
+  playerRigidbody: {fileID: 8231351277941064984}
 --- !u!95 &1108083915
 Animator:
   serializedVersion: 3
@@ -5232,7 +5236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6531379b845534bb4f07db3c3f7cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneDestroyer: {fileID: 0}
 --- !u!61 &8231351278079138797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5479,8 +5482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff4a8088df807a4781ff5928f02f66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newsStandObject: {fileID: 6633187516580567704}
-  messagePanelObject: {fileID: 8231351278890228787}
+  newsStandObject: {fileID: 6633187516580567700}
+  messagePanelObject: {fileID: 8231351278890228749}
 --- !u!1 &8231351278334737141
 GameObject:
   m_ObjectHideFlags: 0
@@ -6077,7 +6080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 8231351277977568870}
-  submitButton: {fileID: 8231351277600252536}
+  submitButton: {fileID: 8231351277600252534}
 --- !u!1 &8231351279139419404
 GameObject:
   m_ObjectHideFlags: 0

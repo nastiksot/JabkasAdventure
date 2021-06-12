@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class MessagePanelImpl : BaseMono, MessagePanel
 {
     [SerializeField] GameObject panel;
-    [SerializeField] GameObject submitButton;
+    [SerializeField] Button submitButton;
     private static bool isOpen = false;
 
     private void Start()
     {
-        submitButton.GetComponent<Button>().onClick.AddListener(ClosePanel);
+        submitButton.onClick.AddListener(ClosePanel);
     }
 
     public void ClosePanel()

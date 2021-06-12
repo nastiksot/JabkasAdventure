@@ -4,15 +4,12 @@ public class ChairPlatform : BaseMono
 {
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.GetComponent<PlayerBehaviourImpl>())
-        {
-            Rigidbody2D rb = col.collider.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                Vector2 velocity = rb.velocity;
-                velocity.y = (PlayerBehaviourImpl.playerJumpPower) * 0.02f;
-                rb.velocity = velocity;
-            }
-        }
+        if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return;
+
+        var rb = col.collider.GetComponent<Rigidbody2D>();
+        if (rb == null) return;
+        var velocity = rb.velocity;
+        velocity.y = (PlayerBehaviour.playerJumpPower) * 0.02f;
+        rb.velocity = velocity;
     }
 }

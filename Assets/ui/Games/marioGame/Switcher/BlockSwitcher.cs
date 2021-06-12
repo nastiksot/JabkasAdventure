@@ -39,7 +39,7 @@ public class BlockSwitcher : BaseMono
         if (col.collider.bounds.max.y < transform.position.y &&
             col.collider.bounds.min.x < transform.position.x + 0.3f &&
             col.collider.bounds.min.x < transform.position.x - 0.3f &&
-            col.gameObject.GetComponent<PlayerBehaviourImpl>())
+            col.gameObject.CompareTag(Tags.PLAYER_TAG))
         {
             switchController.FlipSwitch();
         }

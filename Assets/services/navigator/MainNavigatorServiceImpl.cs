@@ -17,7 +17,7 @@
             return menuNavigatorService;
         }
 
-        public void closeAll()
+        public void CloseAll()
         {
             foreach (var action in needToClose)
             {
@@ -26,7 +26,7 @@
             needToClose.Clear();
         }
 
-        public void addActionForClose(Action action)
+        public void AddActionForClose(Action action)
         {
             needToClose.Add(action);
         }

@@ -4,7 +4,7 @@
     public interface MainNavigatorServices
     {
         MenuNavigatorService GetMenuNavigatorService();
-        void closeAll();
+        void CloseAll();
     
-        void addActionForClose(Action action);
+        void AddActionForClose(Action action);
     }

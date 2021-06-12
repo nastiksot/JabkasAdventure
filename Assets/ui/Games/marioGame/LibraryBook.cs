@@ -16,7 +16,7 @@ public class LibraryBook : BaseMono
         if (col.collider.bounds.max.y < transform.position.y &&
             col.collider.bounds.min.x < transform.position.x + 0.3f &&
             col.collider.bounds.min.x < transform.position.x - 0.3f &&
-            col.gameObject.GetComponent<PlayerBehaviourImpl>())
+            col.gameObject.CompareTag(Tags.PLAYER_TAG))
         {
             //check of condition BonusBlock(empty or full) 
             if (isContainSheet)
@@ -26,12 +26,10 @@ public class LibraryBook : BaseMono
                 isContainSheet = false;
             }
 
-            if (!isContainSheet)
-            {
-                StartCoroutine(WaitForHalfASecond());
-                GetComponent<Animator>().SetBool("isEmpty", true);
-                gameObject.GetComponent<SpriteRenderer>().sprite = shelfSprite[1];
-            }
+            if (isContainSheet) return;
+            StartCoroutine(WaitForHalfASecond());
+            GetComponent<Animator>().SetBool("isEmpty", true);
+            gameObject.GetComponent<SpriteRenderer>().sprite = shelfSprite[1];
         }
     }
 

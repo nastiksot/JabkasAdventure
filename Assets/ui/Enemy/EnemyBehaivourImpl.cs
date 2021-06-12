@@ -39,11 +39,11 @@ public class EnemyBehaivourImpl : BaseMono
     private void OnCollisionEnter2D(Collision2D collision2D)
     {
         //If frog collited wiht enemy, frog dies
-        if (collision2D.gameObject.GetComponent<PlayerBehaviourImpl>())
+        if (collision2D.gameObject.CompareTag(Tags.PLAYER_TAG))
         {
             //animation frog dies
             dlog("DIE");
-            // MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().openProgressBar();
+             MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenProgressBar();
         }
 
         if (collision2D.gameObject.layer == wallsLayer && !isTouched || collision2D.gameObject.layer == groundLayer && !isTouched)

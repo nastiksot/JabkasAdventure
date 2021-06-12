@@ -12,42 +12,42 @@ public class MenuNavigatorServiceImpl : MenuNavigatorService
         return MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService();
     }
 
-    public void openMainMenu()
+    public void OpenMainMenu()
     {
-        getMainNavigation().closeAll();
+        getMainNavigation().CloseAll();
         var mainMenu = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.MAIN_MENU));
-            getMainNavigation().addActionForClose(() => BaseMono.Destroy(mainMenu));
+            getMainNavigation().AddActionForClose(() => BaseMono.Destroy(mainMenu));
  }
 
-    public void openIntroGame()
+    public void OpenIntroGame()
     {
-        getMainNavigation().closeAll();
+        getMainNavigation().CloseAll();
         var introGame = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.INTRO_GAME_LEVEL));
         var controllers = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.CONTROLS));
-        getMainNavigation().addActionForClose(() =>
+        getMainNavigation().AddActionForClose(() =>
         {
             BaseMono.Destroy(introGame);
             BaseMono.Destroy(controllers);
         });
     }
 
-    public void openMarioGame()
+    public void OpenMarioGame()
     {
-        getMainNavigation().closeAll();
+        getMainNavigation().CloseAll();
         var marioGame = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.MARIO_GAME_LEVEL));
         var controllers = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.CONTROLS));
-        getMainNavigation().addActionForClose(() =>
+        getMainNavigation().AddActionForClose(() =>
         {
             BaseMono.Destroy(marioGame);
             BaseMono.Destroy(controllers);
         });
     }
-    public void openProgressBar()
+    public void OpenProgressBar()
     {
-        getMainNavigation().closeAll();
+        getMainNavigation().CloseAll();
         var progressBar = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.PROGRESS_BAR));
        
-        getMainNavigation().addActionForClose(() =>
+        getMainNavigation().AddActionForClose(() =>
         {
             BaseMono.Destroy(progressBar); 
         });

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public interface MenuNavigatorService
 {
-    void openMainMenu();
-    void openIntroGame();
-    void openMarioGame();
-    void openProgressBar();
+    void OpenMainMenu();
+    void OpenIntroGame();
+    void OpenMarioGame();
+    void OpenProgressBar();
 }

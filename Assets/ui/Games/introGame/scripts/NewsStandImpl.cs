@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class NewsStandImpl : BaseMono, NewsStand
 {
     [SerializeField] private GameObject bubbleMessage;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private Button newsStandButton;
     private Action newsStandCollited;
 
     public void Start()
     {
-        gameObject.GetComponent<Button>().onClick.AddListener(() =>
+        newsStandButton.onClick.AddListener(() =>
         {
             newsStandCollited.Invoke();
         });
@@ -20,16 +22,14 @@ public class NewsStandImpl : BaseMono, NewsStand
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.GetComponent<PlayerBehaviourImpl>())
-        {
-            dlog("collited stand news"); 
-            GetComponent<AudioSource>().Play();
-            bubbleMessage.SetActive(true);
-            StartCoroutine(HideBubble());
-        }
+        if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return;
+        dlog("collited stand news"); 
+        audioSource.Play();
+        bubbleMessage.SetActive(true);
+        StartCoroutine(HideBubble());
     }
 
-    public void onStandCollited(Action newsStandCollited)
+    public void OnStandCollited(Action newsStandCollited)
     {
         this.newsStandCollited = newsStandCollited;
     }
