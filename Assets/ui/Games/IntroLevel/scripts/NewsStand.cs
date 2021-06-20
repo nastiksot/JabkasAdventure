@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewsStandImpl : BaseMono, NewsStand
+public class NewsStand : BaseMono
 {
     [SerializeField] private GameObject bubbleMessage;
     [SerializeField] private AudioSource audioSource;

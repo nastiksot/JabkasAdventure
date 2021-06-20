@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MessagePanelImpl : BaseMono, MessagePanel
+public class MessagePanel : BaseMono
 {
-    [SerializeField] GameObject panel;
+    [SerializeField] CanvasGroup panel;
     [SerializeField] Button submitButton;
     private static bool isOpen = false;
 
@@ -15,16 +15,16 @@ public class MessagePanelImpl : BaseMono, MessagePanel
         submitButton.onClick.AddListener(ClosePanel);
     }
 
-    public void ClosePanel()
+    private void ClosePanel()
     {
-        panel.SetActive(false);
+        panel.alpha = 0;
         Time.timeScale = 1f;
         isOpen = false;
     }
 
     public void OpenPanel()
     {
-        panel.SetActive(true);
+        panel.alpha = 1;
         Time.timeScale = 0f;
         isOpen = true;
     }

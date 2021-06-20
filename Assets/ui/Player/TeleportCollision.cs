@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeleportCollitedImpl : BaseMono
+public class TeleportCollision : BaseMono
 {
-    private TeleportCollitedImpl()
+    private TeleportCollision()
     {
-        TAG = "TeleportCollitedImpl";
+        TAG = "TeleportCollision";
     }
  
 

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class IntroGameManagerImpl : BaseMono
 {
-    [SerializeField] private NewsStandImpl newsStandObject;
-    [SerializeField] private MessagePanelImpl messagePanelObject;
+    [SerializeField] private NewsStand newsStandObject;
+    [SerializeField] private MessagePanel messagePanelObject;
 
     void Start()
     {
