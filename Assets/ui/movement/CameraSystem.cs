@@ -13,8 +13,10 @@ public class CameraSystem : BaseMono
     // Update is called once per frame
     void LateUpdate()
     {
-        float x = Mathf.Clamp(playerObject.transform.position.x, xMin, xMax);
-        float y = Mathf.Clamp(playerObject.transform.position.y, yMin, yMax);
-        gameObject.transform.position = new Vector3(x, y, gameObject.transform.position.z);
+        var playerPosition = playerObject.transform.position;
+        float x = Mathf.Clamp(playerPosition.x, xMin, xMax);
+        float y = Mathf.Clamp(playerPosition.y, yMin, yMax);
+        var go = gameObject;
+        go.transform.position = new Vector3(x, y, go.transform.position.z);
     }
 }

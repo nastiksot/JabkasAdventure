@@ -13,7 +13,7 @@ public class BaseMono : MonoBehaviour
         yield return new WaitForSeconds(second);
         action.Invoke();
     }
-
+    
 
     protected void startWithNextFrame(Action action)
     {
@@ -94,8 +94,5 @@ public class BaseMono : MonoBehaviour
             }));
         }
     }
-
-    protected void Awake()
-    {
-    }
+ 
 }

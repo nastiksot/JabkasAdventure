@@ -6,17 +6,16 @@ using UnityEngine.UI;
 
 public class ClickButtonImpl : BaseMono, ClickButton
 {
-  private Action onClickListener;
-  private void Start()
-  {
-    gameObject.GetComponentInChildren<Button>().onClick.AddListener(() =>
-    {
-      onClickListener.Invoke();
-    });
-  }
+    [SerializeField] private Button clickButton;
+    private Action onClickListener;
 
-  public void setOnClickListener(Action onClickListener)
-  {
-    this.onClickListener = onClickListener;
-  }
+    private void Start()
+    {
+        clickButton.onClick.AddListener(() => { onClickListener.Invoke(); });
+    }
+
+    public void setOnClickListener(Action onClickListener)
+    {
+        this.onClickListener = onClickListener;
+    }
 }
