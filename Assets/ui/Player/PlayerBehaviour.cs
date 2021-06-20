@@ -8,9 +8,7 @@ public class PlayerBehaviour : BaseMono
 {
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private Rigidbody2D playerRigidbody;
-    
-
-
+     
     public static int playerJumpPower = 390;
     
     private float moveX;

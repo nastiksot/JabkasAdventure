@@ -16,7 +16,7 @@ public class MainMenuImpl : BaseMono, MainMenu
 
     public void init()
     {
-        playButton.setOnClickListener(() => { MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenIntroGame(); });
+        playButton.setOnClickListener(() => { MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenIntroLevel(); });
         settingsButton.setOnClickListener(() => { dlog("Exit"); });
     }
 }
