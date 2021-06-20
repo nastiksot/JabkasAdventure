@@ -11,6 +11,11 @@ public class NewsStand : BaseMono
     [SerializeField] private Button newsStandButton;
     private Action newsStandCollited;
 
+    private void Awake()
+    {
+        bubbleMessage.SetActive(false);
+    }
+
     public void Start()
     {
         newsStandButton.onClick.AddListener(() =>
