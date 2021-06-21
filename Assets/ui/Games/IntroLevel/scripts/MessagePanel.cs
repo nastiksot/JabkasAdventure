@@ -6,26 +6,21 @@ using UnityEngine.UI;
 
 public class MessagePanel : BaseMono
 {
-    [SerializeField] GameObject panel;
-    [SerializeField] Button submitButton;
-    private static bool isOpen = false;
+    [SerializeField] private GameObject panel; 
+    [SerializeField] private bool isOpen = false;
 
-    private void Start()
+    
+    public void ClosePanel()
     {
-        submitButton.onClick.AddListener(ClosePanel);
-    }
-
-    private void ClosePanel()
-    {
-        panel.gameObject.SetActive(false);
+        panel.gameObject.SetActive(isOpen);
         Time.timeScale = 1f;
-        isOpen = false;
+        isOpen = !isOpen;
     }
 
     public void OpenPanel()
     {
-        panel.gameObject.SetActive(true);
+        panel.gameObject.SetActive(isOpen);
         Time.timeScale = 0f;
-        isOpen = true;
+        isOpen = !isOpen;
     }
 }
