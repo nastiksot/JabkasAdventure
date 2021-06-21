@@ -28,7 +28,7 @@ public class LibraryBook : BaseMono
 
             if (isContainSheet) return;
             StartCoroutine(WaitForHalfASecond());
-            GetComponent<Animator>().SetBool("isEmpty", true);
+           // GetComponent<Animator>().SetBool("isEmpty", true);
             gameObject.GetComponent<SpriteRenderer>().sprite = shelfSprite[1];
         }
     }

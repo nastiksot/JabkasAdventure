@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClickButtonImpl : BaseMono, ClickButton
+public class ClickButtonImpl : BaseMono
 {
     [SerializeField] private Button clickButton;
     private Action onClickListener;

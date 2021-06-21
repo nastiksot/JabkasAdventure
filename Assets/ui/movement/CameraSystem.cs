@@ -20,8 +20,6 @@ public class CameraSystem : BaseMono
         {
             SetCameraParams(Vector2.zero, Vector2.zero);
         }
-
-        DontDestroyOnLoad(this.gameObject);
     }
     
     // Update is called once per frame

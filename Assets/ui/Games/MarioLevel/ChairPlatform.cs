@@ -1,3 +1,4 @@
+using services.Constants;
 using UnityEngine;
 
 public class ChairPlatform : BaseMono
@@ -9,7 +10,7 @@ public class ChairPlatform : BaseMono
         var rb = col.collider.GetComponent<Rigidbody2D>();
         if (rb == null) return;
         var velocity = rb.velocity;
-        velocity.y = (PlayerBehaviour.playerJumpPower) * 0.02f;
+        velocity.y = (PlayerCharacteristics.PLAYER_JUMP_POWER) * 0.02f;
         rb.velocity = velocity;
     }
 }
