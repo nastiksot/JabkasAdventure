@@ -9,13 +9,14 @@ public class TeleportCollision : BaseMono
     {
         TAG = "TeleportCollision";
     }
- 
 
-    private void OnCollisionEnter2D(Collision2D col)
+
+    private void OnTriggerEnter2D
+        (Collider2D col)
     {
         if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return;
-        dlog("Collited and destroyed!"); 
+        dlog("Collited and destroyed!");
         //GetComponent<AudioSource>().Play();
-        MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
+        //MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
     }
 }
