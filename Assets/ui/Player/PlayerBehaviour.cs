@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using services.Constants;
@@ -8,12 +9,14 @@ public class PlayerBehaviour : BaseMono
 {
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private Rigidbody2D playerRigidbody;
-     
     public static int playerJumpPower = 390;
     
     private float moveX;
     private bool isGrounded;
-
+    private void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     void Update()
     {
@@ -71,6 +74,7 @@ public class PlayerBehaviour : BaseMono
 
          
     }
+ 
 
     void CheckDeath()
     {

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuNavigatorServiceImpl : MenuNavigatorService
 {
@@ -24,10 +26,12 @@ public class MenuNavigatorServiceImpl : MenuNavigatorService
         getMainNavigation().CloseAll();
         var introGame = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.INTRO_GAME_LEVEL));
         var controllers = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.CONTROLS));
+        var player = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.PLAYER));
         getMainNavigation().AddActionForClose(() =>
         {
             BaseMono.Destroy(introGame);
             BaseMono.Destroy(controllers);
+            BaseMono.Destroy(player);
         });
     }
 
@@ -36,11 +40,13 @@ public class MenuNavigatorServiceImpl : MenuNavigatorService
         getMainNavigation().CloseAll();
         var marioGame = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.MARIO_GAME_LEVEL));
         var controllers = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.CONTROLS));
+        var player = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.PLAYER));
         getMainNavigation().AddActionForClose(() =>
         {
             BaseMono.Destroy(marioGame);
+            BaseMono.Destroy(player);
             BaseMono.Destroy(controllers);
-        });
+        }); 
     }
     public void OpenProgressBar()
     {

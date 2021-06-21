@@ -17,6 +17,6 @@ public class TeleportCollision : BaseMono
         if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return;
         dlog("Collited and destroyed!");
         //GetComponent<AudioSource>().Play();
-        //MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
+        MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
     }
 }
