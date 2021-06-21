@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface MainMenu
 {
-    void init();
+    void Init();
 }

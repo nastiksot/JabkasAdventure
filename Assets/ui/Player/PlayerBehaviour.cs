@@ -10,21 +10,22 @@ public class PlayerBehaviour : BaseMono
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private Rigidbody2D playerRigidbody;
     public static int playerJumpPower = 390;
-    
+
     private float moveX;
     private bool isGrounded;
+
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void Update()
+    private void Update()
     {
         //CheckDeath();
         PlayerMovement();
     }
 
-    void PlayerMovement()
+    private void PlayerMovement()
     {
         //controllers and directions
         moveX = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -50,38 +51,35 @@ public class PlayerBehaviour : BaseMono
             new Vector2(moveX * PlayerCharacteristics.PLAYER_SPEED, playerRigidbody.velocity.y);
     }
 
-    void Jump()
+    private void Jump()
     {
-        playerRigidbody.AddForce(Vector2.up * playerJumpPower); 
+        playerRigidbody.AddForce(Vector2.up * playerJumpPower);
     }
 
 
-    void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == Layers.groundLayer && isGrounded)
         {
-            isGrounded = false;
+            isGrounded = !isGrounded;
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         //checks collision of objects
-        if (collision.gameObject.layer == Layers.groundLayer && !isGrounded  ||!collision.gameObject.GetComponent<EnemyBehaivourImpl>() )
+        if (collision.gameObject.layer == Layers.groundLayer && !isGrounded || !collision.gameObject.GetComponent<EnemyBehaivourImpl>())
         {
-            isGrounded = true;
+            isGrounded = !isGrounded;
         }
-
-         
     }
- 
 
-    void CheckDeath()
+
+    private void CheckDeath()
     {
         if (gameObject.transform.position.y < PlayerCharacteristics.DIE_COORDINAT)
         {
             MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenProgressBar();
         }
     }
-    
 }

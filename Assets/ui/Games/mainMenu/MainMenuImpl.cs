@@ -11,12 +11,14 @@ public class MainMenuImpl : BaseMono, MainMenu
 
     private void Start()
     {
-        init();
+        Init();
     }
 
-    public void init()
+    public void Init()
     {
         playButton.setOnClickListener(() => { MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenIntroLevel(); });
-        settingsButton.setOnClickListener(() => { dlog("Exit"); });
+#if PLATFORM_ANDROID
+        settingsButton.setOnClickListener(Application.Quit);
+#endif
     }
 }

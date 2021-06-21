@@ -38,14 +38,10 @@ public class MenuNavigatorServiceImpl : MenuNavigatorService
     public void OpenMarioLevel()
     {
         getMainNavigation().CloseAll();
-        var marioGame = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.MARIO_GAME_LEVEL));
-        var controllers = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.CONTROLS));
-        var player = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.PLAYER));
+        var marioGame = BaseMono.Instantiate(Resources.Load<GameObject>(PrefabsPaths.MARIO_GAME_LEVEL)); 
         getMainNavigation().AddActionForClose(() =>
         {
-            BaseMono.Destroy(marioGame);
-            BaseMono.Destroy(player);
-            BaseMono.Destroy(controllers);
+            BaseMono.Destroy(marioGame); 
         }); 
     }
     public void OpenProgressBar()

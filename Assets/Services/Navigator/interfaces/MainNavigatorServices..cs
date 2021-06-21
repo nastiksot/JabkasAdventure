@@ -5,6 +5,5 @@
     {
         MenuNavigatorService GetMenuNavigatorService();
         void CloseAll();
-    
         void AddActionForClose(Action action);
     }
