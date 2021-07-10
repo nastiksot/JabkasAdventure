@@ -1,26 +1,26 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using UI.Base;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class MessagePanel : BaseMono
+namespace UI.Games.IntroLevel.scripts
 {
-    [SerializeField] private GameObject panel; 
-    [SerializeField] private bool isOpen = false;
-
-    
-    public void ClosePanel()
+    public class MessagePanel : BaseMono
     {
-        panel.gameObject.SetActive(isOpen);
-        Time.timeScale = 1f;
-        isOpen = !isOpen;
-    }
+        [SerializeField] private GameObject panel;
+        [SerializeField] private bool isOpen = false;
 
-    public void OpenPanel()
-    {
-        panel.gameObject.SetActive(isOpen);
-        Time.timeScale = 0f;
-        isOpen = !isOpen;
+
+        public void ClosePanel()
+        {
+            panel.gameObject.SetActive(isOpen);
+            Time.timeScale = 1f;
+            isOpen = !isOpen;
+        }
+
+        public void OpenPanel()
+        {
+            panel.gameObject.SetActive(isOpen);
+            Time.timeScale = 0f;
+            isOpen = !isOpen;
+        }
     }
 }

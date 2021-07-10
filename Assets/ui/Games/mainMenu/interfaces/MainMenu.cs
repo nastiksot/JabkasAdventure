@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface MainMenu
+namespace UI.Games.mainMenu.interfaces
 {
-    void Init();
+    public interface MainMenu
+    {
+        void Init();
+    }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Services.Constants;
+using UI.Base;
 using UnityEngine;
 
 public class TeleportCollision : BaseMono

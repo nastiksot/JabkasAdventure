@@ -169,10 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247423a6bdfe4c96bd887e49663c969c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSystem: {fileID: 0}
-  minCoordinates: {x: -0.26, y: -1.75}
-  maxCoordinates: {x: 116, y: 20}
-  cameraSize: 4.08812
+  cameraSystem: {fileID: 978021319}
+  cameraData: {fileID: 11400000, guid: 3d85a77e12b2b204faf17625798a87b5, type: 2}
 --- !u!114 &161304660 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7859526464557667805, guid: 20a8a99badfbe654ba6fd8c2d31cb9b3, type: 3}
@@ -3079,10 +3077,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 161304660}
   camera: {fileID: 978021317}
-  xMin: -0.6
-  xMax: 116
-  yMin: -1.75
-  yMax: 20
+  cameraData: {fileID: 11400000, guid: 3d85a77e12b2b204faf17625798a87b5, type: 2}
+  defaultCameraData: {fileID: 11400000, guid: 2df8899263c18d746b95024c245baa5e, type: 2}
 --- !u!1 &993040422
 GameObject:
   m_ObjectHideFlags: 0

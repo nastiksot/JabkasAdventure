@@ -1,53 +1,70 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using UI.Base;
+using UI.Games;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class CameraSystem : BaseMono
+namespace UI.movement
 {
-    [SerializeField] private PlayerBehaviour playerObject;
-    [SerializeField] private Camera camera;
-    [SerializeField] private float xMin;
-    [SerializeField] private float xMax;
-    [SerializeField] private float yMin;
-    [SerializeField] private float yMax;
-     
-    private void Start()
+    public class CameraSystem : BaseMono
     {
-        playerObject = FindObjectOfType<PlayerBehaviour>();
-        if (playerObject == null)
+        [SerializeField] private PlayerBehaviour playerObject;
+        [SerializeField] private Camera camera;
+        [SerializeField] private CameraData cameraData;
+        [SerializeField] private CameraData defaultCameraData;
+
+        private Action<CameraData> onLevelChanged;
+
+        public Action<CameraData> OnLevelChanged => onLevelChanged;
+
+        private void Start()
         {
-            SetCameraParams(Vector2.zero, Vector2.zero);
+            onLevelChanged += ONLevelChanged;
+
+            playerObject = FindObjectOfType<PlayerBehaviour>();
+            if (playerObject != null) return;
+            cameraData = defaultCameraData;
+            SetCameraParams(defaultCameraData);
         }
-    }
-    
-    // Update is called once per frame
-    private void LateUpdate()
-    {
-        if (playerObject == null) return;
-        var playerPosition = playerObject.transform.position;
-        var x = Mathf.Clamp(playerPosition.x, xMin, xMax);
-        var y = Mathf.Clamp(playerPosition.y, yMin, yMax);
-        var go = gameObject;
-        go.transform.position = new Vector3(x, y, go.transform.position.z);
-    }
 
-    public void SetPlayer()
-    {
-        playerObject = FindObjectOfType<PlayerBehaviour>();
-    }
+        private void LateUpdate()
+        {
+            if (playerObject == null) return;
+            var playerPosition = playerObject.transform.position;
+            var x = Mathf.Clamp(playerPosition.x, cameraData.XValues.MIN, cameraData.XValues.MAX);
+            var y = Mathf.Clamp(playerPosition.y, cameraData.YValues.MIN, cameraData.YValues.MAX);
+            var go = gameObject;
+            go.transform.position = new Vector3(x, y, go.transform.position.z);
+        }
 
-    public void SetCameraSize(float cameraSize)
-    {
-        camera.orthographicSize = cameraSize;
-    }
+        private void SetCameraData(CameraData cameraData)
+        {
+            this.cameraData = cameraData;
+        }
 
-    public void SetCameraParams(Vector2 minCoordinates, Vector2 maxCoordinates)
-    {
-        this.xMin = minCoordinates.x;
-        this.xMax = maxCoordinates.x;
-        this.yMin = minCoordinates.y;
-        this.yMax = maxCoordinates.y;
+        private void ONLevelChanged(CameraData cameraData)
+        {
+            SetPlayer();
+            SetCameraData(cameraData);
+            SetCameraSize(cameraData);
+            SetCameraParams(cameraData);
+        }
+
+        private void SetPlayer()
+        {
+            playerObject = FindObjectOfType<PlayerBehaviour>();
+        }
+
+        private void SetCameraSize(CameraData data)
+        {
+            camera.orthographicSize = data.cameraSize;
+        }
+
+        private void SetCameraParams(CameraData newCameraData)
+        {
+            cameraData.XValues.MIN = newCameraData.XValues.MIN;
+            cameraData.XValues.MAX = newCameraData.XValues.MAX;
+            cameraData.YValues.MIN = newCameraData.YValues.MIN;
+            cameraData.YValues.MAX = newCameraData.YValues.MAX;
+        }
     }
 }

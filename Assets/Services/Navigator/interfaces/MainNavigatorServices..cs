@@ -1,9 +1,12 @@
 ﻿
     using System;
 
-    public interface MainNavigatorServices
+    namespace Services.Navigator.interfaces
     {
-        MenuNavigatorService GetMenuNavigatorService();
-        void CloseAll();
-        void AddActionForClose(Action action);
+        public interface IMainNavigatorServices
+        {
+            IMenuNavigatorService GetMenuNavigatorService();
+            void CloseAll();
+            void AddActionForClose(Action action);
+        }
     }

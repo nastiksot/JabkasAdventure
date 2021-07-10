@@ -1,5 +1,7 @@
 ﻿
+    using Services.Navigator.interfaces;
+
     public  interface ServiceManager
     {
-        MainNavigatorServices GetMainNavigatorService();
+        IMainNavigatorServices GetMainNavigatorService();
     }

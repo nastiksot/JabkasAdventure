@@ -234,6 +234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 0}
   camera: {fileID: 441206438}
+  cameraData: {fileID: 0}
+  defaultCameraData: {fileID: 11400000, guid: 2df8899263c18d746b95024c245baa5e, type: 2}
   xMin: 0
   xMax: 0
   yMin: 0

@@ -1,35 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using Services.Navigator.interfaces;
 
-public class MainNavigatorServicesImpl : MainNavigatorServices
+namespace Services.Navigator
 {
-    private List<Action> needToClose = new List<Action>();
-    private MenuNavigatorService menuNavigatorService;
-
-    public MainNavigatorServicesImpl(MenuNavigatorService menuNavigatorService)
+    public class MainNavigatorServices : IMainNavigatorServices
     {
-        this.menuNavigatorService = menuNavigatorService;
-    }
+        private List<Action> needToClose = new List<Action>();
+        private IMenuNavigatorService menuNavigatorService;
 
-    public MenuNavigatorService GetMenuNavigatorService()
-    {
-        return menuNavigatorService;
-    }
-
-    public void CloseAll()
-    {
-        if (needToClose == null) return;
-
-        foreach (var action in needToClose)
+        public MainNavigatorServices(IMenuNavigatorService menuNavigatorService)
         {
-            action.Invoke();
+            this.menuNavigatorService = menuNavigatorService;
         }
 
-        needToClose.Clear();
-    }
+        public IMenuNavigatorService GetMenuNavigatorService()
+        {
+            return menuNavigatorService;
+        }
 
-    public void AddActionForClose(Action action)
-    {
-        needToClose.Add(action);
+        public void CloseAll()
+        {
+            if (needToClose == null) return;
+
+            foreach (var action in needToClose)
+            {
+                action.Invoke();
+            }
+
+            needToClose.Clear();
+        }
+
+        public void AddActionForClose(Action action)
+        {
+            needToClose.Add(action);
+        }
     }
 }

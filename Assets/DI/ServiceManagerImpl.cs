@@ -1,15 +1,18 @@
-﻿public class ServiceManagerImpl : ServiceManager
+﻿using Services.Navigator;
+using Services.Navigator.interfaces;
+
+public class ServiceManagerImpl : ServiceManager
 {
-    private MainNavigatorServices mainNavigatorServices;
+    private IMainNavigatorServices mainNavigatorServices;
 
 
     public ServiceManagerImpl()
     {
-        var menuNavigatorService = new MenuNavigatorServiceImpl();
-        mainNavigatorServices = new MainNavigatorServicesImpl(menuNavigatorService);
+        var menuNavigatorService = new MenuNavigatorService();
+        mainNavigatorServices = new MainNavigatorServices(menuNavigatorService);
     }
 
-    public MainNavigatorServices GetMainNavigatorService()
+    public IMainNavigatorServices GetMainNavigatorService()
     {
         return mainNavigatorServices;
     }

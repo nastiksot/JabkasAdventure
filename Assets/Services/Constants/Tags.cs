@@ -1,4 +1,7 @@
-﻿public class Tags
+﻿namespace Services.Constants
 {
-    public static string PLAYER_TAG = "Player";
+    public class Tags
+    {
+        public static string PLAYER_TAG = "Player";
+    }
 }

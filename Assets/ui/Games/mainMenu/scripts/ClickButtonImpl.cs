@@ -1,21 +1,23 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClickButtonImpl : BaseMono
+namespace UI.Games.mainMenu.scripts
 {
-    [SerializeField] private Button clickButton;
-    private Action onClickListener;
-
-    private void Start()
+    public class ClickButtonImpl : BaseMono
     {
-        clickButton.onClick.AddListener(() => { onClickListener.Invoke(); });
-    }
+        [SerializeField] private Button clickButton;
+        private Action onClickListener;
 
-    public void setOnClickListener(Action onClickListener)
-    {
-        this.onClickListener = onClickListener;
+        private void Start()
+        {
+            clickButton.onClick.AddListener(() => { onClickListener.Invoke(); });
+        }
+
+        public void setOnClickListener(Action onClickListener)
+        {
+            this.onClickListener = onClickListener;
+        }
     }
 }

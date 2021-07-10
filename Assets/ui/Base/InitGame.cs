@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class InitGame : BaseMono
+namespace UI.Base
 {
-  private void Start()
+  public class InitGame : BaseMono
   {
-    MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMainMenu();
+    private void Start()
+    {
+      MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMainMenu();
+    }
   }
 }

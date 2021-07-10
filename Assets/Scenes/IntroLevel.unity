@@ -123,21 +123,15 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &158602599 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3381421162138872213, guid: 5f3bd45ca9c20c54eacb69f1c0fe6b9a, type: 3}
-  m_PrefabInstance: {fileID: 3381421162567946157}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &158602600
+--- !u!114 &276878949 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7859526464557667805, guid: 20a8a99badfbe654ba6fd8c2d31cb9b3, type: 3}
+  m_PrefabInstance: {fileID: 7859526466230204650}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158602599}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 403931a5b26d404cae3a0c0a343874d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b454f0c61ec1144384337326d93f916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &519420028
@@ -179,12 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ff00f7b786d07448eb859c31714cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
-  camera: {fileID: 0}
-  xMin: 0
-  xMax: 0
-  yMin: 0
-  yMax: 0
+  playerObject: {fileID: 276878949}
+  camera: {fileID: 519420031}
+  cameraData: {fileID: 11400000, guid: c740ca5ea32996441b01dde60d301088, type: 2}
+  defaultCameraData: {fileID: 11400000, guid: 2df8899263c18d746b95024c245baa5e, type: 2}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -459,10 +451,6 @@ PrefabInstance:
     - target: {fileID: 5224056271325314743, guid: c741085a3e162834cb2068211712fd52, type: 3}
       propertyPath: m_Name
       value: IntroLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 5224056271541185872, guid: c741085a3e162834cb2068211712fd52, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -7.999878
       objectReference: {fileID: 0}
     - target: {fileID: 5224056271714416494, guid: c741085a3e162834cb2068211712fd52, type: 3}
       propertyPath: m_Camera
