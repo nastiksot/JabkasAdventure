@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XValues:
     MIN: -0.26
-    MAX: 20
+    MAX: 116
   YValues:
     MIN: -1.75
-    MAX: 116
+    MAX: 20
   cameraSize: 4.08812

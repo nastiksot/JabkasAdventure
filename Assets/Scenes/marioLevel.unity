@@ -290,6 +290,58 @@ Transform:
   m_Father: {fileID: 98945055}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &358953636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5420135964826204279, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+  m_PrefabInstance: {fileID: 1189366620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &358953637
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358953636}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &358953638
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358953636}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &521175921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3293983348295022517, guid: da3339823afedc847af900fd8e36f1bf, type: 3}
@@ -3241,6 +3293,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1555189074}
     m_Modifications:
+    - target: {fileID: 1476851049711304528, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+      propertyPath: fullShelfSprite
+      value: 
+      objectReference: {fileID: 6190330601515713404, guid: 200ed641efb1daf4783093918abd37ae, type: 3}
+    - target: {fileID: 1476851049711304528, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+      propertyPath: shelfSprite.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1476851049711304528, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+      propertyPath: shelfSprite.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4cee5a2bf58234840b7791e8033b7956, type: 3}
+    - target: {fileID: 1476851049711304528, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+      propertyPath: shelfSprite.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1476851049711304528, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+      propertyPath: fullShelfSprite.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1476851049711304528, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+      propertyPath: fullShelfSprite.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5420135964826204279, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
       propertyPath: m_Name
       value: BookShelf
@@ -3288,6 +3364,26 @@ PrefabInstance:
     - target: {fileID: 5562361938978791978, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561038313235136274, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6190330601515713404, guid: 200ed641efb1daf4783093918abd37ae, type: 3}
+    - target: {fileID: 8561038313235136274, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561038313235136274, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561038313235136274, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561038313235136274, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
@@ -3350,6 +3446,10 @@ PrefabInstance:
     - target: {fileID: 7859526464557667801, guid: 20a8a99badfbe654ba6fd8c2d31cb9b3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859526464557667805, guid: 20a8a99badfbe654ba6fd8c2d31cb9b3, type: 3}
+      propertyPath: jumpPower
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20a8a99badfbe654ba6fd8c2d31cb9b3, type: 3}
