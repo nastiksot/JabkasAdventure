@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 30c2e1190fc2693468f68b9984cb0313
+guid: 200ed641efb1daf4783093918abd37ae
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2311471498430178204
-    second: bookShelf_0
+      213: 6190330601515713404
+    second: BookShelf_0
   - first:
-      213: 78003468444658490
-    second: bookShelf_1
+      213: 4822292663335920604
+    second: BookShelf_1
   - first:
-      213: -7754274673332175345
-    second: bookShelf_2
+      213: 6914918183471451611
+    second: BookShelf_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -55,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -124,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bookShelf_0
+      name: BookShelf_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,41 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c93ee54c41ff31020800000000000000
-      internalID: 2311471498430178204
+      spriteID: c73039162e878e550800000000000000
+      internalID: 6190330601515713404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bookShelf_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3b64e3cdbf151100800000000000000
-      internalID: 78003468444658490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bookShelf_2
+      name: BookShelf_1
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,8 +159,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0e3a3db448436490800000000000000
-      internalID: -7754274673332175345
+      spriteID: cd32c11b0a93ce240800000000000000
+      internalID: 4822292663335920604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BookShelf_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdd84b87379b6ff50800000000000000
+      internalID: 6914918183471451611
       vertices: []
       indices: 
       edges: []

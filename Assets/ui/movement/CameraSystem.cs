@@ -1,6 +1,7 @@
 using System;
 using UI.Base;
 using UI.Games;
+using UI.Player;
 using UnityEngine;
 
 namespace UI.movement

@@ -1,83 +1,83 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using services.Constants;
 using UI.Base;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class PlayerBehaviour : BaseMono
+namespace UI.Player
 {
-    [SerializeField] private SpriteRenderer playerSprite;
-    [SerializeField] private Rigidbody2D playerRigidbody;
-    [SerializeField] private float playerSpeed = 6;
-    [SerializeField] private int jumpPower = 400;
-    [SerializeField] private bool isGrounded;
-
-    private float moveX;
-
-    public int JumpPower => jumpPower;
-
-    private void Update()
+    public class PlayerBehaviour : BaseMono
     {
-        //CheckDeath();
-        PlayerMove();
-    }
+        [SerializeField] private SpriteRenderer playerSprite;
+        [SerializeField] private Rigidbody2D playerRigidbody;
+        [SerializeField] private float playerSpeed = 6;
+        [SerializeField] private int jumpPower = 400;
+        [SerializeField] private bool isGrounded;
 
-    private void PlayerMove()
-    {
-        //controllers and directions
-        moveX = CrossPlatformInputManager.GetAxis("Horizontal");
-        if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded)
+        private float moveX;
+
+        public int JumpPower => jumpPower;
+
+        private void Update()
         {
-            Jump();
+            //CheckDeath();
+            PlayerMove();
         }
 
-        if (moveX < 0.0f)
+        private void PlayerMove()
         {
-            playerSprite.flipX = true;
+            //controllers and directions
+            moveX = CrossPlatformInputManager.GetAxis("Horizontal");
+            if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded)
+            {
+                Jump();
+            }
+
+            if (moveX < 0.0f)
+            {
+                playerSprite.flipX = true;
+            }
+            else if (moveX > 0.0f)
+            {
+                playerSprite.flipX = false;
+            }
+
+            //animation of running
+            // GetComponent<Animator>().SetBool("isRunning", moveX != 0);
+            // GetComponent<Animator>().SetBool("isJumping", !isGrounded);
+
+            playerRigidbody.velocity =
+                new Vector2(moveX * playerSpeed, playerRigidbody.velocity.y);
         }
-        else if (moveX > 0.0f)
+
+        private void Jump()
         {
-            playerSprite.flipX = false;
+            playerRigidbody.AddForce(Vector2.up * jumpPower);
         }
 
-        //animation of running
-        // GetComponent<Animator>().SetBool("isRunning", moveX != 0);
-        // GetComponent<Animator>().SetBool("isJumping", !isGrounded);
-
-        playerRigidbody.velocity =
-            new Vector2(moveX * playerSpeed, playerRigidbody.velocity.y);
-    }
-
-    private void Jump()
-    {
-        playerRigidbody.AddForce(Vector2.up * jumpPower);
-    }
-
-    private void CheckDeath()
-    {
-        //TODO: Refactor checking of death
-        if (gameObject.transform.position.y < -7)
+        private void CheckDeath()
         {
-            MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService()
-                .OpenProgressBar();
+            //TODO: Refactor checking of death
+            if (gameObject.transform.position.y < -7)
+            {
+                MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService()
+                    .OpenProgressBar();
+            }
         }
-    }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == Layers.GROUND_LAYER && isGrounded)
+        private void OnCollisionExit2D(Collision2D collision)
         {
-            isGrounded = false;
+            if (collision.gameObject.layer == Layers.GROUND_LAYER && isGrounded)
+            {
+                isGrounded = false;
+            }
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == Layers.GROUND_LAYER && !isGrounded)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            isGrounded = true;
+            if (collision.gameObject.layer == Layers.GROUND_LAYER && !isGrounded)
+            {
+                isGrounded = true;
+            }
         }
     }
 }

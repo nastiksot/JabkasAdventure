@@ -1,9 +1,9 @@
-using System;
 using UI.Base;
-using UI.Games;
 using UI.movement;
 using UnityEngine;
 
+namespace UI.Games
+{
     public class LevelManager : BaseMono
     {
         [SerializeField] private CameraSystem cameraSystem;
@@ -14,4 +14,5 @@ using UnityEngine;
             cameraSystem = FindObjectOfType<CameraSystem>();
             cameraSystem.OnLevelChanged?.Invoke(cameraData);
         }
-    } 
+    }
+} 
