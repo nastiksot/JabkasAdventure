@@ -1,14 +1,13 @@
 using UI.Base;
-using UI.Games.mainMenu.interfaces;
-using UI.Games.mainMenu.scripts;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Games.mainMenu
 {
-    public class MainMenu : BaseMono, interfaces.MainMenu
+    public class MainMenu : BaseMono
     {
-        [SerializeField] private ClickButtonImpl playButton;
-        [SerializeField] private ClickButtonImpl settingsButton;
+        [SerializeField] private Button playButton;
+        [SerializeField] private Button settingsButton;
 
         private void Start()
         {
@@ -17,14 +16,14 @@ namespace UI.Games.mainMenu
 
         public void Init()
         {
-            playButton.setOnClickListener(() =>
+            playButton.onClick.AddListener(() =>
             {
                 MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService()
                     .GetMenuNavigatorService().OpenIntroLevel();
             });
 #if PLATFORM_ANDROID
-            settingsButton.setOnClickListener(Application.Quit);
+            settingsButton.onClick.AddListener(Application.Quit);
 #endif
         }
     }
-}
+} 

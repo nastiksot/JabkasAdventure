@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 538aa9d577aa407f8f37eb89c6f85fab, type: 3}
+  m_Script: {fileID: 11500000, guid: 285aa40af4920ec498655e51b1d3dc66, type: 3}
   m_Name: MarioLevelCameraData
   m_EditorClassIdentifier: 
   XValues:
-    MIN: -0.26
+    MIN: -0.6
     MAX: 116
   YValues:
     MIN: -1.75

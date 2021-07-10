@@ -39,7 +39,7 @@ namespace UI.Games.MarioLevel
         {
             yield return new WaitForSeconds(0.17f);
             if (!isShelfClosed) yield break;
-            Instantiate(CVSheet, transform.position + Vector3.up, Quaternion.identity);
+            Instantiate(CVSheet, transform.position + Vector3.up*2, Quaternion.identity); 
             isShelfClosed = false;
         }
  

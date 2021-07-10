@@ -3447,10 +3447,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7859526464557667805, guid: 20a8a99badfbe654ba6fd8c2d31cb9b3, type: 3}
-      propertyPath: jumpPower
-      value: 400
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20a8a99badfbe654ba6fd8c2d31cb9b3, type: 3}
 --- !u!1001 &1242142461
