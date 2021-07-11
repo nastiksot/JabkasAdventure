@@ -16,12 +16,12 @@ namespace UI.Games.MarioLevel.Switcher
 
         private void Start()
         {
-            switchController = Camera.main.GetComponent<SwitchController>();
+            switchController = FindObjectOfType<SwitchController>();
         }
 
         void Update()
         {
-            isOnSprite = SwitchController.instance.isOn;
+            isOnSprite = SwitchController.instance.IsOn;
 
             if (!setOnSprite && isOnSprite)
             {

@@ -1,25 +1,35 @@
 using UI.Base;
 using UnityEngine;
 
-public class SwitchController : BaseMono
+namespace UI.Games.MarioLevel.Switcher
 {
-    public static SwitchController instance = null;
-    public bool isOn;
-
-    void Awake()
+    public class SwitchController : BaseMono
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
+        [SerializeField] private bool isOn;
 
-    public void FlipSwitch()
-    {
-        isOn = !isOn;
+        public bool IsOn
+        {
+            get => isOn;
+            set => isOn = value;
+        }
+
+        public static SwitchController instance = null;
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else if (instance != this)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public void FlipSwitch()
+        {
+            isOn = !isOn;
+        }
     }
 }

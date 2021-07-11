@@ -6,6 +6,7 @@ namespace UI.Games.MarioLevel.Switcher
     public class OrangeBlock : BaseMono
     {
         [Header("Sprites")] [SerializeField] private Sprite[] orangeSprites;
+        
         [Space(6f)] [SerializeField] private BoxCollider2D collider2D;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -16,7 +17,7 @@ namespace UI.Games.MarioLevel.Switcher
     
         void Update()
         {
-            isActive = SwitchController.instance.isOn;
+            isActive = SwitchController.instance.IsOn;
 
             if (!setOn && !isActive)
             {

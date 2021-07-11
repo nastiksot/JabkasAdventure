@@ -7,7 +7,7 @@ namespace UI.Games.MarioLevel
 {
     public class ChairPlatform : BaseMono
     {
-        [SerializeField] private PlayerBehaviour playerBehaviour;
+        [SerializeField] private int jumpPower = 400;
 
         private void OnCollisionEnter2D(Collision2D col)
         {
@@ -16,7 +16,7 @@ namespace UI.Games.MarioLevel
             var rb = col.collider.GetComponent<Rigidbody2D>();
             if (rb == null) return;
             var velocity = rb.velocity;
-            velocity.y = (playerBehaviour.JumpPower) * 0.02f;
+            velocity.y = (jumpPower) * 0.02f;
             rb.velocity = velocity;
         }
     }

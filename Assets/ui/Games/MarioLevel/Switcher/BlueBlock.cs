@@ -18,7 +18,7 @@ namespace UI.Games.MarioLevel.Switcher
 
         private void Update()
         {
-            isActive = SwitchController.instance.isOn;
+            isActive = SwitchController.instance.IsOn;
 
             if (!setOn && isActive)
             {

@@ -1,3 +1,4 @@
+using System;
 using services.Constants;
 using UI.Base;
 using UnityEngine;
@@ -60,7 +61,7 @@ namespace UI.Enemy
             if (Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME)))
             {
                 isCollidedWall = true;
-            }
+            } 
 
             return isCollidedWall;
         }
@@ -81,7 +82,7 @@ namespace UI.Enemy
             {
                 isCollidedEdge = false;
             }
-
+             
             return isCollidedEdge;
         }
 
@@ -96,5 +97,6 @@ namespace UI.Enemy
             transform.localScale = newScale;
             facingDirection = newDirection;
         }
+ 
     }
 }
