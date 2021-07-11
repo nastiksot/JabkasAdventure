@@ -1,36 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UI.Base;
 using UnityEngine;
 
-public class BlueBlock : BaseMono
+namespace UI.Games.MarioLevel.Switcher
 {
-    [SerializeField] private Sprite[] onSprite;
-    private bool isActive;
-    private Color semiVisible = new Color(1, 1, 1, 0.5f);
-    private bool setOn;
-    private bool setOff;
-
-
-    void Update()
+    public class BlueBlock : BaseMono
     {
-        isActive = SwitchController.instance.isOn;
+        [Header("Sprites")] [SerializeField] private Sprite[] blueSprites;
 
-        if (!setOn && isActive)
+        [Space(6f)] [SerializeField] private BoxCollider2D collider2D;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+
+        private bool isActive;
+        private Color semiVisible = new Color(1, 1, 1, 0.5f);
+        private bool setOn;
+        private bool setOff;
+
+
+        private void Update()
         {
-            gameObject.GetComponent<Collider2D>().enabled = true;
-            gameObject.GetComponent<SpriteRenderer>().sprite = onSprite[1];
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-            setOn = true;
-            setOff = false;
-        }
+            isActive = SwitchController.instance.isOn;
+
+            if (!setOn && isActive)
+            {
+                collider2D.enabled = true;
+                spriteRenderer.sprite = blueSprites[1];
+                spriteRenderer.color = Color.white;
+                setOn = true;
+                setOff = false;
+            }
 
 
-        if (!setOff && !isActive)
-        {
-            gameObject.GetComponent<Collider2D>().enabled = false;
-            gameObject.GetComponent<SpriteRenderer>().sprite = onSprite[0];
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            if (setOff || isActive) return;
+            collider2D.enabled = false;
+            spriteRenderer.sprite = blueSprites[0];
+            spriteRenderer.color = Color.white;
             setOff = true;
             setOn = false;
         }

@@ -1,32 +1,36 @@
 using UI.Base;
 using UnityEngine;
 
-public class OrangeBlock : BaseMono
+namespace UI.Games.MarioLevel.Switcher
 {
-    [SerializeField] private Sprite[] onSprite;
-    private bool isActive;
-    private Color semiVisible = new Color(1, 1, 1, 0.5f);
-    private bool setOn;
-    private bool setOff; 
-    
-    void Update()
+    public class OrangeBlock : BaseMono
     {
-        isActive = SwitchController.instance.isOn;
+        [Header("Sprites")] [SerializeField] private Sprite[] orangeSprites;
+        [Space(6f)] [SerializeField] private BoxCollider2D collider2D;
+        [SerializeField] private SpriteRenderer spriteRenderer;
 
-        if (!setOn && !isActive)
+        private bool isActive;
+        private Color semiVisible = new Color(1, 1, 1, 0.5f);
+        private bool setOn;
+        private bool setOff; 
+    
+        void Update()
         {
-            gameObject.GetComponent<Collider2D>().enabled = true;
-            gameObject.GetComponent<SpriteRenderer>().sprite = onSprite[0];
-            gameObject.GetComponent<SpriteRenderer>().color = semiVisible;
-            setOn = true;
-            setOff = false;
-        }
+            isActive = SwitchController.instance.isOn;
 
-        if (!setOff && isActive)
-        {
-            gameObject.GetComponent<Collider2D>().enabled = false;
-            gameObject.GetComponent<SpriteRenderer>().sprite = onSprite[1];
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            if (!setOn && !isActive)
+            {
+                collider2D.enabled = true;
+                spriteRenderer.sprite = orangeSprites[0];
+                spriteRenderer.color = Color.white;
+                setOn = true;
+                setOff = false;
+            }
+
+            if (setOff || !isActive) return;
+            collider2D.enabled = false;
+            spriteRenderer.sprite = orangeSprites[1];
+            spriteRenderer.color = semiVisible;
             setOff = true;
             setOn = false;
         }

@@ -1,49 +1,50 @@
-using System;
 using Services.Constants;
 using UI.Base;
 using UnityEngine;
 
-
-public class BlockSwitcher : BaseMono
+namespace UI.Games.MarioLevel.Switcher
 {
-    [SerializeField] Sprite[] blockSprite;
-    private SwitchController switchController;
-    private bool isOnSprite;
-    private bool setOnSprite = false;
-    private bool setOffSprite = false;
-
-    private void Start()
+    public class BlockSwitcher : BaseMono
     {
-        switchController = Camera.main.GetComponent<SwitchController>();
-    }
+        [SerializeField] Sprite[] blockSprite;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+    
+        private SwitchController switchController;
+        private bool isOnSprite;
+        private bool setOnSprite = false;
+        private bool setOffSprite = false;
 
-    void Update()
-    {
-        isOnSprite = SwitchController.instance.isOn;
-
-        if (!setOnSprite && isOnSprite)
+        private void Start()
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = blockSprite[1];
-            setOnSprite = true;
-            setOffSprite = false;
+            switchController = Camera.main.GetComponent<SwitchController>();
         }
 
-        if (!setOffSprite && !isOnSprite)
+        void Update()
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = blockSprite[0];
+            isOnSprite = SwitchController.instance.isOn;
+
+            if (!setOnSprite && isOnSprite)
+            {
+                spriteRenderer.sprite = blockSprite[1];
+                setOnSprite = true;
+                setOffSprite = false;
+            }
+
+            if (setOffSprite || isOnSprite) return;
+            spriteRenderer.sprite = blockSprite[0];
             setOffSprite = true;
             setOnSprite = false;
         }
-    }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.collider.bounds.max.y < transform.position.y &&
-            col.collider.bounds.min.x < transform.position.x + 0.3f &&
-            col.collider.bounds.min.x < transform.position.x - 0.3f &&
-            col.gameObject.CompareTag(Tags.PLAYER_TAG))
+        void OnCollisionEnter2D(Collision2D col)
         {
-            switchController.FlipSwitch();
+            if (col.collider.bounds.max.y < transform.position.y &&
+                col.collider.bounds.min.x < transform.position.x + 0.3f &&
+                col.collider.bounds.min.x < transform.position.x - 0.3f &&
+                col.gameObject.CompareTag(Tags.PLAYER_TAG))
+            {
+                switchController.FlipSwitch();
+            }
         }
     }
 }
