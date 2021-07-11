@@ -8,7 +8,7 @@ namespace Services.Navigator
     {
         private IMainNavigatorServices getMainNavigation()
         {
-            return MainDependency.getInstance().GetServiceManager().GetMainNavigatorService();
+            return MainDependency.GetInstance().GetServiceManager().GetMainNavigatorService();
         }
 
         public void OpenMainMenu()

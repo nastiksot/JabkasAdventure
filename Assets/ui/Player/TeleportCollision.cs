@@ -18,7 +18,7 @@ namespace UI.Player
             if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return;
             dlog("Collited and destroyed!");
             //GetComponent<AudioSource>().Play();
-            MainDependency.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
+            MainDependency.GetInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
         }
     }
 }

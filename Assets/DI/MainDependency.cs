@@ -14,7 +14,7 @@ public class MainDependency : IMainDependencys
         serviceManager = new ServiceManager();
     }
 
-    public static IMainDependencys getInstance()
+    public static IMainDependencys GetInstance()
     {
         return instance;
     }

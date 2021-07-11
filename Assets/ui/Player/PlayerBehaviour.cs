@@ -12,7 +12,8 @@ namespace UI.Player
         [SerializeField] private float playerSpeed = 6;
         [SerializeField] private int jumpPower = 400;
         [SerializeField] private bool isGrounded;
-
+        [SerializeField] private int spiderCost = 10;
+        
         private float moveX;
 
         public int JumpPower => jumpPower;
@@ -59,7 +60,7 @@ namespace UI.Player
             //TODO: Refactor checking of death
             if (gameObject.transform.position.y < -7)
             {
-                MainDependency.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService()
+                MainDependency.GetInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService()
                     .OpenProgressBar();
             }
         }
@@ -74,7 +75,7 @@ namespace UI.Player
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.layer == Layers.GROUND_LAYER && !isGrounded)
+            if (collision.gameObject.layer == Layers.GROUND_LAYER)
             {
                 isGrounded = true;
             }

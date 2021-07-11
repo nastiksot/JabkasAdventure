@@ -14,7 +14,7 @@ public class ProgressScreenImpl : BaseMono
     {
         StartCoroutine( startWithDelay(6,()=>
         {
-            MainDependency.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
+            MainDependency.GetInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
         }));
        
     }
