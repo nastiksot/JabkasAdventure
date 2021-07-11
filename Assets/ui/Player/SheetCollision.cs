@@ -20,5 +20,6 @@ namespace UI.Player
                 rigidbody2D.bodyType = RigidbodyType2D.Static;
             }
         }
+        
     }
 }

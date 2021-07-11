@@ -59,7 +59,7 @@ namespace UI.Player
             //TODO: Refactor checking of death
             if (gameObject.transform.position.y < -7)
             {
-                MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService()
+                MainDependency.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService()
                     .OpenProgressBar();
             }
         }

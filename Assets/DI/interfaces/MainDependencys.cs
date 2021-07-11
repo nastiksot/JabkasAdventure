@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface MainDependencys
+namespace DI.interfaces
 {
-    ServiceManager GetServiceManager();
+    public interface IMainDependencys
+    {
+        IServiceManager GetServiceManager();
+    }
 }

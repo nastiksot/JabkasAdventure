@@ -1,7 +1,10 @@
 ﻿
     using Services.Navigator.interfaces;
 
-    public  interface ServiceManager
+    namespace DI.interfaces
     {
-        IMainNavigatorServices GetMainNavigatorService();
+        public  interface IServiceManager
+        {
+            IMainNavigatorServices GetMainNavigatorService();
+        }
     }

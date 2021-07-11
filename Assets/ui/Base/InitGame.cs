@@ -4,7 +4,7 @@ namespace UI.Base
   {
     private void Start()
     {
-      MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMainMenu();
+      MainDependency.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMainMenu();
     }
   }
 }
