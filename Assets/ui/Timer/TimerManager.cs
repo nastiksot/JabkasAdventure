@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UI.Timer
 {
-    public class Timer : MonoBehaviour
+    public class TimerManager : MonoBehaviour
     {
         [SerializeField] private TMP_Text timerTextMeshObject;
         [SerializeField] private float timeLeft = 120;
