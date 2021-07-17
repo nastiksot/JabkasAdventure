@@ -1,3 +1,4 @@
+using DI;
 using Services.Navigator.interfaces;
 using UI.Base;
 using UnityEngine;

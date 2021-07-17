@@ -1,3 +1,5 @@
+using DI;
+
 namespace UI.Base
 {
   public class InitGame : BaseMono

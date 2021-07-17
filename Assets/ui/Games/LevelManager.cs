@@ -15,6 +15,7 @@ namespace UI.Games
         [Space(6f)][SerializeField] private Transform spawnPosition;
         
         [Space(6f)][SerializeField] private PlayerBehaviour playerBehaviour;
+        
         private void Awake()
         {
             cameraSystem = FindObjectOfType<CameraSystem>();

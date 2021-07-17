@@ -1,26 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
-using DI;
 using DI.interfaces;
-using UnityEngine;
 
-public class MainDependency : IMainDependencys
+namespace DI
 {
-    private static IMainDependencys instance = new MainDependency();
-    private IServiceManager serviceManager;
-     
-    public MainDependency()
+    public class MainDependency : IMainDependencys
     {
-        serviceManager = new ServiceManager();
-    }
+        private static IMainDependencys instance = new MainDependency();
+        private IServiceManager serviceManager;
+        private IModuleManager moduleManager;
 
-    public static IMainDependencys GetInstance()
-    {
-        return instance;
-    }
+        public MainDependency()
+        {
+            moduleManager = new ModuleManager();
+            serviceManager = new ServiceManager(moduleManager);
+        }
 
-    public IServiceManager GetServiceManager()
-    {
-        return serviceManager;
+        public static IMainDependencys GetInstance()
+        {
+            return instance;
+        }
+
+        public IServiceManager GetServiceManager()
+        {
+            return serviceManager;
+        }
+
+        public IModuleManager GetModuleManager()
+        {
+            return moduleManager;
+        }
     }
 }

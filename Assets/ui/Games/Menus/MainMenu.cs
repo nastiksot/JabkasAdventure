@@ -1,3 +1,4 @@
+using DI;
 using UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +15,7 @@ namespace UI.Games.mainMenu
             Init();
         }
 
-        public void Init()
+        private void Init()
         {
             playButton.onClick.AddListener(() =>
             {

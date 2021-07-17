@@ -1,4 +1,5 @@
 using System;
+using DI;
 using services.Constants;
 using UI.Base;
 using UnityEngine;

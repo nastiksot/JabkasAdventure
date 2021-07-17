@@ -1,3 +1,4 @@
+using DI;
 using Services.Constants;
 using UI.Base;
 using UnityEngine;
