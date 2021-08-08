@@ -1,22 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using DI;
+using Services.Constants;
+using UI.Base;
 using UnityEngine;
 
-public class TeleportCollision : BaseMono
+namespace UI.Player
 {
-    private TeleportCollision()
+    public class TeleportCollision : BaseMono
     {
-        TAG = "TeleportCollision";
-    }
+        private TeleportCollision()
+        {
+            TAG = "TeleportCollision";
+        }
 
 
-    private void OnTriggerEnter2D
-        (Collider2D col)
-    {
-        if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return;
-        dlog("Collited and destroyed!");
-        //GetComponent<AudioSource>().Play();
-        //MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
+        private void OnTriggerEnter2D
+            (Collider2D col)
+        {
+            if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return;
+            dlog("Collited and destroyed!");
+            //GetComponent<AudioSource>().Play();
+            MainDependency.GetInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
+        }
     }
 }

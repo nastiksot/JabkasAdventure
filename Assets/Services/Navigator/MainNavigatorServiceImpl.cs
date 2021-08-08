@@ -1,28 +1,33 @@
-﻿
-    using System;
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Services.Navigator.interfaces;
 
-    public class MainNavigatorServicesImpl : MainNavigatorServices
+namespace Services.Navigator
+{
+    public class MainNavigatorServices : IMainNavigatorServices
     {
         private List<Action> needToClose = new List<Action>();
-        private MenuNavigatorService menuNavigatorService;
-        
-        public MainNavigatorServicesImpl( MenuNavigatorService menuNavigatorService)
-        {   
+        private IMenuNavigatorService menuNavigatorService;
+
+        public MainNavigatorServices(IMenuNavigatorService menuNavigatorService)
+        {
             this.menuNavigatorService = menuNavigatorService;
         }
-        
-        public MenuNavigatorService GetMenuNavigatorService()
+
+        public IMenuNavigatorService GetMenuNavigatorService()
         {
             return menuNavigatorService;
         }
 
         public void CloseAll()
         {
+            if (needToClose == null) return;
+
             foreach (var action in needToClose)
             {
                 action.Invoke();
             }
+
             needToClose.Clear();
         }
 
@@ -31,3 +36,4 @@
             needToClose.Add(action);
         }
     }
+}

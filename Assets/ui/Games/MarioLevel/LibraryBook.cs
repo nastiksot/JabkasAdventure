@@ -1,46 +1,47 @@
+using System;
 using System.Collections;
+using Services.Constants;
+using UI.Base;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class LibraryBook : BaseMono
+namespace UI.Games.MarioLevel
 {
-    private bool isContainSheet = true;
-    [SerializeField] private Sprite[] shelfSprite;
-    [SerializeField] private GameObject CVSheet;
-    
-    //public AudioSource hitBlock;
-    private bool isShelfClosed = true;
-    private void OnCollisionEnter2D(Collision2D col)
+    public class LibraryBook : BaseMono
     {
-        //compare collision BonusBlock and Player
-        if (col.collider.bounds.max.y < transform.position.y &&
-            col.collider.bounds.min.x < transform.position.x + 0.3f &&
-            col.collider.bounds.min.x < transform.position.x - 0.3f &&
-            col.gameObject.CompareTag(Tags.PLAYER_TAG))
-        {
-            //check of condition BonusBlock(empty or full) 
-            if (isContainSheet)
+        [SerializeField] private SpriteRenderer blockSprite;  
+        [SerializeField] private Sprite emptyShelfSprite;
+        [Space (6f), Header("Prefab")][SerializeField] private GameObject CVSheet;
+
+        //private AudioSource hitBlock;
+        private bool isContainSheet = true;
+        private bool isShelfClosed = true;
+ 
+        private void OnCollisionEnter2D(Collision2D col)
+        { 
+            if (col.collider.bounds.max.y < transform.position.y &&
+                col.collider.bounds.min.x < transform.position.x + 0.3f &&
+                col.collider.bounds.min.x < transform.position.x - 0.3f &&
+                col.gameObject.CompareTag(Tags.PLAYER_TAG))
             {
-                //hitBlock.Play();
-                gameObject.GetComponent<SpriteRenderer>().sprite = shelfSprite[0];
-                isContainSheet = false;
+                if (isContainSheet)
+                {
+                    //TODO: init sound hit block; 
+                    isContainSheet = false;
+                }
+
+                if (isContainSheet) return;
+                StartCoroutine(WaitForHalfASecond());  
+                blockSprite.sprite = emptyShelfSprite;
             }
-
-            if (isContainSheet) return;
-            StartCoroutine(WaitForHalfASecond());
-            GetComponent<Animator>().SetBool("isEmpty", true);
-            gameObject.GetComponent<SpriteRenderer>().sprite = shelfSprite[1];
         }
-    }
 
-    IEnumerator WaitForHalfASecond()
-    {
-        yield return new WaitForSeconds(0.17f);
-        if (isShelfClosed)
+        private IEnumerator WaitForHalfASecond()
         {
-            //drop list just once
-            Instantiate(CVSheet, transform.position + Vector3.up, Quaternion.identity);
+            yield return new WaitForSeconds(0.17f);
+            if (!isShelfClosed) yield break;
+            Instantiate(CVSheet, transform.position + Vector3.up*2, Quaternion.identity); 
             isShelfClosed = false;
         }
+ 
     }
 }

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using DI;
+using UI.Base;
 using UnityEngine;
 
 public class ProgressScreenImpl : BaseMono
@@ -13,7 +15,7 @@ public class ProgressScreenImpl : BaseMono
     {
         StartCoroutine( startWithDelay(6,()=>
         {
-            MainDependencyImpl.getInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
+            MainDependency.GetInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
         }));
        
     }
