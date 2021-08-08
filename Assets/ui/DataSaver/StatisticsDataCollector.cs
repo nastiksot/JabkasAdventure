@@ -1,7 +1,11 @@
 ﻿using System;
+using DI;
+using Models;
+using Models.PlayerModel;
+using Services.Data.Interfaces;
 using TMPro;
+using UI.Base;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace UI.DataSaver
 {
@@ -13,7 +17,7 @@ namespace UI.DataSaver
 
         private static StatisticsDataCollector instance = new StatisticsDataCollector();
         private PlayerData playerData;
-
+        private IDataService dataService;
         private string filePath = "DefaultSave";
         private int summarySheet;
         private int summaryScore;
@@ -36,9 +40,11 @@ namespace UI.DataSaver
             {
                 instance = this;
             }
+
+            dataService = MainDependency.GetInstance().GetServiceManager().GetDataService();
         }
 
-        public void OnDataChanged(PlayerData data)
+        public void UpdatePlayerData(PlayerData data)
         {
             playerData = new PlayerData()
             {
@@ -48,38 +54,39 @@ namespace UI.DataSaver
             };
         }
 
-        public void CreateSaveDataFile()
+        public void SaveDataFile()
         {
-            SaveDataManager.SaveData(playerData, filePath);
+            dataService.SaveData(playerData, filePath);
         }
 
-        public PlayerData LoadDataFile()
+        private void LoadDataFile(Action<PlayerData> playerData, Action<BaseError> failure)
         {
-            return SaveDataManager.LoadData(filePath);
+            dataService.LoadData(filePath, loadedData => { playerData?.Invoke(loadedData); },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
-        public void UpdateLoadedUI()
+        private void UpdateUIData()
         {
-            var loadData = LoadDataFile();
-            sheetValue.text = loadData.PlayerScore.ToString();
+            LoadDataFile(data =>
+            {
+                totalScore.text = playerData.PlayerScore.ToString();
+            }, error => { ToastUtility.ShowToast(error.errorMessage);});
         }
 
         public void ChangeSheetScoreValue(int sheetCosts)
         {
-
             summarySheet++;
-            
-            summaryScore +=  sheetCosts;
-            
+
+            summaryScore += sheetCosts;
+
             sheetValue.text = summarySheet.ToString();
             totalScore.text = (summaryScore).ToString();
         }
 
         public void ChangeTotalScoreValueByKilledSpider(int killedEnemy)
         {
-            summaryScore += killedEnemy ;
+            summaryScore += killedEnemy;
             totalScore.text = (summaryScore).ToString();
         }
-        
     }
 }

@@ -7,11 +7,12 @@ namespace UI.Player
 {
     public class SheetCollision : MonoBehaviour
     {
-        [SerializeField] private Rigidbody2D rigidbody2D;
+        
         [SerializeField] private int sheetCosts = 10;
-
+        private Rigidbody2D rigidbody2D;
         private void Start()
         {
+            rigidbody2D = GetComponent<Rigidbody2D>();
             rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
         }
 

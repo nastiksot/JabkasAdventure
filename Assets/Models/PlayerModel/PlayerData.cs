@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UI.DataSaver
+namespace Models.PlayerModel
 {
     [Serializable]
     public class PlayerData
