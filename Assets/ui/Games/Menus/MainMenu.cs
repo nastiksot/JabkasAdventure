@@ -19,8 +19,7 @@ namespace UI.Games.mainMenu
         {
             playButton.onClick.AddListener(() =>
             {
-                MainDependency.GetInstance().GetServiceManager().GetMainNavigatorService()
-                    .GetMenuNavigatorService().OpenIntroLevel();
+                MainDependency.GetInstance().GetUIManager().GetNavigator().StartIntroLevel();
             });
 #if PLATFORM_ANDROID
             settingsButton.onClick.AddListener(Application.Quit);

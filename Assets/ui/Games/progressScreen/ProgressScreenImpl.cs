@@ -1,22 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using DI;
 using UI.Base;
-using UnityEngine;
 
-public class ProgressScreenImpl : BaseMono
+namespace ui.Games.progressScreen
 {
-    void Start()
+    public class ProgressScreenImpl : BaseMono
     {
-        OpenMarioGame();
-    }
-
-    void OpenMarioGame()
-    {
-        StartCoroutine( startWithDelay(6,()=>
+        void Start()
         {
-            MainDependency.GetInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService().OpenMarioLevel();
-        }));
-       
+            OpenMainGame();
+        }
+
+        void OpenMainGame()
+        {
+            StartCoroutine( startWithDelay(6,()=>
+            {
+                MainDependency.GetInstance().GetUIManager().GetNavigator().StartMainLevel(); 
+            }));
+        }
     }
 }

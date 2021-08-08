@@ -11,8 +11,8 @@ namespace Services.Data
     public class DataService : IDataService
     {
         private IDataModule dataModule;
-
-        public DataService(IDataModule dataModule)
+ 
+        public void SetDependency(IDataModule dataModule)
         {
             this.dataModule = dataModule;
         }
@@ -36,6 +36,10 @@ namespace Services.Data
         public void OpenFile(string fileName, Action<FileStream> success, Action<BaseError> failure)
         {
             dataModule.OpenFile(fileName, success, failure);
+        }
+
+        public void initWithDependency()
+        { 
         }
     }
 }

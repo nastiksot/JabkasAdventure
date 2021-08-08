@@ -1,22 +1,41 @@
 using DI.interfaces;
+using DI.UI;
+using UI.Base;
+using UnityEngine;
 
 namespace DI
 {
-    public class MainDependency : IMainDependencys
+    public class MainDependency : BaseMono, IMainDependencys
     {
-        private static IMainDependencys instance = new MainDependency();
+        private static IMainDependencys instance;
         private IServiceManager serviceManager;
         private IModuleManager moduleManager;
+        private IUIManager uiManager;
+        private InteractorManager interactorManager;
 
-        public MainDependency()
+        public void Start()
         {
+            instance = this;
+
             moduleManager = new ModuleManager();
+            uiManager = new UIManager();
             serviceManager = new ServiceManager(moduleManager);
+            interactorManager = new InteractorManager(serviceManager, uiManager);
         }
 
         public static IMainDependencys GetInstance()
         {
+            if (instance == null)
+            {
+                instance = new MainDependency();
+            }
+
             return instance;
+        }
+
+        public IUIManager GetUIManager()
+        {
+            return uiManager;
         }
 
         public IServiceManager GetServiceManager()

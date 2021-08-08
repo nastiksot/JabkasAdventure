@@ -13,7 +13,7 @@ namespace UI.movement
         [SerializeField] private CameraData cameraData;
         [SerializeField] private CameraData defaultCameraData;
 
-        private Action<CameraData> onLevelChanged;
+        private event Action<CameraData> onLevelChanged;
 
         public Action<CameraData> OnLevelChanged => onLevelChanged;
 

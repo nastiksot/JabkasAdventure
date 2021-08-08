@@ -30,7 +30,7 @@ namespace UI.Games
         private void InitPlayer()
         {
             playerBehaviour = FindObjectOfType<PlayerBehaviour>();
-            playerBehaviour.transform.position = spawnPosition.position;
+           // playerBehaviour.transform.position = spawnPosition.position;
         }
     }
 } 

@@ -1,27 +1,32 @@
-﻿using DI.interfaces;
+﻿using System.Collections.Generic;
+using DI.interfaces;
+using DI.Services;
 using Services.Data;
-using Services.Data.Interfaces;
-using Services.Navigator;
-using Services.Navigator.interfaces;
+using Services.Data.Interfaces; 
 
 namespace DI
 {
     public class ServiceManager : IServiceManager
-    {
-        private IMainNavigatorServices mainNavigatorServices;
+    { 
         private IDataService dataService;
+        private List<IBaseService> allServices = new List<IBaseService>();
 
         public ServiceManager(IModuleManager moduleManager)
         {
-            var menuNavigatorService = new MenuNavigatorService();
-            mainNavigatorServices = new MainNavigatorServices(menuNavigatorService);
+            InitDataService(moduleManager);
             
-            dataService = new DataService(moduleManager.GetDataModule());
+            foreach (var baseService in allServices)
+            {
+                baseService.initWithDependency();
+            }
         }
 
-        public IMainNavigatorServices GetMainNavigatorService()
+        private void InitDataService(IModuleManager moduleManager)
         {
-            return mainNavigatorServices;
+            dataService = new DataService();
+            allServices.Add(dataService);
+            dataService.SetDependency(moduleManager.GetDataModule());
+
         }
 
         public IDataService GetDataService()
