@@ -1,8 +1,8 @@
 ﻿using DI.interfaces;
-using DI.UI;
+using DI.UI; 
 
 namespace DI.Interactor
-{
+{ 
     public class MainGameInteractor : IMainGameInteractor
     {
         public MainGameInteractor(INavigator navigator)

@@ -1,7 +1,6 @@
-﻿using DI;
-using DI.Interactor;
+﻿using DI.Interactor;
 using DI.interfaces;
-using DI.UI;
+using DI.UI; 
 
 public class InteractorManager
 {

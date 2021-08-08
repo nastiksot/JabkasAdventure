@@ -10,7 +10,10 @@ namespace DI.UI
         FinalGameLevel,
         LoadingScreen,
         MainMenu,
-        NavigationMenu
+        NavigationMenu,
+        PauseMenu,
+        GameOverMenu,
+        StatisticsData
     }
 
     public interface IUIPrefabManager

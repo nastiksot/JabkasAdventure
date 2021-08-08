@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace UI.DataSaver
 {
+    [DefaultExecutionOrder(1000)]
     public class StatisticsDataCollector : MonoBehaviour
     {
         [Header("Text")] [SerializeField] private TMP_Text totalScore;
@@ -34,7 +35,7 @@ namespace UI.DataSaver
             set => filePath = value;
         }
 
-        private void Awake()
+        private void Start()
         {
             if (instance == null)
             {
@@ -68,9 +69,11 @@ namespace UI.DataSaver
         private void UpdateUIData()
         {
             LoadDataFile(data =>
-            {
-                totalScore.text = playerData.PlayerScore.ToString();
-            }, error => { ToastUtility.ShowToast(error.errorMessage);});
+                {
+                    totalScore.text = data.PlayerScore.ToString();
+                    sheetValue.text = data.SheetScore.ToString();
+                },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
         public void ChangeSheetScoreValue(int sheetCosts)

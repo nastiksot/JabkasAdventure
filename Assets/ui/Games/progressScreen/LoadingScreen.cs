@@ -3,7 +3,7 @@ using UI.Base;
 
 namespace ui.Games.progressScreen
 {
-    public class ProgressScreenImpl : BaseMono
+    public class LoadingScreen : BaseMono
     {
         void Start()
         {
@@ -12,7 +12,7 @@ namespace ui.Games.progressScreen
 
         void OpenMainGame()
         {
-            StartCoroutine( startWithDelay(6,()=>
+            StartCoroutine( startWithDelay(5,()=>
             {
                 MainDependency.GetInstance().GetUIManager().GetNavigator().StartMainLevel(); 
             }));

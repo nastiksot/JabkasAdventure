@@ -1,11 +1,14 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Timer
 {
     public class TimerManager : MonoBehaviour
     {
+        [SerializeField] private Button pauseButton;
+
         [SerializeField] private TMP_Text timerTextMeshObject;
         [SerializeField] private float timeLeft = 120;
 
@@ -25,6 +28,12 @@ namespace UI.Timer
         float seconds;
         float minutes;
 
+        public Button PauseButton
+        {
+            get => pauseButton;
+            set => pauseButton = value;
+        }
+        
         private void Start()
         {
             BeginTimer();

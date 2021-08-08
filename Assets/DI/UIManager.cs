@@ -1,7 +1,7 @@
-﻿using DI.interfaces;
-using DI.UI;
+﻿using DI.UI;
 using ui.Navigator;
 using ui.PrefabManager;
+using UnityEngine;
 
 namespace DI
 {

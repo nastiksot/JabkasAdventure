@@ -2,7 +2,7 @@
 using DI.interfaces;
 using DI.Services;
 using Services.Data;
-using Services.Data.Interfaces; 
+using Services.Data.Interfaces;
 
 namespace DI
 {
@@ -26,7 +26,6 @@ namespace DI
             dataService = new DataService();
             allServices.Add(dataService);
             dataService.SetDependency(moduleManager.GetDataModule());
-
         }
 
         public IDataService GetDataService()

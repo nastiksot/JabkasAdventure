@@ -10,7 +10,10 @@ namespace DI.UI
         IntroLevel,
         MainLevel,
         FinalLevel,
-        ProgressBar,
-        NavigationMenu
+        LoadingScreen,
+        NavigationMenu,
+        PauseMenu,
+        GameOverMenu,
+        StatisticsData
     }
 }

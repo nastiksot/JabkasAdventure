@@ -8,6 +8,13 @@ namespace Models.PlayerModel
         private string playerName = "None";
         private int playerHealth = 0;
         private int playerScore = 0;
+        private int sheetScore = 0;
+
+        public int SheetScore
+        {
+            get => sheetScore;
+            set => sheetScore = value;
+        }
 
         public string PlayerName
         {
@@ -27,11 +34,12 @@ namespace Models.PlayerModel
             set => playerScore = value;
         }
 
-        public PlayerData( PlayerData data)
+        public PlayerData(PlayerData data)
         {
             playerName = data.PlayerName;
             playerHealth = data.PlayerHealth;
             playerScore = data.PlayerScore;
+            sheetScore = data.sheetScore;
         }
 
         public PlayerData()

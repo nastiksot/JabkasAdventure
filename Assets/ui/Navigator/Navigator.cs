@@ -11,11 +11,15 @@ namespace ui.Navigator
         public Navigator(IUIPrefabManager uiPrefabManager)
         {
             components[ComponentsIDs.MainMenu] = new MainMenuComponent(uiPrefabManager);
-            components[ComponentsIDs.IntroLevel] = new IntroGameComponent(uiPrefabManager);
             components[ComponentsIDs.Player] = new PlayerComponent(uiPrefabManager);
+            components[ComponentsIDs.IntroLevel] = new IntroGameComponent(uiPrefabManager);
             components[ComponentsIDs.NavigationMenu] = new NavigationMenuComponent(uiPrefabManager);
-            // components[ComponentsIDs.FinalLevel] = new MainMenuComponent(uiPrefabManager);
-            // components[ComponentsIDs.ProgressBar] = new MainMenuComponent(uiPrefabManager);
+            components[ComponentsIDs.LoadingScreen] = new LoadingScreenComponent(uiPrefabManager);
+            components[ComponentsIDs.MainLevel] = new MainLevelComponent(uiPrefabManager);
+            components[ComponentsIDs.PauseMenu] = new PauseMenuComponent(uiPrefabManager);
+            components[ComponentsIDs.GameOverMenu] = new GameOverMenuComponent(uiPrefabManager);
+            components[ComponentsIDs.StatisticsData] = new StatisticsDataComponent(uiPrefabManager);
+            //components[ComponentsIDs.ProgressBar] = new MainMenuComponent(uiPrefabManager);
         }
 
         public void CloseAll()
@@ -26,7 +30,7 @@ namespace ui.Navigator
             }
         }
 
-        public void NavigationMenu()
+        public void InitNavigationMenu()
         {
             components[ComponentsIDs.NavigationMenu].Show();
         }
@@ -39,7 +43,23 @@ namespace ui.Navigator
         public void StartLoadingScreen()
         {
             CloseAll();
-            components[ComponentsIDs.ProgressBar].Show();
+            components[ComponentsIDs.LoadingScreen].Show();
+        }
+
+
+        public void InitPauseMenu()
+        {
+            components[ComponentsIDs.PauseMenu].Show();
+        }
+
+        public void InitGameOverMenu()
+        {
+            components[ComponentsIDs.GameOverMenu].Show();
+        }
+
+        public void InitStatisticsData()
+        {
+            components[ComponentsIDs.StatisticsData].Show();
         }
 
         public void StartMainMenu()
@@ -51,15 +71,20 @@ namespace ui.Navigator
         public void StartIntroLevel()
         {
             CloseAll();
-            components[ComponentsIDs.IntroLevel].Show();
             InitPlayer();
-            NavigationMenu();
+            components[ComponentsIDs.IntroLevel].Show();
+            InitNavigationMenu();
         }
 
         public void StartMainLevel()
         {
             CloseAll();
+            InitPlayer();
             components[ComponentsIDs.MainLevel].Show();
+            InitNavigationMenu();
+            InitPauseMenu();
+            InitStatisticsData();
+            InitGameOverMenu();
         }
 
         public void StartFinalLevel()

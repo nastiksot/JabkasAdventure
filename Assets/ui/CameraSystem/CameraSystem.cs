@@ -52,6 +52,7 @@ namespace UI.movement
 
         private void SetPlayer()
         {
+            if (playerObject != null) return;
             playerObject = FindObjectOfType<PlayerBehaviour>();
         }
 

@@ -12,10 +12,13 @@ namespace ui.PrefabManager
         {
             paths[Prefabs.Player] = "Prefab/Player";
             paths[Prefabs.IntroGameLevel] = "Prefab/IntroLevel";
-            paths[Prefabs.MainGameLevel] = "Prefab/MarioGame";
+            paths[Prefabs.MainGameLevel] = "Prefab/MarioLevel";
             paths[Prefabs.LoadingScreen] = "Prefab/ProgressBar";
             paths[Prefabs.MainMenu] = "Prefab/MainMenuCanvas";
             paths[Prefabs.NavigationMenu] = "Prefab/ControllPlayer";
+            paths[Prefabs.PauseMenu] = "Prefab/PauseMenu";
+            paths[Prefabs.GameOverMenu] = "Prefab/GameOver";
+            paths[Prefabs.StatisticsData] = "Prefab/StatisticsData";
         }
 
         public GameObject GetPrefab(Prefabs prefab)

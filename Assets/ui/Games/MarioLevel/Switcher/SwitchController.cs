@@ -5,7 +5,7 @@ namespace UI.Games.MarioLevel.Switcher
 {
     public class SwitchController : BaseMono
     {
-        [SerializeField] private bool isOn;
+        [SerializeField] private bool isOn = false;
 
         public bool IsOn
         {

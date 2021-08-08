@@ -1,7 +1,6 @@
 using DI.interfaces;
 using DI.UI;
 using UI.Base;
-using UnityEngine;
 
 namespace DI
 {
