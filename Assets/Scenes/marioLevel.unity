@@ -580,6 +580,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1049040370360565112, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_TagString
+      value: EnemyHead
+      objectReference: {fileID: 0}
     - target: {fileID: 5292091890533835609, guid: fae8f5019ffed9448a774419d184856c, type: 3}
       propertyPath: cameraSystem
       value: 

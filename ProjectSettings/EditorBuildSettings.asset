@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: cb1f07d402a1bab45a8db4678d841b96
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/IntroLevel.unity
     guid: d22f8af646f6d1443bae9a72c4b3c2a1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/marioLevel.unity
     guid: 4695b102c55d7d543a62ed7e0d386b93
   m_configObjects: {}

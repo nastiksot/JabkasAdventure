@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MarioLevelCameraData
   m_EditorClassIdentifier: 
   XValues:
-    MIN: -0.6
+    MIN: -0.25
     MAX: 116.1
   YValues:
     MIN: -1.75
