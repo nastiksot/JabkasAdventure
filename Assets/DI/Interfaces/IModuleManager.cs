@@ -1,6 +1,6 @@
-﻿using Modules.Data.Intefaces;
+﻿using DI.Modules.Data.Intefaces;
 
-namespace DI.interfaces
+namespace DI.Interfaces
 {
     public interface IModuleManager
     {

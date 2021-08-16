@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using DI.interfaces;
+using DI.Interfaces;
 using DI.Services;
-using Services.Data;
-using Services.Data.Interfaces;
+using DI.Services.Data;
+using DI.Services.Data.Interfaces;
 
 namespace DI
 {

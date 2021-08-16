@@ -1,5 +1,5 @@
 ﻿using System;
-using Services.Constants;
+using DI.Services.Constants;
 using UnityEngine;
 
 namespace UI.Enemy

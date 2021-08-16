@@ -1,13 +1,22 @@
-﻿using DI.UI;
+﻿using System;
+using DI.UI;
+using UI.Games.Menus;
+using UI.Navigator.Interfaces;
 using UnityEngine;
 
-namespace ui.MainMenu
+namespace UI.UIComponents
 {
     public class PauseMenuComponent : IUIComponent
     {
         private GameObject selfGameObject;
         private IUIPrefabManager uiPrefabManager;
-
+        private Prefabs prefabPath;
+        private Action<Prefabs> onGameComponentInstantiated;
+        public event Action<Prefabs> OnGameComponentInstantiated
+        {
+            add => onGameComponentInstantiated += value;
+            remove => onGameComponentInstantiated -= value;
+        }
         public PauseMenuComponent(IUIPrefabManager uiPrefabManager)
         {
             this.uiPrefabManager = uiPrefabManager;
@@ -20,8 +29,9 @@ namespace ui.MainMenu
             {
                 return this;
             }
-
-            selfGameObject = uiPrefabManager.GetPrefab(Prefabs.PauseMenu);
+            prefabPath = Prefabs.PauseMenu;
+            selfGameObject = uiPrefabManager.GetPrefab(prefabPath);
+            onGameComponentInstantiated?.Invoke(prefabPath );
             selfGameObject.name = "Pause Menu";
             return this;
         }

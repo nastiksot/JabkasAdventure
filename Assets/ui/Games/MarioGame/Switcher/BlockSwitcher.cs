@@ -1,8 +1,8 @@
-using Services.Constants;
+using DI.Services.Constants;
 using UI.Base;
 using UnityEngine;
 
-namespace UI.Games.MarioLevel.Switcher
+namespace UI.Games.MarioGame.Switcher
 {
     public class BlockSwitcher : BaseMono
     {

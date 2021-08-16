@@ -1,12 +1,21 @@
-﻿using DI.UI;
+﻿using System;
+using DI.UI;
+using UI.Navigator.Interfaces;
 using UnityEngine;
 
-namespace ui.MainMenu
+namespace UI.UIComponents
 {
     public class NavigationMenuComponent : IUIComponent
     {
         private GameObject selfGameObject;
-        private IUIPrefabManager uiPrefabManager;
+        private IUIPrefabManager uiPrefabManager;  
+        private Prefabs prefabPath;
+        private Action<Prefabs> onGameComponentInstantiated;
+        public event Action<Prefabs> OnGameComponentInstantiated
+        {
+            add => onGameComponentInstantiated += value;
+            remove => onGameComponentInstantiated -= value;
+        }
 
         public NavigationMenuComponent(IUIPrefabManager uiPrefabManager)
         {
@@ -21,10 +30,13 @@ namespace ui.MainMenu
                 return this;
             }
 
-            selfGameObject = uiPrefabManager.GetPrefab(Prefabs.NavigationMenu);
+            prefabPath = Prefabs.NavigationMenu;
+            selfGameObject = uiPrefabManager.GetPrefab(prefabPath);
+            onGameComponentInstantiated?.Invoke(prefabPath);
             selfGameObject.name = "Navigation Menu";
             return this;
         }
+
 
         public void Remove()
         {

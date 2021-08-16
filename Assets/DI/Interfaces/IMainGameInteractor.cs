@@ -1,4 +1,4 @@
-﻿namespace DI.interfaces
+﻿namespace DI.Interfaces
 {
     public class IMainGameInteractor
     {

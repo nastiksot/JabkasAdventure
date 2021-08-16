@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
-using Models;
-using Models.PlayerModel;
-using Services.Data.Interfaces;
-using IDataModule = Modules.Data.Intefaces.IDataModule;
+using DI.Models;
+using DI.Models.PlayerModel;
+using DI.Services.Data.Interfaces;
+using IDataModule = DI.Modules.Data.Intefaces.IDataModule;
 
-namespace Services.Data
+namespace DI.Services.Data
 {
     public class DataService : IDataService
     {

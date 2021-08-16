@@ -1,10 +1,9 @@
 ﻿using System;
 using System.IO;
-using Models;
-using Models.PlayerModel;
-using UI.DataSaver;
+using DI.Models;
+using DI.Models.PlayerModel;
 
-namespace Modules.Data.Intefaces
+namespace DI.Modules.Data.Intefaces
 {
     public interface IDataModule
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Models.PlayerModel
+namespace DI.Models.PlayerModel
 {
     [Serializable]
     public class PlayerData

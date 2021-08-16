@@ -1,7 +1,7 @@
 using UI.Base;
 using UnityEngine;
 
-namespace UI.Games.MarioLevel.Switcher
+namespace UI.Games.MarioGame.Switcher
 {
     public class SwitchController : BaseMono
     {

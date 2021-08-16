@@ -7,8 +7,7 @@ namespace UI.Base
     public class BaseMono : MonoBehaviour
     {
         protected string TAG = "BaseMono";
-
-
+  
         protected IEnumerator startWithDelay(int second, Action action)
         {
             yield return new WaitForSeconds(second);

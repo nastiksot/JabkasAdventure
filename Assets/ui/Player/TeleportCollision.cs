@@ -1,5 +1,5 @@
 using DI;
-using Services.Constants;
+using DI.Services.Constants;
 using UI.Base;
 using UnityEngine;
 

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.IO;
-using DI.Services;
-using Models;
-using Models.PlayerModel;
-using Modules.Data.Intefaces;
-using UI.DataSaver;
+using DI.Models;
+using DI.Models.PlayerModel;
+using DI.Modules.Data.Intefaces;
 
-namespace Services.Data.Interfaces
+namespace DI.Services.Data.Interfaces
 {
     public interface IDataService: IBaseService
     {

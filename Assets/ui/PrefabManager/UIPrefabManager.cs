@@ -2,7 +2,7 @@
 using DI.UI;
 using UnityEngine;
 
-namespace ui.PrefabManager
+namespace UI.PrefabManager
 {
     public class UIPrefabManager : IUIPrefabManager
     {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace UI.Games.Menus
 {
-    public class DeathMenu : BaseMono
+    public class GameOverMenu : BaseMono
     {
         [Header("Buttons")]
         [SerializeField] private Button retryButton;
@@ -22,7 +22,7 @@ namespace UI.Games.Menus
             }); 
             exitButton.onClick.AddListener(() =>
             {
-                MainDependency.GetInstance().GetUIManager().GetNavigator().StartMainMenu();
+                MainDependency.GetInstance().GetUIManager().GetNavigator().InitMainMenu();
             }); 
             SetCanvasVisibility(false);
         }

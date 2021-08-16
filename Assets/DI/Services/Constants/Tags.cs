@@ -1,4 +1,4 @@
-﻿namespace Services.Constants
+﻿namespace DI.Services.Constants
 {
     public class Tags
     {

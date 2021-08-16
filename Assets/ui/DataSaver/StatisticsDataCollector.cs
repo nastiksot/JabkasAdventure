@@ -1,8 +1,8 @@
 ﻿using System;
 using DI;
-using Models;
-using Models.PlayerModel;
-using Services.Data.Interfaces;
+using DI.Models;
+using DI.Models.PlayerModel;
+using DI.Services.Data.Interfaces;
 using TMPro;
 using UI.Base;
 using UnityEngine;
@@ -10,7 +10,7 @@ using UnityEngine;
 namespace UI.DataSaver
 {
     [DefaultExecutionOrder(1000)]
-    public class StatisticsDataCollector : MonoBehaviour
+    public class StatisticsDataCollector : BaseMono
     {
         [Header("Text")] [SerializeField] private TMP_Text totalScore;
         [SerializeField] private TMP_Text sheetValue;

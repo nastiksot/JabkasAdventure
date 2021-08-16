@@ -1,5 +1,13 @@
-﻿public interface IUIComponent
+﻿using System;
+using DI.UI;
+
+namespace UI.Navigator.Interfaces
 {
-    IUIComponent Show();
-    void Remove();
+    public interface IUIComponent
+    {
+        IUIComponent Show();
+
+        public event Action<Prefabs> OnGameComponentInstantiated;
+        void Remove();
+    }
 }

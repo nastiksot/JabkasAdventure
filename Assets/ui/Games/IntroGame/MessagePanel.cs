@@ -1,7 +1,7 @@
 using UI.Base;
 using UnityEngine;
 
-namespace UI.Games.IntroLevel.scripts
+namespace UI.Games.IntroGame
 {
     public class MessagePanel : BaseMono
     {

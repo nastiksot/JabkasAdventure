@@ -1,12 +1,23 @@
-﻿using DI.UI;
+﻿using System;
+using DI.UI;
+using UI.DataSaver;
+using UI.Navigator.Interfaces;
 using UnityEngine;
 
-namespace ui.MainMenu
+namespace UI.UIComponents
 {
-    public class StatisticsDataComponent: IUIComponent
+    public class StatisticsDataComponent : IUIComponent
     {
         private GameObject selfGameObject;
         private IUIPrefabManager uiPrefabManager;
+        private Prefabs prefabPath;
+        private Action<Prefabs> onGameComponentInstantiated;
+        public event Action<Prefabs> OnGameComponentInstantiated
+        {
+            add => onGameComponentInstantiated += value;
+            remove => onGameComponentInstantiated -= value;
+        }
+
 
         public StatisticsDataComponent(IUIPrefabManager uiPrefabManager)
         {
@@ -21,7 +32,10 @@ namespace ui.MainMenu
                 return this;
             }
 
-            selfGameObject = uiPrefabManager.GetPrefab(Prefabs.StatisticsData);
+            prefabPath = Prefabs.StatisticsData;
+            selfGameObject = uiPrefabManager.GetPrefab(prefabPath);
+
+            onGameComponentInstantiated?.Invoke(prefabPath );
             selfGameObject.name = "Statistics Data";
             return this;
         }

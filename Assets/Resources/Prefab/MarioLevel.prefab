@@ -5356,6 +5356,7 @@ GameObject:
   - component: {fileID: 5292091890533835622}
   - component: {fileID: 5292091890533835609}
   - component: {fileID: 5292091890435058555}
+  - component: {fileID: 848545756631336465}
   m_Layer: 0
   m_Name: MarioLevel
   m_TagString: Untagged
@@ -5411,6 +5412,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 0
+--- !u!114 &848545756631336465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292091890533835623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caab1bb4cef4e29b9ab6ab3e34bec30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelManager: {fileID: 5292091890533835609}
+  switchController: {fileID: 5292091890435058555}
 --- !u!1 &5292091890648090576
 GameObject:
   m_ObjectHideFlags: 0

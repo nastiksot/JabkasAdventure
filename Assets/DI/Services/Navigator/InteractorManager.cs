@@ -1,13 +1,16 @@
 ﻿using DI.Interactor;
-using DI.interfaces;
-using DI.UI; 
+using DI.Interfaces;
+using DI.UI;
 
-public class InteractorManager
+namespace DI.Services.Navigator
 {
-    private IMainGameInteractor mainGameInteractor;
-
-    public InteractorManager(IServiceManager serviceManager, IUIManager manager)
+    public class InteractorManager
     {
-        mainGameInteractor = new MainGameInteractor(manager.GetNavigator());
+        private IMainGameInteractor mainGameInteractor;
+
+        public InteractorManager(IServiceManager serviceManager, IUIManager manager)
+        {
+            mainGameInteractor = new MainGameInteractor(manager.GetNavigator());
+        }
     }
 }

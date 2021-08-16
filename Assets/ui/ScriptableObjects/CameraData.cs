@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace UI.Games
+namespace UI.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/CameraData", order = 1)]
     public class CameraData : ScriptableObject

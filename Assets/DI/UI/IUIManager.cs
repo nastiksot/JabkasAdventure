@@ -1,4 +1,4 @@
-﻿using ui.Navigator;
+﻿using UI.Navigator;
 
 namespace DI.UI
 {

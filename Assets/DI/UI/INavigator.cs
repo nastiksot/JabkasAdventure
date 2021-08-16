@@ -4,10 +4,10 @@
     {
         void CloseAll();
 
-        void StartMainMenu();
-        void StartIntroLevel();
-        void StartMainLevel();
-        void StartFinalLevel();
+        void InitMainMenu();
+        void InitIntroLevel();
+        void InitMainLevel();
+        void InitFinalLevel();
         void InitPlayer();
         void StartLoadingScreen();
         void InitNavigationMenu();

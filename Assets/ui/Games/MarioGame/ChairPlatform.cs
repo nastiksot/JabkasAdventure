@@ -1,9 +1,8 @@
-using Services.Constants;
+using DI.Services.Constants;
 using UI.Base;
-using UI.Player;
 using UnityEngine;
 
-namespace UI.Games.MarioLevel
+namespace UI.Games.MarioGame
 {
     public class ChairPlatform : BaseMono
     {

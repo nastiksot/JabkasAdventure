@@ -1,4 +1,4 @@
-﻿namespace services.Constants
+﻿namespace DI.Services.Constants
 {
     public static class Layers
     {

@@ -1,9 +1,9 @@
 using System;
 using DI;
-using services.Constants;
+using DI.Services.Constants;
+using Standard_Assets.CrossPlatformInput.Scripts;
 using UI.Base;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 namespace UI.Player
 {

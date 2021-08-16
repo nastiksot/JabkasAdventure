@@ -1,7 +1,7 @@
 using DI;
 using UI.Base;
 
-namespace ui.Games.progressScreen
+namespace UI.Games.progressScreen
 {
     public class LoadingScreen : BaseMono
     {
@@ -14,7 +14,7 @@ namespace ui.Games.progressScreen
         {
             StartCoroutine( startWithDelay(5,()=>
             {
-                MainDependency.GetInstance().GetUIManager().GetNavigator().StartMainLevel(); 
+                MainDependency.GetInstance().GetUIManager().GetNavigator().InitMainLevel(); 
             }));
         }
     }

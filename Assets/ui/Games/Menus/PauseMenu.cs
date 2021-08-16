@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace UI.Games.Menus
 {
-    public class PauseMenu : MonoBehaviour
+    public class PauseMenu : BaseMono
     {
         [SerializeField] private TimerManager timerManager;
         [SerializeField] private CanvasGroup background;
@@ -29,7 +29,7 @@ namespace UI.Games.Menus
 
             exitButton.onClick.AddListener(() =>
             {
-                MainDependency.GetInstance().GetUIManager().GetNavigator().StartMainMenu();
+                MainDependency.GetInstance().GetUIManager().GetNavigator().InitMainMenu();
             });
             SetCanvasVisibility(false);
         }

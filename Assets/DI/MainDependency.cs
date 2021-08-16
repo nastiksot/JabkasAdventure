@@ -1,6 +1,9 @@
-using DI.interfaces;
+using DI.Interfaces;
+using DI.Services.Navigator;
 using DI.UI;
 using UI.Base;
+using UI.Games.GameManager;
+using UI.Games.GameManager.Interfaces;
 
 namespace DI
 {
@@ -10,12 +13,14 @@ namespace DI
         private IServiceManager serviceManager;
         private IModuleManager moduleManager;
         private IUIManager uiManager;
+        private IGameManager gameManager;
         private InteractorManager interactorManager;
 
         public void Start()
         {
             instance = this;
 
+            gameManager = gameObject.AddComponent<GameManager>();
             moduleManager = new ModuleManager();
             uiManager = new UIManager();
             serviceManager = new ServiceManager(moduleManager);
@@ -35,6 +40,10 @@ namespace DI
         public IUIManager GetUIManager()
         {
             return uiManager;
+        }
+       public IGameManager GetGameManager()
+        {
+            return gameManager;
         }
 
         public IServiceManager GetServiceManager()

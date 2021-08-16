@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEditor.UIElements;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace UI.Games.MarioLevel.Platform
+namespace UI.Games.MarioGame.Platform
 {
     public class PlatformManager : MonoBehaviour
     {

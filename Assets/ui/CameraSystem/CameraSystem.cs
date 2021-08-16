@@ -1,10 +1,10 @@
 using System;
 using UI.Base;
-using UI.Games;
 using UI.Player;
+using UI.ScriptableObjects;
 using UnityEngine;
 
-namespace UI.movement
+namespace UI.CameraSystem
 {
     public class CameraSystem : BaseMono
     {

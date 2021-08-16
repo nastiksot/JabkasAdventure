@@ -1,4 +1,4 @@
-﻿using DI.interfaces;
+﻿using DI.Interfaces;
 using DI.UI; 
 
 namespace DI.Interactor
@@ -8,7 +8,7 @@ namespace DI.Interactor
         public MainGameInteractor(INavigator navigator)
         { 
             navigator.CloseAll();
-            navigator.StartMainMenu();
+            navigator.InitMainMenu();
         }
     }
 }

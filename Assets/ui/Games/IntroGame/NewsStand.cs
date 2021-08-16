@@ -1,9 +1,9 @@
 using System.Collections;
-using Services.Constants;
+using DI.Services.Constants;
 using UI.Base;
 using UnityEngine;
 
-namespace UI.Games.IntroLevel.scripts
+namespace UI.Games.IntroGame
 {
     public class NewsStand : BaseMono
     {

@@ -1,6 +1,6 @@
 ﻿using DI.UI;
-using ui.Navigator;
-using ui.PrefabManager;
+using UI.Navigator;
+using UI.PrefabManager;
 using UnityEngine;
 
 namespace DI

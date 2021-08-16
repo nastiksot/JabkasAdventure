@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
-using Services.Constants;
+using DI.Services.Constants;
 using UI.Base;
 using UnityEngine;
 
-namespace UI.Games.MarioLevel
+namespace UI.Games.MarioGame
 {
     public class LibraryBook : BaseMono
     {

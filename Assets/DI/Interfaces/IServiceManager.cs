@@ -1,6 +1,6 @@
-﻿using Services.Data.Interfaces;
+﻿using DI.Services.Data.Interfaces;
 
-namespace DI.interfaces
+namespace DI.Interfaces
 {
     public interface IServiceManager
     { 

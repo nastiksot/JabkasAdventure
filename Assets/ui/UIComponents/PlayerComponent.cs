@@ -1,12 +1,23 @@
-﻿using DI.UI;
+﻿using System;
+using DI.UI;
+using UI.Navigator.Interfaces;
+using UI.Player;
 using UnityEngine;
 
-namespace ui.MainMenu
+namespace UI.UIComponents
 {
     public class PlayerComponent : IUIComponent
     {
         private GameObject selfGameObject;
         private IUIPrefabManager uiPrefabManager;
+        private Prefabs prefabPath;
+        private Action<Prefabs> onGameComponentInstantiated;
+
+        public event Action<Prefabs> OnGameComponentInstantiated
+        {
+            add => onGameComponentInstantiated += value;
+            remove => onGameComponentInstantiated -= value;
+        }
 
         public PlayerComponent(IUIPrefabManager uiPrefabManager)
         {
@@ -21,8 +32,11 @@ namespace ui.MainMenu
                 return this;
             }
 
-            selfGameObject = uiPrefabManager.GetPrefab(Prefabs.Player);
-            selfGameObject.name = "Player";
+            prefabPath = Prefabs.Player;
+            selfGameObject = uiPrefabManager.GetPrefab(prefabPath);
+
+            onGameComponentInstantiated?.Invoke(prefabPath);
+
             return this;
         }
 

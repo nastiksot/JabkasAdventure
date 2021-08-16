@@ -2,14 +2,13 @@
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using Models;
-using Models.PlayerModel;
-using Modules.Data.Intefaces;
+using DI.Models;
+using DI.Models.PlayerModel;
+using DI.Modules.Data.Intefaces;
 using UI.Base;
-using UI.DataSaver;
 using UnityEngine;
 
-namespace Modules.Data
+namespace DI.Modules.Data
 {
     public class DataModule : IDataModule
     {
