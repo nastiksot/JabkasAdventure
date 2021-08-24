@@ -3,7 +3,7 @@ using UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Games.mainMenu
+namespace UI.Games.Menus
 {
     public class MainMenu : BaseMono
     {
@@ -19,8 +19,7 @@ namespace UI.Games.mainMenu
         {
             playButton.onClick.AddListener(() =>
             {
-                MainDependency.GetInstance().GetServiceManager().GetMainNavigatorService()
-                    .GetMenuNavigatorService().OpenIntroLevel();
+                MainDependency.GetInstance().GetUIManager().GetNavigator().InitIntroLevel();
             });
 #if PLATFORM_ANDROID
             settingsButton.onClick.AddListener(Application.Quit);

@@ -1,11 +1,9 @@
-﻿using Services.Data.Interfaces;
-using Services.Navigator.interfaces;
+﻿using DI.Services.Data.Interfaces;
 
-namespace DI.interfaces
+namespace DI.Interfaces
 {
     public interface IServiceManager
-    {
-        IMainNavigatorServices GetMainNavigatorService();
+    { 
         IDataService GetDataService();
     }
 }

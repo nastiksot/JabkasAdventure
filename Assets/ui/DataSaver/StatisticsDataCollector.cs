@@ -1,15 +1,16 @@
 ﻿using System;
 using DI;
-using Models;
-using Models.PlayerModel;
-using Services.Data.Interfaces;
+using DI.Models;
+using DI.Models.PlayerModel;
+using DI.Services.Data.Interfaces;
 using TMPro;
 using UI.Base;
 using UnityEngine;
 
 namespace UI.DataSaver
 {
-    public class StatisticsDataCollector : MonoBehaviour
+    [DefaultExecutionOrder(1000)]
+    public class StatisticsDataCollector : BaseMono
     {
         [Header("Text")] [SerializeField] private TMP_Text totalScore;
         [SerializeField] private TMP_Text sheetValue;
@@ -34,7 +35,7 @@ namespace UI.DataSaver
             set => filePath = value;
         }
 
-        private void Awake()
+        private void Start()
         {
             if (instance == null)
             {
@@ -68,9 +69,11 @@ namespace UI.DataSaver
         private void UpdateUIData()
         {
             LoadDataFile(data =>
-            {
-                totalScore.text = playerData.PlayerScore.ToString();
-            }, error => { ToastUtility.ShowToast(error.errorMessage);});
+                {
+                    totalScore.text = data.PlayerScore.ToString();
+                    sheetValue.text = data.SheetScore.ToString();
+                },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
         public void ChangeSheetScoreValue(int sheetCosts)

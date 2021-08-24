@@ -1,9 +1,9 @@
 using System;
 using DI;
-using services.Constants;
+using DI.Services.Constants;
+using Standard_Assets.CrossPlatformInput.Scripts;
 using UI.Base;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 namespace UI.Player
 {
@@ -62,8 +62,7 @@ namespace UI.Player
             //TODO: Refactor checking of death
             if (gameObject.transform.position.y < -7)
             {
-                MainDependency.GetInstance().GetServiceManager().GetMainNavigatorService().GetMenuNavigatorService()
-                    .OpenProgressBar();
+                MainDependency.GetInstance().GetUIManager().GetNavigator().StartLoadingScreen();
             }
         }
 

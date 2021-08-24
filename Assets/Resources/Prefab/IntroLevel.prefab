@@ -1523,6 +1523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5224056271325314736}
   - component: {fileID: 4789173916506400910}
+  - component: {fileID: 5224056270860571502}
   m_Layer: 0
   m_Name: IntroLevel
   m_TagString: Untagged
@@ -1560,9 +1561,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSystem: {fileID: 0}
   cameraData: {fileID: 11400000, guid: c740ca5ea32996441b01dde60d301088, type: 2}
-  minCoordinates: {x: -0.26, y: -1.7}
-  maxCoordinates: {x: 0, y: 0}
-  cameraSize: 4.08812
+  spawnPosition: {fileID: 0}
+  playerBehaviour: {fileID: 0}
+--- !u!114 &5224056270860571502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224056271325314743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa74b7e53bd44c48e297a3e5d544a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelManager: {fileID: 4789173916506400910}
+  messagePanel: {fileID: 5224056271714416493}
+  newsStand: {fileID: 5224056271784214215}
+  teleportCollision: {fileID: 5224056271879324819}
 --- !u!1 &5224056271348741146
 GameObject:
   m_ObjectHideFlags: 0

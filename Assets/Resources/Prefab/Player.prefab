@@ -41,7 +41,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7845909781568031902}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -78,7 +78,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.1}
+  m_Size: {x: 1, y: 0.15}
   m_EdgeRadius: 0
 --- !u!114 &7213522388201686621
 MonoBehaviour:
@@ -93,7 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentRigidbody2D: {fileID: 7859526464557667804}
-  bounceForce: 1
+  bounceForce: 10
+  spiderCost: 10
 --- !u!1 &7859526464557667801
 GameObject:
   m_ObjectHideFlags: 0

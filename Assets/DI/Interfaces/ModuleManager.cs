@@ -1,12 +1,12 @@
-﻿using Modules.Data;
-using Modules.Data.Intefaces;
+﻿using DI.Modules.Data;
+using DI.Modules.Data.Intefaces;
 
-namespace DI.interfaces
+namespace DI.Interfaces
 {
     public class ModuleManager : IModuleManager
     {
-        private IDataModule dataModule = new  DataModule();
-        
+        private IDataModule dataModule = new DataModule();
+
         public IDataModule GetDataModule()
         {
             return dataModule;
