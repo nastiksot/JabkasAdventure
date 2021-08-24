@@ -5,20 +5,20 @@ namespace UI.Games.IntroGame
 {
     public class MessagePanel : BaseMono
     {
-        [SerializeField] private GameObject panel;
+        [SerializeField] private CanvasGroup panelCanvasGroup;
         [SerializeField] private bool isOpen = false;
 
 
         public void ClosePanel()
         {
-            panel.gameObject.SetActive(isOpen);
+            CanvasTool.State(ref panelCanvasGroup, isOpen); 
             Time.timeScale = 1f;
             isOpen = !isOpen;
         }
 
         public void OpenPanel()
         {
-            panel.gameObject.SetActive(isOpen);
+            CanvasTool.State(ref panelCanvasGroup, isOpen);
             Time.timeScale = 0f;
             isOpen = !isOpen;
         }

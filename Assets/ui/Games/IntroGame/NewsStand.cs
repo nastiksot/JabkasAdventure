@@ -7,28 +7,29 @@ namespace UI.Games.IntroGame
 {
     public class NewsStand : BaseMono
     {
-        [SerializeField] private GameObject bubbleMessage;
-        [SerializeField] private AudioSource audioSource; 
+        [SerializeField] private CanvasGroup bubbleMessageCanvasGroup;
+        [SerializeField] private AudioSource audioSource;
 
         private void Awake()
         {
-            bubbleMessage.SetActive(false);
+            CanvasTool.State(ref bubbleMessageCanvasGroup, false);
         }
- 
+
 
         public void OnTriggerEnter2D(Collider2D col)
         {
             if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return;
             audioSource.Play();
-            bubbleMessage.SetActive(true);
+            CanvasTool.State(ref bubbleMessageCanvasGroup,
+                true);
             StartCoroutine(HideBubble());
         }
- 
 
-        public IEnumerator HideBubble()
+
+        private IEnumerator HideBubble()
         {
             yield return new WaitForSeconds(3);
-            bubbleMessage.SetActive(false);
+            CanvasTool.State(ref bubbleMessageCanvasGroup, false);
         }
     }
 }

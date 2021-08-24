@@ -11,12 +11,15 @@ namespace UI.Camera
     {
         [SerializeField] private PlayerBehaviour playerObject;
         [SerializeField] private UnityEngine.Camera camera;
+
+
         [SerializeField] private CameraData cameraData;
         [SerializeField] private CameraData defaultCameraData;
 
         private Action<CameraData> onLevelSwitched;
 
         public Action<CameraData> OnLevelSwitched => onLevelSwitched;
+        public UnityEngine.Camera Camera => camera;
 
         private void Start()
         {
@@ -45,6 +48,12 @@ namespace UI.Camera
 
         private void SetSettingsOnLevelChanged(CameraData cameraData)
         {
+            if (cameraData == null)
+            {
+                SetCameraParams(defaultCameraData);
+                return;
+            }
+
             SetPlayer();
             SetCameraData(cameraData);
             SetCameraSize(cameraData);

@@ -1,5 +1,7 @@
 ﻿using System;
+using DI;
 using TMPro;
+using UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +10,10 @@ namespace UI.Timer
     public class TimerManager : MonoBehaviour
     {
         [SerializeField] private Button pauseButton;
+        [SerializeField] private CanvasGroup pauseButtonCanvasGroup;
 
-        [SerializeField] private TMP_Text timerTextMeshObject;
+
+        [SerializeField] private TMP_Text timeRemain;
         [SerializeField] private float timeLeft = 120;
 
         private float elapsedRunningTime = 0f;
@@ -33,10 +37,27 @@ namespace UI.Timer
             get => pauseButton;
             set => pauseButton = value;
         }
-        
+
+        public CanvasGroup PauseButtonCanvasGroup => pauseButtonCanvasGroup;
+
         private void Start()
         {
+            pauseButton.onClick.AddListener(() =>
+            {
+                PauseTimer();
+                CanvasTool.State(ref pauseButtonCanvasGroup, false);
+                SubscribeNavigationMenu();
+            });
             BeginTimer();
+        }
+
+        private void SubscribeNavigationMenu()
+        {
+            MainDependency.GetInstance().GetGameManager().GetNavigationMenu(navigationMenu =>
+            {
+                var navigationMenuNavigationCanvas = navigationMenu.NavigationCanvas;
+                CanvasTool.State(ref navigationMenuNavigationCanvas, false);
+            }, error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
         void Update()
@@ -50,8 +71,8 @@ namespace UI.Timer
                 if (milliseconds.ToString().Length < 2) return;
 
                 var timeRemaining = timeLeft - seconds;
-
-                timerTextMeshObject.text = timeRemaining.ToString();
+                timeRemain.text = timeRemaining.ToString();
+                
             }
             else if (isPaused)
             {
@@ -124,6 +145,7 @@ namespace UI.Timer
 
         public void PauseTimer()
         {
+            Time.timeScale = 0;
             if (!isStarted || isPaused) return;
             isStarted = false;
             pauseStartTime = Time.time;
@@ -132,6 +154,7 @@ namespace UI.Timer
 
         public void Unpause()
         {
+            Time.timeScale = 1f;
             if (isStarted || !isPaused) return;
             totalElapsedPausedTime += elapsedPausedTime;
             isStarted = true;

@@ -72,6 +72,7 @@ namespace UI.Navigator
                     break;
                 case Prefabs.StatisticsData:
                     gameManager.SetStatisticsData();
+                    gameManager.SetTimerManager();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(prefabs), prefabs, null);
@@ -101,8 +102,7 @@ namespace UI.Navigator
             CloseAll();
             components[ComponentsIDs.LoadingScreen].Show();
         }
-
-
+ 
         public void InitPauseMenu()
         {
             components[ComponentsIDs.PauseMenu].Show();

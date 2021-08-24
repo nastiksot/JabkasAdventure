@@ -5,7 +5,9 @@ using DI.Models.PlayerModel;
 using DI.Services.Data.Interfaces;
 using TMPro;
 using UI.Base;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.DataSaver
 {
@@ -15,6 +17,7 @@ namespace UI.DataSaver
         [Header("Text")] [SerializeField] private TMP_Text totalScore;
         [SerializeField] private TMP_Text sheetValue;
 
+        [Header("Button")] [SerializeField] private Button pauseButton; 
 
         private static StatisticsDataCollector instance = new StatisticsDataCollector();
         private PlayerData playerData;
@@ -41,7 +44,16 @@ namespace UI.DataSaver
             {
                 instance = this;
             }
-
+            
+            pauseButton.onClick.AddListener(() =>
+            {
+                MainDependency.GetInstance().GetGameManager().GetPauseMenu(pauseMenu =>
+                {
+                    var pauseMenuBackground = pauseMenu.Background;
+                    CanvasTool.State(ref pauseMenuBackground, true);
+                }, error => { });
+            });
+            
             dataService = MainDependency.GetInstance().GetServiceManager().GetDataService();
         }
 
