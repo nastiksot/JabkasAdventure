@@ -1,4 +1,8 @@
-﻿using UI.Games.MarioGame.Switcher;
+﻿using System;
+using DI;
+using UI.Base;
+using UI.Camera;
+using UI.Games.MarioGame.Switcher;
 using UnityEngine;
 
 namespace UI.Games.MarioGame
@@ -7,6 +11,5 @@ namespace UI.Games.MarioGame
     {
         [SerializeField] private LevelManager levelManager;
         [SerializeField] private SwitchController switchController;
-        
     }
 }

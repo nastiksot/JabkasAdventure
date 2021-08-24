@@ -1,6 +1,7 @@
 ﻿using DI.Interactor;
 using DI.Interfaces;
 using DI.UI;
+using UI.Games.GameManager.Interfaces;
 
 namespace DI.Services.Navigator
 {
@@ -8,9 +9,9 @@ namespace DI.Services.Navigator
     {
         private IMainGameInteractor mainGameInteractor;
 
-        public InteractorManager(IServiceManager serviceManager, IUIManager manager)
+        public InteractorManager( IUIManager manager, IGameManager gameManager)
         {
-            mainGameInteractor = new MainGameInteractor(manager.GetNavigator());
+            mainGameInteractor = new MainGameInteractor(manager.GetNavigator(), gameManager);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace DI
             moduleManager = new ModuleManager();
             uiManager = new UIManager();
             serviceManager = new ServiceManager(moduleManager);
-            interactorManager = new InteractorManager(serviceManager, uiManager);
+            interactorManager = new InteractorManager(uiManager, gameManager);
         }
 
         public static IMainDependencys GetInstance()
@@ -41,7 +41,8 @@ namespace DI
         {
             return uiManager;
         }
-       public IGameManager GetGameManager()
+
+        public IGameManager GetGameManager()
         {
             return gameManager;
         }

@@ -8,14 +8,15 @@ namespace DI.Models
         public const int FAIL_OPEN_FILE = 4;
         public const int FAIL_LOAD_PLAYER = 5;
         public const int FAIL_LOAD_MAIN_MENU = 6;
-        public const int FAIL_LOAD_INTRO_LEVEL = 4;
-        public const int FAIL_LOAD_MARIO_LEVEL = 4;
-        public const int FAIL_LOAD_FINAL_LEVEL = 4;
-        public const int FAIL_LOAD_LODING_SCREEN = 4;
-        public const int FAIL_LOAD_NAVIGATION_MENU = 4;
-        public const int FAIL_LOAD_PAUSE_MENU = 4;
-        public const int FAIL_LOAD_GAME_OVER_MENU = 4;
-        public const int FAIL_LOAD_STATISTICS_DATA = 4;
+        public const int FAIL_LOAD_INTRO_LEVEL = 7;
+        public const int FAIL_LOAD_MARIO_LEVEL = 8;
+        public const int FAIL_LOAD_FINAL_LEVEL = 9;
+        public const int FAIL_LOAD_LODING_SCREEN = 10;
+        public const int FAIL_LOAD_NAVIGATION_MENU = 11;
+        public const int FAIL_LOAD_PAUSE_MENU = 12;
+        public const int FAIL_LOAD_GAME_OVER_MENU = 13;
+        public const int FAIL_LOAD_STATISTICS_DATA = 14;
+        public const int FAIL_LOAD_CAMERA_SYSTEM = 15;
         
         public int errorCode;
         public string errorMessage;

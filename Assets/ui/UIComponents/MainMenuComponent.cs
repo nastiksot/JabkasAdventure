@@ -1,6 +1,5 @@
 ﻿using System;
 using DI.UI;
-using UI.Games.Menus;
 using UI.Navigator.Interfaces;
 using UnityEngine;
 

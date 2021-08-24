@@ -1,27 +1,28 @@
 using System;
+using DI;
 using UI.Base;
 using UI.Player;
 using UI.ScriptableObjects;
 using UnityEngine;
 
-namespace UI.CameraSystem
+namespace UI.Camera
 {
     public class CameraSystem : BaseMono
     {
         [SerializeField] private PlayerBehaviour playerObject;
-        [SerializeField] private Camera camera;
+        [SerializeField] private UnityEngine.Camera camera;
         [SerializeField] private CameraData cameraData;
         [SerializeField] private CameraData defaultCameraData;
 
-        private event Action<CameraData> onLevelChanged;
+        private Action<CameraData> onLevelSwitched;
 
-        public Action<CameraData> OnLevelChanged => onLevelChanged;
+        public Action<CameraData> OnLevelSwitched => onLevelSwitched;
 
         private void Start()
         {
-            onLevelChanged += ONLevelChanged;
-
-            playerObject = FindObjectOfType<PlayerBehaviour>();
+            onLevelSwitched += SetSettingsOnLevelChanged;
+            MainDependency.GetInstance().GetGameManager().GetPlayer(player => { playerObject = player; },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
             if (playerObject != null) return;
             cameraData = defaultCameraData;
             SetCameraParams(defaultCameraData);
@@ -42,7 +43,7 @@ namespace UI.CameraSystem
             this.cameraData = cameraData;
         }
 
-        private void ONLevelChanged(CameraData cameraData)
+        private void SetSettingsOnLevelChanged(CameraData cameraData)
         {
             SetPlayer();
             SetCameraData(cameraData);
@@ -53,7 +54,8 @@ namespace UI.CameraSystem
         private void SetPlayer()
         {
             if (playerObject != null) return;
-            playerObject = FindObjectOfType<PlayerBehaviour>();
+            MainDependency.GetInstance().GetGameManager().GetPlayer(player => { playerObject = player; },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
         private void SetCameraSize(CameraData data)

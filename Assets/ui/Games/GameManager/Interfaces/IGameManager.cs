@@ -1,5 +1,6 @@
 ﻿using System;
 using DI.Models;
+using UI.Camera;
 using UI.DataSaver;
 using UI.Games.FinalGame;
 using UI.Games.IntroGame;
@@ -13,6 +14,7 @@ namespace UI.Games.GameManager.Interfaces
     public interface IGameManager
     {
         void CloseAll();
+        void GetCameraSystem(Action<CameraSystem> success, Action<BaseError> failure );
         void GetMainMenu(Action<MainMenu> success, Action<BaseError> failure);
         void GetIntroLevel(Action<IntroLevel> success, Action<BaseError> failure);
         void GetMarioLevel(Action<MarioLevel> success, Action<BaseError> failure);
@@ -24,6 +26,7 @@ namespace UI.Games.GameManager.Interfaces
         void GetGameOverMenu(Action<GameOverMenu> success, Action<BaseError> failure);
         void GetStatisticsData(Action<StatisticsDataCollector> success, Action<BaseError> failure); 
         
+        void SetCameraSystem( );
         void SetMainMenu( );
         void SetIntroLevel( );
         void SetMainLevel(  );

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using DI.Models;
-using DI.UI;
 using UI.Base;
+using UI.Camera;
 using UI.DataSaver;
 using UI.Games.FinalGame;
 using UI.Games.GameManager.Interfaces;
@@ -18,6 +17,7 @@ namespace UI.Games.GameManager
 {
     public class GameManager : BaseMono, IGameManager
     {
+        [SerializeField] private CameraSystem cameraSystem;
         [SerializeField] private PlayerBehaviour playerBehaviour;
         [SerializeField] private LoadingScreen loadingScreen;
         [SerializeField] private MainMenu mainMenu;
@@ -34,6 +34,18 @@ namespace UI.Games.GameManager
             throw new NotImplementedException();
         }
 
+        public void GetCameraSystem(Action<CameraSystem> success, Action<BaseError> failure)
+        {
+            if (cameraSystem != null)
+            {
+                success?.Invoke(cameraSystem);
+            }
+            else
+            {
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
+            }
+        }
+
         public void GetMainMenu(Action<MainMenu> success, Action<BaseError> failure)
         {
             if (mainMenu != null)
@@ -42,7 +54,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail load main menu"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
             }
         }
 
@@ -54,7 +66,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_INTRO_LEVEL, "Fail load intro level"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_INTRO_LEVEL, "Fail to load intro level"));
             }
         }
 
@@ -66,7 +78,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MARIO_LEVEL, "Fail load mario level"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MARIO_LEVEL, "Fail to load mario level"));
             }
         }
 
@@ -78,7 +90,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_FINAL_LEVEL, "Fail load final level"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_FINAL_LEVEL, "Fail to load final level"));
             }
         }
 
@@ -90,7 +102,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_PLAYER, "Fail load player"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_PLAYER, "Fail to load player"));
             }
         }
 
@@ -102,7 +114,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail load main menu"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
             }
         }
 
@@ -114,7 +126,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail load main menu"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
             }
         }
 
@@ -126,7 +138,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail load main menu"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
             }
         }
 
@@ -138,58 +150,63 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail load main menu"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
             }
+        }
+
+        public void SetCameraSystem()
+        {
+            ExtensionUtility.TryToFindObjectOfType(out cameraSystem);
         }
 
         public void SetMainMenu()
         {
-            mainMenu = FindObjectOfType<MainMenu>();
+            ExtensionUtility.TryToFindObjectOfType(out mainMenu);
         }
 
         public void SetIntroLevel()
         {
-            introLevel = FindObjectOfType<IntroLevel>();
+            ExtensionUtility.TryToFindObjectOfType(out introLevel);
         }
 
         public void SetMainLevel()
         {
-            marioLevel = FindObjectOfType<MarioLevel>();
+            ExtensionUtility.TryToFindObjectOfType(out marioLevel);
         }
 
         public void SetFinalLevel()
         {
-            finalLevel = FindObjectOfType<FinalLevel>();
+            ExtensionUtility.TryToFindObjectOfType(out finalLevel);
         }
 
         public void SetPlayer()
         {
-            playerBehaviour = FindObjectOfType<PlayerBehaviour>();
+            ExtensionUtility.TryToFindObjectOfType(out playerBehaviour);
         }
 
         public void SetLoadingScreen()
         {
-            loadingScreen = FindObjectOfType<LoadingScreen>();
+            ExtensionUtility.TryToFindObjectOfType(out loadingScreen);
         }
 
         public void SetNavigationMenu()
         {
-            navigationMenu = FindObjectOfType<NavigationMenu>();
+            ExtensionUtility.TryToFindObjectOfType(out navigationMenu);
         }
 
         public void SetPauseMenu()
         {
-            pauseMenu = FindObjectOfType<PauseMenu>();
+            ExtensionUtility.TryToFindObjectOfType(out pauseMenu);
         }
 
         public void SetGameOverMenu()
         {
-            gameOverMenu = FindObjectOfType<GameOverMenu>();
+            ExtensionUtility.TryToFindObjectOfType(out gameOverMenu);
         }
 
         public void SetStatisticsData()
         {
-            statisticsDataCollector = FindObjectOfType<StatisticsDataCollector>();
+            ExtensionUtility.TryToFindObjectOfType(out statisticsDataCollector);
         }
     }
 }
