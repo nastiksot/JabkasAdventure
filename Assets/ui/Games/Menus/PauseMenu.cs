@@ -9,34 +9,50 @@ namespace UI.Games.Menus
 {
     public class PauseMenu : BaseMono
     {
-        [SerializeField] private TimerManager timerManager;
         [SerializeField] private CanvasGroup background;
-        
-        [Header("Buttons")]
-        [SerializeField] private Button continueButton;
+
+        [Header("Buttons")] [SerializeField] private Button continueButton;
         [SerializeField] private Button exitButton;
+
+        public CanvasGroup Background => background;
+        public Button ContinueButton => continueButton;
+        public Button ExitButton => exitButton;
 
         private void Start()
         {
-            timerManager = FindObjectOfType<TimerManager>();
-            if (timerManager == null) return;
             continueButton.onClick.AddListener(() =>
             {
-                timerManager.PauseButton.gameObject.SetActive(true);
-                SetCanvasVisibility(false);
-                timerManager.Unpause();
+                SubscribeNavigationMenu();
+                SubscribeTimerManager();
+
+                CanvasTool.State(ref background, false);
             });
 
             exitButton.onClick.AddListener(() =>
             {
                 MainDependency.GetInstance().GetUIManager().GetNavigator().InitMainMenu();
             });
-            SetCanvasVisibility(false);
+            
+            CanvasTool.State(ref background, false);
         }
 
-        private void SetCanvasVisibility(bool state)
+        private void SubscribeTimerManager()
         {
-            CanvasTool.State(ref background, state);
+            MainDependency.GetInstance().GetGameManager().GetTimerManager(timerManager =>
+            {
+                var timerManagerCanvas = timerManager.PauseButtonCanvasGroup;
+                CanvasTool.State(ref timerManagerCanvas, true);
+                timerManager.Unpause();
+            }, error => { ToastUtility.ShowToast(error.errorMessage); });
+        }
+
+        private void SubscribeNavigationMenu()
+        {
+            MainDependency.GetInstance().GetGameManager().GetNavigationMenu(navigationMenu =>
+            {
+                var navigationMenuNavigationCanvas = navigationMenu.NavigationCanvas;
+                CanvasTool.State(ref navigationMenuNavigationCanvas, true);
+            }, error => { ToastUtility.ShowToast(error.errorMessage); });
         }
     }
 }

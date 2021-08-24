@@ -6,9 +6,9 @@ namespace UI.Base
 {
     public class BaseMono : MonoBehaviour
     {
-        protected string TAG = "BaseMono";
+        protected static string TAG = "BaseMono";
   
-        protected IEnumerator startWithDelay(int second, Action action)
+        protected IEnumerator startWithDelay(float second, Action action)
         {
             yield return new WaitForSeconds(second);
             action.Invoke();
@@ -41,28 +41,11 @@ namespace UI.Base
 
         protected void dlog(string message)
         {
-            Debug.Log(TAG + ":" + message);
-            try
-            {
-                _ShowAndroidToastMessage(message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            Debug.Log(TAG + ":" + message); 
         }
 
-        protected void elog(string message)
-        {
-            try
-            {
-                _ShowAndroidToastMessage(message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-
+        protected static void elog(string message)
+        { 
             Debug.LogError(TAG + ":" + message);
         }
 
@@ -79,21 +62,7 @@ namespace UI.Base
         }
 
 
-        private void _ShowAndroidToastMessage(string message)
-        {
-            AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-
-            if (unityActivity != null)
-            {
-                AndroidJavaClass toastClass = new AndroidJavaClass("android.widget.Toast");
-                unityActivity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
-                {
-                    AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText", unityActivity, message, 0);
-                    toastObject.Call("show");
-                }));
-            }
-        }
+  
  
     }
 }

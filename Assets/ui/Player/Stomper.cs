@@ -1,4 +1,5 @@
 using System;
+using DI.Services.Constants;
 using UI.DataSaver;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace UI.Player
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.gameObject.CompareTag("Heart")) return;
+            if (!other.gameObject.CompareTag(Tags.ENEMY_HEAR_TAG)) return;
             Destroy(other.transform.parent.gameObject);
             parentRigidbody2D.AddForce(transform.up*bounceForce,ForceMode2D.Impulse);
             StatisticsDataCollector.Instance.ChangeTotalScoreValueByKilledSpider(spiderCost);

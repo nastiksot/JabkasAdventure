@@ -11,6 +11,7 @@ using UI.Games.MarioGame;
 using UI.Games.progressScreen;
 using UI.Navigation;
 using UI.Player;
+using UI.Timer;
 using UnityEngine;
 
 namespace UI.Games.GameManager
@@ -28,6 +29,7 @@ namespace UI.Games.GameManager
         [SerializeField] private IntroLevel introLevel;
         [SerializeField] private NavigationMenu navigationMenu;
         [SerializeField] private StatisticsDataCollector statisticsDataCollector;
+        [SerializeField] private TimerManager timerManager;
 
         public void CloseAll()
         {
@@ -118,6 +120,19 @@ namespace UI.Games.GameManager
             }
         }
 
+        public void GetNavigationMenu(Action<NavigationMenu> success, Action<BaseError> failure)
+        {
+            if (navigationMenu != null)
+            {
+                success?.Invoke(navigationMenu);
+            }
+            else
+            {
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_NAVIGATION_MENU, "Fail to load navigation menu"));
+            }
+        }
+ 
+
         public void GetPauseMenu(Action<PauseMenu> success, Action<BaseError> failure)
         {
             if (pauseMenu != null)
@@ -127,6 +142,18 @@ namespace UI.Games.GameManager
             else
             {
                 failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
+            }
+        }
+
+        public void GetTimerManager(Action<TimerManager> success, Action<BaseError> failure)
+        {
+            if (timerManager != null)
+            {
+                success?.Invoke(timerManager);
+            }
+            else
+            {
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_TIMER_MANAGER, "Fail to load timer manager"));
             }
         }
 
@@ -197,6 +224,11 @@ namespace UI.Games.GameManager
         public void SetPauseMenu()
         {
             ExtensionUtility.TryToFindObjectOfType(out pauseMenu);
+        }
+
+        public void SetTimerManager()
+        {
+            ExtensionUtility.TryToFindObjectOfType(out timerManager);
         }
 
         public void SetGameOverMenu()

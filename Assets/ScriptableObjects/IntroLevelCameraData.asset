@@ -16,6 +16,6 @@ MonoBehaviour:
     MIN: 0
     MAX: 0
   YValues:
-    MIN: -1.3
+    MIN: -1.35
     MAX: 0
-  cameraSize: 4.6
+  cameraSize: 4.5

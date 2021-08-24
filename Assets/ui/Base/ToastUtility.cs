@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UI.Base
 {
-    public class ToastUtility : MonoBehaviour
+    public class ToastUtility : BaseMono
     {
         public static void ShowToast(string text)
         {
@@ -20,7 +20,7 @@ namespace UI.Base
             }
             else
             {
-                Debug.Log(text);
+                elog(text);
             }
         }
     }
