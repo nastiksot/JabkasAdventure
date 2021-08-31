@@ -8,6 +8,7 @@ TagManager:
   - Heart
   - BonusSheet
   - EnemyHead
+  - Ground
   layers:
   - Default
   - TransparentFX

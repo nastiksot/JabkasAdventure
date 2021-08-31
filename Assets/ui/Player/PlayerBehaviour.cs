@@ -82,9 +82,9 @@ namespace UI.Player
             }
         }
 
-        private void OnTriggerStay2D(Collider2D other)
+        private void OnCollisionStay2D(Collision2D other)
         {
-            if (other.gameObject.layer == Layers.GROUND_LAYER)
+            if (other.gameObject.layer == Layers.GROUND_LAYER && !isGrounded)
             {
                 isGrounded = true;
             }
