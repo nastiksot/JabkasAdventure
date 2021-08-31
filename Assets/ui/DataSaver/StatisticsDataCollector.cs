@@ -17,13 +17,14 @@ namespace UI.DataSaver
         [Header("Text")] [SerializeField] private TMP_Text totalScore;
         [SerializeField] private TMP_Text sheetValue;
 
-        [Header("Button")] [SerializeField] private Button pauseButton; 
+        [Header("Button")] [SerializeField] private Button pauseButton;
 
         private static StatisticsDataCollector instance = new StatisticsDataCollector();
-        private PlayerData playerData;
+        private PlayerData playerData = new PlayerData();
         private IDataService dataService;
         private string filePath = "DefaultSave";
-        private int summarySheet;
+        private int summarySheet; 
+
         private int summaryScore;
 
         public static StatisticsDataCollector Instance
@@ -44,17 +45,19 @@ namespace UI.DataSaver
             {
                 instance = this;
             }
-            
-            pauseButton.onClick.AddListener(() =>
-            {
-                MainDependency.GetInstance().GetGameManager().GetPauseMenu(pauseMenu =>
-                {
-                    var pauseMenuBackground = pauseMenu.Background;
-                    CanvasTool.State(ref pauseMenuBackground, true);
-                }, error => { });
-            });
-            
+
+            pauseButton.onClick.AddListener(SubscribePauseMenu);
+
             dataService = MainDependency.GetInstance().GetServiceManager().GetDataService();
+        }
+
+        private void SubscribePauseMenu()
+        {
+            MainDependency.GetInstance().GetGameManager().GetPauseMenu(pauseMenu =>
+            {
+                var pauseMenuBackground = pauseMenu.Background;
+                CanvasTool.State(ref pauseMenuBackground, true);
+            }, error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
         public void UpdatePlayerData(PlayerData data)
@@ -72,7 +75,7 @@ namespace UI.DataSaver
             dataService.SaveData(playerData, filePath);
         }
 
-        private void LoadDataFile(Action<PlayerData> playerData, Action<BaseError> failure)
+        public void LoadDataFile(Action<PlayerData> playerData, Action<BaseError> failure)
         {
             dataService.LoadData(filePath, loadedData => { playerData?.Invoke(loadedData); },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
@@ -96,6 +99,9 @@ namespace UI.DataSaver
 
             sheetValue.text = summarySheet.ToString();
             totalScore.text = (summaryScore).ToString();
+
+            playerData.UpdateScore(summaryScore);
+            playerData.UpdateSheetCount(summarySheet);
         }
 
         public void ChangeTotalScoreValueByKilledSpider(int killedEnemy)

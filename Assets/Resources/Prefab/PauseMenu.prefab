@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58feee86310344f4bc2c502a99250b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerManager: {fileID: 0}
   background: {fileID: 4545533510174671867}
   continueButton: {fileID: 8290272006443456192}
   exitButton: {fileID: 8290272006003104594}
@@ -252,6 +251,30 @@ PrefabInstance:
     - target: {fileID: 5483146649512337823, guid: a83fb263befad974d9a24ef56129b809, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483146649991222166, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_text
+      value: MAIN MENU
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483146649991222166, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_fontSize
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483146649991222166, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 63.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483146649991222166, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483146649991222166, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483146649991222166, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5483146650451888892, guid: a83fb263befad974d9a24ef56129b809, type: 3}
       propertyPath: m_AnchoredPosition.x

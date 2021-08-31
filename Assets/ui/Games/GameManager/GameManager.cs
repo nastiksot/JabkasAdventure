@@ -30,11 +30,7 @@ namespace UI.Games.GameManager
         [SerializeField] private NavigationMenu navigationMenu;
         [SerializeField] private StatisticsDataCollector statisticsDataCollector;
         [SerializeField] private TimerManager timerManager;
-
-        public void CloseAll()
-        {
-            throw new NotImplementedException();
-        }
+ 
 
         public void GetCameraSystem(Action<CameraSystem> success, Action<BaseError> failure)
         {
@@ -165,7 +161,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load game over menu"));
             }
         }
 
@@ -177,7 +173,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load statistics data"));
             }
         }
 

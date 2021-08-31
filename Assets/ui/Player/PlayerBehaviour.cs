@@ -21,8 +21,7 @@ namespace UI.Player
         public int JumpPower => jumpPower;
 
         private void Update()
-        {
-            //CheckDeath();
+        { 
             PlayerMove();
         }
 

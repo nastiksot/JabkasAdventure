@@ -45,5 +45,20 @@ namespace DI.Models.PlayerModel
         public PlayerData()
         {
         }
+
+        public void UpdateHealth(int health)
+        {
+            playerHealth = health;
+        }
+
+        public void UpdateScore(int score)
+        {
+            playerScore = score;
+        }
+
+        public void UpdateSheetCount(int sheet)
+        {
+            sheetScore = sheet;
+        }
     }
 }

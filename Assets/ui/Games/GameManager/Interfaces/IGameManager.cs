@@ -14,8 +14,7 @@ using UI.Timer;
 namespace UI.Games.GameManager.Interfaces
 {
     public interface IGameManager
-    {
-        void CloseAll();
+    { 
         void GetCameraSystem(Action<CameraSystem> success, Action<BaseError> failure );
         void GetMainMenu(Action<MainMenu> success, Action<BaseError> failure);
         void GetIntroLevel(Action<IntroLevel> success, Action<BaseError> failure);
