@@ -146,7 +146,8 @@ MonoBehaviour:
   playerRigidbody: {fileID: 7859526464557667804}
   playerSpeed: 6
   jumpPower: 400
-  isGrounded: 0
+  isGrounded:
+    _value: 0
 --- !u!50 &7859526464557667804
 Rigidbody2D:
   serializedVersion: 4
