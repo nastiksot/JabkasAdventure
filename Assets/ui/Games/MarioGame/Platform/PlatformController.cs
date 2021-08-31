@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UI.Games.MarioGame.Platform
 {
-    public class PlatformManager : MonoBehaviour
+    public class PlatformController : MonoBehaviour
     {
         [SerializeField] private List<Transform> points;
         [SerializeField] private float platformSpeed;

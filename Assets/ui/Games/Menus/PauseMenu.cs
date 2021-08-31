@@ -30,6 +30,7 @@ namespace UI.Games.Menus
 
             exitButton.onClick.AddListener(() =>
             {
+                Time.timeScale = 1f;
                 MainDependency.GetInstance().GetUIManager().GetNavigator().InitMainMenu();
             });
             
