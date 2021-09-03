@@ -5,6 +5,7 @@ using DI.Models.PlayerModel;
 using DI.Services.Data.Interfaces;
 using TMPro;
 using UI.Base;
+using UI.Games.Menus;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,10 +22,11 @@ namespace UI.DataSaver
 
         private static StatisticsDataCollector instance = new StatisticsDataCollector();
         private PlayerData playerData = new PlayerData();
+        private PauseMenu pauseMenu;
         private IDataService dataService;
-        private string filePath = "DefaultSave";
-        private int summarySheet; 
 
+        private string filePath = "DefaultSave";
+        private int summarySheet;
         private int summaryScore;
 
         public static StatisticsDataCollector Instance
@@ -45,19 +47,24 @@ namespace UI.DataSaver
             {
                 instance = this;
             }
-
-            pauseButton.onClick.AddListener(SubscribePauseMenu);
-
+            
             dataService = MainDependency.GetInstance().GetServiceManager().GetDataService();
+
+            GetPauseMenu();
+            
+            pauseButton.onClick.AddListener(() => { SetPauseMenuVisibility(true); });
         }
 
-        private void SubscribePauseMenu()
+        private void GetPauseMenu()
         {
-            MainDependency.GetInstance().GetGameManager().GetPauseMenu(pauseMenu =>
-            {
-                var pauseMenuBackground = pauseMenu.Background;
-                CanvasTool.State(ref pauseMenuBackground, true);
-            }, error => { ToastUtility.ShowToast(error.errorMessage); });
+            MainDependency.GetInstance().GetGameManager().GetPauseMenu(menu => { pauseMenu = menu; },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
+        }
+
+        private void SetPauseMenuVisibility(bool state)
+        {
+            var pauseMenuBackground = pauseMenu.Background;
+            CanvasTool.State(ref pauseMenuBackground, state);
         }
 
         public void UpdatePlayerData(PlayerData data)

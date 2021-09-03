@@ -7,15 +7,12 @@ using UnityEngine.UI;
 
 namespace UI.Timer
 {
-    public class TimerManager : MonoBehaviour
+    public class TimerController
     {
-        [SerializeField] private Button pauseButton;
-        [SerializeField] private CanvasGroup pauseButtonCanvasGroup;
-
-
-        [SerializeField] private TMP_Text timeRemain;
-        [SerializeField] private float timeLeft = 120;
-
+        private float timeRemaining;
+        private float timeLeft = 120;
+        private Action<float> onTimeChanged;
+        
         private float elapsedRunningTime = 0f;
         private float runningStartTime = 0f;
         private float pauseStartTime = 0f;
@@ -24,55 +21,31 @@ namespace UI.Timer
         private bool isStarted = false;
         private bool isPaused = false;
 
-        float elapsedSeconds;
-        float elapsedMinutes;
-        float elapsedMilliseconds;
+        private float elapsedSeconds;
+        private float elapsedMinutes;
+        private float elapsedMilliseconds;
 
-        float milliseconds;
-        float seconds;
-        float minutes;
+        private float milliseconds;
+        private float seconds;
+        private float minutes;
 
-        public Button PauseButton
+        public float TimeRemaining => timeRemaining;
+        public event Action<float> OnTimeChanged
         {
-            get => pauseButton;
-            set => pauseButton = value;
+            add => onTimeChanged+=value;
+            remove => onTimeChanged-=value;
         }
 
-        public CanvasGroup PauseButtonCanvasGroup => pauseButtonCanvasGroup;
-
-        private void Start()
-        {
-            pauseButton.onClick.AddListener(() =>
-            {
-                PauseTimer();
-                CanvasTool.State(ref pauseButtonCanvasGroup, false);
-                SubscribeNavigationMenu();
-            });
-            BeginTimer();
-        }
-
-        private void SubscribeNavigationMenu()
-        {
-            MainDependency.GetInstance().GetGameManager().GetNavigationMenu(navigationMenu =>
-            {
-                var navigationMenuNavigationCanvas = navigationMenu.NavigationCanvas;
-                CanvasTool.State(ref navigationMenuNavigationCanvas, false);
-            }, error => { ToastUtility.ShowToast(error.errorMessage); });
-        }
-
-        void Update()
+        public void StartTimer()
         {
             if (isStarted)
             {
                 elapsedRunningTime = Time.time - runningStartTime - totalElapsedPausedTime;
 
                 UpdateTime();
-                CalculateTime();
-                if (milliseconds.ToString().Length < 2) return;
-
-                var timeRemaining = timeLeft - seconds;
-                timeRemain.text = timeRemaining.ToString();
-                
+                CalculateTime(); 
+                timeRemaining = timeLeft - seconds;
+                onTimeChanged?.Invoke(timeRemaining);
             }
             else if (isPaused)
             {
@@ -139,6 +112,7 @@ namespace UI.Timer
         public void BeginTimer()
         {
             if (isStarted || isPaused) return;
+            Time.timeScale = 1f;
             runningStartTime = Time.time;
             isStarted = true;
         }

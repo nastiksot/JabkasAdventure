@@ -29,9 +29,8 @@ namespace UI.Games.GameManager
         [SerializeField] private IntroLevel introLevel;
         [SerializeField] private NavigationMenu navigationMenu;
         [SerializeField] private StatisticsDataCollector statisticsDataCollector;
-        [SerializeField] private TimerManager timerManager;
- 
-
+        [SerializeField] private TimeUIManager timeUIManager;
+   
         public void GetCameraSystem(Action<CameraSystem> success, Action<BaseError> failure)
         {
             if (cameraSystem != null)
@@ -141,11 +140,11 @@ namespace UI.Games.GameManager
             }
         }
 
-        public void GetTimerManager(Action<TimerManager> success, Action<BaseError> failure)
+        public void GetTimerManager(Action<TimeUIManager> success, Action<BaseError> failure)
         {
-            if (timerManager != null)
+            if (timeUIManager != null)
             {
-                success?.Invoke(timerManager);
+                success?.Invoke(timeUIManager);
             }
             else
             {
@@ -224,7 +223,7 @@ namespace UI.Games.GameManager
 
         public void SetTimerManager()
         {
-            ExtensionUtility.TryToFindObjectOfType(out timerManager);
+            ExtensionUtility.TryToFindObjectOfType(out timeUIManager);
         }
 
         public void SetGameOverMenu()

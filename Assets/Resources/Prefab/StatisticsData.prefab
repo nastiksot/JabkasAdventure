@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 623979479638319641}
   - component: {fileID: 623979479638319646}
   - component: {fileID: 623979479638319637}
-  - component: {fileID: 623979479638319636}
+  - component: {fileID: 4428940529405352785}
   m_Layer: 0
   m_Name: StatisticsData
   m_TagString: Untagged
@@ -196,7 +196,7 @@ MonoBehaviour:
   totalScore: {fileID: 8419744665148636708}
   sheetValue: {fileID: 8419744664768313628}
   pauseButton: {fileID: 8419744666012470039}
---- !u!114 &623979479638319636
+--- !u!114 &4428940529405352785
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,13 +205,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 623979479638319642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e5fee83fde143d9b992aaba57fd53b4, type: 3}
+  m_Script: {fileID: 11500000, guid: fff0859af0f141f5ac2105e1647864eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pauseButton: {fileID: 8419744666012470039}
   pauseButtonCanvasGroup: {fileID: 7229810342245086014}
-  timeRemain: {fileID: 8419744664592483506}
-  timeLeft: 120
+  timeRemainText: {fileID: 8419744664592483506}
 --- !u!1 &8419744664592483504
 GameObject:
   m_ObjectHideFlags: 0

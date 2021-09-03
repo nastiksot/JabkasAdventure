@@ -27,7 +27,7 @@ namespace UI.Navigator
             components[ComponentsIDs.PauseMenu] = new PauseMenuComponent(uiPrefabManager);
             components[ComponentsIDs.GameOverMenu] = new GameOverMenuComponent(uiPrefabManager);
             components[ComponentsIDs.StatisticsData] = new StatisticsDataComponent(uiPrefabManager);
-            SubscribeAll();
+            SubscribeAll(); 
             //components[ComponentsIDs.ProgressBar] = new MainMenuComponent(uiPrefabManager);
         }
 

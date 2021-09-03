@@ -24,11 +24,18 @@ namespace UI.Camera
         private void Start()
         {
             onLevelSwitched += SetSettingsOnLevelChanged;
-            MainDependency.GetInstance().GetGameManager().GetPlayer(player => { playerObject = player; },
-                error => { ToastUtility.ShowToast(error.errorMessage); });
+            
+            GetPlayer();
+            
             if (playerObject != null) return;
             cameraData = defaultCameraData;
             SetCameraParams(defaultCameraData);
+        }
+
+        private void GetPlayer()
+        {
+            MainDependency.GetInstance().GetGameManager().GetPlayer(player => { playerObject = player; },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
         private void LateUpdate()

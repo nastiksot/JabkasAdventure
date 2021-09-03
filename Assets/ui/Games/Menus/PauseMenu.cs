@@ -1,6 +1,7 @@
 ﻿using System;
 using DI;
 using UI.Base;
+using UI.Navigation;
 using UI.Timer;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,46 +15,61 @@ namespace UI.Games.Menus
         [Header("Buttons")] [SerializeField] private Button continueButton;
         [SerializeField] private Button exitButton;
 
+        private TimeUIManager timeUIManager;
+        private NavigationMenu navigationMenu;
         public CanvasGroup Background => background;
         public Button ContinueButton => continueButton;
         public Button ExitButton => exitButton;
 
         private void Start()
         {
+            GetNavigationMenu();
+            GetTimerManager();
+            SetNavigationMenuVisibility(true);
+            SetPauseMenuVisibility(false);
+
             continueButton.onClick.AddListener(() =>
             {
-                SubscribeNavigationMenu();
-                SubscribeTimerManager();
-
-                CanvasTool.State(ref background, false);
+                timeUIManager.Unpause();
+                SetTimerManagerUIVisibility(true);
+                SetPauseMenuVisibility(false);
             });
 
             exitButton.onClick.AddListener(() =>
             {
-                Time.timeScale = 1f;
+                timeUIManager.Unpause();
                 MainDependency.GetInstance().GetUIManager().GetNavigator().InitMainMenu();
             });
-            
-            CanvasTool.State(ref background, false);
         }
 
-        private void SubscribeTimerManager()
+        private void SetPauseMenuVisibility(bool state)
         {
-            MainDependency.GetInstance().GetGameManager().GetTimerManager(timerManager =>
-            {
-                var timerManagerCanvas = timerManager.PauseButtonCanvasGroup;
-                CanvasTool.State(ref timerManagerCanvas, true);
-                timerManager.Unpause();
-            }, error => { ToastUtility.ShowToast(error.errorMessage); });
+            CanvasTool.State(ref background, state);
         }
 
-        private void SubscribeNavigationMenu()
+        private void SetTimerManagerUIVisibility(bool state)
         {
-            MainDependency.GetInstance().GetGameManager().GetNavigationMenu(navigationMenu =>
-            {
-                var navigationMenuNavigationCanvas = navigationMenu.NavigationCanvas;
-                CanvasTool.State(ref navigationMenuNavigationCanvas, true);
-            }, error => { ToastUtility.ShowToast(error.errorMessage); });
+            var timerManagerCanvas = timeUIManager.PauseButtonCanvasGroup;
+            CanvasTool.State(ref timerManagerCanvas, state);
+        }
+
+        private void GetTimerManager()
+        {
+            MainDependency.GetInstance().GetGameManager().GetTimerManager(
+                timerManager => { timeUIManager = timerManager; },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
+        }
+
+        private void SetNavigationMenuVisibility(bool state)
+        {
+            var navigationMenuNavigationCanvas = navigationMenu.NavigationCanvas;
+            CanvasTool.State(ref navigationMenuNavigationCanvas, state);
+        }
+
+        private void GetNavigationMenu()
+        {
+            MainDependency.GetInstance().GetGameManager().GetNavigationMenu(menu => { this.navigationMenu = menu; },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
         }
     }
 }

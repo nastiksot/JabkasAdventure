@@ -25,7 +25,7 @@ namespace UI.Games.GameManager.Interfaces
         
         void GetNavigationMenu(Action<NavigationMenu> success, Action<BaseError> failure);
         void GetPauseMenu(Action<PauseMenu> success, Action<BaseError> failure);
-        void GetTimerManager(Action<TimerManager> success, Action<BaseError> failure);
+        void GetTimerManager(Action<TimeUIManager> success, Action<BaseError> failure);
         void GetGameOverMenu(Action<GameOverMenu> success, Action<BaseError> failure);
         void GetStatisticsData(Action<StatisticsDataCollector> success, Action<BaseError> failure); 
         
