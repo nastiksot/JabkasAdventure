@@ -29,12 +29,12 @@ namespace UI.Games.MarioGame
                 }
 
                 if (isContainSheet) return;
-                StartCoroutine(WaitForHalfASecond());  
+                StartCoroutine(InitializeBonusSheet());  
                 blockSprite.sprite = emptyShelfSprite;
             }
         }
 
-        private IEnumerator WaitForHalfASecond()
+        private IEnumerator InitializeBonusSheet()
         {
             yield return new WaitForSeconds(0.17f);
             if (!isShelfClosed) yield break;

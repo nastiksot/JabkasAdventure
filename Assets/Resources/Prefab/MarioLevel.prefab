@@ -5268,8 +5268,9 @@ GameObject:
   - component: {fileID: 5292091890488302303}
   - component: {fileID: 5292091890488302289}
   - component: {fileID: 5292091890488302302}
+  - component: {fileID: 5260730503472578793}
   m_Layer: 0
-  m_Name: Border_3
+  m_Name: Dead line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5336,6 +5337,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 130, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5260730503472578793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292091890488302300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4954bbd8f24369ba8582aafc3af3e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5292091890533835623
 GameObject:
   m_ObjectHideFlags: 0
@@ -7739,7 +7752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5292091891587537524
 Transform:
   m_ObjectHideFlags: 0
@@ -14232,14 +14245,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
---- !u!4 &306301120773669391 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5562361938978791978, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
-  m_PrefabInstance: {fileID: 5292091891624386597}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &164796417799870546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5420135964826204279, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
+  m_PrefabInstance: {fileID: 5292091891624386597}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &306301120773669391 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5562361938978791978, guid: 8ea73cd1b1b4c7240a1ca73a27a1dcad, type: 3}
   m_PrefabInstance: {fileID: 5292091891624386597}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5292091891683056057

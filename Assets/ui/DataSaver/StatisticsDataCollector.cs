@@ -5,6 +5,7 @@ using DI.Models.PlayerModel;
 using DI.Services.Data.Interfaces;
 using TMPro;
 using UI.Base;
+using UI.Games.Menus;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,11 +18,13 @@ namespace UI.DataSaver
         [Header("Text")] [SerializeField] private TMP_Text totalScore;
         [SerializeField] private TMP_Text sheetValue;
 
-        [Header("Button")] [SerializeField] private Button pauseButton; 
+        [Header("Button")] [SerializeField] private Button pauseButton;
 
         private static StatisticsDataCollector instance = new StatisticsDataCollector();
-        private PlayerData playerData;
+        private PlayerData playerData = new PlayerData();
+        private PauseMenu pauseMenu;
         private IDataService dataService;
+
         private string filePath = "DefaultSave";
         private int summarySheet;
         private int summaryScore;
@@ -44,19 +47,18 @@ namespace UI.DataSaver
             {
                 instance = this;
             }
-            
-            pauseButton.onClick.AddListener(() =>
-            {
-                MainDependency.GetInstance().GetGameManager().GetPauseMenu(pauseMenu =>
-                {
-                    var pauseMenuBackground = pauseMenu.Background;
-                    CanvasTool.State(ref pauseMenuBackground, true);
-                }, error => { });
-            });
-            
+
             dataService = MainDependency.GetInstance().GetServiceManager().GetDataService();
+
+            GetPauseMenu();
+
+            pauseButton.onClick.AddListener(() => { SetPauseMenuVisibility(true); });
         }
 
+        /// <summary>
+        /// Update player data 
+        /// </summary>
+        /// <param name="data"></param>
         public void UpdatePlayerData(PlayerData data)
         {
             playerData = new PlayerData()
@@ -67,17 +69,28 @@ namespace UI.DataSaver
             };
         }
 
+        /// <summary>
+        /// Save data to file
+        /// </summary>
         public void SaveDataFile()
         {
             dataService.SaveData(playerData, filePath);
         }
 
-        private void LoadDataFile(Action<PlayerData> playerData, Action<BaseError> failure)
+        /// <summary>
+        /// Load data from file
+        /// </summary>
+        /// <param name="playerData"></param>
+        /// <param name="failure"></param>
+        public void LoadDataFile(Action<PlayerData> playerData, Action<BaseError> failure)
         {
             dataService.LoadData(filePath, loadedData => { playerData?.Invoke(loadedData); },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
+        /// <summary>
+        /// Update data on UI
+        /// </summary>
         private void UpdateUIData()
         {
             LoadDataFile(data =>
@@ -88,6 +101,10 @@ namespace UI.DataSaver
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
+        /// <summary>
+        /// Change sheet score value
+        /// </summary>
+        /// <param name="sheetCosts"></param>
         public void ChangeSheetScoreValue(int sheetCosts)
         {
             summarySheet++;
@@ -96,12 +113,38 @@ namespace UI.DataSaver
 
             sheetValue.text = summarySheet.ToString();
             totalScore.text = (summaryScore).ToString();
+
+            playerData.UpdateScore(summaryScore);
+            playerData.UpdateSheetCount(summarySheet);
         }
 
-        public void ChangeTotalScoreValueByKilledSpider(int killedEnemy)
+        /// <summary>
+        /// Change total score value
+        /// </summary>
+        /// <param name="scoreValue"></param>
+        public void ChangeTotalScore(int scoreValue)
         {
-            summaryScore += killedEnemy;
+            summaryScore += scoreValue;
             totalScore.text = (summaryScore).ToString();
+        }
+
+        /// <summary>
+        /// Get pause menu
+        /// </summary>
+        private void GetPauseMenu()
+        {
+            MainDependency.GetInstance().GetGameManager().GetPauseMenu(menu => { pauseMenu = menu; },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
+        }
+
+        /// <summary>
+        /// Set pause menu visibility
+        /// </summary>
+        /// <param name="state"></param>
+        private void SetPauseMenuVisibility(bool state)
+        {
+            var pauseMenuBackground = pauseMenu.Background;
+            CanvasTool.State(ref pauseMenuBackground, state);
         }
     }
 }

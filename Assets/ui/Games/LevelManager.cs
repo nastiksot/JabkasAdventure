@@ -15,25 +15,30 @@ namespace UI.Games
         [SerializeField] private CameraData cameraData;
 
         [Space(6f)] [SerializeField] private Transform spawnPosition;
-
         [Space(6f)] [SerializeField] private PlayerBehaviour playerBehaviour;
-
-        private void Awake()
-        {
-            MainDependency.GetInstance().GetGameManager().GetCameraSystem(camera =>
-                {
-                    cameraSystem = camera;
-                    cameraSystem.OnLevelSwitched?.Invoke(cameraData);
-                },
-                error => { ToastUtility.ShowToast(error.errorMessage); });
-        }
 
         private void Start()
         {
-            InitPlayer();
+            GetCameraSystem();
+            GetPlayer();
         }
 
-        private void InitPlayer()
+        /// <summary>
+        /// Get Camera System
+        /// </summary>
+        private void GetCameraSystem()
+        {
+            MainDependency.GetInstance().GetGameManager().GetCameraSystem(camera =>
+            {
+                cameraSystem = camera;
+                cameraSystem.OnLevelSwitched?.Invoke(cameraData);
+            }, error => { ToastUtility.ShowToast(error.errorMessage); });
+        }
+ 
+        /// <summary>
+        /// Get Player script
+        /// </summary>
+        private void GetPlayer()
         {
             MainDependency.GetInstance().GetGameManager().GetPlayer(player => { playerBehaviour = player; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });

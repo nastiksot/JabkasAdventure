@@ -7,14 +7,11 @@ using UnityEngine.UI;
 
 namespace UI.Timer
 {
-    public class TimerManager : MonoBehaviour
+    public class TimerController
     {
-        [SerializeField] private Button pauseButton;
-        [SerializeField] private CanvasGroup pauseButtonCanvasGroup;
-
-
-        [SerializeField] private TMP_Text timeRemain;
-        [SerializeField] private float timeLeft = 120;
+        private float timeRemaining;
+        private float timeLeft = 120;
+        private Action<float> onTimeChanged;
 
         private float elapsedRunningTime = 0f;
         private float runningStartTime = 0f;
@@ -24,43 +21,23 @@ namespace UI.Timer
         private bool isStarted = false;
         private bool isPaused = false;
 
-        float elapsedSeconds;
-        float elapsedMinutes;
-        float elapsedMilliseconds;
+        private float elapsedSeconds;
+        private float elapsedMinutes;
+        private float elapsedMilliseconds;
 
-        float milliseconds;
-        float seconds;
-        float minutes;
+        private float milliseconds;
+        private float seconds;
+        private float minutes;
 
-        public Button PauseButton
+        public float TimeRemaining => timeRemaining;
+
+        public event Action<float> OnTimeChanged
         {
-            get => pauseButton;
-            set => pauseButton = value;
+            add => onTimeChanged += value;
+            remove => onTimeChanged -= value;
         }
 
-        public CanvasGroup PauseButtonCanvasGroup => pauseButtonCanvasGroup;
-
-        private void Start()
-        {
-            pauseButton.onClick.AddListener(() =>
-            {
-                PauseTimer();
-                CanvasTool.State(ref pauseButtonCanvasGroup, false);
-                SubscribeNavigationMenu();
-            });
-            BeginTimer();
-        }
-
-        private void SubscribeNavigationMenu()
-        {
-            MainDependency.GetInstance().GetGameManager().GetNavigationMenu(navigationMenu =>
-            {
-                var navigationMenuNavigationCanvas = navigationMenu.NavigationCanvas;
-                CanvasTool.State(ref navigationMenuNavigationCanvas, false);
-            }, error => { ToastUtility.ShowToast(error.errorMessage); });
-        }
-
-        void Update()
+        public void StartTimer()
         {
             if (isStarted)
             {
@@ -68,11 +45,8 @@ namespace UI.Timer
 
                 UpdateTime();
                 CalculateTime();
-                if (milliseconds.ToString().Length < 2) return;
-
-                var timeRemaining = timeLeft - seconds;
-                timeRemain.text = timeRemaining.ToString();
-                
+                timeRemaining = timeLeft - seconds;
+                onTimeChanged?.Invoke(timeRemaining);
             }
             else if (isPaused)
             {
@@ -80,6 +54,9 @@ namespace UI.Timer
             }
         }
 
+        /// <summary>
+        /// Update timer time
+        /// </summary>
         private void UpdateTime()
         {
             elapsedMilliseconds = GetMilliseconds();
@@ -88,6 +65,9 @@ namespace UI.Timer
             milliseconds = elapsedMilliseconds * 1000;
         }
 
+        /// <summary>
+        /// Calculate timer time
+        /// </summary>
         private void CalculateTime()
         {
             if (elapsedSeconds >= 60)
@@ -109,7 +89,9 @@ namespace UI.Timer
             }
         }
 
-
+        /// <summary>
+        /// Stop timer
+        /// </summary>
         public void StopTimer()
         {
             elapsedRunningTime = 0f;
@@ -121,28 +103,47 @@ namespace UI.Timer
             isPaused = false;
         }
 
+        /// <summary>
+        /// Get passed time as minutes
+        /// </summary>
+        /// <returns></returns>
         private int GetMinutes()
         {
             return (int) (elapsedRunningTime / 60f);
         }
 
+        /// <summary>
+        ///Get passed time as seconds
+        /// </summary>
+        /// <returns></returns>
         private int GetSeconds()
         {
             return (int) (elapsedRunningTime);
         }
 
+        /// <summary>
+        /// Get passed time as miliseconds
+        /// </summary>
+        /// <returns></returns>
         private float GetMilliseconds()
         {
             return (float) (elapsedRunningTime - Math.Truncate(elapsedRunningTime));
         }
 
+        /// <summary>
+        /// Begin timer
+        /// </summary>
         public void BeginTimer()
         {
             if (isStarted || isPaused) return;
+            Time.timeScale = 1f;
             runningStartTime = Time.time;
             isStarted = true;
         }
 
+        /// <summary>
+        /// Set timer on pause
+        /// </summary>
         public void PauseTimer()
         {
             Time.timeScale = 0;
@@ -152,6 +153,9 @@ namespace UI.Timer
             isPaused = true;
         }
 
+        /// <summary>
+        /// Unpause timer
+        /// </summary>
         public void Unpause()
         {
             Time.timeScale = 1f;

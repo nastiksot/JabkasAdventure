@@ -16,7 +16,7 @@ namespace UI.Player
             if (!other.gameObject.CompareTag(Tags.ENEMY_HEAR_TAG)) return;
             Destroy(other.transform.parent.gameObject);
             parentRigidbody2D.AddForce(transform.up*bounceForce,ForceMode2D.Impulse);
-            StatisticsDataCollector.Instance.ChangeTotalScoreValueByKilledSpider(spiderCost);
+            StatisticsDataCollector.Instance.ChangeTotalScore(spiderCost);
         }
     }
 }

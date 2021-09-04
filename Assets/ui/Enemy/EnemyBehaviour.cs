@@ -36,11 +36,19 @@ namespace UI.Enemy
             }
         }
 
+        /// <summary>
+        /// Move enemy
+        /// </summary>
+        /// <param name="velocityX"></param>
         private void MoveEnemy(float velocityX)
         {
             enemyRigidbody2D.velocity = new Vector2(velocityX, enemyRigidbody2D.velocity.y);
         }
 
+        /// <summary>
+        /// Check is enemy hitting wall
+        /// </summary>
+        /// <returns></returns>
         private bool IsHittingWall()
         {
             var isCollidedWall = false;
@@ -66,6 +74,10 @@ namespace UI.Enemy
             return isCollidedWall;
         }
 
+        /// <summary>
+        /// Check is enemy near endge
+        /// </summary>
+        /// <returns></returns>
         private bool IsNearEdge()
         {
             var isCollidedEdge = true;
@@ -86,6 +98,10 @@ namespace UI.Enemy
             return isCollidedEdge;
         }
 
+        /// <summary>
+        /// Change enemy direction
+        /// </summary>
+        /// <param name="newDirection"></param>
         private void ChangeFacingDirection(bool newDirection)
         {
             var newScale = baseScale;

@@ -29,13 +29,13 @@ namespace UI.Games.GameManager
         [SerializeField] private IntroLevel introLevel;
         [SerializeField] private NavigationMenu navigationMenu;
         [SerializeField] private StatisticsDataCollector statisticsDataCollector;
-        [SerializeField] private TimerManager timerManager;
+        [SerializeField] private TimeUIManager timeUIManager;
 
-        public void CloseAll()
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Get camera system 
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void GetCameraSystem(Action<CameraSystem> success, Action<BaseError> failure)
         {
             if (cameraSystem != null)
@@ -48,6 +48,11 @@ namespace UI.Games.GameManager
             }
         }
 
+        /// <summary>
+        /// Get main menu 
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void GetMainMenu(Action<MainMenu> success, Action<BaseError> failure)
         {
             if (mainMenu != null)
@@ -60,6 +65,11 @@ namespace UI.Games.GameManager
             }
         }
 
+        /// <summary>
+        /// Get intro level  
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void GetIntroLevel(Action<IntroLevel> success, Action<BaseError> failure)
         {
             if (introLevel != null)
@@ -72,6 +82,11 @@ namespace UI.Games.GameManager
             }
         }
 
+        /// <summary>
+        /// Get mario level
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void GetMarioLevel(Action<MarioLevel> success, Action<BaseError> failure)
         {
             if (marioLevel != null)
@@ -84,6 +99,11 @@ namespace UI.Games.GameManager
             }
         }
 
+        /// <summary>
+        /// Get final level
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void GetFinalLevel(Action<FinalLevel> success, Action<BaseError> failure)
         {
             if (finalLevel != null)
@@ -96,6 +116,11 @@ namespace UI.Games.GameManager
             }
         }
 
+        /// <summary>
+        /// Get player script
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void GetPlayer(Action<PlayerBehaviour> success, Action<BaseError> failure)
         {
             if (playerBehaviour != null)
@@ -108,6 +133,11 @@ namespace UI.Games.GameManager
             }
         }
 
+        /// <summary>
+        /// Get loading screen 
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void GetLoadingScreen(Action<LoadingScreen> success, Action<BaseError> failure)
         {
             if (loadingScreen != null)
@@ -120,6 +150,11 @@ namespace UI.Games.GameManager
             }
         }
 
+        /// <summary>
+        /// Get navigation menu
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void GetNavigationMenu(Action<NavigationMenu> success, Action<BaseError> failure)
         {
             if (navigationMenu != null)
@@ -131,8 +166,12 @@ namespace UI.Games.GameManager
                 failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_NAVIGATION_MENU, "Fail to load navigation menu"));
             }
         }
- 
 
+        /// <summary>
+        /// Get pause menu
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void GetPauseMenu(Action<PauseMenu> success, Action<BaseError> failure)
         {
             if (pauseMenu != null)
@@ -145,11 +184,16 @@ namespace UI.Games.GameManager
             }
         }
 
-        public void GetTimerManager(Action<TimerManager> success, Action<BaseError> failure)
+        /// <summary>
+        /// Get timer manager
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
+        public void GetTimerManager(Action<TimeUIManager> success, Action<BaseError> failure)
         {
-            if (timerManager != null)
+            if (timeUIManager != null)
             {
-                success?.Invoke(timerManager);
+                success?.Invoke(timeUIManager);
             }
             else
             {
@@ -157,6 +201,11 @@ namespace UI.Games.GameManager
             }
         }
 
+        /// <summary>
+        /// Get game over menu
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void GetGameOverMenu(Action<GameOverMenu> success, Action<BaseError> failure)
         {
             if (gameOverMenu != null)
@@ -165,10 +214,15 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load game over menu"));
             }
         }
 
+        /// <summary>
+        /// Get statistics data
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void GetStatisticsData(Action<StatisticsDataCollector> success, Action<BaseError> failure)
         {
             if (statisticsDataCollector != null)
@@ -177,65 +231,101 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load statistics data"));
             }
         }
 
+        /// <summary>
+        /// Find camera system
+        /// </summary>
         public void SetCameraSystem()
         {
             ExtensionUtility.TryToFindObjectOfType(out cameraSystem);
         }
 
+        /// <summary>
+        /// Find main menu
+        /// </summary>
         public void SetMainMenu()
         {
             ExtensionUtility.TryToFindObjectOfType(out mainMenu);
         }
 
+        /// <summary>
+        /// Find intro level
+        /// </summary>
         public void SetIntroLevel()
         {
             ExtensionUtility.TryToFindObjectOfType(out introLevel);
         }
 
+        /// <summary>
+        /// Find Main level
+        /// </summary>
         public void SetMainLevel()
         {
             ExtensionUtility.TryToFindObjectOfType(out marioLevel);
         }
 
+        /// <summary>
+        /// Find Final level
+        /// </summary>
         public void SetFinalLevel()
         {
             ExtensionUtility.TryToFindObjectOfType(out finalLevel);
         }
 
+        /// <summary>
+        /// Find player script
+        /// </summary>
         public void SetPlayer()
         {
             ExtensionUtility.TryToFindObjectOfType(out playerBehaviour);
         }
 
+        /// <summary>
+        /// Find loading screen
+        /// </summary>
         public void SetLoadingScreen()
         {
             ExtensionUtility.TryToFindObjectOfType(out loadingScreen);
         }
 
+        /// <summary>
+        /// Find Navigation menu
+        /// </summary>
         public void SetNavigationMenu()
         {
             ExtensionUtility.TryToFindObjectOfType(out navigationMenu);
         }
 
+        /// <summary>
+        /// Find pause menu
+        /// </summary>
         public void SetPauseMenu()
         {
             ExtensionUtility.TryToFindObjectOfType(out pauseMenu);
         }
 
+        /// <summary>
+        /// Find timer manager
+        /// </summary>
         public void SetTimerManager()
         {
-            ExtensionUtility.TryToFindObjectOfType(out timerManager);
+            ExtensionUtility.TryToFindObjectOfType(out timeUIManager);
         }
 
+        /// <summary>
+        /// Find Game over menu
+        /// </summary>
         public void SetGameOverMenu()
         {
             ExtensionUtility.TryToFindObjectOfType(out gameOverMenu);
         }
 
+        /// <summary>
+        /// Find statistics data collector
+        /// </summary>
         public void SetStatisticsData()
         {
             ExtensionUtility.TryToFindObjectOfType(out statisticsDataCollector);
