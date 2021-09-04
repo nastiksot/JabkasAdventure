@@ -66,7 +66,8 @@ namespace UI.Enemy
 
 
             Debug.DrawLine(raycastPosition.position, targetPos, Color.magenta);
-            if (Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME)))
+            if (Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME))
+                ||Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.SWITCHER_LAYER_NAME)))
             {
                 isCollidedWall = true;
             } 
@@ -90,7 +91,8 @@ namespace UI.Enemy
             targetPos.y -= edgeRaycast;
 
             Debug.DrawLine(rayPosition, targetPos, Color.blue);
-            if (Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME)))
+            if (Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME))
+            ||Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.SWITCHER_LAYER_NAME)))
             {
                 isCollidedEdge = false;
             }

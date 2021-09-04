@@ -1,3 +1,4 @@
+using DI.Services.Constants;
 using UI.Base;
 using UnityEngine;
 
@@ -22,8 +23,9 @@ namespace UI.Games.MarioGame.Switcher
 
             if (!setOn && isActive)
             {
-                collider2D.enabled = true;
+                collider2D.isTrigger = false;
                 spriteRenderer.sprite = blueSprites[1];
+                gameObject.layer = Layers.GROUND_LAYER;
                 spriteRenderer.color = Color.white;
                 setOn = true;
                 setOff = false;
@@ -31,8 +33,9 @@ namespace UI.Games.MarioGame.Switcher
 
 
             if (setOff || isActive) return;
-            collider2D.enabled = false;
+            collider2D.isTrigger = true;
             spriteRenderer.sprite = blueSprites[0];
+            gameObject.layer = Layers.SWITCHER_LAYER;
             spriteRenderer.color = Color.white;
             setOff = true;
             setOn = false;
