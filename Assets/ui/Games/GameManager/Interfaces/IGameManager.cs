@@ -22,6 +22,7 @@ namespace UI.Games.GameManager.Interfaces
         void GetFinalLevel(Action<FinalLevel> success, Action<BaseError> failure);
         void GetPlayer(Action<PlayerBehaviour> success, Action<BaseError> failure);
         void GetLoadingScreen(Action<LoadingScreen> success, Action<BaseError> failure);
+        void GetLevelManager(Action<LevelManager> success, Action<BaseError> failure);
         
         void GetNavigationMenu(Action<NavigationMenu> success, Action<BaseError> failure);
         void GetPauseMenu(Action<PauseMenu> success, Action<BaseError> failure);
@@ -37,6 +38,7 @@ namespace UI.Games.GameManager.Interfaces
         void SetPlayer(  );
         void SetLoadingScreen( );
         void SetNavigationMenu();
+        void SetLevelManager();
       
         void SetPauseMenu( );
         void SetTimerManager( );

@@ -30,6 +30,7 @@ namespace UI.Games.GameManager
         [SerializeField] private NavigationMenu navigationMenu;
         [SerializeField] private StatisticsDataCollector statisticsDataCollector;
         [SerializeField] private TimeUIManager timeUIManager;
+        [SerializeField] private LevelManager levelManager;
 
         /// <summary>
         /// Get camera system 
@@ -147,6 +148,23 @@ namespace UI.Games.GameManager
             else
             {
                 failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
+            }
+        }
+
+        /// <summary>
+        /// Get level manager
+        /// </summary>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
+        public void GetLevelManager(Action<LevelManager> success, Action<BaseError> failure)
+        {
+            if (levelManager != null)
+            {
+                success?.Invoke(levelManager);
+            }
+            else
+            {
+                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load level manager"));
             }
         }
 
@@ -297,6 +315,14 @@ namespace UI.Games.GameManager
         public void SetNavigationMenu()
         {
             ExtensionUtility.TryToFindObjectOfType(out navigationMenu);
+        }
+
+        /// <summary>
+        /// Set level manager
+        /// </summary>
+        public void SetLevelManager()
+        {
+            ExtensionUtility.TryToFindObjectOfType(out levelManager);
         }
 
         /// <summary>

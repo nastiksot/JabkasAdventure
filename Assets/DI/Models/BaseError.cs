@@ -18,6 +18,7 @@ namespace DI.Models
         public const int FAIL_LOAD_STATISTICS_DATA = 14;
         public const int FAIL_LOAD_CAMERA_SYSTEM = 15;
         public const int FAIL_LOAD_TIMER_MANAGER = 16;
+        public const int FAIL_LOAD_LEVEL_MANAGER = 17;
         
         public int errorCode;
         public string errorMessage;
