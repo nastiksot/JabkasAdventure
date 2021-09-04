@@ -12,6 +12,7 @@ namespace UI.Timer
         private float timeRemaining;
         private float timeLeft = 120;
         private Action<float> onTimeChanged;
+        private Action onTimeOver;
 
         private float elapsedRunningTime = 0f;
         private float runningStartTime = 0f;
@@ -37,6 +38,12 @@ namespace UI.Timer
             remove => onTimeChanged -= value;
         }
 
+        public event Action OnTimeOver
+        {
+            add => onTimeOver += value;
+            remove => onTimeOver -= value;
+        }
+
         public void StartTimer()
         {
             if (isStarted)
@@ -46,12 +53,23 @@ namespace UI.Timer
                 UpdateTime();
                 CalculateTime();
                 timeRemaining = timeLeft - seconds;
+                CheckTimeIsOver(timeRemaining);
                 onTimeChanged?.Invoke(timeRemaining);
             }
             else if (isPaused)
             {
                 elapsedPausedTime = Time.time - pauseStartTime;
             }
+        }
+
+        /// <summary>
+        /// Check is time over
+        /// </summary>
+        /// <param name="timeRemain"></param>
+        private void CheckTimeIsOver(float timeRemain)
+        {
+            if (timeRemain > 0) return;
+            onTimeOver?.Invoke();
         }
 
         /// <summary>
