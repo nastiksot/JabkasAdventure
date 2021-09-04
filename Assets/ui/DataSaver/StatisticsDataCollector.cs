@@ -109,11 +109,11 @@ namespace UI.DataSaver
         {
             summarySheet++;
 
-            summaryScore += sheetCosts;
 
             sheetValue.text = summarySheet.ToString();
             totalScore.text = (summaryScore).ToString();
 
+            ChangeTotalScore(sheetCosts);
             playerData.UpdateScore(summaryScore);
             playerData.UpdateSheetCount(summarySheet);
         }
