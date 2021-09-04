@@ -107,14 +107,12 @@ namespace UI.DataSaver
         /// <param name="sheetCosts"></param>
         public void ChangeSheetScoreValue(int sheetCosts)
         {
-            summarySheet++;
-
-
+            summarySheet++; 
+            
             sheetValue.text = summarySheet.ToString();
             totalScore.text = (summaryScore).ToString();
 
             ChangeTotalScore(sheetCosts);
-            playerData.UpdateScore(summaryScore);
             playerData.UpdateSheetCount(summarySheet);
         }
 
@@ -126,6 +124,7 @@ namespace UI.DataSaver
         {
             summaryScore += scoreValue;
             totalScore.text = (summaryScore).ToString();
+            playerData.UpdateScore(summaryScore);
         }
 
         /// <summary>

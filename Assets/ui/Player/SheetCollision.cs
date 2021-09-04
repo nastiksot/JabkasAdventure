@@ -7,7 +7,6 @@ namespace UI.Player
 {
     public class SheetCollision : MonoBehaviour
     {
-        
         [SerializeField] private int sheetCosts = 10;
         private Rigidbody2D rigidbody2D;
         private void Start()
@@ -23,7 +22,7 @@ namespace UI.Player
                 rigidbody2D.bodyType = RigidbodyType2D.Static;
             }
 
-            if (!other.gameObject.CompareTag("Player")) return;
+            if (!other.gameObject.CompareTag(Tags.PLAYER_TAG)) return;
             Destroy(gameObject);
             StatisticsDataCollector.Instance.ChangeSheetScoreValue(sheetCosts);
         }

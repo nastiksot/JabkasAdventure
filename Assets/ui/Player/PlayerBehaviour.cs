@@ -54,16 +54,7 @@ namespace UI.Player
         private void Jump()
         {
             playerRigidbody.AddForce(Vector2.up * jumpPower);
-        }
-
-        private void CheckDeath()
-        {
-            //TODO: Refactor checking of death
-            if (gameObject.transform.position.y < -7)
-            {
-                MainDependency.GetInstance().GetUIManager().GetNavigator().StartLoadingScreen();
-            }
-        }
+        } 
 
         private void OnCollisionExit2D(Collision2D collision)
         {
