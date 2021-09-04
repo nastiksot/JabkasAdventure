@@ -37,21 +37,37 @@ namespace DI
             return instance;
         }
 
+        /// <summary>
+        /// Get UI manager
+        /// </summary>
+        /// <returns></returns>
         public IUIManager GetUIManager()
         {
             return uiManager;
         }
 
+        /// <summary>
+        /// Get game manager
+        /// </summary>
+        /// <returns></returns>
         public IGameManager GetGameManager()
         {
             return gameManager;
         }
 
+        /// <summary>
+        /// Get service manager
+        /// </summary>
+        /// <returns></returns>
         public IServiceManager GetServiceManager()
         {
             return serviceManager;
         }
 
+        /// <summary>
+        /// Get module manager
+        /// </summary>
+        /// <returns></returns>
         public IModuleManager GetModuleManager()
         {
             return moduleManager;

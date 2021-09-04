@@ -30,14 +30,20 @@ namespace UI.Games.Menus
         {
             retryButton.onClick.AddListener(() =>
             {
-               MainDependency.GetInstance().GetUIManager().GetNavigator().StartLoadingScreen();
+                Time.timeScale = 1f;
+                MainDependency.GetInstance().GetUIManager().GetNavigator().StartLoadingScreen();
             }); 
             exitButton.onClick.AddListener(() =>
             {
+                Time.timeScale = 1f;
                 MainDependency.GetInstance().GetUIManager().GetNavigator().InitMainMenu();
             }); 
             SetCanvasVisibility(false);
         }
+        /// <summary>
+        /// Set game over menu canvas visibility
+        /// </summary>
+        /// <param name="state"></param>
         private void SetCanvasVisibility(bool state)
         {
             CanvasTool.State(ref background, state);

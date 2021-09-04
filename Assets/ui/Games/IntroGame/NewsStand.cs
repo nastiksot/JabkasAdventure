@@ -25,7 +25,10 @@ namespace UI.Games.IntroGame
             StartCoroutine(HideBubble());
         }
 
-
+        /// <summary>
+        /// Close question bubble message
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator HideBubble()
         {
             yield return new WaitForSeconds(3);

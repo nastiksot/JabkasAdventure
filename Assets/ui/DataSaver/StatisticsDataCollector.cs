@@ -47,26 +47,18 @@ namespace UI.DataSaver
             {
                 instance = this;
             }
-            
+
             dataService = MainDependency.GetInstance().GetServiceManager().GetDataService();
 
             GetPauseMenu();
-            
+
             pauseButton.onClick.AddListener(() => { SetPauseMenuVisibility(true); });
         }
 
-        private void GetPauseMenu()
-        {
-            MainDependency.GetInstance().GetGameManager().GetPauseMenu(menu => { pauseMenu = menu; },
-                error => { ToastUtility.ShowToast(error.errorMessage); });
-        }
-
-        private void SetPauseMenuVisibility(bool state)
-        {
-            var pauseMenuBackground = pauseMenu.Background;
-            CanvasTool.State(ref pauseMenuBackground, state);
-        }
-
+        /// <summary>
+        /// Update player data 
+        /// </summary>
+        /// <param name="data"></param>
         public void UpdatePlayerData(PlayerData data)
         {
             playerData = new PlayerData()
@@ -77,17 +69,28 @@ namespace UI.DataSaver
             };
         }
 
+        /// <summary>
+        /// Save data to file
+        /// </summary>
         public void SaveDataFile()
         {
             dataService.SaveData(playerData, filePath);
         }
 
+        /// <summary>
+        /// Load data from file
+        /// </summary>
+        /// <param name="playerData"></param>
+        /// <param name="failure"></param>
         public void LoadDataFile(Action<PlayerData> playerData, Action<BaseError> failure)
         {
             dataService.LoadData(filePath, loadedData => { playerData?.Invoke(loadedData); },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
+        /// <summary>
+        /// Update data on UI
+        /// </summary>
         private void UpdateUIData()
         {
             LoadDataFile(data =>
@@ -98,6 +101,10 @@ namespace UI.DataSaver
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
+        /// <summary>
+        /// Change sheet score value
+        /// </summary>
+        /// <param name="sheetCosts"></param>
         public void ChangeSheetScoreValue(int sheetCosts)
         {
             summarySheet++;
@@ -111,10 +118,33 @@ namespace UI.DataSaver
             playerData.UpdateSheetCount(summarySheet);
         }
 
-        public void ChangeTotalScoreValueByKilledSpider(int killedEnemy)
+        /// <summary>
+        /// Change total score value
+        /// </summary>
+        /// <param name="scoreValue"></param>
+        public void ChangeTotalScore(int scoreValue)
         {
-            summaryScore += killedEnemy;
+            summaryScore += scoreValue;
             totalScore.text = (summaryScore).ToString();
+        }
+
+        /// <summary>
+        /// Get pause menu
+        /// </summary>
+        private void GetPauseMenu()
+        {
+            MainDependency.GetInstance().GetGameManager().GetPauseMenu(menu => { pauseMenu = menu; },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
+        }
+
+        /// <summary>
+        /// Set pause menu visibility
+        /// </summary>
+        /// <param name="state"></param>
+        private void SetPauseMenuVisibility(bool state)
+        {
+            var pauseMenuBackground = pauseMenu.Background;
+            CanvasTool.State(ref pauseMenuBackground, state);
         }
     }
 }

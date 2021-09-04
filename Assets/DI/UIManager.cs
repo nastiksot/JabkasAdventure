@@ -16,6 +16,10 @@ namespace DI
             navigator = new Navigator(uiPrefabManager);
         }
 
+        /// <summary>
+        /// Get navigator
+        /// </summary>
+        /// <returns></returns>
         public Navigator GetNavigator()
         {
             return navigator;

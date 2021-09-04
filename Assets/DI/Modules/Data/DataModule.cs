@@ -20,6 +20,11 @@ namespace DI.Modules.Data
             set => directoryName = value;
         }
 
+        /// <summary>
+        /// Save data in file
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="fileName"></param>
         public void SaveData(PlayerData data, string fileName)
         {
             if (!DirectoryExists())
@@ -42,7 +47,12 @@ namespace DI.Modules.Data
             );
         }
 
-
+        /// <summary>
+        /// Load data from file
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void LoadData(string fileName, Action<PlayerData> success, Action<BaseError> failure)
         {
             if (!SaveExists(fileName))
@@ -66,21 +76,41 @@ namespace DI.Modules.Data
             }
         }
 
+        /// <summary>
+        /// Rewrite data in exists file
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public bool SaveExists(string fileName)
         {
             return File.Exists(GetFullPathFile(fileName));
         }
 
+        /// <summary>
+        /// Check is directory exists
+        /// </summary>
+        /// <returns></returns>
         public bool DirectoryExists()
         {
             return Directory.Exists(Application.persistentDataPath + "/" + directoryName);
         }
 
+        /// <summary>
+        /// Get full path file
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public string GetFullPathFile(string fileName)
         {
             return Application.persistentDataPath + "/" + directoryName + "/" + fileName + ".dat";
         }
 
+        /// <summary>
+        /// Create file for saving data
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void CreateFile(string fileName, Action<FileStream> success, Action<BaseError> failure)
         {
             if (string.IsNullOrEmpty(fileName))
@@ -93,6 +123,12 @@ namespace DI.Modules.Data
             }
         }
 
+        /// <summary>
+        /// Open data file 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="success"></param>
+        /// <param name="failure"></param>
         public void OpenFile(string fileName, Action<FileStream> success, Action<BaseError> failure)
         {
             if (string.IsNullOrEmpty(fileName))

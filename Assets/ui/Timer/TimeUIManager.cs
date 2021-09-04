@@ -34,16 +34,23 @@ namespace UI.Timer
             timerController.OnTimeChanged += OnTimeChanged;
         }
 
+        public void Update()
+        {
+            timerController.StartTimer();
+        }
+        
+        /// <summary>
+        /// Set timer value on UI 
+        /// </summary>
+        /// <param name="seconds"></param>
         private void OnTimeChanged(float seconds)
         {
             timeRemainText.text = seconds.ToString();
         }
 
-        public void Update()
-        {
-            timerController.StartTimer();
-        }
-
+        /// <summary>
+        /// Hide all canvas group
+        /// </summary>
         private void HideAll()
         {
             var navigationMenuNavigationCanvas = navigationMenu.NavigationCanvas;
@@ -51,16 +58,25 @@ namespace UI.Timer
             CanvasTool.State(ref pauseButtonCanvasGroup, false);
         }
 
+        /// <summary>
+        /// Unpause timer
+        /// </summary>
         public void Unpause()
         {
             timerController.Unpause();
         }
 
+        /// <summary>
+        /// Pause timer
+        /// </summary>
         public void Pause()
         {
             timerController.PauseTimer();
         }
 
+        /// <summary>
+        /// Get navigation menu
+        /// </summary>
         private void GetNavigationMenu()
         {
             MainDependency.GetInstance().GetGameManager().GetNavigationMenu(menu => { navigationMenu = menu; },

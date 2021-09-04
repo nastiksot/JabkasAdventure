@@ -23,6 +23,9 @@ namespace UI.Games
             GetPlayer();
         }
 
+        /// <summary>
+        /// Get Camera System
+        /// </summary>
         private void GetCameraSystem()
         {
             MainDependency.GetInstance().GetGameManager().GetCameraSystem(camera =>
@@ -32,6 +35,9 @@ namespace UI.Games
             }, error => { ToastUtility.ShowToast(error.errorMessage); });
         }
  
+        /// <summary>
+        /// Get Player script
+        /// </summary>
         private void GetPlayer()
         {
             MainDependency.GetInstance().GetGameManager().GetPlayer(player => { playerBehaviour = player; },

@@ -17,7 +17,6 @@ namespace UI.Camera
         [SerializeField] private CameraData defaultCameraData;
 
         private Action<CameraData> onLevelSwitched;
-
         public Action<CameraData> OnLevelSwitched => onLevelSwitched;
         public UnityEngine.Camera Camera => camera;
 
@@ -30,14 +29,7 @@ namespace UI.Camera
             if (playerObject != null) return;
             cameraData = defaultCameraData;
             SetCameraParams(defaultCameraData);
-        }
-
-        private void GetPlayer()
-        {
-            MainDependency.GetInstance().GetGameManager().GetPlayer(player => { playerObject = player; },
-                error => { ToastUtility.ShowToast(error.errorMessage); });
-        }
-
+        } 
         private void LateUpdate()
         {
             if (playerObject == null) return;
@@ -46,13 +38,12 @@ namespace UI.Camera
             var y = Mathf.Clamp(playerPosition.y, cameraData.YValues.MIN, cameraData.YValues.MAX);
             var go = gameObject;
             go.transform.position = new Vector3(x, y, go.transform.position.z);
-        }
+        } 
 
-        private void SetCameraData(CameraData cameraData)
-        {
-            this.cameraData = cameraData;
-        }
-
+        /// <summary>
+        /// Setup camera settings from level Scriptable Object
+        /// </summary>
+        /// <param name="cameraData"></param>
         private void SetSettingsOnLevelChanged(CameraData cameraData)
         {
             if (cameraData == null)
@@ -61,30 +52,49 @@ namespace UI.Camera
                 return;
             }
 
-            SetPlayer();
+            GetPlayer();
             SetCameraData(cameraData);
             SetCameraSize(cameraData);
             SetCameraParams(cameraData);
-        }
+        } 
 
-        private void SetPlayer()
+        /// <summary>
+        /// Set camera data from Scriptable Objects
+        /// </summary>
+        /// <param name="cameraData"></param>
+        private void SetCameraData(CameraData cameraData)
         {
-            if (playerObject != null) return;
-            MainDependency.GetInstance().GetGameManager().GetPlayer(player => { playerObject = player; },
-                error => { ToastUtility.ShowToast(error.errorMessage); });
+            this.cameraData = cameraData;
         }
-
+        
+        /// <summary>
+        /// Set camera size
+        /// </summary>
+        /// <param name="data"></param>
         private void SetCameraSize(CameraData data)
         {
             camera.orthographicSize = data.cameraSize;
         }
 
+        /// <summary>
+        /// Set camera params
+        /// </summary>
+        /// <param name="newCameraData"></param>
         private void SetCameraParams(CameraData newCameraData)
         {
             cameraData.XValues.MIN = newCameraData.XValues.MIN;
             cameraData.XValues.MAX = newCameraData.XValues.MAX;
             cameraData.YValues.MIN = newCameraData.YValues.MIN;
             cameraData.YValues.MAX = newCameraData.YValues.MAX;
+        }
+        
+        /// <summary>
+        /// Get player script
+        /// </summary>
+        private void GetPlayer()
+        {
+            MainDependency.GetInstance().GetGameManager().GetPlayer(player => { playerObject = player; },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
         }
     }
 }

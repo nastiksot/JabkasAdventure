@@ -25,13 +25,13 @@ namespace UI.Games.Menus
         {
             GetNavigationMenu();
             GetTimerManager();
-            SetNavigationMenuVisibility(true);
             SetPauseMenuVisibility(false);
 
             continueButton.onClick.AddListener(() =>
             {
                 timeUIManager.Unpause();
                 SetTimerManagerUIVisibility(true);
+                SetNavigationMenuVisibility(true);
                 SetPauseMenuVisibility(false);
             });
 
@@ -42,17 +42,38 @@ namespace UI.Games.Menus
             });
         }
 
+        /// <summary>
+        /// Set pause menu visibility
+        /// </summary>
+        /// <param name="state"></param>
         private void SetPauseMenuVisibility(bool state)
         {
             CanvasTool.State(ref background, state);
         }
 
+        /// <summary>
+        /// Set time manager ui visibility
+        /// </summary>
+        /// <param name="state"></param>
         private void SetTimerManagerUIVisibility(bool state)
         {
             var timerManagerCanvas = timeUIManager.PauseButtonCanvasGroup;
             CanvasTool.State(ref timerManagerCanvas, state);
         }
 
+        /// <summary>
+        /// Set navigation menu visibility
+        /// </summary>
+        /// <param name="state"></param>
+        private void SetNavigationMenuVisibility(bool state)
+        {
+            var navigationMenuNavigationCanvas = navigationMenu.NavigationCanvas;
+            CanvasTool.State(ref navigationMenuNavigationCanvas, state);
+        }
+
+        /// <summary>
+        /// Get timer manager
+        /// </summary>
         private void GetTimerManager()
         {
             MainDependency.GetInstance().GetGameManager().GetTimerManager(
@@ -60,12 +81,9 @@ namespace UI.Games.Menus
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
-        private void SetNavigationMenuVisibility(bool state)
-        {
-            var navigationMenuNavigationCanvas = navigationMenu.NavigationCanvas;
-            CanvasTool.State(ref navigationMenuNavigationCanvas, state);
-        }
-
+        /// <summary>
+        /// Get navigation menu
+        /// </summary>
         private void GetNavigationMenu()
         {
             MainDependency.GetInstance().GetGameManager().GetNavigationMenu(menu => { this.navigationMenu = menu; },

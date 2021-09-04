@@ -18,15 +18,13 @@ namespace UI.Games.Menus
         private CameraSystem cameraSystem;
         private void Start()
         {
-            MainDependency.GetInstance().GetGameManager().GetCameraSystem(camera =>
-                {
-                    cameraSystem = camera;
-                    canvas.worldCamera = camera.Camera; 
-                },
-                error => { ToastUtility.ShowToast(error.errorMessage); });
+            GetCameraSystem();
             InitGame();
         }
-
+ 
+        /// <summary>
+        /// Initialize Intro level
+        /// </summary>
         private void InitGame()
         {
             playButton.onClick.AddListener(() =>
@@ -36,6 +34,19 @@ namespace UI.Games.Menus
 #if PLATFORM_ANDROID
             settingsButton.onClick.AddListener(Application.Quit);
 #endif
+        }
+        
+        /// <summary>
+        /// Get Camera system
+        /// </summary>
+        private void GetCameraSystem()
+        {
+            MainDependency.GetInstance().GetGameManager().GetCameraSystem(camera =>
+                {
+                    cameraSystem = camera;
+                    canvas.worldCamera = camera.Camera;
+                },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
         }
     }
 } 

@@ -11,7 +11,7 @@ namespace UI.Games.progressScreen
         private Canvas canvas;
 
 
-        public void Awake()
+        public void Start()
         {
             GetCameraSystem();
             StartCoroutine(startWithDelay(3f, OpenMainGame));
@@ -24,7 +24,7 @@ namespace UI.Games.progressScreen
         }
 
         private void OpenMainGame()
-        {
+        { 
             MainDependency.GetInstance().GetUIManager().GetNavigator().InitMainLevel();
         }
     }

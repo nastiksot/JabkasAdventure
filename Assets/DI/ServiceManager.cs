@@ -21,6 +21,10 @@ namespace DI
             }
         }
 
+        /// <summary>
+        /// Init data service
+        /// </summary>
+        /// <param name="moduleManager"></param>
         private void InitDataService(IModuleManager moduleManager)
         {
             dataService = new DataService();
@@ -28,6 +32,10 @@ namespace DI
             dataService.SetDependency(moduleManager.GetDataModule());
         }
 
+        /// <summary>
+        /// Get data service
+        /// </summary>
+        /// <returns></returns>
         public IDataService GetDataService()
         {
             return dataService;

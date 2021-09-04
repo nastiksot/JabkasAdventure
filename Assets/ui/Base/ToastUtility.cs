@@ -4,6 +4,10 @@ namespace UI.Base
 {
     public class ToastUtility : BaseMono
     {
+        /// <summary>
+        /// Show Android java toasts
+        /// </summary>
+        /// <param name="text"></param>
         public static void ShowToast(string text)
         {
             if (Application.platform == RuntimePlatform.Android)

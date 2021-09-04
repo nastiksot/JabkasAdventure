@@ -12,7 +12,7 @@ namespace UI.Timer
         private float timeRemaining;
         private float timeLeft = 120;
         private Action<float> onTimeChanged;
-        
+
         private float elapsedRunningTime = 0f;
         private float runningStartTime = 0f;
         private float pauseStartTime = 0f;
@@ -30,10 +30,11 @@ namespace UI.Timer
         private float minutes;
 
         public float TimeRemaining => timeRemaining;
+
         public event Action<float> OnTimeChanged
         {
-            add => onTimeChanged+=value;
-            remove => onTimeChanged-=value;
+            add => onTimeChanged += value;
+            remove => onTimeChanged -= value;
         }
 
         public void StartTimer()
@@ -43,7 +44,7 @@ namespace UI.Timer
                 elapsedRunningTime = Time.time - runningStartTime - totalElapsedPausedTime;
 
                 UpdateTime();
-                CalculateTime(); 
+                CalculateTime();
                 timeRemaining = timeLeft - seconds;
                 onTimeChanged?.Invoke(timeRemaining);
             }
@@ -53,6 +54,9 @@ namespace UI.Timer
             }
         }
 
+        /// <summary>
+        /// Update timer time
+        /// </summary>
         private void UpdateTime()
         {
             elapsedMilliseconds = GetMilliseconds();
@@ -61,6 +65,9 @@ namespace UI.Timer
             milliseconds = elapsedMilliseconds * 1000;
         }
 
+        /// <summary>
+        /// Calculate timer time
+        /// </summary>
         private void CalculateTime()
         {
             if (elapsedSeconds >= 60)
@@ -82,7 +89,9 @@ namespace UI.Timer
             }
         }
 
-
+        /// <summary>
+        /// Stop timer
+        /// </summary>
         public void StopTimer()
         {
             elapsedRunningTime = 0f;
@@ -94,21 +103,36 @@ namespace UI.Timer
             isPaused = false;
         }
 
+        /// <summary>
+        /// Get passed time as minutes
+        /// </summary>
+        /// <returns></returns>
         private int GetMinutes()
         {
             return (int) (elapsedRunningTime / 60f);
         }
 
+        /// <summary>
+        ///Get passed time as seconds
+        /// </summary>
+        /// <returns></returns>
         private int GetSeconds()
         {
             return (int) (elapsedRunningTime);
         }
 
+        /// <summary>
+        /// Get passed time as miliseconds
+        /// </summary>
+        /// <returns></returns>
         private float GetMilliseconds()
         {
             return (float) (elapsedRunningTime - Math.Truncate(elapsedRunningTime));
         }
 
+        /// <summary>
+        /// Begin timer
+        /// </summary>
         public void BeginTimer()
         {
             if (isStarted || isPaused) return;
@@ -117,6 +141,9 @@ namespace UI.Timer
             isStarted = true;
         }
 
+        /// <summary>
+        /// Set timer on pause
+        /// </summary>
         public void PauseTimer()
         {
             Time.timeScale = 0;
@@ -126,6 +153,9 @@ namespace UI.Timer
             isPaused = true;
         }
 
+        /// <summary>
+        /// Unpause timer
+        /// </summary>
         public void Unpause()
         {
             Time.timeScale = 1f;
