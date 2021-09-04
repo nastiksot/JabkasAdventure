@@ -17,6 +17,7 @@ namespace UI.Games.Menus
 
         private TimeUIManager timeUIManager;
         private NavigationMenu navigationMenu;
+        
         public CanvasGroup Background => background;
         public Button ContinueButton => continueButton;
         public Button ExitButton => exitButton;
@@ -30,8 +31,8 @@ namespace UI.Games.Menus
             continueButton.onClick.AddListener(() =>
             {
                 timeUIManager.Unpause();
-                SetTimerManagerUIVisibility(true);
-                SetNavigationMenuVisibility(true);
+                timeUIManager.SetTimerManagerUIVisibility(true);
+                navigationMenu.SetNavigationMenuVisibility(true);
                 SetPauseMenuVisibility(false);
             });
 
@@ -46,30 +47,10 @@ namespace UI.Games.Menus
         /// Set pause menu visibility
         /// </summary>
         /// <param name="state"></param>
-        private void SetPauseMenuVisibility(bool state)
+        public void SetPauseMenuVisibility(bool state)
         {
             CanvasTool.State(ref background, state);
-        }
-
-        /// <summary>
-        /// Set time manager ui visibility
-        /// </summary>
-        /// <param name="state"></param>
-        private void SetTimerManagerUIVisibility(bool state)
-        {
-            var timerManagerCanvas = timeUIManager.PauseButtonCanvasGroup;
-            CanvasTool.State(ref timerManagerCanvas, state);
-        }
-
-        /// <summary>
-        /// Set navigation menu visibility
-        /// </summary>
-        /// <param name="state"></param>
-        private void SetNavigationMenuVisibility(bool state)
-        {
-            var navigationMenuNavigationCanvas = navigationMenu.NavigationCanvas;
-            CanvasTool.State(ref navigationMenuNavigationCanvas, state);
-        }
+        }  
 
         /// <summary>
         /// Get timer manager

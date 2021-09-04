@@ -52,7 +52,7 @@ namespace UI.DataSaver
 
             GetPauseMenu();
 
-            pauseButton.onClick.AddListener(() => { SetPauseMenuVisibility(true); });
+            pauseButton.onClick.AddListener(() => { pauseMenu.SetPauseMenuVisibility(true); });
         }
 
         /// <summary>
@@ -137,14 +137,6 @@ namespace UI.DataSaver
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 
-        /// <summary>
-        /// Set pause menu visibility
-        /// </summary>
-        /// <param name="state"></param>
-        private void SetPauseMenuVisibility(bool state)
-        {
-            var pauseMenuBackground = pauseMenu.Background;
-            CanvasTool.State(ref pauseMenuBackground, state);
-        }
+        
     }
 }

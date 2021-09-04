@@ -2,6 +2,7 @@
 using DI;
 using TMPro;
 using UI.Base;
+using UI.Games.Menus;
 using UI.Navigation;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ namespace UI.Timer
 
         private TimerController timerController = new TimerController();
         private NavigationMenu navigationMenu;
+        private GameOverMenu gameOverMenu;
 
 
         public Button PauseButton => pauseButton;
@@ -24,6 +26,8 @@ namespace UI.Timer
         private void Start()
         {
             GetNavigationMenu();
+            GetGameOverMenu();
+
             pauseButton.onClick.AddListener(() =>
             {
                 timerController.PauseTimer();
@@ -32,11 +36,20 @@ namespace UI.Timer
 
             timerController.BeginTimer();
             timerController.OnTimeChanged += OnTimeChanged;
-        }
-
+            timerController.OnTimeOver+=OnTimeOver;
+        } 
+ 
         public void Update()
         {
             timerController.StartTimer();
+        }
+        
+        /// <summary>
+        /// Initialize game over canvas on time is over
+        /// </summary>
+        private void OnTimeOver()
+        {
+            gameOverMenu.PlayerDeath();
         }
         
         /// <summary>
@@ -53,8 +66,7 @@ namespace UI.Timer
         /// </summary>
         private void HideAll()
         {
-            var navigationMenuNavigationCanvas = navigationMenu.NavigationCanvas;
-            CanvasTool.State(ref navigationMenuNavigationCanvas, false);
+            navigationMenu.SetNavigationMenuVisibility(false);
             CanvasTool.State(ref pauseButtonCanvasGroup, false);
         }
 
@@ -75,6 +87,15 @@ namespace UI.Timer
         }
 
         /// <summary>
+        /// Set time manager ui visibility
+        /// </summary>
+        /// <param name="state"></param>
+        public void SetTimerManagerUIVisibility(bool state)
+        { 
+            CanvasTool.State(ref pauseButtonCanvasGroup, state);
+        }
+        
+        /// <summary>
         /// Get navigation menu
         /// </summary>
         private void GetNavigationMenu()
@@ -82,5 +103,15 @@ namespace UI.Timer
             MainDependency.GetInstance().GetGameManager().GetNavigationMenu(menu => { navigationMenu = menu; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
+        
+        /// <summary>
+        /// Get game over menu
+        /// </summary>
+        private void GetGameOverMenu()
+        {
+            MainDependency.GetInstance().GetGameManager().GetGameOverMenu(menu => { gameOverMenu = menu; },
+                error => { ToastUtility.ShowToast(error.errorMessage); });
+        }
+         
     }
 }
