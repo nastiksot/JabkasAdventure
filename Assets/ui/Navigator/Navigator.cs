@@ -51,6 +51,7 @@ namespace UI.Navigator
                     break;
                 case Prefabs.MainGameLevel:
                     gameManager.SetMainLevel();
+                    gameManager.SetLevelManager();
                     break;
                 case Prefabs.FinalGameLevel:
                     gameManager.SetFinalLevel();
