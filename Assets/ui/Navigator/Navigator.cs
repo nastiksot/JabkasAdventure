@@ -12,12 +12,12 @@ namespace UI.Navigator
 {
     public class Navigator : INavigator
     {
-        private IGameManager gameManager;
+        private IReferenсeManager referenсeManager;
         private Dictionary<ComponentsIDs, IUIComponent> components = new Dictionary<ComponentsIDs, IUIComponent>();
 
         public Navigator(IUIPrefabManager uiPrefabManager)
         {
-            gameManager = MainDependency.GetInstance().GetGameManager();
+            referenсeManager = MainDependency.GetInstance().GetReferenceManager();
             components[ComponentsIDs.MainMenu] = new MainMenuComponent(uiPrefabManager);
             components[ComponentsIDs.Player] = new PlayerComponent(uiPrefabManager);
             components[ComponentsIDs.IntroLevel] = new IntroLevelComponent(uiPrefabManager);
@@ -27,8 +27,7 @@ namespace UI.Navigator
             components[ComponentsIDs.PauseMenu] = new PauseMenuComponent(uiPrefabManager);
             components[ComponentsIDs.GameOverMenu] = new GameOverMenuComponent(uiPrefabManager);
             components[ComponentsIDs.StatisticsData] = new StatisticsDataComponent(uiPrefabManager);
-            SubscribeAll(); 
-            //components[ComponentsIDs.ProgressBar] = new MainMenuComponent(uiPrefabManager);
+            SubscribeAll();  
         }
 
         private void SubscribeAll()
@@ -44,36 +43,36 @@ namespace UI.Navigator
             switch (prefabs)
             {
                 case Prefabs.Player:
-                    gameManager.SetPlayer( );
+                    referenсeManager.SetPlayer( );
                     break;
                 case Prefabs.IntroGameLevel:
-                    gameManager.SetIntroLevel( );
+                    referenсeManager.SetIntroLevel( );
                     break;
                 case Prefabs.MainGameLevel:
-                    gameManager.SetMainLevel();
-                    gameManager.SetLevelManager();
+                    referenсeManager.SetMainLevel();
+                    referenсeManager.SetLevelManager();
                     break;
                 case Prefabs.FinalGameLevel:
-                    gameManager.SetFinalLevel();
+                    referenсeManager.SetFinalLevel();
                     break;
                 case Prefabs.LoadingScreen:
-                    gameManager.SetLoadingScreen();
+                    referenсeManager.SetLoadingScreen();
                     break;
                 case Prefabs.MainMenu:
-                    gameManager.SetMainMenu();
+                    referenсeManager.SetMainMenu();
                     break;
                 case Prefabs.NavigationMenu:
-                    gameManager.SetNavigationMenu();
+                    referenсeManager.SetNavigationMenu();
                     break;
                 case Prefabs.PauseMenu:
-                    gameManager.SetPauseMenu();
+                    referenсeManager.SetPauseMenu();
                     break;
                 case Prefabs.GameOverMenu:
-                    gameManager.SetGameOverMenu();
+                    referenсeManager.SetGameOverMenu();
                     break;
                 case Prefabs.StatisticsData:
-                    gameManager.SetStatisticsData();
-                    gameManager.SetTimerManager();
+                    referenсeManager.SetStatisticsData();
+                    referenсeManager.SetTimerManager();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(prefabs), prefabs, null);

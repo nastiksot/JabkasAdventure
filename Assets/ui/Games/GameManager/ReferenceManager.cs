@@ -16,7 +16,7 @@ using UnityEngine;
 
 namespace UI.Games.GameManager
 {
-    public class GameManager : BaseMono, IGameManager
+    public class ReferenceManager : BaseMono, IReferenсeManager
     {
         [SerializeField] private CameraSystem cameraSystem;
         [SerializeField] private PlayerBehaviour playerBehaviour;
@@ -45,7 +45,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
             }
         }
 
@@ -62,7 +62,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
             }
         }
 
@@ -79,7 +79,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_INTRO_LEVEL, "Fail to load intro level"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_INTRO_LEVEL, "Fail to load intro level"));
             }
         }
 
@@ -96,7 +96,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MARIO_LEVEL, "Fail to load mario level"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_MARIO_LEVEL, "Fail to load mario level"));
             }
         }
 
@@ -113,7 +113,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_FINAL_LEVEL, "Fail to load final level"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_FINAL_LEVEL, "Fail to load final level"));
             }
         }
 
@@ -130,7 +130,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_PLAYER, "Fail to load player"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_PLAYER, "Fail to load player"));
             }
         }
 
@@ -147,7 +147,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
             }
         }
 
@@ -164,7 +164,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load level manager"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_MAIN_MENU, "Fail to load level manager"));
             }
         }
 
@@ -181,7 +181,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_NAVIGATION_MENU, "Fail to load navigation menu"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_NAVIGATION_MENU, "Fail to load navigation menu"));
             }
         }
 
@@ -198,7 +198,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_MAIN_MENU, "Fail to load main menu"));
             }
         }
 
@@ -215,7 +215,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_TIMER_MANAGER, "Fail to load timer manager"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_TIMER_MANAGER, "Fail to load timer manager"));
             }
         }
 
@@ -232,7 +232,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load game over menu"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_MAIN_MENU, "Fail to load game over menu"));
             }
         }
 
@@ -249,7 +249,7 @@ namespace UI.Games.GameManager
             }
             else
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_MAIN_MENU, "Fail to load statistics data"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_MAIN_MENU, "Fail to load statistics data"));
             }
         }
 

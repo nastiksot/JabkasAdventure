@@ -93,7 +93,7 @@ namespace UI.Camera
         /// </summary>
         private void GetPlayer()
         {
-            MainDependency.GetInstance().GetGameManager().GetPlayer(player => { playerObject = player; },
+            MainDependency.GetInstance().GetReferenceManager().GetPlayer(player => { playerObject = player; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
     }

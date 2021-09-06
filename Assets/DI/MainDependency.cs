@@ -13,18 +13,18 @@ namespace DI
         private IServiceManager serviceManager;
         private IModuleManager moduleManager;
         private IUIManager uiManager;
-        private IGameManager gameManager;
+        private IReferenсeManager referenсeManager;
         private InteractorManager interactorManager;
 
         public void Start()
         {
             instance = this;
 
-            gameManager = gameObject.AddComponent<GameManager>();
+            referenсeManager = gameObject.AddComponent<ReferenceManager>();
             moduleManager = new ModuleManager();
             uiManager = new UIManager();
             serviceManager = new ServiceManager(moduleManager);
-            interactorManager = new InteractorManager(uiManager, gameManager);
+            interactorManager = new InteractorManager(uiManager, referenсeManager);
         }
 
         public static IMainDependencys GetInstance()
@@ -47,12 +47,12 @@ namespace DI
         }
 
         /// <summary>
-        /// Get game manager
+        /// Get reference manager
         /// </summary>
         /// <returns></returns>
-        public IGameManager GetGameManager()
+        public IReferenсeManager GetReferenceManager()
         {
-            return gameManager;
+            return referenсeManager;
         }
 
         /// <summary>

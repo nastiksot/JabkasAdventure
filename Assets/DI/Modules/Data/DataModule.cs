@@ -57,7 +57,7 @@ namespace DI.Modules.Data
         {
             if (!SaveExists(fileName))
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_LOAD_DATA, "File does not exists"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_LOAD_DATA, "File does not exists"));
             }
 
             try
@@ -115,7 +115,7 @@ namespace DI.Modules.Data
         {
             if (string.IsNullOrEmpty(fileName))
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_CREATE_FILE, "File name is empty"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_CREATE_FILE, "File name is empty"));
             }
             else
             {
@@ -133,7 +133,7 @@ namespace DI.Modules.Data
         {
             if (string.IsNullOrEmpty(fileName))
             {
-                failure?.Invoke(new BaseError(BaseError.FAIL_OPEN_FILE, "File name is empty"));
+                failure?.Invoke(new BaseError(BaseErrorCode.FAIL_OPEN_FILE, "File name is empty"));
             }
             else
             {

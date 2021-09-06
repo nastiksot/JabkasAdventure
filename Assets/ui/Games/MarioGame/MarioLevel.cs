@@ -9,7 +9,10 @@ namespace UI.Games.MarioGame
 {
     public class MarioLevel : MonoBehaviour
     {
-        [SerializeField] private LevelManager levelManager;
-        [SerializeField] private SwitchController switchController;
+        [SerializeField] private Transform particleHolder;
+        [SerializeField] private Transform bonusSheetHolder;
+
+        public Transform ParticleHolder => particleHolder;
+        public Transform BonusSheetHolder => bonusSheetHolder;
     }
 }

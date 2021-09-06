@@ -19,7 +19,7 @@ namespace UI.Games.progressScreen
 
         private void GetCameraSystem()
         {
-            MainDependency.GetInstance().GetGameManager().GetCameraSystem(camera => { canvas.worldCamera = camera.Camera; },
+            MainDependency.GetInstance().GetReferenceManager().GetCameraSystem(camera => { canvas.worldCamera = camera.Camera; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 

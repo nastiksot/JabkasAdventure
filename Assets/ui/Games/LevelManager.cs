@@ -16,7 +16,8 @@ namespace UI.Games
 
         [Space(6f)] [SerializeField] private Transform spawnPosition;
         [Space(6f)] [SerializeField] private PlayerBehaviour playerBehaviour;
-
+        [Space(6f)] [SerializeField] private BaseMono gameLevelManager;
+  
         private void Start()
         {
             GetCameraSystem();
@@ -28,7 +29,7 @@ namespace UI.Games
         /// </summary>
         private void GetCameraSystem()
         {
-            MainDependency.GetInstance().GetGameManager().GetCameraSystem(camera =>
+            MainDependency.GetInstance().GetReferenceManager().GetCameraSystem(camera =>
             {
                 cameraSystem = camera;
                 cameraSystem.OnLevelSwitched?.Invoke(cameraData);
@@ -40,7 +41,7 @@ namespace UI.Games
         /// </summary>
         private void GetPlayer()
         {
-            MainDependency.GetInstance().GetGameManager().GetPlayer(player => { playerBehaviour = player; },
+            MainDependency.GetInstance().GetReferenceManager().GetPlayer(player => { playerBehaviour = player; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
             // playerBehaviour.transform.position = spawnPosition.position;
         }

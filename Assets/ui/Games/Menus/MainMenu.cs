@@ -41,7 +41,7 @@ namespace UI.Games.Menus
         /// </summary>
         private void GetCameraSystem()
         {
-            MainDependency.GetInstance().GetGameManager().GetCameraSystem(camera =>
+            MainDependency.GetInstance().GetReferenceManager().GetCameraSystem(camera =>
                 {
                     cameraSystem = camera;
                     canvas.worldCamera = camera.Camera;

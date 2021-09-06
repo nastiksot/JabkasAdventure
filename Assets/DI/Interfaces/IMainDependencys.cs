@@ -6,7 +6,7 @@ namespace DI.Interfaces
     public interface IMainDependencys
     {
         IUIManager GetUIManager();
-        IGameManager GetGameManager();
+        IReferenсeManager GetReferenceManager();
         IServiceManager GetServiceManager();
         IModuleManager GetModuleManager();
     }

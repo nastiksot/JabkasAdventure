@@ -7,7 +7,7 @@ namespace DI
 {
     public class UIManager : IUIManager
     {
-        private Navigator navigator;
+        private INavigator navigator;
         private IUIPrefabManager uiPrefabManager;
         
         public UIManager ()
@@ -20,7 +20,7 @@ namespace DI
         /// Get navigator
         /// </summary>
         /// <returns></returns>
-        public Navigator GetNavigator()
+        public INavigator GetNavigator()
         {
             return navigator;
         }

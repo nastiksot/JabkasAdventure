@@ -81,7 +81,7 @@ namespace UI.Games.Menus
         /// </summary>
         private void GetStatistics()
         {
-            MainDependency.GetInstance().GetGameManager().GetStatisticsData(
+            MainDependency.GetInstance().GetReferenceManager().GetStatisticsData(
                 collector => { statisticsDataCollector = collector; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
@@ -91,7 +91,7 @@ namespace UI.Games.Menus
         /// </summary>
         private void GetTimerManager()
         {
-            MainDependency.GetInstance().GetGameManager().GetTimerManager(
+            MainDependency.GetInstance().GetReferenceManager().GetTimerManager(
                 timerManager => { timeUIManager = timerManager; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }

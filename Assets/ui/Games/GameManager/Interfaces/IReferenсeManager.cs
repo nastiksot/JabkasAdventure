@@ -13,7 +13,7 @@ using UI.Timer;
 
 namespace UI.Games.GameManager.Interfaces
 {
-    public interface IGameManager
+    public interface IReferenсeManager
     { 
         void GetCameraSystem(Action<CameraSystem> success, Action<BaseError> failure );
         void GetMainMenu(Action<MainMenu> success, Action<BaseError> failure);

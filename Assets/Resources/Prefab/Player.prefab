@@ -92,7 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181830516c70aa742ba4cd62245c44ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleHolder: {fileID: 0}
   enemyDeathParticle: {fileID: 2804827756499867022, guid: beb6ac3d55f6cbd48b7ff20ccad5e2b4, type: 3}
   parentRigidbody2D: {fileID: 7859526464557667804}
   bounceForce: 10
@@ -150,8 +149,10 @@ MonoBehaviour:
   playerSpeed: 6
   jumpPower: 400
   isGrounded: 0
-  rayDistance: 0.5
+  rayHorizontalDistance: 0.55
+  rayVerticalDistance: 0.595
   rayTransform: {fileID: 8311325165220829024}
+  deprecateDirection: 0
 --- !u!50 &7859526464557667804
 Rigidbody2D:
   serializedVersion: 4

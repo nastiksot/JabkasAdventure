@@ -4,6 +4,6 @@ namespace DI.UI
 {
     public interface IUIManager
     {
-        Navigator GetNavigator();
+        INavigator GetNavigator();
     }
 }

@@ -9,9 +9,9 @@ namespace DI.Services.Navigator
     {
         private IMainGameInteractor mainGameInteractor;
 
-        public InteractorManager( IUIManager manager, IGameManager gameManager)
+        public InteractorManager( IUIManager manager, IReferenсeManager referenсeManager)
         {
-            mainGameInteractor = new MainGameInteractor(manager.GetNavigator(), gameManager);
+            mainGameInteractor = new MainGameInteractor(manager.GetNavigator(), referenсeManager);
         }
     }
 }

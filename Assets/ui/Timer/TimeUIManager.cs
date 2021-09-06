@@ -100,7 +100,7 @@ namespace UI.Timer
         /// </summary>
         private void GetNavigationMenu()
         {
-            MainDependency.GetInstance().GetGameManager().GetNavigationMenu(menu => { navigationMenu = menu; },
+            MainDependency.GetInstance().GetReferenceManager().GetNavigationMenu(menu => { navigationMenu = menu; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
         
@@ -109,7 +109,7 @@ namespace UI.Timer
         /// </summary>
         private void GetGameOverMenu()
         {
-            MainDependency.GetInstance().GetGameManager().GetGameOverMenu(menu => { gameOverMenu = menu; },
+            MainDependency.GetInstance().GetReferenceManager().GetGameOverMenu(menu => { gameOverMenu = menu; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
          

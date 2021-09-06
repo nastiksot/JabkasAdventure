@@ -57,7 +57,7 @@ namespace UI.Games.Menus
         /// </summary>
         private void GetTimerManager()
         {
-            MainDependency.GetInstance().GetGameManager().GetTimerManager(
+            MainDependency.GetInstance().GetReferenceManager().GetTimerManager(
                 timerManager => { timeUIManager = timerManager; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
@@ -67,7 +67,7 @@ namespace UI.Games.Menus
         /// </summary>
         private void GetNavigationMenu()
         {
-            MainDependency.GetInstance().GetGameManager().GetNavigationMenu(menu => { this.navigationMenu = menu; },
+            MainDependency.GetInstance().GetReferenceManager().GetNavigationMenu(menu => { this.navigationMenu = menu; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
     }

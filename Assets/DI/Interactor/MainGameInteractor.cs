@@ -6,11 +6,11 @@ namespace DI.Interactor
 {
     public class MainGameInteractor : IMainGameInteractor
     {
-        public MainGameInteractor(INavigator navigator, IGameManager gameManager)
+        public MainGameInteractor(INavigator navigator, IReferenсeManager referenсeManager)
         {
             navigator.CloseAll();
             navigator.InitMainMenu();
-            gameManager.SetCameraSystem();
+            referenсeManager.SetCameraSystem();
         }
     }
 }

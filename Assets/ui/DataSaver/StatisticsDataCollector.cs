@@ -132,7 +132,7 @@ namespace UI.DataSaver
         /// </summary>
         private void GetPauseMenu()
         {
-            MainDependency.GetInstance().GetGameManager().GetPauseMenu(menu => { pauseMenu = menu; },
+            MainDependency.GetInstance().GetReferenceManager().GetPauseMenu(menu => { pauseMenu = menu; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
 

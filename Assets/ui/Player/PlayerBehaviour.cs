@@ -24,12 +24,13 @@ namespace UI.Player
         [Space(6f)] [SerializeField] private float playerSpeed = 6;
         [SerializeField] private int jumpPower = 400;
         [SerializeField] private bool isGrounded;
-        [SerializeField] private float rayDistance;
+        [SerializeField] private float rayHorizontalDistance;
+        [SerializeField] private float rayVerticalDistance;
         [SerializeField] private Transform rayTransform;
 
         private float moveX;
         private bool facingDirection = true; //true = right | false = left
-        private DeprecateDirection deprecateDirection = DeprecateDirection.None;
+        [SerializeField] private DeprecateDirection deprecateDirection = DeprecateDirection.None;
 
         private void FixedUpdate()
         {
@@ -38,15 +39,18 @@ namespace UI.Player
 
         private void PlayerMove()
         {
-            var wallRaycast = rayDistance;
+            var wallRaycast = rayHorizontalDistance;
 
             if (facingDirection == false)
             {
-                wallRaycast = -rayDistance;
+                wallRaycast = -rayHorizontalDistance;
             }
 
-            var targetPos = rayTransform.position;
+            var rayCenterPosition = rayTransform.position;
+            var targetPos = rayCenterPosition;
             targetPos.x += wallRaycast;
+
+            var groundPos = new Vector2(rayCenterPosition.x, (rayCenterPosition.y -rayVerticalDistance));
 
             Debug.DrawLine(transform.position, targetPos, Color.blue);
             if (Physics2D.Linecast(transform.position, targetPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME)))
@@ -58,11 +62,12 @@ namespace UI.Player
             {
                 deprecateDirection = DeprecateDirection.None;
             }
+            
+            Debug.DrawLine(transform.position, groundPos, Color.blue);
+            isGrounded = Physics2D.Linecast(transform.position, groundPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME));
 
-            //controllers and directions
             moveX = CrossPlatformInputManager.GetAxis("Horizontal");
-            if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded &&
-                deprecateDirection != DeprecateDirection.One)
+            if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded)
             {
                 Jump();
             }
@@ -76,11 +81,7 @@ namespace UI.Player
             {
                 facingDirection = true;
                 transform.localScale = new Vector3(1, 1.1f, 0);
-            }
-
-            //animation of running
-            // GetComponent<Animator>().SetBool("isRunning", moveX != 0);
-            // GetComponent<Animator>().SetBool("isJumping", !isGrounded);
+            } 
 
             playerRigidbody.velocity =
                 new Vector2(moveX * playerSpeed, playerRigidbody.velocity.y);
@@ -90,29 +91,6 @@ namespace UI.Player
         {
             playerRigidbody.AddForce(Vector2.up * jumpPower);
         }
-
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            if (collision.gameObject.layer == Layers.GROUND_LAYER && isGrounded)
-            {
-                isGrounded = false;
-            }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.layer == Layers.GROUND_LAYER)
-            {
-                isGrounded = true;
-            }
-        }
-
-        private void OnCollisionStay2D(Collision2D other)
-        {
-            if (other.gameObject.layer == Layers.GROUND_LAYER && !isGrounded)
-            {
-                isGrounded = true;
-            }
-        }
+ 
     }
 }

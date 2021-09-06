@@ -31,7 +31,7 @@ namespace UI.Enemy
         /// </summary>
         private void GetGameOverMenu()
         {
-            MainDependency.GetInstance().GetGameManager().GetGameOverMenu(menu => { gameOverMenu = menu; },
+            MainDependency.GetInstance().GetReferenceManager().GetGameOverMenu(menu => { gameOverMenu = menu; },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
         }
     }
