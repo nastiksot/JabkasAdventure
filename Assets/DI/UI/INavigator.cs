@@ -6,7 +6,7 @@
 
         void InitMainMenu();
         void InitIntroLevel();
-        void InitMainLevel();
+        void InitMarioLevel();
         void InitFinalLevel();
         void InitPlayer();
         void StartLoadingScreen();

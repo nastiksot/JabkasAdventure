@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UI.Navigation
 {
-    public class NavigationMenu : MonoBehaviour
+    public class NavigationMenu : BaseMono
     {
         [SerializeField] private CanvasGroup navigationCanvas;
 

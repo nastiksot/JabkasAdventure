@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace UI.Games.MarioGame
 {
-    public class MarioLevel : MonoBehaviour
+    public class MarioLevel : BaseMono
     {
         [SerializeField] private Transform particleHolder;
         [SerializeField] private Transform bonusSheetHolder;

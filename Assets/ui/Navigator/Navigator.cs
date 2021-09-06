@@ -132,7 +132,7 @@ namespace UI.Navigator
             InitNavigationMenu();
         }
 
-        public void InitMainLevel()
+        public void InitMarioLevel()
         {
             CloseAll();
             InitPlayer();

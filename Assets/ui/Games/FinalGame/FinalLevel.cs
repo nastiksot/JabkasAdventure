@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using UI.Base;
+using UnityEngine;
 
 namespace UI.Games.FinalGame
 {
-    public class FinalLevel : MonoBehaviour
+    public class FinalLevel : BaseMono
     {
         
     }
