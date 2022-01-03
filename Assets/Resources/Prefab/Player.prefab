@@ -124,8 +124,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7859526464557667801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.63, y: -3.47, z: 0.10317421}
-  m_LocalScale: {x: 1, y: 1.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.6, z: 1}
   m_Children:
   - {fileID: 73354015838596585}
   - {fileID: 8311325165220829024}
@@ -146,9 +146,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 7859526464557667804}
   speedMultiplier: 0.01
-  jumpPower: 300
-  rayHorizontalDistance: 0.55
-  rayVerticalDistance: 0.595
+  jumpPower: 350
+  rayHorizontalDistance: 0.6
+  rayVerticalDistance: 0.85
   rayTransform: {fileID: 8311325165220829024}
 --- !u!50 &7859526464557667804
 Rigidbody2D:

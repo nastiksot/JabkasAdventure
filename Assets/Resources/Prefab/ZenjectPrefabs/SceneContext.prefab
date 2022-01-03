@@ -76,4 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122f9254c86046b89de4b60e344b7ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputService: {fileID: 6925236541100325969, guid: 91bb023697b2205438d4f17da744b961, type: 3}
+  InputService: {fileID: 6925236541100325969, guid: 91bb023697b2205438d4f17da744b961, type: 3}
+  ButtonUIInput: {fileID: 2558393276396206273, guid: 5f3bd45ca9c20c54eacb69f1c0fe6b9a, type: 3}
+  PauseMenu: {fileID: 8287929909432981225, guid: 277da640afed2374c8823f8ed81d277c, type: 3}
+  spawnPosition: {fileID: 0}

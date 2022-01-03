@@ -6369,9 +6369,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5292091890533835622}
-  - component: {fileID: 5292091890533835609}
-  - component: {fileID: 5292091890435058555}
-  - component: {fileID: 848545756631336465}
   m_Layer: 0
   m_Name: MarioLevel
   m_TagString: Untagged
@@ -6401,49 +6398,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5292091890533835609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5292091890533835623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 247423a6bdfe4c96bd887e49663c969c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraSystem: {fileID: 0}
-  cameraData: {fileID: 11400000, guid: 3d85a77e12b2b204faf17625798a87b5, type: 2}
-  spawnPosition: {fileID: 5292091890352255838}
-  playerBehaviour: {fileID: 0}
---- !u!114 &5292091890435058555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5292091890533835623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cd038f8f7a55ba468b42132d1abe2c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOn: 0
---- !u!114 &848545756631336465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5292091890533835623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4caab1bb4cef4e29b9ab6ab3e34bec30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleHolder: {fileID: 2170183965064012561}
-  bonusSheetHolder: {fileID: 7239760244500938097}
 --- !u!1 &5292091890648090576
 GameObject:
   m_ObjectHideFlags: 0
