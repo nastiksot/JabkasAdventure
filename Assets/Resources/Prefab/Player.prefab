@@ -144,15 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b454f0c61ec1144384337326d93f916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 7859526464557667806}
   playerRigidbody: {fileID: 7859526464557667804}
-  playerSpeed: 6
-  jumpPower: 400
-  isGrounded: 0
+  speedMultiplier: 0.01
+  jumpPower: 300
   rayHorizontalDistance: 0.55
   rayVerticalDistance: 0.595
   rayTransform: {fileID: 8311325165220829024}
-  deprecateDirection: 0
 --- !u!50 &7859526464557667804
 Rigidbody2D:
   serializedVersion: 4
