@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using Models;
+using Models.ConstantValues;
+using Models.Enum;
 using Modules.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,17 +14,20 @@ namespace Player
     {
         [SerializeField] private Rigidbody2D playerRigidbody;
 
-        [Header("Player Settings"), Space(6f)]
-        [SerializeField] private float speedMultiplier;
+        [Header("Player Settings"), Space(6f)] [SerializeField]
+        private float speedMultiplier;
+
         [SerializeField] private int jumpPower;
 
-        [Header("Raycast Settings"), Space(3f)]
-        [SerializeField] private float rayHorizontalDistance;
+        [Header("Raycast Settings"), Space(3f)] [SerializeField]
+        private float rayHorizontalDistance;
+
         [SerializeField] private float rayVerticalDistance;
         [SerializeField] private Transform rayTransform;
 
         private bool isGrounded;
         private float moveX;
+        private Vector2 cachedScale;
         private Coroutine moveCoroutine;
 
         private MovingDirection facingDirection = MovingDirection.Right;
@@ -41,12 +46,19 @@ namespace Player
             inputService.OnJump += Jump;
             inputService.OnMoveStarted += Move;
             inputService.OnMoveStopped += Stop;
+
+            CacheScale();
         }
 
         private void Stop()
         {
             if (moveCoroutine == null) return;
             StopCoroutine(moveCoroutine);
+        }
+
+        private void CacheScale()
+        {
+            cachedScale = transform.localScale;
         }
 
         private void Move(float movePosition)
@@ -67,12 +79,12 @@ namespace Player
                 if (moveX < 0.0f && !deprecateDirection.HasFlag(DeprecateDirection.Left))
                 {
                     facingDirection = MovingDirection.Left;
-                    transform.localScale = new Vector3(-1.5f, 1.6f, 0);
+                    transform.localScale = new Vector3(-cachedScale.x, cachedScale.y, 0);
                 }
                 else if (moveX > 0.0f && !deprecateDirection.HasFlag(DeprecateDirection.Right))
                 {
                     facingDirection = MovingDirection.Right;
-                    transform.localScale = new Vector3(1.5f, 1.6f, 0);
+                    transform.localScale = new Vector3(cachedScale.x, cachedScale.y, 0);
                 }
 
                 var transformPosition = playerRigidbody.transform.position;
@@ -105,7 +117,6 @@ namespace Player
             return false;
         }
 
-  
 
         private void Jump()
         {

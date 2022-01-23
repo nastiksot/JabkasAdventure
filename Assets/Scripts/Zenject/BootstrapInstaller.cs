@@ -1,5 +1,5 @@
 using Modules.Interfaces;
-using Modules.SceneModule;
+using Services;
 
 namespace Zenject
 {
@@ -13,7 +13,7 @@ namespace Zenject
 
         private void BindSceneLoader()
         {
-            Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle().NonLazy();
+            Container.Bind<ISceneService>().To<SceneService>().AsSingle().NonLazy();
         }
 
         private void BindBootstrapInstaller()

@@ -1,6 +1,6 @@
 ﻿using Factory;
-using Modules.InputModule;
 using Modules.Interfaces;
+using Services;
 using UI;
 using UnityEngine;
 
@@ -36,6 +36,7 @@ namespace Zenject
         {
             Container.Bind<ButtonUIInput>().FromComponentInNewPrefab(ButtonUIInput).AsSingle().NonLazy();
         }  
+        
         private void BindPauseMenu()
         {
             Container.Bind<PauseMenu>().FromComponentInNewPrefab(PauseMenu).AsSingle().NonLazy();
@@ -50,7 +51,7 @@ namespace Zenject
         {
             var player = Container.Resolve<IPlayerFactory>();
             player.Load();
-            player.Create(spawnPosition.position);
+            player.Create(spawnPosition.position); 
         }
     }
 }

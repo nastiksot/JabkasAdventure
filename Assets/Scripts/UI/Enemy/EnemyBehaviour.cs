@@ -1,5 +1,6 @@
 using System;
 using Models;
+using Models.ConstantValues;
 using UnityEngine;
 
 namespace UI.Enemy
