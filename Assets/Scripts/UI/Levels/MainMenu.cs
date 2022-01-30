@@ -1,15 +1,19 @@
-using Modules.Interfaces;
+using Models.Enum;
+using Services.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Levels
+namespace UI.Levels
 {
     public class MainMenu : MonoBehaviour
     {
-        [Header("Buttons")] [SerializeField] private Button playButton;
+        [Header("Buttons")] 
+        [SerializeField] private Button playButton;
         [SerializeField] private Button settingsButton;
-  
+        [SerializeField] private SceneType nextSceneType;
+        
+        
         private ISceneService sceneService;
 
         [Inject]
@@ -28,7 +32,7 @@ namespace Levels
         /// </summary>
         private void InitGame()
         {
-            playButton.onClick.AddListener(() => { sceneService.LoadSceneAsync("IntroLevel"); });
+            playButton.onClick.AddListener(() => { sceneService.LoadSceneAsync(nextSceneType); });
 #if PLATFORM_ANDROID
             settingsButton.onClick.AddListener(Application.Quit);
 #endif

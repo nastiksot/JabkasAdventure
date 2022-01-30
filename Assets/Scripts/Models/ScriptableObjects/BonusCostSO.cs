@@ -8,9 +8,6 @@ namespace Models.ScriptableObjects
     public class BonusCostSO : ScriptableObject
     {
         [SerializeField] private List <BonusCost> bonusCosts = new List <BonusCost> ();
-        public List <BonusCost>  BonusCosts => bonusCosts;
-
-        
-
+        public List <BonusCost>  BonusCosts => bonusCosts; 
     }
 }

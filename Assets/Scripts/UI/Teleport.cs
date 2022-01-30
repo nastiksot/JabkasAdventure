@@ -1,13 +1,14 @@
-using Models;
 using Models.ConstantValues;
-using Modules.Interfaces;
+using Models.Enum;
+using Services.Interfaces;
 using UnityEngine;
 using Zenject;
 
 namespace UI
 {
     public class Teleport : MonoBehaviour
-    {  
+    {
+        [SerializeField] private SceneType nextSceneType;
         private ISceneService sceneService;
 
         [Inject]
@@ -19,7 +20,7 @@ namespace UI
         {
             if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return; 
             //GetComponent<AudioSource>().Play();
-            sceneService.LoadSceneAsync("MarioLevel");
+            sceneService.LoadSceneAsync(nextSceneType);
         }
     }
 }

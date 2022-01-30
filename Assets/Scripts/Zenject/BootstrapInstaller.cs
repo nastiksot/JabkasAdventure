@@ -1,5 +1,5 @@
-using Modules.Interfaces;
 using Services;
+using Services.Interfaces;
 
 namespace Zenject
 {

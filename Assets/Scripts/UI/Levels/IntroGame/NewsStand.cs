@@ -1,10 +1,9 @@
 using System.Collections;
-using Models;
 using Models.ConstantValues;
 using UnityEngine;
 using Utility;
 
-namespace Levels.IntroGame
+namespace UI.Levels.IntroGame
 {
     public class NewsStand : MonoBehaviour
     {

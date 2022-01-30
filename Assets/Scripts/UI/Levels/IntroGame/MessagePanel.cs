@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Utility;
 
-namespace Levels.IntroGame
+namespace UI.Levels.IntroGame
 {
     public class MessagePanel : MonoBehaviour
     {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using Models;
 using Models.ClassModels;
 using Modules;
 using Services.Interfaces; 
@@ -10,8 +9,7 @@ namespace Services
     public class DataService : IDataService
     {
         private IDataModule dataModule = new DataModule();
-
-
+ 
         /// <summary>
         /// Save data in file
         /// </summary>

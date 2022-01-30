@@ -95,7 +95,6 @@ MonoBehaviour:
   enemyDeathParticle: {fileID: 2804827756499867022, guid: beb6ac3d55f6cbd48b7ff20ccad5e2b4, type: 3}
   parentRigidbody2D: {fileID: 7859526464557667804}
   bounceForce: 10
-  spiderCost: 10
 --- !u!1 &7859526464557667801
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,9 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b454f0c61ec1144384337326d93f916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRigidbody: {fileID: 7859526464557667804}
   speedMultiplier: 0.01
-  jumpPower: 350
+  jumpPower: 400
   rayHorizontalDistance: 0.6
   rayVerticalDistance: 0.85
   rayTransform: {fileID: 8311325165220829024}

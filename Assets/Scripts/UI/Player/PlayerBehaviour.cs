@@ -1,29 +1,26 @@
 using System;
 using System.Collections;
-using Models;
 using Models.ConstantValues;
 using Models.Enum;
-using Modules.Interfaces;
+using Services.Interfaces;
+using UI.Player.Interfaces;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Zenject;
 
-namespace Player
+namespace UI.Player
 {
-    public class PlayerBehaviour : MonoBehaviour
+    public class PlayerBehaviour : MonoBehaviour, IPlayerBehaviour
     {
-        [SerializeField] private Rigidbody2D playerRigidbody;
-
-        [Header("Player Settings"), Space(6f)] [SerializeField]
-        private float speedMultiplier;
-
+        [Header("Player Settings"), Space(6f)] 
+        [SerializeField] private float speedMultiplier;
         [SerializeField] private int jumpPower;
 
-        [Header("Raycast Settings"), Space(3f)] [SerializeField]
-        private float rayHorizontalDistance;
-
+        [Header("Raycast Settings"), Space(3f)]
+        [SerializeField] private float rayHorizontalDistance;
         [SerializeField] private float rayVerticalDistance;
         [SerializeField] private Transform rayTransform;
+   
+        private Rigidbody2D playerRigidbody;
 
         private bool isGrounded;
         private float moveX;
@@ -34,6 +31,9 @@ namespace Player
         private DeprecateDirection deprecateDirection = DeprecateDirection.None;
 
         private IInputService inputService;
+
+         
+        public event Action<Vector3> OnPlayerMove; 
 
         [Inject]
         public void Construct(IInputService inputService)
@@ -46,8 +46,15 @@ namespace Player
             inputService.OnJump += Jump;
             inputService.OnMoveStarted += Move;
             inputService.OnMoveStopped += Stop;
-
+            
+            playerRigidbody = GetComponent<Rigidbody2D>();
+            
             CacheScale();
+        }
+
+        public Vector3 GetPlayerPosition()
+        {
+            return transform.position;
         }
 
         private void Stop()
@@ -75,22 +82,24 @@ namespace Player
 
                 deprecateDirection = DeprecateDirection.None;
 
-
+                var scaleMultiplier = 0;
                 if (moveX < 0.0f && !deprecateDirection.HasFlag(DeprecateDirection.Left))
                 {
                     facingDirection = MovingDirection.Left;
-                    transform.localScale = new Vector3(-cachedScale.x, cachedScale.y, 0);
+                    scaleMultiplier = -1;
                 }
                 else if (moveX > 0.0f && !deprecateDirection.HasFlag(DeprecateDirection.Right))
                 {
                     facingDirection = MovingDirection.Right;
-                    transform.localScale = new Vector3(cachedScale.x, cachedScale.y, 0);
+                    scaleMultiplier = 1;
                 }
+                
+                transform.localScale = new Vector3(scaleMultiplier*cachedScale.x, cachedScale.y, 0);
 
                 var transformPosition = playerRigidbody.transform.position;
                 transformPosition.x = transform.position.x + moveX * speedMultiplier;
                 transform.position = transformPosition;
-
+                OnPlayerMove?.Invoke(transformPosition);
                 yield return null;
             }
         }
@@ -124,7 +133,7 @@ namespace Player
             var groundPos = new Vector2(rayCenterPosition.x, (rayCenterPosition.y - rayVerticalDistance));
             isGrounded = Physics2D.Linecast(transform.position, groundPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME));
             if (!isGrounded) return;
-            playerRigidbody.AddForce(Vector2.up * jumpPower);
+            playerRigidbody.AddForce(Vector2.up * jumpPower); 
         }
     }
 }

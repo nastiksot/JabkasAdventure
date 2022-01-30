@@ -1,30 +1,28 @@
 ﻿using Factory;
-using Modules.Interfaces;
 using Services;
-using UI;
-using UnityEngine;
+using Services.Interfaces;
+using UI; 
 
 namespace Zenject
 {
-    public class BaseSceneInstaller : MonoInstaller, IInitializable
+    public class BaseSceneInstaller : MonoInstaller
     {
         public InputService InputService;
         public ButtonUIInput ButtonUIInput;
         public PauseMenu PauseMenu;
-        public Transform spawnPosition;
 
         public override void InstallBindings()
         {
             BindIntroLevelInstaller();
             BindInputService();
             BindButtonUIInput();
-            BindPlayerFactory();
-            BindPauseMenu();
+            BindEnemyFactory();
+            BindPauseMenu(); 
         }
 
-        private void BindPlayerFactory()
+        private void BindEnemyFactory()
         {
-            Container.Bind<IPlayerFactory>().To<PlayerFactory>().AsSingle();
+            Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle();
         }
 
         private void BindInputService()
@@ -46,12 +44,6 @@ namespace Zenject
         {
             Container.BindInterfacesAndSelfTo<BaseSceneInstaller>().FromInstance(this).AsSingle();
         }
-
-        public void Initialize()
-        {
-            var player = Container.Resolve<IPlayerFactory>();
-            player.Load();
-            player.Create(spawnPosition.position); 
-        }
+   
     }
 }

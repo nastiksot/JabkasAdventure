@@ -1,8 +1,7 @@
-using Models;
 using Models.ConstantValues;
 using UnityEngine;
 
-namespace Levels.MarioGame
+namespace UI.Levels.MarioGame
 {
     public class ChairPlatform : MonoBehaviour
     {
