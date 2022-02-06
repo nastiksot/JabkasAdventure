@@ -1,21 +1,14 @@
+using System;
 using Models.ConstantValues;
-using Models.Enum;
-using UI.DataSaver;
 using UnityEngine;
-using Zenject;
 
-namespace UI.Player
+namespace UI.Levels.MarioGame.Books
 {
-    public class SheetCollision : MonoBehaviour
+    public class CVSheet : MonoBehaviour
     { 
         private Rigidbody2D rigidbody2D;
-        private StatisticsCollector statisticsCollector;
         
-        [Inject]
-        public void Construct(StatisticsCollector statisticsCollector)
-        {
-            this.statisticsCollector = statisticsCollector;
-        }
+        public event Action OnPlayerCollided;
         
         private void Start()
         {
@@ -31,8 +24,7 @@ namespace UI.Player
             }
 
             if (!other.gameObject.CompareTag(Tags.PLAYER_TAG)) return;
-                statisticsCollector.ChangeScore(BonusType.Sheet);
-            Destroy(gameObject);
+            OnPlayerCollided?.Invoke();
         }
     }
 }

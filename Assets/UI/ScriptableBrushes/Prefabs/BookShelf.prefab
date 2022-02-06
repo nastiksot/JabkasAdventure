@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockSprite: {fileID: 8561038313235136274}
   emptyShelfSprite: {fileID: 21300000, guid: 4cee5a2bf58234840b7791e8033b7956, type: 3}
-  CVSheet: {fileID: 290589230548838234, guid: 6b8291f3b82dff44bada52fcb43a0db3, type: 3}
+  CVSheetPrefab: {fileID: 2550678140202842151, guid: 6b8291f3b82dff44bada52fcb43a0db3, type: 3}
 --- !u!50 &7030721981131988181
 Rigidbody2D:
   serializedVersion: 4

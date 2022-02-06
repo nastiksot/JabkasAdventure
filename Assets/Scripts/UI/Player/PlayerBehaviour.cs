@@ -11,15 +11,17 @@ namespace UI.Player
 {
     public class PlayerBehaviour : MonoBehaviour, IPlayerBehaviour
     {
-        [Header("Player Settings"), Space(6f)] 
-        [SerializeField] private float speedMultiplier;
+        [Header("Player Settings"), Space(6f)] [SerializeField]
+        private float speedMultiplier;
+
         [SerializeField] private int jumpPower;
 
-        [Header("Raycast Settings"), Space(3f)]
-        [SerializeField] private float rayHorizontalDistance;
+        [Header("Raycast Settings"), Space(3f)] [SerializeField]
+        private float rayHorizontalDistance;
+
         [SerializeField] private float rayVerticalDistance;
         [SerializeField] private Transform rayTransform;
-   
+
         private Rigidbody2D playerRigidbody;
 
         private bool isGrounded;
@@ -32,11 +34,11 @@ namespace UI.Player
 
         private IInputService inputService;
 
-         
-        public event Action<Vector3> OnPlayerMove; 
+
+        public event Action<Vector3> OnPlayerMove;
 
         [Inject]
-        public void Construct(IInputService inputService)
+        private void Construct(IInputService inputService)
         {
             this.inputService = inputService;
         }
@@ -46,15 +48,15 @@ namespace UI.Player
             inputService.OnJump += Jump;
             inputService.OnMoveStarted += Move;
             inputService.OnMoveStopped += Stop;
-            
+
             playerRigidbody = GetComponent<Rigidbody2D>();
-            
+
             CacheScale();
         }
 
-        public Vector3 GetPlayerPosition()
+        public Transform GetPlayerTransform()
         {
-            return transform.position;
+            return transform;
         }
 
         private void Stop()
@@ -78,8 +80,6 @@ namespace UI.Player
             while (true)
             {
                 moveX = movePosition;
-                if (CheckWallCollision()) yield break;
-
                 deprecateDirection = DeprecateDirection.None;
 
                 var scaleMultiplier = 0;
@@ -93,18 +93,20 @@ namespace UI.Player
                     facingDirection = MovingDirection.Right;
                     scaleMultiplier = 1;
                 }
-                
-                transform.localScale = new Vector3(scaleMultiplier*cachedScale.x, cachedScale.y, 0);
 
-                var transformPosition = playerRigidbody.transform.position;
-                transformPosition.x = transform.position.x + moveX * speedMultiplier;
-                transform.position = transformPosition;
+                if (IsCollidedWithWall()) yield break;
+                var playerTransform = transform;
+                playerTransform.localScale = new Vector3(scaleMultiplier * cachedScale.x, cachedScale.y, 0);
+
+                var transformPosition = playerTransform.position;
+                transformPosition.x = playerTransform.position.x + moveX * speedMultiplier;
+                playerTransform.position = transformPosition;
                 OnPlayerMove?.Invoke(transformPosition);
                 yield return null;
             }
         }
 
-        private bool CheckWallCollision()
+        private bool IsCollidedWithWall()
         {
             var wallRaycast = rayHorizontalDistance;
 
@@ -116,24 +118,27 @@ namespace UI.Player
             var rayCenterPosition = rayTransform.position;
             var targetPos = rayCenterPosition;
             targetPos.x += wallRaycast;
-
-            if (!Physics2D.Linecast(transform.position, targetPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME))) return false;
+            Debug.DrawLine(transform.position, targetPos, Color.red);
+            if (!Physics2D.Linecast(transform.position, targetPos,
+                1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME))) return false;
             deprecateDirection = targetPos.x > 0 ? DeprecateDirection.Right : DeprecateDirection.Left;
             isGrounded = false;
-            if (moveCoroutine == null) return true;
-            StopCoroutine(moveCoroutine);
+            if (moveCoroutine != null)
+            {
+                StopCoroutine(moveCoroutine);
+            }
 
-            return false;
+            return true;
         }
-
 
         private void Jump()
         {
             var rayCenterPosition = rayTransform.position;
             var groundPos = new Vector2(rayCenterPosition.x, (rayCenterPosition.y - rayVerticalDistance));
-            isGrounded = Physics2D.Linecast(transform.position, groundPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME));
+            isGrounded = Physics2D.Linecast(transform.position, groundPos,
+                1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME));
             if (!isGrounded) return;
-            playerRigidbody.AddForce(Vector2.up * jumpPower); 
+            playerRigidbody.AddForce(Vector2.up * jumpPower);
         }
     }
 }

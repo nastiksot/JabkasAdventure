@@ -1,24 +1,34 @@
 using System.Collections;
-using Models;
 using Models.ConstantValues;
+using Models.Enum;
+using UI.DataSaver;
 using UnityEngine;
+using Zenject;
 
-namespace UI.Levels.MarioGame
+namespace UI.Levels.MarioGame.Books
 {
     public class LibraryBook : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer blockSprite;
         [SerializeField] private Sprite emptyShelfSprite;
 
-        [Space(6f), Header("Prefab")] 
-        [SerializeField] private GameObject CVSheet;
+        [Space(6f), Header("Prefab")]
+        [SerializeField]
+        private CVSheet CVSheetPrefab;
 
-        private GameObject CVSheetObject;  
-        
         private bool isContainSheet = true;
         private bool isShelfClosed = true;
- 
 
+
+        private StatisticsCollector statisticsCollector;
+        private CVSheet instantiatedCVSheet;
+
+        [Inject]
+        private void Construct(StatisticsCollector statisticsCollector)
+        {
+            this.statisticsCollector = statisticsCollector;
+        }
+        
         private void OnCollisionEnter2D(Collision2D col)
         {
             if (col.collider.bounds.max.y < transform.position.y &&
@@ -42,9 +52,13 @@ namespace UI.Levels.MarioGame
         {
             yield return new WaitForSeconds(0.17f);
             if (!isShelfClosed) yield break;
-            CVSheetObject = Instantiate(CVSheet, transform.position + Vector3.up * 2, Quaternion.identity);
-            // CVSheetObject.transform.SetParent(marioLevel.ParticleHolder);
+            instantiatedCVSheet = Instantiate(CVSheetPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
+            instantiatedCVSheet.OnPlayerCollided += () =>
+            {
+                statisticsCollector.ChangeScore(BonusType.Sheet);
+                Destroy(instantiatedCVSheet.gameObject);
+            };
             isShelfClosed = false;
-        } 
+        }
     }
 }

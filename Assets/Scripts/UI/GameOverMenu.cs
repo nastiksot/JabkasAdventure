@@ -16,7 +16,6 @@ namespace UI
 
 
         // private StatisticsDataCollector statisticsDataCollector;
-        // private TimeUIManager timeUIManager;
 
         public CanvasGroup Background => background;
 

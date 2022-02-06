@@ -21,12 +21,12 @@ namespace UI.DataSaver
 
         [SerializeField] private CanvasGroup statisticDataCanvasGroup;
         [SerializeField] private BonusCostSO bonusCost;
-        
+
         private int summarySheet;
         private int summaryScore;
 
         private string filePath = "DefaultSave";
-        private PlayerData playerData;
+        private PlayerData playerData = new PlayerData();
 
         private IDataService dataService;
         private ITimer timer;
@@ -35,17 +35,17 @@ namespace UI.DataSaver
         {
             get => filePath;
             set => filePath = value;
-        } 
+        }
 
-        
+
         [Inject]
-        public void Construct(ITimer timer, IDataService dataService)
+        private void Construct(ITimer timer, IDataService dataService)
         {
             this.timer = timer;
             this.dataService = dataService;
         }
 
-      
+
         private void Start()
         {
             timer.BeginTimer();
@@ -64,7 +64,7 @@ namespace UI.DataSaver
         private void OnTimeChanged(float seconds)
         {
             timeRemainText.text = seconds.ToString();
-        } 
+        }
 
         /// <summary>
         /// Update player data 
@@ -126,14 +126,13 @@ namespace UI.DataSaver
                     sheetValue.text = summarySheet.ToString();
                     playerData.UpdateSheetCount(summarySheet);
                     break;
-                case BonusType.Spider: 
+                case BonusType.Spider:
                     break;
             }
 
-            summaryScore += (int)scoreValue; 
-            playerData.UpdateScore(summaryScore); 
+            summaryScore += (int)scoreValue;
+            playerData.UpdateScore(summaryScore);
             totalScore.text = (summaryScore).ToString();
-  
-        } 
+        }
     }
 }

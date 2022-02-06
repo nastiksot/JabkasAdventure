@@ -12,10 +12,11 @@ namespace UI
         private ISceneService sceneService;
 
         [Inject]
-        public void Construct(ISceneService sceneService)
+        private void Construct(ISceneService sceneService)
         {
             this.sceneService = sceneService;
         }
+        
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return; 

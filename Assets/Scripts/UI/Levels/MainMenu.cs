@@ -17,7 +17,7 @@ namespace UI.Levels
         private ISceneService sceneService;
 
         [Inject]
-        public void Construct(ISceneService sceneService)
+        private void Construct(ISceneService sceneService)
         {
             this.sceneService = sceneService;
         }

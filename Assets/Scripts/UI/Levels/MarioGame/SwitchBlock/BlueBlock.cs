@@ -21,7 +21,7 @@ namespace UI.Levels.MarioGame.SwitchBlock
         private ISwitcher switcher;
 
         [Inject]
-        public void Construct(ISwitcher switcher)
+        private void Construct(ISwitcher switcher)
         {
             this.switcher = switcher;
         } 

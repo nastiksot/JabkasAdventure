@@ -11,7 +11,7 @@ namespace UI
         private PauseMenu pauseMenu;
 
         [Inject]
-        public void Construct(PauseMenu pauseMenu)
+        private void Construct(PauseMenu pauseMenu)
         {
             this.pauseMenu = pauseMenu;
         }

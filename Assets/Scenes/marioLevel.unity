@@ -173,7 +173,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0
   far clip plane: 5000
   field of view: 40
   orthographic: 1
@@ -219,9 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6febe88d52bced4ba2236a9ad9203b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAheadFactor: 3
-  lookAheadReturnSpeed: 0.5
-  lookAheadMoveThreshold: 0.1
+  objToFollow: {fileID: 0}
+  setRotation: 0
 --- !u!114 &464010600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +298,26 @@ PrefabInstance:
     - target: {fileID: 5292091890533835623, guid: fae8f5019ffed9448a774419d184856c, type: 3}
       propertyPath: m_Name
       value: MarioLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292091891272932995, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262016938719842974, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262016938719842974, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262016940343862887, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262016940343862887, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 848545756631336465, guid: fae8f5019ffed9448a774419d184856c, type: 3}
