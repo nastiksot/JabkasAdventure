@@ -14,12 +14,12 @@ namespace UI.Enemy
 
         private bool facingDirection = true; //true = right | false = left
         private Vector3 baseScale;
- 
-        private void Start()
+
+        private void Awake()
         {
             baseScale = transform.localScale;
         }
- 
+
         private void FixedUpdate()
         {
             var velocityX = moveSpeed;
@@ -27,7 +27,7 @@ namespace UI.Enemy
             {
                 velocityX = -moveSpeed;
             }
-        
+
             MoveEnemy(velocityX);
 
             if (IsHittingWall() || IsNearEdge())
@@ -53,8 +53,8 @@ namespace UI.Enemy
         {
             var isCollidedWall = false;
 
-            var wallRaycast = baseCastDist; 
-        
+            var wallRaycast = baseCastDist;
+
             if (facingDirection == false)
             {
                 wallRaycast = -baseCastDist;
@@ -67,11 +67,13 @@ namespace UI.Enemy
 
 
             Debug.DrawLine(position, targetPos, Color.magenta);
-            if (Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME))
-                ||Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.SWITCHER_LAYER_NAME)))
+            if (Physics2D.Linecast(raycastPosition.position, targetPos,
+                    1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME))
+                || Physics2D.Linecast(raycastPosition.position, targetPos,
+                    1 << LayerMask.NameToLayer(Layers.SWITCHER_LAYER_NAME)))
             {
                 isCollidedWall = true;
-            } 
+            }
 
             return isCollidedWall;
         }
@@ -85,19 +87,21 @@ namespace UI.Enemy
             var isCollidedEdge = true;
 
             var edgeRaycast = baseCastDist;
-        
+
             var rayPosition = raycastPosition.position;
             var targetPos = rayPosition;
 
             targetPos.y -= edgeRaycast;
 
             Debug.DrawLine(rayPosition, targetPos, Color.blue);
-            if (Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME))
-            ||Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.SWITCHER_LAYER_NAME)))
+            if (Physics2D.Linecast(raycastPosition.position, targetPos,
+                    1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME))
+                || Physics2D.Linecast(raycastPosition.position, targetPos,
+                    1 << LayerMask.NameToLayer(Layers.SWITCHER_LAYER_NAME)))
             {
                 isCollidedEdge = false;
             }
-             
+
             return isCollidedEdge;
         }
 
@@ -116,6 +120,5 @@ namespace UI.Enemy
             transform.localScale = newScale;
             facingDirection = newDirection;
         }
- 
     }
 }

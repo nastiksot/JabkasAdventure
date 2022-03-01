@@ -6,18 +6,18 @@ using Services.Interfaces;
 
 namespace Services
 {
-    public class DataService : IDataService
+    public class FileService : IFileService
     {
-        private IDataModule dataModule = new DataModule();
+        private IFileModule fileModule = new FileModule();
  
         /// <summary>
         /// Save data in file
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="model"></param>
         /// <param name="fileName"></param>
-        public void SaveData(PlayerData data, string fileName)
+        public void SaveData(StatisticModel model, string fileName)
         {
-            dataModule.SaveData(data, fileName);
+            fileModule.SaveData(model, fileName);
         }
 
         /// <summary>
@@ -26,9 +26,9 @@ namespace Services
         /// <param name="fileName"></param>
         /// <param name="success"></param>
         /// <param name="failure"></param>
-        public void LoadData(string fileName, Action<PlayerData> success, Action<BaseError> failure)
+        public void LoadData(string fileName, Action<StatisticModel> success, Action<BaseError> failure)
         {
-            dataModule.LoadData(fileName, success, failure);
+            fileModule.LoadData(fileName, success, failure);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Services
         /// <param name="failure"></param>
         public void CreateFile(string fileName, Action<FileStream> success, Action<BaseError> failure)
         {
-            dataModule.CreateFile(fileName, success, failure);
+            fileModule.CreateFile(fileName, success, failure);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Services
         /// <param name="failure"></param>
         public void OpenFile(string fileName, Action<FileStream> success, Action<BaseError> failure)
         {
-            dataModule.OpenFile(fileName, success, failure);
+            fileModule.OpenFile(fileName, success, failure);
         }
     }
 }

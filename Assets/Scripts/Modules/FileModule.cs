@@ -2,7 +2,6 @@
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using Models;
 using Models.ClassModels;
 using Models.ConstantValues;
 using UnityEngine;
@@ -10,7 +9,7 @@ using Utility;
 
 namespace Modules
 {
-    public class DataModule : IDataModule
+    public class FileModule : IFileModule
     {
         private static string directoryName = "SaveData";
 
@@ -23,9 +22,9 @@ namespace Modules
         /// <summary>
         /// Save data in file
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="model"></param>
         /// <param name="fileName"></param>
-        public void SaveData(PlayerData data, string fileName)
+        public void SaveData(StatisticModel model, string fileName)
         {
             if (!DirectoryExists())
             {
@@ -41,7 +40,7 @@ namespace Modules
 
             CreateFile(fileName, fileStream =>
                 {
-                    binaryFormatter.Serialize(fileStream, data);
+                    binaryFormatter.Serialize(fileStream, model);
                     fileStream.Close();
                 }, error => { ToastUtility.ShowToast(error.errorMessage); }
             );
@@ -53,7 +52,7 @@ namespace Modules
         /// <param name="fileName"></param>
         /// <param name="success"></param>
         /// <param name="failure"></param>
-        public void LoadData(string fileName, Action<PlayerData> success, Action<BaseError> failure)
+        public void LoadData(string fileName, Action<StatisticModel> success, Action<BaseError> failure)
         {
             if (!SaveExists(fileName))
             {
@@ -65,7 +64,7 @@ namespace Modules
                 var binaryFormatter = new BinaryFormatter();
                 OpenFile(fileName, fileStream =>
                 {
-                    var playerData = (PlayerData) binaryFormatter.Deserialize(fileStream);
+                    var playerData = (StatisticModel) binaryFormatter.Deserialize(fileStream);
                     fileStream.Close();
                     success?.Invoke(playerData);
                 }, failure);

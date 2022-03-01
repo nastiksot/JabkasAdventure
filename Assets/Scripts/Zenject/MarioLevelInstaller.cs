@@ -1,8 +1,6 @@
-﻿using System;
-using Factory;
+﻿using Factory;
 using Services;
 using Services.Interfaces;
-using UI.DataSaver;
 using UI.Levels.MarioGame.SwitchBlock;
 using UI.Levels.MarioGame.SwitchBlock.Interface;
 using UI.Player;
@@ -14,20 +12,19 @@ namespace Zenject
 {
     public class MarioLevelInstaller : MonoInstaller, IInitializable
     {
-        public StatisticsCollector StatisticsCollector;
         public PlayerBehaviour PlayerBehaviour;
-        public EnemyMarker[] EnemyMarkers;
         public Transform playerSpawnPosition;
-        
+        public EnemyMarker[] EnemyMarkers;
+
         public override void InstallBindings()
         {
             BindMarioLevelInstaller();
             BindSwitcher();
             BindDataService();
             BindTimer();
-            BindStatisticCollector();
             BindPlayer();
             BindEnemyFactory();
+            BindStatistics();
         }
 
         private void BindEnemyFactory()
@@ -44,16 +41,15 @@ namespace Zenject
         {
             Container.Bind<ITimer>().To<Timer>().AsSingle().NonLazy();
         }
+        
+        private void BindStatistics()
+        {
+            Container.Bind<IStatisticService>().To<StatisticService>().AsSingle().NonLazy();
+        }
 
         private void BindDataService()
         {
-            Container.Bind<IDataService>().To<DataService>().AsSingle().NonLazy();
-        }
-
-        private void BindStatisticCollector()
-        {
-            Container.BindInterfacesAndSelfTo<StatisticsCollector>().FromComponentInNewPrefab(StatisticsCollector)
-                .AsSingle().NonLazy();
+            Container.Bind<IFileService>().To<FileService>().AsSingle().NonLazy();
         }
 
         private void BindMarioLevelInstaller()

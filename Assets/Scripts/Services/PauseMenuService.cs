@@ -1,11 +1,12 @@
 ﻿using System;
+using Services.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using Utility;
 
-namespace UI
+namespace Services
 {
-    public class PauseMenu : MonoBehaviour
+    public class PauseMenuService : MonoBehaviour, IPauseMenuService
     {
         [SerializeField] private CanvasGroup background;
         [SerializeField] private CanvasGroup pauseButtonCanvas;
@@ -25,28 +26,19 @@ namespace UI
 
             continueButton.onClick.AddListener(() =>
             {
-                // timeUIManager.Unpause();
-                // timeUIManager.SetTimerManagerUIVisibility(true);
-                // navigationMenu.SetNavigationMenuVisibility(true);
-
                 OnContinueButtonPressed?.Invoke();
                 SetPauseMenuVisibility(false);
-                SetPause(false);
             });
 
             pauseButton.onClick.AddListener(() =>
             {
                 OnPauseButtonPressed?.Invoke();
                 SetPauseMenuVisibility(true);
-                SetPause(true);
             });
 
             exitButton.onClick.AddListener(() =>
             {
-                // timeUIManager.Unpause();
-                // MainDependency.GetInstance().GetUIManager().GetNavigator().InitMainMenu();
                 OnExitButtonPressed?.Invoke();
-                SetPause(false);
             });
         }
 
@@ -60,9 +52,5 @@ namespace UI
             pauseButtonCanvas.State(!state);
         }
 
-        private void SetPause(bool state)
-        {
-            Time.timeScale = state ? 0f : 1f;
-        }
     }
 }

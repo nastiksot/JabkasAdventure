@@ -192,8 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec41f423d834870a82ea80da64d4627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalScore: {fileID: 8419744665148636708}
-  sheetValue: {fileID: 8419744664768313628}
+  totalScoreText: {fileID: 8419744665148636708}
+  sheetValueText: {fileID: 8419744664768313628}
   timeRemainText: {fileID: 8419744664592483506}
   statisticDataCanvasGroup: {fileID: 2017295840099600934}
   bonusCost: {fileID: 11400000, guid: 40d58d2ab00e347429a8a522c4931f29, type: 2}

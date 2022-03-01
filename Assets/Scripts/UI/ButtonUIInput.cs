@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Services;
+using Services.Interfaces;
+using UnityEngine;
 using Utility;
 using Zenject;
 
@@ -8,18 +10,18 @@ namespace UI
     {
         [SerializeField] private CanvasGroup navigationCanvas;
  
-        private PauseMenu pauseMenu;
+        private IPauseMenuService pauseMenuService;
 
         [Inject]
-        private void Construct(PauseMenu pauseMenu)
+        private void Construct(IPauseMenuService pauseMenuService)
         {
-            this.pauseMenu = pauseMenu;
+            this.pauseMenuService = pauseMenuService;
         }
 
         private void Awake()
         {
-            pauseMenu.OnPauseButtonPressed += () => SetButtonInputVisibility(false);
-            pauseMenu.OnContinueButtonPressed += () => SetButtonInputVisibility(true);
+            pauseMenuService.OnPauseButtonPressed += () => SetButtonInputVisibility(false);
+            pauseMenuService.OnContinueButtonPressed += () => SetButtonInputVisibility(true);
         }
 
         /// <summary>

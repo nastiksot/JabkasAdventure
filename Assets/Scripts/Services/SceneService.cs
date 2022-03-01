@@ -17,21 +17,21 @@ namespace Services
         {
             add => onSceneLoaded += value;
             remove => onSceneLoaded -= value;
-        } 
+        }
 
         public event Action OnSceneUnloaded
         {
             add => onSceneUnloaded += value;
             remove => onSceneUnloaded -= value;
-        } 
+        }
 
         public event Action OnStartLoadingScene
         {
             add => onStartLoadingScene += value;
             remove => onStartLoadingScene -= value;
-        } 
+        }
 
-        
+
         public IEnumerator LoadSceneAsync(SceneType sceneType)
         {
             var asyncLoad = sceneType switch
@@ -42,9 +42,9 @@ namespace Services
                 SceneType.Final => SceneManager.LoadSceneAsync(0),
                 _ => throw new NullReferenceException()
             };
-            
+
             onStartLoadingScene?.Invoke();
-            
+
             asyncLoad.allowSceneActivation = false;
             yield return new WaitUntil(() => asyncLoad.progress >= 0.9f);
             onSceneLoaded?.Invoke();
@@ -61,10 +61,9 @@ namespace Services
                 SceneType.Final => SceneManager.UnloadSceneAsync(0),
                 _ => throw new NullReferenceException()
             };
-            
+
             yield return new WaitUntil(() => asyncLoad.progress >= 0.9f);
             onSceneUnloaded?.Invoke();
         }
- 
     }
 }

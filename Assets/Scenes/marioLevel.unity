@@ -233,8 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe5b82a9fa146f598994a4a568e5f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StatisticsCollector: {fileID: 623979479638319637, guid: ace6dea25c0301346b984e9896654426, type: 3}
   PlayerBehaviour: {fileID: 7859526464557667805, guid: 20a8a99badfbe654ba6fd8c2d31cb9b3, type: 3}
+  playerSpawnPosition: {fileID: 1022509870}
   EnemyMarkers:
   - {fileID: 1022509880}
   - {fileID: 1022509879}
@@ -246,7 +246,6 @@ MonoBehaviour:
   - {fileID: 1022509873}
   - {fileID: 1022509872}
   - {fileID: 1022509871}
-  playerSpawnPosition: {fileID: 1022509870}
 --- !u!1001 &1022509869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254,14 +253,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4593569870903025463, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292091890352255838, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.73
-      objectReference: {fileID: 0}
     - target: {fileID: 5292091890533835622, guid: fae8f5019ffed9448a774419d184856c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -310,33 +301,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: MarioLevel
       objectReference: {fileID: 0}
-    - target: {fileID: 5292091891272932995, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292091891587537525, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262016938719842974, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262016938719842974, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262016940343862887, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262016940343862887, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.4
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 848545756631336465, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-    - {fileID: 5292091890533835609, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fae8f5019ffed9448a774419d184856c, type: 3}
 --- !u!4 &1022509870 stripped
 Transform:
@@ -541,7 +506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputService: {fileID: 6925236541100325969, guid: 91bb023697b2205438d4f17da744b961, type: 3}
   ButtonUIInput: {fileID: 2558393276396206273, guid: 5f3bd45ca9c20c54eacb69f1c0fe6b9a, type: 3}
-  PauseMenu: {fileID: 8287929909432981225, guid: 277da640afed2374c8823f8ed81d277c, type: 3}
+  PauseMenuService: {fileID: 8287929909432981225, guid: 277da640afed2374c8823f8ed81d277c, type: 3}
 --- !u!114 &7492490610795653140
 MonoBehaviour:
   m_ObjectHideFlags: 0

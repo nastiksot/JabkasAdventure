@@ -2,18 +2,17 @@
 using System.IO;
 using Models;
 using Models.ClassModels;
-using Modules;
 
-namespace Services.Interfaces
+namespace Modules
 {
-    public interface IDataService
-    {  
+    public interface IFileModule
+    {
         /// <summary>
         /// Save data in file
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="model"></param>
         /// <param name="fileName"></param>
-        void SaveData(PlayerData data, string fileName);
+        void SaveData(StatisticModel model, string fileName);
 
         /// <summary>
         /// Load data from file
@@ -21,7 +20,27 @@ namespace Services.Interfaces
         /// <param name="fileName"></param>
         /// <param name="success"></param>
         /// <param name="failure"></param>
-        void LoadData(string fileName, Action<PlayerData> success, Action<BaseError> failure);
+        void LoadData(string fileName, Action<StatisticModel> success, Action<BaseError> failure);
+
+        /// <summary>
+        /// Rewrite data in exists file
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        bool SaveExists(string fileName);
+
+        /// <summary>
+        /// Check is directory exists
+        /// </summary>
+        /// <returns></returns>
+        bool DirectoryExists();
+
+        /// <summary>
+        /// Get full path file
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        string GetFullPathFile(string fileName);
 
         /// <summary>
         /// Create file for saving data

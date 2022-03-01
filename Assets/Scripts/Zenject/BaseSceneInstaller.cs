@@ -1,7 +1,7 @@
 ﻿using Factory;
 using Services;
 using Services.Interfaces;
-using UI; 
+using UI;
 
 namespace Zenject
 {
@@ -9,14 +9,14 @@ namespace Zenject
     {
         public InputService InputService;
         public ButtonUIInput ButtonUIInput;
-        public PauseMenu PauseMenu;
+        public PauseMenuService PauseMenuService;
 
         public override void InstallBindings()
         {
             BindIntroLevelInstaller();
             BindInputService();
             BindButtonUIInput();
-            BindPauseMenu(); 
+            BindPauseMenu();
         }
 
         private void BindInputService()
@@ -27,17 +27,17 @@ namespace Zenject
         private void BindButtonUIInput()
         {
             Container.Bind<ButtonUIInput>().FromComponentInNewPrefab(ButtonUIInput).AsSingle().NonLazy();
-        }  
-        
+        }
+
         private void BindPauseMenu()
         {
-            Container.Bind<PauseMenu>().FromComponentInNewPrefab(PauseMenu).AsSingle().NonLazy();
+            Container.Bind<IPauseMenuService>().To<PauseMenuService>().FromComponentInNewPrefab(PauseMenuService)
+                .AsSingle().NonLazy();
         }
 
         private void BindIntroLevelInstaller()
         {
             Container.BindInterfacesAndSelfTo<BaseSceneInstaller>().FromInstance(this).AsSingle();
         }
-   
     }
 }

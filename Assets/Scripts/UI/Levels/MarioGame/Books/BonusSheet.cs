@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace UI.Levels.MarioGame.Books
 {
-    public class CVSheet : MonoBehaviour
+    public class BonusSheet : MonoBehaviour
     { 
         private Rigidbody2D rigidbody2D;
         
-        public event Action OnPlayerCollided;
+        public event Action OnSheetCollided;
         
-        private void Start()
+        private void Awake()
         {
             rigidbody2D = GetComponent<Rigidbody2D>();
             rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
@@ -24,7 +24,8 @@ namespace UI.Levels.MarioGame.Books
             }
 
             if (!other.gameObject.CompareTag(Tags.PLAYER_TAG)) return;
-            OnPlayerCollided?.Invoke();
+            OnSheetCollided?.Invoke();
+            Destroy(gameObject);
         }
     }
 }
