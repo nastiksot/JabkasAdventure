@@ -59,13 +59,14 @@ namespace UI.Enemy
             {
                 wallRaycast = -baseCastDist;
             }
- 
-            var targetPos = raycastPosition.position;
+
+            var position = raycastPosition.position;
+            var targetPos = position;
 
             targetPos.x += wallRaycast;
 
 
-            Debug.DrawLine(raycastPosition.position, targetPos, Color.magenta);
+            Debug.DrawLine(position, targetPos, Color.magenta);
             if (Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME))
                 ||Physics2D.Linecast(raycastPosition.position, targetPos, 1 << LayerMask.NameToLayer(Layers.SWITCHER_LAYER_NAME)))
             {

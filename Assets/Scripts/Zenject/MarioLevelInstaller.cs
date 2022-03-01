@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using Factory;
 using Services;
 using Services.Interfaces;
@@ -16,18 +16,23 @@ namespace Zenject
     {
         public StatisticsCollector StatisticsCollector;
         public PlayerBehaviour PlayerBehaviour;
-        public EnemyMarker[] EnemyMarker;
+        public EnemyMarker[] EnemyMarkers;
         public Transform playerSpawnPosition;
-
+        
         public override void InstallBindings()
         {
+            BindMarioLevelInstaller();
             BindSwitcher();
             BindDataService();
             BindTimer();
             BindStatisticCollector();
             BindPlayer();
-            BindMarioLevelInstaller();
-            Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle();
+            BindEnemyFactory();
+        }
+
+        private void BindEnemyFactory()
+        {
+            Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle().NonLazy();
         }
 
         private void BindSwitcher()
@@ -65,11 +70,12 @@ namespace Zenject
 
         public void Initialize()
         {
-            var enemyFactory =  Container.Resolve<IEnemyFactory>();
+            var enemyFactory = Container.Resolve<IEnemyFactory>();
             enemyFactory.Load();
-            foreach (var marker in EnemyMarker)
+
+            foreach (var marker in EnemyMarkers)
             {
-                enemyFactory.Create(marker.transform.position);
+                enemyFactory.Create(marker.EnemyTransformPoint.position, marker.EnemyType);
             }
         }
     }

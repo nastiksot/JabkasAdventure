@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b454f0c61ec1144384337326d93f916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 0.15
+  speedMultiplier: 0.015
   jumpPower: 400
   rayHorizontalDistance: 0.6
   rayVerticalDistance: 0.85

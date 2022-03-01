@@ -16,13 +16,7 @@ namespace Zenject
             BindIntroLevelInstaller();
             BindInputService();
             BindButtonUIInput();
-            BindEnemyFactory();
             BindPauseMenu(); 
-        }
-
-        private void BindEnemyFactory()
-        {
-            Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle();
         }
 
         private void BindInputService()

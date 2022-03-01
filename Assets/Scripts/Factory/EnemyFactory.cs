@@ -1,6 +1,8 @@
-﻿using UI.Player; 
+﻿using System;
+using UI.Enemy;
 using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace Factory
 {
@@ -8,7 +10,7 @@ namespace Factory
     {
         private readonly DiContainer diContainer;
 
-        private Object enemyPrefab;
+        private Object spiderPrefab;
 
         public EnemyFactory(DiContainer diContainer)
         {
@@ -17,17 +19,25 @@ namespace Factory
 
         public void Load()
         {
-            enemyPrefab = Resources.Load( "");
+            spiderPrefab = Resources.Load<EnemyBehaviour>( "Spider");
         }
 
-        public void Create(Vector2 position)
+        public void Create(Vector2 position, EnemyType enemyType)
         {
-           diContainer.InstantiatePrefab(enemyPrefab, position, Quaternion.identity, null);
+            switch (enemyType)
+            {
+                case EnemyType.Spider:
+                    diContainer.InstantiatePrefab(spiderPrefab, position, Quaternion.identity, null);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(enemyType), enemyType, null);
+            }
         }
 
         public void Unload()
         {
-            Resources.UnloadAsset(enemyPrefab);
+            Resources.UnloadAsset(spiderPrefab);
         }
+        
     }
 }
