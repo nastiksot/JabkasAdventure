@@ -9,12 +9,22 @@ namespace Utility
 
         protected Vector3 offsetPosition;
 
-        private void Update()
+        protected void Update()
         {
             if (objToFollow == null) return;
             if (!objToFollow.gameObject.activeInHierarchy) return;
+            SetPosition();
+            SetRotation();
+        }
+
+        public virtual void SetPosition()
+        {
             var followedPosition = objToFollow.position;
             transform.position = followedPosition + offsetPosition;
+        }
+
+        public virtual void SetRotation()
+        {
             if (!setRotation) return;
             transform.rotation = objToFollow.rotation;
         }

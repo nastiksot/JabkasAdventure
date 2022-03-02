@@ -8,7 +8,8 @@ namespace UI
     public class CameraFollower : ObjectFollower
     {
         private IPlayerBehaviour playerBehaviour;
-        private Vector3 OffsetY = new Vector3(0f, 1.1f, 0f);
+        private Vector3 offsetY = new Vector3(0f, 1.1f, 0f);
+        private float leftBorderX = -11.5f;
 
         [Inject]
         private void Construct(IPlayerBehaviour playerBehaviour)
@@ -19,7 +20,10 @@ namespace UI
         private void Start()
         {
             objToFollow = playerBehaviour.GetPlayerTransform();
-            SetOffsetPosition(OffsetY);
+            SetOffsetPosition(offsetY);
         }
+        
+        
+        
     }
 }

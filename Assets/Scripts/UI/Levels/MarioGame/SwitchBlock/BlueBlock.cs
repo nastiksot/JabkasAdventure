@@ -1,4 +1,3 @@
-using Models;
 using Models.ConstantValues;
 using UI.Levels.MarioGame.SwitchBlock.Interface;
 using UnityEngine;
@@ -8,7 +7,8 @@ namespace UI.Levels.MarioGame.SwitchBlock
 {
     public class BlueBlock : MonoBehaviour
     {
-        [Header("Sprites")] [SerializeField] private Sprite[] blueSprites;
+        [Header("Sprites")]
+        [SerializeField] private Sprite[] blueSprites;
 
         [Space(6f)] [SerializeField] private BoxCollider2D collider2D;
         [SerializeField] private SpriteRenderer spriteRenderer;
