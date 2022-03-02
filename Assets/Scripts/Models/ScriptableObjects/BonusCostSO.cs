@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Models.ClassModels;
-using Models.Enum;
 using UnityEngine;
 
 namespace Models.ScriptableObjects

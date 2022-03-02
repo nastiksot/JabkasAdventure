@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentRigidbody2D: {fileID: 7859526464557667804}
-  bounceForce: 350
+  bounceForce: 70
 --- !u!1 &7859526464557667801
 GameObject:
   m_ObjectHideFlags: 0
