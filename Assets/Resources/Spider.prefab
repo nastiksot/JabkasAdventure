@@ -198,6 +198,7 @@ MonoBehaviour:
   moveSpeed: 1.5
   raycastPosition: {fileID: 3293983348106981785}
   enemyRigidbody2D: {fileID: 3293983348295022506}
+  particleType: 1
 --- !u!1 &3826886929126034876
 GameObject:
   m_ObjectHideFlags: 0

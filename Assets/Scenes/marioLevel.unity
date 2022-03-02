@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerBehaviour: {fileID: 7859526464557667805, guid: 20a8a99badfbe654ba6fd8c2d31cb9b3, type: 3}
+  ParticleService: {fileID: 4965351508872723413, guid: d3304409edb33d74b8182367cdcd93ed, type: 3}
   playerSpawnPosition: {fileID: 1022509870}
   EnemyMarkers:
   - {fileID: 1022509880}
@@ -253,14 +254,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 528731406724737298, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292091890352255838, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.445025
-      objectReference: {fileID: 0}
     - target: {fileID: 5292091890533835622, guid: fae8f5019ffed9448a774419d184856c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -308,10 +301,6 @@ PrefabInstance:
     - target: {fileID: 5292091890533835623, guid: fae8f5019ffed9448a774419d184856c, type: 3}
       propertyPath: m_Name
       value: MarioLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8814049141625108229, guid: fae8f5019ffed9448a774419d184856c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fae8f5019ffed9448a774419d184856c, type: 3}

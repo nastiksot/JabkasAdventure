@@ -1,40 +1,34 @@
- 
-using Models;
 using Models.ConstantValues;
+using Services.Interfaces;
+using UI.Enemy;
 using UnityEngine;
-using Utility;
+using Zenject;
 
 namespace UI.Player
 {
     public class Stomper : MonoBehaviour
     {
-        [SerializeField] private GameObject enemyDeathParticle;
         [SerializeField] private Rigidbody2D parentRigidbody2D;
         [SerializeField] private float bounceForce;
+        
+        private IParticleService particleService;
+        
+        [Inject]
+        private void Construct(IParticleService particleService)
+        {
+            this.particleService = particleService;
+        }
 
-        private GameObject enemyParticle; 
-
-       
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.gameObject.CompareTag(Tags.ENEMY_HEAR_TAG)) return;  
-            InitializeDeathParticle(other.transform.position);
-            Destroy(other.transform.parent.gameObject);
-            parentRigidbody2D.AddForce(transform.up * bounceForce, ForceMode2D.Impulse);
-            // StatisticsDataCollector.Instance.ChangeTotalScore(spiderCost);
+            var collidedGameObject = other.gameObject;
+            if (!collidedGameObject.CompareTag(Tags.ENEMY_HEAR_TAG)) return;
+            var enemyObject = collidedGameObject.GetComponentInParent<EnemyBehaviour>();
+            enemyObject.OnEnemyDestroyed += () =>
+                particleService.InitializeParticle(enemyObject.ParticleType, enemyObject.transform.position);
+            enemyObject.DestroyEnemy();
+            //TODO: Find best way to add force
+            parentRigidbody2D.AddRelativeForce(transform.up * bounceForce,ForceMode2D.Force);
         }
-
-        /// <summary>
-        /// On player death initialize particle
-        /// </summary>
-        /// <param name="particlePosition"></param>
-        private void InitializeDeathParticle(Vector3 particlePosition)
-        {
-            enemyParticle = Instantiate(enemyDeathParticle, null, true);
-            enemyParticle.transform.position = particlePosition;
-            StartCoroutine(ExtensionUtility.StartWithDelay(1f, () => Destroy(enemyParticle)));
-        }
-
-        
     }
 }

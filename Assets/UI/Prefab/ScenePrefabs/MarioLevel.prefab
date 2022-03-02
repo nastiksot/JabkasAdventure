@@ -5867,7 +5867,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5292091890352255839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: -2.83, z: 0}
+  m_LocalPosition: {x: -12, y: -3.445025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5292091890533835622}
@@ -16056,9 +16056,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1451457025908784578, guid: 53077f13fbdd46f439fcec1a19506383, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5833856965361590588, guid: 53077f13fbdd46f439fcec1a19506383, type: 3}
       propertyPath: m_Name
       value: EnemyMarkers
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575961597248840661, guid: 53077f13fbdd46f439fcec1a19506383, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53077f13fbdd46f439fcec1a19506383, type: 3}

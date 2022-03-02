@@ -13,6 +13,7 @@ namespace Zenject
     public class MarioLevelInstaller : MonoInstaller, IInitializable
     {
         public PlayerBehaviour PlayerBehaviour;
+        public ParticleService ParticleService;
         public Transform playerSpawnPosition;
         public EnemyMarker[] EnemyMarkers;
 
@@ -22,9 +23,16 @@ namespace Zenject
             BindSwitcher();
             BindDataService();
             BindTimer();
+            BindParticleService();
             BindPlayer();
             BindEnemyFactory();
             BindStatistics();
+        }
+        
+        private void BindParticleService()
+        {
+            Container.Bind<IParticleService>().To<ParticleService>().FromComponentInNewPrefab(ParticleService)
+                .AsSingle().NonLazy();
         }
 
         private void BindEnemyFactory()
@@ -41,7 +49,7 @@ namespace Zenject
         {
             Container.Bind<ITimer>().To<Timer>().AsSingle().NonLazy();
         }
-        
+
         private void BindStatistics()
         {
             Container.Bind<IStatisticService>().To<StatisticService>().AsSingle().NonLazy();

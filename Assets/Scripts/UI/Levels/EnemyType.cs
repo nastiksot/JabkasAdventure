@@ -1,4 +1,4 @@
-﻿namespace Zenject
+﻿namespace UI.Levels
 {
     public enum EnemyType
     {

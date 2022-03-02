@@ -1,7 +1,9 @@
 using System;
-using Models;
 using Models.ConstantValues;
+using Models.Enum;
+using UI.Levels;
 using UnityEngine;
+using Zenject;
 
 namespace UI.Enemy
 {
@@ -11,9 +13,13 @@ namespace UI.Enemy
         [SerializeField] private float moveSpeed;
         [SerializeField] private Transform raycastPosition;
         [SerializeField] private Rigidbody2D enemyRigidbody2D;
+        [SerializeField] private ParticleType particleType;
 
         private bool facingDirection = true; //true = right | false = left
         private Vector3 baseScale;
+
+        public ParticleType ParticleType => particleType;
+        public event Action OnEnemyDestroyed;
 
         private void Awake()
         {
@@ -34,6 +40,12 @@ namespace UI.Enemy
             {
                 ChangeFacingDirection(!facingDirection);
             }
+        }
+
+        public void DestroyEnemy()
+        {
+            OnEnemyDestroyed?.Invoke();
+            Destroy(gameObject);
         }
 
         /// <summary>
