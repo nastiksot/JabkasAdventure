@@ -24,36 +24,41 @@ namespace UI.Levels.MarioGame.SwitchBlock
         private void Construct(ISwitcher switcher)
         {
             this.switcher = switcher;
-        } 
+        }
 
         private void Start()
-        {  
+        {
             ChangeBlockState(switcher.IsOn);
             switcher.OnBlockSwitched += ChangeBlockState;
         }
 
         private void ChangeBlockState(bool isOn)
-        { 
+        {
             isActive = isOn;
 
             if (!setOn && isActive)
             {
                 collider2D.isTrigger = false;
-                spriteRenderer.sprite = blueSprites[1];
                 gameObject.layer = Layers.GROUND_LAYER;
                 spriteRenderer.color = Color.white;
                 setOn = true;
                 setOff = false;
+
+                if (blueSprites.Length == 0) return;
+                spriteRenderer.sprite = blueSprites[1];
+                return;
             }
 
 
             if (setOff || isActive) return;
             collider2D.isTrigger = true;
-            spriteRenderer.sprite = blueSprites[0];
             gameObject.layer = Layers.SWITCHER_LAYER;
             spriteRenderer.color = Color.white;
             setOff = true;
             setOn = false;
+            
+            if (blueSprites.Length == 0) return;
+            spriteRenderer.sprite = blueSprites[0];
         }
     }
 }

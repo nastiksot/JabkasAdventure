@@ -137,8 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputService: {fileID: 6925236541100325969, guid: 91bb023697b2205438d4f17da744b961, type: 3}
   ButtonUIInput: {fileID: 2558393276396206273, guid: 5f3bd45ca9c20c54eacb69f1c0fe6b9a, type: 3}
-  PauseMenu: {fileID: 8287929909432981225, guid: 277da640afed2374c8823f8ed81d277c, type: 3}
-  spawnPosition: {fileID: 1807497878}
+  PauseMenuService: {fileID: 8287929909432981225, guid: 277da640afed2374c8823f8ed81d277c, type: 3}
 --- !u!1 &323814871
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,11 +368,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c741085a3e162834cb2068211712fd52, type: 3}
---- !u!4 &1807497878 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 311868631, guid: c741085a3e162834cb2068211712fd52, type: 3}
-  m_PrefabInstance: {fileID: 1219246526}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7492490608952480292
 GameObject:
   m_ObjectHideFlags: 0

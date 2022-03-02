@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 7859526464557667801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.4, z: 1}
+  m_LocalScale: {x: 1, y: 1.1, z: 1}
   m_Children:
   - {fileID: 73354015838596585}
   - {fileID: 8311325165220829024}
@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 0.015
-  jumpPower: 400
-  rayHorizontalDistance: 0.6
+  jumpPower: 370
+  rayHorizontalDistance: 0.5
   rayVerticalDistance: 0.85
   rayTransform: {fileID: 8311325165220829024}
 --- !u!50 &7859526464557667804
