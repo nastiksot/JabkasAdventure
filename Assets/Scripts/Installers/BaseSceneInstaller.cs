@@ -1,9 +1,9 @@
-﻿using Factory;
-using Services;
+﻿using Services;
 using Services.Interfaces;
 using UI;
+using Zenject;
 
-namespace Zenject
+namespace Installers
 {
     public class BaseSceneInstaller : MonoInstaller
     {

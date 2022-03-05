@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Linq;
-using Models;
 using Models.ClassModels;
 using Models.Enum;
-using Models.ScriptableObjects;
 using Services.Interfaces;
 using TMPro;
 using UI.Timer;
@@ -20,23 +17,24 @@ namespace UI.DataSaver
         [SerializeField] private TMP_Text timeRemainText;
 
         [SerializeField] private CanvasGroup statisticDataCanvasGroup;
-        [SerializeField] private BonusCostSO bonusCost;
 
         private string filePath = "DefaultSave";
 
         private IFileService fileService;
         private IPauseMenuService pauseMenuService;
         private IStatisticService statisticService;
+        private IRewardService rewardService;
         private ITimer timer;
 
         [Inject]
         private void Construct(ITimer timer, IFileService fileService, IStatisticService statisticService,
-            IPauseMenuService pauseMenuService)
+            IPauseMenuService pauseMenuService, IRewardService rewardService)
         {
             this.timer = timer;
             this.fileService = fileService;
             this.statisticService = statisticService;
             this.pauseMenuService = pauseMenuService;
+            this.rewardService = rewardService;
         }
 
 
@@ -73,7 +71,6 @@ namespace UI.DataSaver
         /// <param name="sheetNumber"></param>
         private void OnSheetNumberChanged(int sheetNumber)
         {
-            ChangeScore(BonusType.Sheet);
             sheetValueText.text = sheetNumber.ToString();
         }
 
@@ -116,15 +113,6 @@ namespace UI.DataSaver
                     sheetValueText.text = data.SheetCount.ToString();
                 },
                 error => { ToastUtility.ShowToast(error.errorMessage); });
-        }
-
-        /// <summary>
-        /// Change sheet score value
-        /// </summary>
-        public void ChangeScore(BonusType bonusType)
-        {
-            var scoreValue = bonusCost.BonusCosts.First(x => x.key == bonusType).value;
-            statisticService.AddScore(scoreValue);
         }
     }
 }

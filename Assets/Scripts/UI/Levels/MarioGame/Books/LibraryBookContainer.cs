@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Models.Enum;
 using Services.Interfaces;
 using UnityEngine;
 using Zenject;
@@ -12,11 +13,13 @@ namespace UI.Levels.MarioGame.Books
         [SerializeField] private List<BonusSheet> bonusSheets;
 
         private IStatisticService statisticService;
+        private IRewardService rewardService;
 
         [Inject]
-        private void Construct(IStatisticService statisticService)
+        private void Construct(IStatisticService statisticService, IRewardService rewardService)
         {
             this.statisticService = statisticService;
+            this.rewardService = rewardService;
         }
 
         private void Awake()
@@ -37,7 +40,8 @@ namespace UI.Levels.MarioGame.Books
         private void AddSheetOnSheetCollision(BonusSheet bonusSheet)
         {
             bonusSheets.Remove(bonusSheet);
-            statisticService.AddSheet();
+            var reward = rewardService.GetBonusReward(RewardType.Sheet);
+            statisticService.AddSheet(reward);
         }
 
         private void InitializeBonusSheet(Vector3 position)

@@ -14,7 +14,7 @@ namespace UI.Player
         [Header("Player Settings"), Space(6f)] [SerializeField]
         private float speedMultiplier;
 
-        [SerializeField] private int jumpPower;
+        [SerializeField] private float jumpPower;
 
         [Header("Raycast Settings"), Space(3f)] [SerializeField]
         private float rayHorizontalDistance;
@@ -138,7 +138,7 @@ namespace UI.Player
             isGrounded = Physics2D.Linecast(transform.position, groundPos,
                 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME));
             if (!isGrounded) return;
-            playerRigidbody.AddForce(Vector2.up * jumpPower);
+            playerRigidbody.velocity = (Vector2.up * jumpPower);
         }
     }
 }

@@ -10,13 +10,18 @@ namespace UI.Player
     {
         [SerializeField] private Rigidbody2D parentRigidbody2D;
         [SerializeField] private float bounceForce;
-        
+
         private IParticleService particleService;
-        
+        private IStatisticService statisticService;
+        private IRewardService rewardService;
+
         [Inject]
-        private void Construct(IParticleService particleService)
+        private void Construct(IParticleService particleService, IStatisticService statisticService,
+            IRewardService rewardService)
         {
             this.particleService = particleService;
+            this.statisticService = statisticService;
+            this.rewardService = rewardService;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -24,11 +29,16 @@ namespace UI.Player
             var collidedGameObject = other.gameObject;
             if (!collidedGameObject.CompareTag(Tags.ENEMY_HEAR_TAG)) return;
             var enemyObject = collidedGameObject.GetComponentInParent<EnemyBehaviour>();
+            var rewardType = enemyObject.RewardType;
             enemyObject.OnEnemyDestroyed += () =>
-                particleService.InitializeParticle(enemyObject.ParticleType, enemyObject.transform.position);
+            {
+                var reward = rewardService.GetBonusReward(rewardType);
+                statisticService.AddKill(reward);
+                particleService.InitializeParticle(rewardType, enemyObject.transform.position);
+            };
+
             enemyObject.DestroyEnemy();
-            //TODO: Find best way to add force
-            parentRigidbody2D.AddRelativeForce(transform.up * bounceForce,ForceMode2D.Force);
+            parentRigidbody2D.velocity = transform.up * bounceForce;
         }
     }
 }

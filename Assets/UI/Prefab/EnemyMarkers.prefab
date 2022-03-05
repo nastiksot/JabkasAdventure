@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8807850272c442a8da1eb83c2562c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransformPoint: {fileID: 1132665885909026703}
-  enemyType: 0
+  rewardTransformPoint: {fileID: 1132665885909026703}
+  rewardType: 1
 --- !u!1 &1161985777509208723
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8807850272c442a8da1eb83c2562c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransformPoint: {fileID: 1161985777509208718}
-  enemyType: 0
+  rewardTransformPoint: {fileID: 1161985777509208718}
+  rewardType: 1
 --- !u!1 &1451457025908784607
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8807850272c442a8da1eb83c2562c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransformPoint: {fileID: 1451457025908784578}
-  enemyType: 0
+  rewardTransformPoint: {fileID: 1451457025908784578}
+  rewardType: 1
 --- !u!1 &3374272284786840377
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,8 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8807850272c442a8da1eb83c2562c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransformPoint: {fileID: 3374272284786840356}
-  enemyType: 0
+  rewardTransformPoint: {fileID: 3374272284786840356}
+  rewardType: 1
 --- !u!1 &4001496549654454254
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8807850272c442a8da1eb83c2562c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransformPoint: {fileID: 4001496549654454259}
-  enemyType: 0
+  rewardTransformPoint: {fileID: 4001496549654454259}
+  rewardType: 1
 --- !u!1 &4214185904800298440
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,8 +268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8807850272c442a8da1eb83c2562c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransformPoint: {fileID: 4214185904800298453}
-  enemyType: 0
+  rewardTransformPoint: {fileID: 4214185904800298453}
+  rewardType: 1
 --- !u!1 &5833856965361590588
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,8 +353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8807850272c442a8da1eb83c2562c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransformPoint: {fileID: 7575961597248840661}
-  enemyType: 0
+  rewardTransformPoint: {fileID: 7575961597248840661}
+  rewardType: 1
 --- !u!1 &7927213664285573775
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,8 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8807850272c442a8da1eb83c2562c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransformPoint: {fileID: 7927213664285573778}
-  enemyType: 0
+  rewardTransformPoint: {fileID: 7927213664285573778}
+  rewardType: 1
 --- !u!1 &8644597079597031940
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,8 +443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8807850272c442a8da1eb83c2562c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransformPoint: {fileID: 8644597079597031961}
-  enemyType: 0
+  rewardTransformPoint: {fileID: 8644597079597031961}
+  rewardType: 1
 --- !u!1 &9148370689694231834
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,5 +488,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8807850272c442a8da1eb83c2562c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransformPoint: {fileID: 9148370689694231815}
-  enemyType: 0
+  rewardTransformPoint: {fileID: 9148370689694231815}
+  rewardType: 1

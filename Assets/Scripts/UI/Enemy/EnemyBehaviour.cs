@@ -13,12 +13,13 @@ namespace UI.Enemy
         [SerializeField] private float moveSpeed;
         [SerializeField] private Transform raycastPosition;
         [SerializeField] private Rigidbody2D enemyRigidbody2D;
-        [SerializeField] private ParticleType particleType;
+        [SerializeField] private RewardType rewardType;
 
         private bool facingDirection = true; //true = right | false = left
         private Vector3 baseScale;
 
-        public ParticleType ParticleType => particleType;
+        public RewardType RewardType => rewardType;
+        
         public event Action OnEnemyDestroyed;
 
         private void Awake()

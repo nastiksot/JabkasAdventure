@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentRigidbody2D: {fileID: 7859526464557667804}
-  bounceForce: 70
+  bounceForce: 5
 --- !u!1 &7859526464557667801
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 0.015
-  jumpPower: 370
+  jumpPower: 7.5
   rayHorizontalDistance: 0.5
   rayVerticalDistance: 0.85
   rayTransform: {fileID: 8311325165220829024}
@@ -207,7 +207,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6601574438258376755, guid: 558461b6c3aa6fa40989f02d3febff41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

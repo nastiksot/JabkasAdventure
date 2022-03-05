@@ -8,7 +8,8 @@ namespace Services.Interfaces
         public event Action<int> OnScoreChanged;
         public event Action<int> OnSheetAdded;
         public void AddScore(int score);
-        public void AddSheet();
+        public void AddSheet(int score);
+        public void AddKill(int score);
         public StatisticModel GetStatisticModel();
     }
 }

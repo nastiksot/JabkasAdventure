@@ -12,9 +12,9 @@ namespace Services
     {
         [SerializeField] private List<ParticleComponentSO> particleComponents;
 
-        public void InitializeParticle(ParticleType particleType, Vector3 position)
+        public void InitializeParticle(RewardType rewardType, Vector3 position)
         {
-            var particleSystem = particleComponents.First(x => x.ParticleType == particleType).ParticleSystem;
+            var particleSystem = particleComponents.First(x => x.ParticleType == rewardType).ParticleSystem;
             var instantiatedParticle =
                 Instantiate(particleSystem, position, Quaternion.identity, transform);
             StartCoroutine(ExtensionUtility.StartWithDelay(instantiatedParticle.main.duration,

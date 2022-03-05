@@ -1,19 +1,19 @@
 ﻿using System;
+using Models.Enum;
 using UI.Enemy;
-using UI.Levels;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
 namespace Factory
 {
-    public class EnemyFactory : IEnemyFactory
+    public class RewardFactory : IRewardFactory
     {
         private readonly DiContainer diContainer;
 
         private Object spiderPrefab;
 
-        public EnemyFactory(DiContainer diContainer)
+        public RewardFactory(DiContainer diContainer)
         {
             this.diContainer = diContainer;
         }
@@ -23,22 +23,16 @@ namespace Factory
             spiderPrefab = Resources.Load<EnemyBehaviour>( "Spider");
         }
 
-        public void Create(Vector2 position, EnemyType enemyType)
+        public void Create(Vector2 position, RewardType enemyType)
         {
             switch (enemyType)
             {
-                case EnemyType.Spider:
+                case RewardType.Spider:
                     diContainer.InstantiatePrefab(spiderPrefab, position, Quaternion.identity, null);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(enemyType), enemyType, null);
             }
         }
-
-        public void Unload()
-        {
-            Resources.UnloadAsset(spiderPrefab);
-        }
-        
     }
 }

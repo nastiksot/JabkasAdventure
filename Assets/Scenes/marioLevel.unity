@@ -233,8 +233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe5b82a9fa146f598994a4a568e5f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerBehaviour: {fileID: 7859526464557667805, guid: 20a8a99badfbe654ba6fd8c2d31cb9b3, type: 3}
+  RewardService: {fileID: 5755915482452857780, guid: 870a6561a1f18494c8f116e1f06fddb3, type: 3}
   ParticleService: {fileID: 4965351508872723413, guid: d3304409edb33d74b8182367cdcd93ed, type: 3}
+  PlayerBehaviour: {fileID: 7859526464557667805, guid: 20a8a99badfbe654ba6fd8c2d31cb9b3, type: 3}
   playerSpawnPosition: {fileID: 1022509870}
   EnemyMarkers:
   - {fileID: 1022509880}
@@ -254,6 +255,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 948581565, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 996365378, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342203119, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 33293575369410645, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 20.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 276854886676256350, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: rewardMarker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 643125093091505945, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: rewardMarker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054276277202536281, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1787091708039027473, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: rewardMarker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533660105640295397, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: rewardMarker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4296256454084701323, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: rewardMarker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367439872306854859, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367439872306854859, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367439872306854859, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837623716885614915, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: rewardMarker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257285031682408830, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292091890259042728, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_UseColliderMask
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5292091890533835622, guid: fae8f5019ffed9448a774419d184856c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -302,7 +367,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: MarioLevel
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5292091891533058590, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869232460009614712, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: rewardMarker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484476952021685556, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571561226481558991, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: rewardMarker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800474003168460357, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852397830345733335, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261760005371307190, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: rewardMarker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8014960078456627687, guid: fae8f5019ffed9448a774419d184856c, type: 3}
+      propertyPath: rewardMarker
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7602126134045600652, guid: fae8f5019ffed9448a774419d184856c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fae8f5019ffed9448a774419d184856c, type: 3}
 --- !u!4 &1022509870 stripped
 Transform:

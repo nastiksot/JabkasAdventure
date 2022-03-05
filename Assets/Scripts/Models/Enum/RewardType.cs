@@ -1,6 +1,6 @@
 ﻿namespace Models.Enum
 {
-    public enum BonusType
+    public enum RewardType
     {
         None = -1,
         Sheet = 0,

@@ -1,34 +1,38 @@
 ﻿using Factory;
 using Services;
 using Services.Interfaces;
+using UI.Levels;
 using UI.Levels.MarioGame.SwitchBlock;
 using UI.Levels.MarioGame.SwitchBlock.Interface;
 using UI.Player;
 using UI.Player.Interfaces;
 using UI.Timer;
 using UnityEngine;
+using Zenject;
 
-namespace Zenject
+namespace Installers
 {
     public class MarioLevelInstaller : MonoInstaller, IInitializable
     {
-        public PlayerBehaviour PlayerBehaviour;
+        public RewardService RewardService;
         public ParticleService ParticleService;
+        public PlayerBehaviour PlayerBehaviour;
         public Transform playerSpawnPosition;
-        public EnemyMarker[] EnemyMarkers;
+        public RewardMarker[] EnemyMarkers;
 
         public override void InstallBindings()
         {
             BindMarioLevelInstaller();
             BindSwitcher();
-            BindDataService();
             BindTimer();
+            BindFileService();
+            BindStatisticService();
             BindParticleService();
-            BindPlayer();
+            BindRewardService();
             BindEnemyFactory();
-            BindStatistics();
+            BindPlayer();
         }
-        
+
         private void BindParticleService()
         {
             Container.Bind<IParticleService>().To<ParticleService>().FromComponentInNewPrefab(ParticleService)
@@ -37,7 +41,7 @@ namespace Zenject
 
         private void BindEnemyFactory()
         {
-            Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle().NonLazy();
+            Container.Bind<IRewardFactory>().To<RewardFactory>().AsSingle().NonLazy();
         }
 
         private void BindSwitcher()
@@ -50,12 +54,18 @@ namespace Zenject
             Container.Bind<ITimer>().To<Timer>().AsSingle().NonLazy();
         }
 
-        private void BindStatistics()
+        private void BindRewardService()
+        {
+            Container.Bind<IRewardService>().To<RewardService>().FromComponentInNewPrefab(RewardService).AsSingle()
+                .NonLazy();
+        }
+
+        private void BindStatisticService()
         {
             Container.Bind<IStatisticService>().To<StatisticService>().AsSingle().NonLazy();
         }
 
-        private void BindDataService()
+        private void BindFileService()
         {
             Container.Bind<IFileService>().To<FileService>().AsSingle().NonLazy();
         }
@@ -74,12 +84,12 @@ namespace Zenject
 
         public void Initialize()
         {
-            var enemyFactory = Container.Resolve<IEnemyFactory>();
+            var enemyFactory = Container.Resolve<IRewardFactory>();
             enemyFactory.Load();
 
             foreach (var marker in EnemyMarkers)
             {
-                enemyFactory.Create(marker.EnemyTransformPoint.position, marker.EnemyType);
+                enemyFactory.Create(marker.RewardTransformPoint.position, marker.RewardType);
             }
         }
     }

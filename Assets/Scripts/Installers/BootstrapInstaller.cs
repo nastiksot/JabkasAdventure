@@ -1,7 +1,8 @@
 using Services;
 using Services.Interfaces;
+using Zenject;
 
-namespace Zenject
+namespace Installers
 {
     public class BootstrapInstaller : MonoInstaller 
     { 
