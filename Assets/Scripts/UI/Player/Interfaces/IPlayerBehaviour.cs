@@ -7,5 +7,6 @@ namespace UI.Player.Interfaces
     {
         public event Action<Vector3> OnPlayerMove;
         public Transform GetPlayerTransform();
+        public void InitializeStomper();
     }
 }

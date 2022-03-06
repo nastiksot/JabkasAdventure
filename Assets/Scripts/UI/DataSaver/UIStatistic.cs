@@ -23,18 +23,18 @@ namespace UI.DataSaver
         private IFileService fileService;
         private IPauseMenuService pauseMenuService;
         private IStatisticService statisticService;
-        private IRewardService rewardService;
+        private ISceneService sceneService;
         private ITimer timer;
 
         [Inject]
         private void Construct(ITimer timer, IFileService fileService, IStatisticService statisticService,
-            IPauseMenuService pauseMenuService, IRewardService rewardService)
+            IPauseMenuService pauseMenuService, ISceneService sceneService)
         {
             this.timer = timer;
             this.fileService = fileService;
             this.statisticService = statisticService;
             this.pauseMenuService = pauseMenuService;
-            this.rewardService = rewardService;
+            this.sceneService = sceneService;
         }
 
 
@@ -42,13 +42,19 @@ namespace UI.DataSaver
         {
             pauseMenuService.OnPauseButtonPressed += timer.PauseTimer;
             pauseMenuService.OnContinueButtonPressed += timer.Unpause;
-            pauseMenuService.OnExitButtonPressed += timer.StopTimer;
-            
+            pauseMenuService.OnExitButtonPressed += OnExitButtonPressed;
+
             statisticService.OnScoreChanged += OnTotalScoreChanged;
             statisticService.OnSheetAdded += OnSheetNumberChanged;
-            
+
             timer.OnTimeChanged += OnTimeChanged;
             timer.BeginTimer();
+        }
+
+        private void OnExitButtonPressed()
+        {
+            timer.StopTimer();
+            StartCoroutine( sceneService.LoadSceneAsync(SceneType.Menu));
         }
 
         public void Update()

@@ -31,15 +31,14 @@ namespace Services
             remove => onStartLoadingScene -= value;
         }
 
-
         public IEnumerator LoadSceneAsync(SceneType sceneType)
         {
             var asyncLoad = sceneType switch
             {
-                SceneType.Menu => SceneManager.LoadSceneAsync(1),
+                SceneType.Menu => SceneManager.LoadSceneAsync(0),
                 SceneType.Intro => SceneManager.LoadSceneAsync(1),
-                SceneType.Mario => SceneManager.LoadSceneAsync(0),
-                SceneType.Final => SceneManager.LoadSceneAsync(0),
+                SceneType.Mario => SceneManager.LoadSceneAsync(2),
+                SceneType.Final => SceneManager.LoadSceneAsync(2),
                 _ => throw new NullReferenceException()
             };
 
@@ -55,10 +54,10 @@ namespace Services
         {
             var asyncLoad = sceneType switch
             {
-                SceneType.Menu => SceneManager.UnloadSceneAsync(1),
-                SceneType.Intro => SceneManager.UnloadSceneAsync(1),
-                SceneType.Mario => SceneManager.UnloadSceneAsync(0),
-                SceneType.Final => SceneManager.UnloadSceneAsync(0),
+                SceneType.Menu => SceneManager.LoadSceneAsync(0),
+                SceneType.Intro => SceneManager.LoadSceneAsync(1),
+                SceneType.Mario => SceneManager.LoadSceneAsync(2),
+                SceneType.Final => SceneManager.LoadSceneAsync(2),
                 _ => throw new NullReferenceException()
             };
 

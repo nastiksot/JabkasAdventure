@@ -21,7 +21,9 @@ namespace UI.Player
 
         [SerializeField] private float rayVerticalDistance;
         [SerializeField] private Transform rayTransform;
+        [SerializeField] private Stomper stomperPrefab;
 
+        private Stomper instantiatedStomper;
         private Rigidbody2D playerRigidbody;
 
         private bool isGrounded;
@@ -33,14 +35,15 @@ namespace UI.Player
         private DeprecateDirection deprecateDirection = DeprecateDirection.None;
 
         private IInputService inputService;
-
+        private DiContainer diContainer;
 
         public event Action<Vector3> OnPlayerMove;
 
         [Inject]
-        private void Construct(IInputService inputService)
+        private void Construct(IInputService inputService, DiContainer diContainer)
         {
             this.inputService = inputService;
+            this.diContainer = diContainer;
         }
 
         private void Awake()
@@ -52,6 +55,13 @@ namespace UI.Player
             playerRigidbody = GetComponent<Rigidbody2D>();
 
             CacheScale();
+        }
+
+        public void InitializeStomper()
+        {
+            instantiatedStomper = Instantiate(stomperPrefab, Vector3.zero, Quaternion.identity, transform);
+            instantiatedStomper.Initialize(playerRigidbody);
+            diContainer.Inject(instantiatedStomper);
         }
 
         public Transform GetPlayerTransform()

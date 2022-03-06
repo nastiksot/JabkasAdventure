@@ -10,7 +10,8 @@ namespace UI.Player
     {
         [SerializeField] private Rigidbody2D parentRigidbody2D;
         [SerializeField] private float bounceForce;
-
+        [SerializeField] private Vector2 localPositionOffset = new Vector2(0f, -0.558f);
+        
         private IParticleService particleService;
         private IStatisticService statisticService;
         private IRewardService rewardService;
@@ -22,6 +23,12 @@ namespace UI.Player
             this.particleService = particleService;
             this.statisticService = statisticService;
             this.rewardService = rewardService;
+        }
+
+        public void Initialize(Rigidbody2D rigidbody2D)
+        {
+            parentRigidbody2D = rigidbody2D;
+            transform.localPosition = localPositionOffset;
         }
 
         private void OnTriggerEnter2D(Collider2D other)

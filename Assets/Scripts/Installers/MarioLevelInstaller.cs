@@ -16,8 +16,6 @@ namespace Installers
     {
         public RewardService RewardService;
         public ParticleService ParticleService;
-        public PlayerBehaviour PlayerBehaviour;
-        public Transform playerSpawnPosition;
         public RewardMarker[] EnemyMarkers;
 
         public override void InstallBindings()
@@ -30,7 +28,7 @@ namespace Installers
             BindParticleService();
             BindRewardService();
             BindEnemyFactory();
-            BindPlayer();
+            BindPlayerStomper();
         }
 
         private void BindParticleService()
@@ -75,21 +73,20 @@ namespace Installers
             Container.BindInterfacesAndSelfTo<MarioLevelInstaller>().FromInstance(this).AsSingle();
         }
 
-        private void BindPlayer()
+        private void BindPlayerStomper()
         {
-            var playerInstance = Container.InstantiatePrefabForComponent<PlayerBehaviour>(PlayerBehaviour,
-                playerSpawnPosition.position, Quaternion.identity, null);
-            Container.Bind<IPlayerBehaviour>().To<PlayerBehaviour>().FromInstance(playerInstance).AsSingle().NonLazy();
+            var player = Container.Resolve<IPlayerBehaviour>();
+            player.InitializeStomper();
         }
 
         public void Initialize()
         {
-            var enemyFactory = Container.Resolve<IRewardFactory>();
-            enemyFactory.Load();
+            var rewardFactory = Container.Resolve<IRewardFactory>();
+            rewardFactory.Load();
 
             foreach (var marker in EnemyMarkers)
             {
-                enemyFactory.Create(marker.RewardTransformPoint.position, marker.RewardType);
+                rewardFactory.Create(marker.RewardTransformPoint.position, marker.RewardType);
             }
         }
     }

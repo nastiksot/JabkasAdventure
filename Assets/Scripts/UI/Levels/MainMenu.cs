@@ -32,7 +32,10 @@ namespace UI.Levels
         /// </summary>
         private void InitGame()
         {
-            playButton.onClick.AddListener(() => { sceneService.LoadSceneAsync(nextSceneType); });
+            playButton.onClick.AddListener(() =>
+            {
+                StartCoroutine(sceneService.LoadSceneAsync(nextSceneType));
+            });
 #if PLATFORM_ANDROID
             settingsButton.onClick.AddListener(Application.Quit);
 #endif

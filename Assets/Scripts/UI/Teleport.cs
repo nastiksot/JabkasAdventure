@@ -21,7 +21,7 @@ namespace UI
         {
             if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return; 
             //GetComponent<AudioSource>().Play();
-            sceneService.LoadSceneAsync(nextSceneType);
+            StartCoroutine(sceneService.LoadSceneAsync(nextSceneType));
         }
     }
 }
