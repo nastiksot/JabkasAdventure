@@ -381,6 +381,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3930753735428377087, guid: c741085a3e162834cb2068211712fd52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930753735428377087, guid: c741085a3e162834cb2068211712fd52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.51
+      objectReference: {fileID: 0}
     - target: {fileID: 4278573016271236989, guid: c741085a3e162834cb2068211712fd52, type: 3}
       propertyPath: m_text
       value: 'You need to collect all
