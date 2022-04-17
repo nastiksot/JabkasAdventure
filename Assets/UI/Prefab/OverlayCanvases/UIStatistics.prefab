@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 623979479638319637}
   - component: {fileID: 2017295840099600934}
   m_Layer: 0
-  m_Name: StatisticsCollector
+  m_Name: UIStatistics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,6 @@ MonoBehaviour:
   sheetValueText: {fileID: 8419744664768313628}
   timeRemainText: {fileID: 8419744664592483506}
   statisticDataCanvasGroup: {fileID: 2017295840099600934}
-  bonusCost: {fileID: 11400000, guid: 40d58d2ab00e347429a8a522c4931f29, type: 2}
 --- !u!225 &2017295840099600934
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -276,8 +275,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 77c288608be130b4790ca84bd21cbd6f, type: 2}
-  m_sharedMaterial: {fileID: -6704739799393765398, guid: 77c288608be130b4790ca84bd21cbd6f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 81c5411dae46b8f4a9d6c66ed61578d0, type: 2}
+  m_sharedMaterial: {fileID: -1269717798110954975, guid: 81c5411dae46b8f4a9d6c66ed61578d0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -301,12 +300,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 65
+  m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -410,8 +409,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 77c288608be130b4790ca84bd21cbd6f, type: 2}
-  m_sharedMaterial: {fileID: -6704739799393765398, guid: 77c288608be130b4790ca84bd21cbd6f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 81c5411dae46b8f4a9d6c66ed61578d0, type: 2}
+  m_sharedMaterial: {fileID: -1269717798110954975, guid: 81c5411dae46b8f4a9d6c66ed61578d0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -435,12 +434,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 65
+  m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -620,8 +619,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 77c288608be130b4790ca84bd21cbd6f, type: 2}
-  m_sharedMaterial: {fileID: -6704739799393765398, guid: 77c288608be130b4790ca84bd21cbd6f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 81c5411dae46b8f4a9d6c66ed61578d0, type: 2}
+  m_sharedMaterial: {fileID: -1269717798110954975, guid: 81c5411dae46b8f4a9d6c66ed61578d0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -645,12 +644,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 65
+  m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
