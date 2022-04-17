@@ -128,7 +128,7 @@ Canvas:
   m_GameObject: {fileID: 623979479638319642}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -138,7 +138,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!114 &623979479638319641
 MonoBehaviour:
@@ -282,8 +282,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279274744
-  m_fontColor: {r: 0.972549, g: 0.54901963, b: 0.0627451, a: 1}
+    rgba: 4286592768
+  m_fontColor: {r: 0, g: 0.21568628, b: 0.5019608, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -416,8 +416,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279274744
-  m_fontColor: {r: 0.972549, g: 0.54901963, b: 0.0627451, a: 1}
+    rgba: 4286592768
+  m_fontColor: {r: 0, g: 0.21568628, b: 0.5019608, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -626,8 +626,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279274744
-  m_fontColor: {r: 0.972549, g: 0.54901963, b: 0.0627451, a: 1}
+    rgba: 4286592768
+  m_fontColor: {r: 0, g: 0.21568628, b: 0.5019608, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -60,7 +60,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 51
   m_TargetDisplay: 0
 --- !u!114 &8287929909432981238
 MonoBehaviour:
@@ -247,6 +247,10 @@ PrefabInstance:
     - target: {fileID: 3804766926863654798, guid: a83fb263befad974d9a24ef56129b809, type: 3}
       propertyPath: m_text
       value: continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843663189663007865, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_text
+      value: Pause
       objectReference: {fileID: 0}
     - target: {fileID: 5483146649512337822, guid: a83fb263befad974d9a24ef56129b809, type: 3}
       propertyPath: m_Pivot.x
