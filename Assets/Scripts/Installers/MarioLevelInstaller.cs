@@ -4,10 +4,8 @@ using Services.Interfaces;
 using UI.Levels;
 using UI.Levels.MarioGame.SwitchBlock;
 using UI.Levels.MarioGame.SwitchBlock.Interface;
-using UI.Player;
 using UI.Player.Interfaces;
 using UI.Timer;
-using UnityEngine;
 using Zenject;
 
 namespace Installers

@@ -25,7 +25,6 @@ namespace UI.Levels.IntroGame
         private void ClosePanel()
         {
             panelCanvasGroup.State(isOpen);
-            Time.timeScale = 1f;
             isOpen = !isOpen;
         }
 
@@ -35,7 +34,6 @@ namespace UI.Levels.IntroGame
         private void OpenPanel()
         {
             panelCanvasGroup.State(isOpen);
-            Time.timeScale = 0f;
             isOpen = !isOpen;
         }
     }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using Models.ConstantValues;
 using Models.Enum;
 using Services.Interfaces;
@@ -30,14 +31,20 @@ namespace UI.Player
         private float moveX;
         private Vector2 cachedScale;
         private Coroutine moveCoroutine;
-
         private MovingDirection facingDirection = MovingDirection.Right;
         private DeprecateDirection deprecateDirection = DeprecateDirection.None;
-
+        private Action onPlayerDeath;
+        
         private IInputService inputService;
         private DiContainer diContainer;
 
-        public event Action<Vector3> OnPlayerMove;
+        public Transform PlayerTransform { get; private set; }
+
+        public event Action OnPlayerDeath
+        {
+            add => onPlayerDeath += value;
+            remove => onPlayerDeath -= value;
+        }
 
         [Inject]
         private void Construct(IInputService inputService, DiContainer diContainer)
@@ -54,6 +61,7 @@ namespace UI.Player
 
             playerRigidbody = GetComponent<Rigidbody2D>();
 
+            PlayerTransform = transform;
             CacheScale();
         }
 
@@ -62,11 +70,6 @@ namespace UI.Player
             instantiatedStomper = Instantiate(stomperPrefab, Vector3.zero, Quaternion.identity, transform);
             instantiatedStomper.Initialize(playerRigidbody);
             diContainer.Inject(instantiatedStomper);
-        }
-
-        public Transform GetPlayerTransform()
-        {
-            return transform;
         }
 
         private void Stop()
@@ -111,7 +114,6 @@ namespace UI.Player
                 var transformPosition = playerTransform.position;
                 transformPosition.x = playerTransform.position.x + moveX * speedMultiplier;
                 playerTransform.position = transformPosition;
-                OnPlayerMove?.Invoke(transformPosition);
                 yield return null;
             }
         }
@@ -139,6 +141,17 @@ namespace UI.Player
             }
 
             return true;
+        }
+
+
+        public async void PlayerDeath()
+        {
+            var delayBeforeDestroy = 1200;
+            instantiatedStomper.EnableStomper(false);
+            Jump();
+            onPlayerDeath?.Invoke();
+            await Task.Delay(delayBeforeDestroy);
+            Destroy(gameObject);
         }
 
         private void Jump()

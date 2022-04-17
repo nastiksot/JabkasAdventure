@@ -51,12 +51,6 @@ namespace UI.DataSaver
             timer.BeginTimer();
         }
 
-        private void OnExitButtonPressed()
-        {
-            timer.StopTimer();
-            StartCoroutine( sceneService.LoadSceneAsync(SceneType.Menu));
-        }
-
         public void Update()
         {
             timer.UpdateTimer();
@@ -71,6 +65,12 @@ namespace UI.DataSaver
             timeRemainText.text = seconds.ToString();
         }
 
+        private void OnExitButtonPressed()
+        {
+            timer.StopTimer();
+            StartCoroutine( sceneService.LoadSceneAsync(SceneType.Menu));
+        }
+        
         /// <summary>
         /// Set sheet number on UI 
         /// </summary>

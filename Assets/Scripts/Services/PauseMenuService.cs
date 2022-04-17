@@ -8,8 +8,8 @@ namespace Services
 {
     public class PauseMenuService : MonoBehaviour, IPauseMenuService
     {
-        [SerializeField] private CanvasGroup background;
-        [SerializeField] private CanvasGroup pauseButtonCanvas;
+        [SerializeField] private CanvasGroup pauseMenuCanvasGroup;
+        [SerializeField] private CanvasGroup pauseButtonCanvasGroup;
 
         [Header("Buttons")] [SerializeField] private Button continueButton;
         [SerializeField] private Button pauseButton;
@@ -26,18 +26,21 @@ namespace Services
 
             continueButton.onClick.AddListener(() =>
             {
+                Time.timeScale = 1f;
                 OnContinueButtonPressed?.Invoke();
                 SetPauseMenuVisibility(false);
             });
 
             pauseButton.onClick.AddListener(() =>
             {
+                Time.timeScale = 0f;
                 OnPauseButtonPressed?.Invoke();
                 SetPauseMenuVisibility(true);
             });
 
             exitButton.onClick.AddListener(() =>
             {
+                Time.timeScale = 1f;
                 OnExitButtonPressed?.Invoke();
             });
         }
@@ -48,9 +51,13 @@ namespace Services
         /// <param name="state"></param>
         private void SetPauseMenuVisibility(bool state)
         {
-            background.State(state);
-            pauseButtonCanvas.State(!state);
+            pauseMenuCanvasGroup.State(state);
+            SetPauseButtonState(!state);
         }
 
+        public void SetPauseButtonState(bool state)
+        {
+            pauseButtonCanvasGroup.State(state);
+        }
     }
 }

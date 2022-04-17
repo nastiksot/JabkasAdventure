@@ -22,10 +22,21 @@ namespace UI.Timer
 
         private float milliseconds;
         private float seconds;
-        private float minutes; 
-
-        public event Action<float> OnTimeChanged;
-        public event Action OnTimeOver;
+        private float minutes;
+        
+        private Action<float> onTimeChanged;
+        private Action onTimeOver;
+        public event Action<float> OnTimeChanged
+        {
+            add => onTimeChanged += value;
+            remove => onTimeChanged -= value;
+        }
+    
+        public event Action OnTimeOver
+        {
+            add => onTimeOver += value;
+            remove => onTimeOver -= value;
+        }
         public void UpdateTimer()
         {
             if (isStarted)
@@ -36,7 +47,7 @@ namespace UI.Timer
                 CalculateTime();
                 timeRemaining = timeLeft - elapsedSeconds;
                 CheckTimeIsOver(timeRemaining);
-                OnTimeChanged?.Invoke(timeRemaining);
+                onTimeChanged?.Invoke(timeRemaining);
             }
             else if (isPaused)
             {
@@ -51,7 +62,8 @@ namespace UI.Timer
         public void CheckTimeIsOver(float timeRemain)
         {
             if (timeRemain > 0) return;
-            OnTimeOver?.Invoke();
+            onTimeOver?.Invoke();
+            PauseTimer();
         }
 
         /// <summary>
@@ -136,7 +148,6 @@ namespace UI.Timer
         public void BeginTimer()
         {
             if (isStarted || isPaused) return;
-            Time.timeScale = 1f;
             runningStartTime = Time.time;
             isStarted = true;
         }
@@ -146,7 +157,6 @@ namespace UI.Timer
         /// </summary>
         public void PauseTimer()
         {
-            Time.timeScale = 0;
             if (!isStarted || isPaused) return;
             isStarted = false;
             pauseStartTime = Time.time;
@@ -158,7 +168,6 @@ namespace UI.Timer
         /// </summary>
         public void Unpause()
         {
-            Time.timeScale = 1f;
             if (isStarted || !isPaused) return;
             totalElapsedPausedTime += elapsedPausedTime;
             isStarted = true;

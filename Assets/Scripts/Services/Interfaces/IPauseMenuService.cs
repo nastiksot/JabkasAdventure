@@ -7,5 +7,6 @@ namespace Services.Interfaces
         public event Action OnContinueButtonPressed;
         public event Action OnPauseButtonPressed;
         public event Action OnExitButtonPressed;
+        public void SetPauseButtonState(bool state);
     }
 }

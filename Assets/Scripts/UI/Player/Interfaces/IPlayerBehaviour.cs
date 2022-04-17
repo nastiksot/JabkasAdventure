@@ -5,8 +5,9 @@ namespace UI.Player.Interfaces
 {
     public interface IPlayerBehaviour
     {
-        public event Action<Vector3> OnPlayerMove;
-        public Transform GetPlayerTransform();
+        public Transform PlayerTransform { get; }
+        public event Action OnPlayerDeath;
+        public void PlayerDeath();
         public void InitializeStomper();
     }
 }

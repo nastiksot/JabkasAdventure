@@ -1,15 +1,18 @@
-using UI.Player.Interfaces;
+﻿using UI.Player.Interfaces;
 using UnityEngine;
-using Utility;
 using Zenject;
 
 namespace UI
 {
-    public class CameraFollower : ObjectFollower
+    public class CameraFollower : MonoBehaviour
     {
+        [SerializeField] private Camera levelCamera;
+        [SerializeField] private Transform followObject;
+        [SerializeField] private float minY;
+        [SerializeField] private float minX; 
+
+        private float cameraSpeed = 0.1f;
         private IPlayerBehaviour playerBehaviour;
-        private Vector3 offsetY = new Vector3(0f, 1.1f, 0f);
-        private float leftBorderX = -11.5f;
 
         [Inject]
         private void Construct(IPlayerBehaviour playerBehaviour)
@@ -19,11 +22,38 @@ namespace UI
 
         private void Start()
         {
-            objToFollow = playerBehaviour.GetPlayerTransform();
-            SetOffsetPosition(offsetY);
+            followObject = playerBehaviour.PlayerTransform;
         }
-        
-        
-        
+
+        public void Update()
+        {
+            if (followObject == null) return;
+            Follow();
+        }
+
+        private void Follow()
+        {
+            var cameraPosition = transform.position;
+            var targetPosition = followObject.position;
+            if (targetPosition.x - levelCamera.orthographicSize * levelCamera.aspect > minX)
+            {
+                cameraPosition.x = targetPosition.x;
+            }
+            else
+            {
+                cameraPosition.x = minX + levelCamera.orthographicSize * levelCamera.aspect;
+            }
+
+            if (targetPosition.y - levelCamera.orthographicSize > minY)
+            {
+                cameraPosition.y = targetPosition.y;
+            }
+            else
+            {
+                cameraPosition.y = minY + levelCamera.orthographicSize;
+            }
+
+            transform.position = Vector3.MoveTowards(transform.position, cameraPosition, cameraSpeed);
+        }
     }
 }

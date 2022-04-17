@@ -6,6 +6,7 @@ namespace Services.Interfaces
 {
     public interface ISceneService
     {
+        public SceneType CurrentScene { get;}
         public event Action OnSceneUnloaded;
         public event Action OnSceneLoaded;
         public event Action OnStartLoadingScene;

@@ -1,3 +1,4 @@
+using System;
 using Models.ConstantValues;
 using Services.Interfaces;
 using UI.Enemy;
@@ -9,13 +10,16 @@ namespace UI.Player
     public class Stomper : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D parentRigidbody2D;
+        [SerializeField] private BoxCollider2D stomperCollider2D;
         [SerializeField] private float bounceForce;
         [SerializeField] private Vector2 localPositionOffset = new Vector2(0f, -0.558f);
-        
+
         private IParticleService particleService;
         private IStatisticService statisticService;
         private IRewardService rewardService;
 
+        public BoxCollider2D StomperCollider2D => stomperCollider2D;
+        
         [Inject]
         private void Construct(IParticleService particleService, IStatisticService statisticService,
             IRewardService rewardService)
@@ -28,13 +32,19 @@ namespace UI.Player
         public void Initialize(Rigidbody2D rigidbody2D)
         {
             parentRigidbody2D = rigidbody2D;
+            stomperCollider2D = GetComponent<BoxCollider2D>();
             transform.localPosition = localPositionOffset;
+        }
+
+        public void EnableStomper(bool state)
+        {
+            stomperCollider2D.enabled = state;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             var collidedGameObject = other.gameObject;
-            if (!collidedGameObject.CompareTag(Tags.ENEMY_HEAR_TAG)) return;
+            if (!collidedGameObject.CompareTag(Tags.ENEMY_HEART_TAG)) return;
             var enemyObject = collidedGameObject.GetComponentInParent<EnemyBehaviour>();
             var rewardType = enemyObject.RewardType;
             enemyObject.OnEnemyDestroyed += () =>
@@ -43,7 +53,6 @@ namespace UI.Player
                 statisticService.AddKill(reward);
                 particleService.InitializeParticle(rewardType, enemyObject.transform.position);
             };
-
             enemyObject.DestroyEnemy();
             parentRigidbody2D.velocity = transform.up * bounceForce;
         }

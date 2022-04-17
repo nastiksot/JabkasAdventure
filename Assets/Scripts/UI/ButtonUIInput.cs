@@ -28,7 +28,7 @@ namespace UI
         /// Set navigation menu visibility
         /// </summary>
         /// <param name="state"></param>
-        private void SetButtonInputVisibility(bool state)
+        public void SetButtonInputVisibility(bool state)
         { 
             navigationCanvas.State(state); 
         }

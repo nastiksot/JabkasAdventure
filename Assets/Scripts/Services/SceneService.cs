@@ -13,6 +13,8 @@ namespace Services
         private Action onSceneUnloaded;
         private Action onStartLoadingScene;
 
+        public SceneType CurrentScene { get; private set; }
+
         public event Action OnSceneLoaded
         {
             add => onSceneLoaded += value;
@@ -42,8 +44,8 @@ namespace Services
                 _ => throw new NullReferenceException()
             };
 
+            CurrentScene = sceneType;
             onStartLoadingScene?.Invoke();
-
             asyncLoad.allowSceneActivation = false;
             yield return new WaitUntil(() => asyncLoad.progress >= 0.9f);
             onSceneLoaded?.Invoke();
