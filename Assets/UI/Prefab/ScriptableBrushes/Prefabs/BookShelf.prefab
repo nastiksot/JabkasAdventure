@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1476851049711304528}
   - component: {fileID: 7030721981131988181}
   - component: {fileID: 1507016353782797769}
+  - component: {fileID: 2379635606638238493}
   m_Layer: 3
   m_Name: BookShelf
   m_TagString: Untagged
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockSprite: {fileID: 8561038313235136274}
   emptyShelfSprite: {fileID: 21300000, guid: 4cee5a2bf58234840b7791e8033b7956, type: 3}
-  CVSheetPrefab: {fileID: 2550678140202842151, guid: 6b8291f3b82dff44bada52fcb43a0db3, type: 3}
+  bookAnimator: {fileID: 2379635606638238493}
 --- !u!50 &7030721981131988181
 Rigidbody2D:
   serializedVersion: 4
@@ -147,3 +148,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &2379635606638238493
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420135964826204279}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 704ff54ef2c0928438e59c84a84405d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

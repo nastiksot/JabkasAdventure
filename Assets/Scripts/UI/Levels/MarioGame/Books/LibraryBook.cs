@@ -8,7 +8,8 @@ namespace UI.Levels.MarioGame.Books
     {
         [SerializeField] private SpriteRenderer blockSprite;
         [SerializeField] private Sprite emptyShelfSprite;
-
+        [SerializeField] private Animator bookAnimator;
+        
         private bool isContainSheet = true;
         private float hitOffset = 0.3f;
         private Vector3 blockPosition;
@@ -27,6 +28,7 @@ namespace UI.Levels.MarioGame.Books
                 !(col.collider.bounds.min.x < transform.position.x + hitOffset) ||
                 !(col.collider.bounds.min.x < transform.position.x - hitOffset)) return;
             //TODO: init sound hit block; 
+            bookAnimator.enabled = false;
             blockSprite.sprite = emptyShelfSprite;
             isContainSheet = false;
             OnBlockCollided?.Invoke(blockPosition);
