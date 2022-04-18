@@ -7,7 +7,7 @@ using Zenject;
 
 namespace UI.Player
 {
-    public class Stomper : MonoBehaviour
+    public class EnemyKiller : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D parentRigidbody2D;
         [SerializeField] private BoxCollider2D stomperCollider2D;
@@ -18,8 +18,7 @@ namespace UI.Player
         private IStatisticService statisticService;
         private IRewardService rewardService;
 
-        public BoxCollider2D StomperCollider2D => stomperCollider2D;
-        
+
         [Inject]
         private void Construct(IParticleService particleService, IStatisticService statisticService,
             IRewardService rewardService)

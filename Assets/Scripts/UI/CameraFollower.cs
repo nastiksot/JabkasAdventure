@@ -11,7 +11,7 @@ namespace UI
         [SerializeField] private float minY;
         [SerializeField] private float minX; 
 
-        private float cameraSpeed = 0.1f;
+        private float cameraSpeed = 0.4f;
         private IPlayerBehaviour playerBehaviour;
 
         [Inject]

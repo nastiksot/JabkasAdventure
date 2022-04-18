@@ -40,7 +40,7 @@ namespace Services
                 SceneType.Menu => SceneManager.LoadSceneAsync(0),
                 SceneType.Intro => SceneManager.LoadSceneAsync(1),
                 SceneType.Mario => SceneManager.LoadSceneAsync(2),
-                SceneType.Final => SceneManager.LoadSceneAsync(2),
+                SceneType.Final => SceneManager.LoadSceneAsync(3),
                 _ => throw new NullReferenceException()
             };
 

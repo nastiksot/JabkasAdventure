@@ -22,9 +22,9 @@ namespace UI.Player
 
         [SerializeField] private float rayVerticalDistance;
         [SerializeField] private Transform rayTransform;
-        [SerializeField] private Stomper stomperPrefab;
-
-        private Stomper instantiatedStomper;
+        [SerializeField] private EnemyKiller enemyKillerPrefab;
+        [SerializeField] private PlayerAnimation playerAnimator;
+        private EnemyKiller instantiatedEnemyKiller;
         private Rigidbody2D playerRigidbody;
 
         private bool isGrounded;
@@ -67,13 +67,14 @@ namespace UI.Player
 
         public void InitializeStomper()
         {
-            instantiatedStomper = Instantiate(stomperPrefab, Vector3.zero, Quaternion.identity, transform);
-            instantiatedStomper.Initialize(playerRigidbody);
-            diContainer.Inject(instantiatedStomper);
+            instantiatedEnemyKiller = Instantiate(enemyKillerPrefab, Vector3.zero, Quaternion.identity, transform);
+            instantiatedEnemyKiller.Initialize(playerRigidbody);
+            diContainer.Inject(instantiatedEnemyKiller);
         }
 
         private void Stop()
         {
+            playerAnimator.SetIdleAnimation();
             if (moveCoroutine == null) return;
             StopCoroutine(moveCoroutine);
         }
@@ -92,6 +93,7 @@ namespace UI.Player
         {
             while (true)
             {
+                playerAnimator.SetRunAnimation();
                 moveX = movePosition;
                 deprecateDirection = DeprecateDirection.None;
 
@@ -147,7 +149,7 @@ namespace UI.Player
         public async void PlayerDeath()
         {
             var delayBeforeDestroy = 1200;
-            instantiatedStomper.EnableStomper(false);
+            instantiatedEnemyKiller.EnableStomper(false);
             Jump();
             onPlayerDeath?.Invoke();
             await Task.Delay(delayBeforeDestroy);
@@ -161,6 +163,7 @@ namespace UI.Player
             isGrounded = Physics2D.Linecast(transform.position, groundPos,
                 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME));
             if (!isGrounded) return;
+            playerAnimator.SetJumpAnimation();
             playerRigidbody.velocity = (Vector2.up * jumpPower);
         }
     }
