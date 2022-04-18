@@ -6,7 +6,7 @@ namespace UI.Timer
     public class Timer : ITimer
     {
         private float timeRemaining;
-        private float timeLeft = 120; 
+        private float timeLeft = 180; 
 
         private float elapsedRunningTime = 0f;
         private float runningStartTime = 0f;

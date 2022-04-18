@@ -35,6 +35,7 @@ namespace Services
 
         public IEnumerator LoadSceneAsync(SceneType sceneType)
         {
+            CurrentScene = sceneType;
             var asyncLoad = sceneType switch
             {
                 SceneType.Menu => SceneManager.LoadSceneAsync(0),
