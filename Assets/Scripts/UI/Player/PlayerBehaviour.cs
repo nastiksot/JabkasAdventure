@@ -151,6 +151,7 @@ namespace UI.Player
             var delayBeforeDestroy = 1200;
             instantiatedEnemyKiller.EnableStomper(false);
             Jump();
+            playerAnimator.SetDamageAnimation();
             onPlayerDeath?.Invoke();
             await Task.Delay(delayBeforeDestroy);
             Destroy(gameObject);

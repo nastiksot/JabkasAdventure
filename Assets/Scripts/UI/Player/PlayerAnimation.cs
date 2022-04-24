@@ -23,6 +23,14 @@ namespace UI.Player
             playerAnimator.ResetTrigger(AnimationProperties.PLAYER_RUN);
         }
         
+        public void SetDamageAnimation()
+        {
+            playerAnimator.ResetTrigger(AnimationProperties.PLAYER_JUMP);
+            playerAnimator.ResetTrigger(AnimationProperties.PLAYER_RUN);
+            playerAnimator.SetTrigger(AnimationProperties.PLAYER_DAMAGE);
+        }
+        
+        
 
     }
 }

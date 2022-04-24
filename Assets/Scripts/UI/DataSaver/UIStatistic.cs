@@ -68,7 +68,6 @@ namespace UI.DataSaver
         private void OnExitButtonPressed()
         {
             timer.StopTimer();
-            StartCoroutine( sceneService.LoadSceneAsync(SceneType.Menu));
         }
         
         /// <summary>

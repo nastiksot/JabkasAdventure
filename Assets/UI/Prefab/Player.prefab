@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7859526464557667801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8311325165220829024}
   m_Father: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b454f0c61ec1144384337326d93f916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 0.055
+  speedMultiplier: 0.035
   jumpPower: 7.5
   rayHorizontalDistance: 0.5
   rayVerticalDistance: 0.85

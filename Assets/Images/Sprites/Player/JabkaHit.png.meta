@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 944748157e31dbf4f853bbc90b7706fd
+guid: 5e2ae9085ab7d0242817e05b4fb7d3c0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6601574438258376755
-    second: JabkaIdle_0
+      213: -8483369277385550700
+    second: JabkaHit_0
   - first:
-      213: -8933578961957314801
-    second: JabkaIdle_1
+      213: 8883810703336292575
+    second: JabkaHit_1
+  - first:
+      213: -1091008780813106538
+    second: JabkaHit_2
+  - first:
+      213: -5419519181900878135
+    second: JabkaHit_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -38,9 +44,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -94,7 +100,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -121,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: JabkaIdle_0
+      name: JabkaHit_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 128
-        width: 96
-        height: 128
+        x: 7
+        y: 0
+        width: 53
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33080b699f08d9b50800000000000000
-      internalID: 6601574438258376755
+      spriteID: 494d8fac694054a80800000000000000
+      internalID: -8483369277385550700
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JabkaIdle_1
+      name: JabkaHit_1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 0
-        width: 96
-        height: 124
+        x: 71
+        y: 1
+        width: 53
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +162,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0f91a7244d850480800000000000000
-      internalID: -8933578961957314801
+      spriteID: fd04c2824c2a94b70800000000000000
+      internalID: 8883810703336292575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JabkaHit_2
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 58
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6928dc45b45fbd0f0800000000000000
+      internalID: -1091008780813106538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JabkaHit_3
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 54
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cee16594000ac4b0800000000000000
+      internalID: -5419519181900878135
       vertices: []
       indices: 
       edges: []

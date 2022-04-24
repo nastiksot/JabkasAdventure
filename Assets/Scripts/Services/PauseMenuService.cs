@@ -1,8 +1,10 @@
 ﻿using System;
+using Models.Enum;
 using Services.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using Utility;
+using Zenject;
 
 namespace Services
 {
@@ -19,6 +21,13 @@ namespace Services
         public event Action OnPauseButtonPressed;
         public event Action OnExitButtonPressed;
 
+        private ISceneService sceneService;
+
+        [Inject]
+        private void Construct(ISceneService sceneService)
+        {
+            this.sceneService = sceneService;
+        }
 
         private void Start()
         {
@@ -42,6 +51,7 @@ namespace Services
             {
                 Time.timeScale = 1f;
                 OnExitButtonPressed?.Invoke();
+                StartCoroutine(sceneService.LoadSceneAsync(SceneType.Menu));
             });
         }
 
