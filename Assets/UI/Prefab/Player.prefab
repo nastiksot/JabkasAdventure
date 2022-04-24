@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 0.035
-  jumpPower: 7.5
+  jumpPower: 5.5
   rayHorizontalDistance: 0.5
   rayVerticalDistance: 0.85
   rayTransform: {fileID: 8311325165220829024}

@@ -28,13 +28,14 @@ namespace UI.Player
         private Rigidbody2D playerRigidbody;
 
         private bool isGrounded;
+        private bool canDoubleJump;
         private float moveX;
         private Vector2 cachedScale;
         private Coroutine moveCoroutine;
         private MovingDirection facingDirection = MovingDirection.Right;
         private DeprecateDirection deprecateDirection = DeprecateDirection.None;
         private Action onPlayerDeath;
-        
+
         private IInputService inputService;
         private DiContainer diContainer;
 
@@ -137,6 +138,7 @@ namespace UI.Player
                 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME))) return false;
             deprecateDirection = targetPos.x > 0 ? DeprecateDirection.Right : DeprecateDirection.Left;
             isGrounded = false;
+            canDoubleJump = false;
             if (moveCoroutine != null)
             {
                 StopCoroutine(moveCoroutine);
@@ -144,7 +146,6 @@ namespace UI.Player
 
             return true;
         }
-
 
         public async void PlayerDeath()
         {
@@ -163,9 +164,22 @@ namespace UI.Player
             var groundPos = new Vector2(rayCenterPosition.x, (rayCenterPosition.y - rayVerticalDistance));
             isGrounded = Physics2D.Linecast(transform.position, groundPos,
                 1 << LayerMask.NameToLayer(Layers.GROUND_LAYER_NAME));
+
+            if (!isGrounded && canDoubleJump)
+            {
+                JumpMovement();
+                canDoubleJump = false;
+            }
+            
             if (!isGrounded) return;
+            JumpMovement();
+            canDoubleJump = true;
+        }
+
+        private void JumpMovement()
+        {
             playerAnimator.SetJumpAnimation();
-            playerRigidbody.velocity = (Vector2.up * jumpPower);
+            playerRigidbody.velocity = Vector2.up * jumpPower;
         }
     }
 }
