@@ -7,5 +7,6 @@
         Intro = 1,
         Mario = 2,
         Final = 3,
+        Loading = 4,
     }
 }

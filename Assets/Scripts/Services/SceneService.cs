@@ -11,7 +11,6 @@ namespace Services
     {
         private Action onSceneLoaded;
         private Action onSceneUnloaded;
-        private Action onStartLoadingScene;
 
         public SceneType CurrentScene { get; private set; }
 
@@ -27,12 +26,6 @@ namespace Services
             remove => onSceneUnloaded -= value;
         }
 
-        public event Action OnStartLoadingScene
-        {
-            add => onStartLoadingScene += value;
-            remove => onStartLoadingScene -= value;
-        }
-
         public IEnumerator LoadSceneAsync(SceneType sceneType)
         {
             CurrentScene = sceneType;
@@ -42,11 +35,10 @@ namespace Services
                 SceneType.Intro => SceneManager.LoadSceneAsync(1),
                 SceneType.Mario => SceneManager.LoadSceneAsync(2),
                 SceneType.Final => SceneManager.LoadSceneAsync(3),
+                SceneType.Loading => SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive),
                 _ => throw new NullReferenceException()
             };
 
-            CurrentScene = sceneType;
-            onStartLoadingScene?.Invoke();
             asyncLoad.allowSceneActivation = false;
             yield return new WaitUntil(() => asyncLoad.progress >= 0.9f);
             onSceneLoaded?.Invoke();
@@ -57,10 +49,11 @@ namespace Services
         {
             var asyncLoad = sceneType switch
             {
-                SceneType.Menu => SceneManager.LoadSceneAsync(0),
-                SceneType.Intro => SceneManager.LoadSceneAsync(1),
-                SceneType.Mario => SceneManager.LoadSceneAsync(2),
-                SceneType.Final => SceneManager.LoadSceneAsync(2),
+                SceneType.Menu => SceneManager.UnloadSceneAsync(0),
+                SceneType.Intro => SceneManager.UnloadSceneAsync(1),
+                SceneType.Mario => SceneManager.UnloadSceneAsync(2),
+                SceneType.Final => SceneManager.UnloadSceneAsync(3),
+                SceneType.Loading => SceneManager.UnloadSceneAsync(4),
                 _ => throw new NullReferenceException()
             };
 

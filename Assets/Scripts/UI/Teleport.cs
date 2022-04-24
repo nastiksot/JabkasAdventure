@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Models.ConstantValues;
 using Models.Enum;
 using Services.Interfaces;
@@ -9,19 +10,42 @@ namespace UI
     public class Teleport : MonoBehaviour
     {
         [SerializeField] private SceneType nextSceneType;
-        private ISceneService sceneService;
 
+        private int sceneLoadDelay = 2000;
+        
+        private ISceneService sceneService;
+        private ButtonUIInput buttonUIInput;
+        private IPauseMenuService pauseMenuService;
+        
         [Inject]
-        private void Construct(ISceneService sceneService)
+        private void Construct(ISceneService sceneService, ButtonUIInput buttonUIInput, IPauseMenuService pauseMenuService)
         {
             this.sceneService = sceneService;
+            this.buttonUIInput = buttonUIInput;
+            this.pauseMenuService = pauseMenuService;
         }
-        
+
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return; 
+            sceneService.OnSceneLoaded += LoadNextScene;
+            SetUIState(false);
             //GetComponent<AudioSource>().Play();
+            StartCoroutine(sceneService.LoadSceneAsync(SceneType.Loading));
+        }
+
+        private async void LoadNextScene()
+        {
+            sceneService.OnSceneLoaded -= LoadNextScene;
+            await Task.Delay(sceneLoadDelay);
             StartCoroutine(sceneService.LoadSceneAsync(nextSceneType));
         }
+
+        private void SetUIState(bool state)
+        {
+            buttonUIInput.SetButtonInputVisibility(state);
+            pauseMenuService.SetPauseButtonState(state);
+        }
+
     }
 }
