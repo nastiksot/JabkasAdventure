@@ -1,7 +1,9 @@
+using Disablers;
 using Models.Enum;
 using Services.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
+using Utility;
 using Zenject;
 
 namespace UI.Levels
@@ -11,15 +13,19 @@ namespace UI.Levels
         [Header("Buttons")] 
         [SerializeField] private Button playButton;
         [SerializeField] private Button settingsButton;
+        [SerializeField] private Button quitButton;
+        [SerializeField] private CanvasSwitcher canvasSwitcher;
+        [SerializeField] private CanvasDisabler canvasDisabler;
         [SerializeField] private SceneType nextSceneType;
         
-        
         private ISceneService sceneService;
-
+        private IAudioService audioService;
+        
         [Inject]
-        private void Construct(ISceneService sceneService)
+        private void Construct(ISceneService sceneService, IAudioService audioService)
         {
             this.sceneService = sceneService;
+            this.audioService = audioService;
         }
 
         private void Awake()
@@ -30,6 +36,7 @@ namespace UI.Levels
         
         private void Start()
         {
+            // audioService.PlayAudio(sceneService.CurrentScene);
             InitGame();
         }
 
@@ -42,8 +49,14 @@ namespace UI.Levels
             {
                 StartCoroutine(sceneService.LoadSceneAsync(nextSceneType));
             });
+            
+            settingsButton.onClick.AddListener(() =>
+            {
+                canvasSwitcher.DelayedOpenTable(canvasDisabler);
+            });
+            
 #if PLATFORM_ANDROID
-            settingsButton.onClick.AddListener(Application.Quit);
+            quitButton.onClick.AddListener(Application.Quit);
 #endif
         }
     }

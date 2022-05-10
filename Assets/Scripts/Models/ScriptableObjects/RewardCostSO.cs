@@ -2,7 +2,8 @@
 using UnityEngine;
 
 namespace Models.ScriptableObjects
-{[CreateAssetMenu(fileName = "BonusCost", menuName = "ScriptableObjects/BonusCost", order = 1)]
+{
+    [CreateAssetMenu(fileName = "BonusCost", menuName = "ScriptableObjects/BonusCost", order = 1)]
     public class RewardCostSO : ScriptableObject
     {
         [SerializeField] private RewardType rewardType;
