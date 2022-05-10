@@ -1,5 +1,8 @@
-﻿using Models.Enum;
+﻿using System;
+using Models.Enum;
+using Services.Interfaces;
 using UnityEngine;
+using Zenject;
 
 namespace UI.Levels
 {
@@ -9,5 +12,18 @@ namespace UI.Levels
         [SerializeField] private RewardType rewardType;
         public Transform RewardTransformPoint => rewardTransformPoint;
         public RewardType RewardType => rewardType;
+
+        private IStatisticService statisticService;
+        
+        [Inject]
+        private void Construct(IStatisticService statisticService)
+        {
+            this.statisticService = statisticService;
+        }
+
+        private void Start()
+        {
+            statisticService.AddEnemy();
+        }
     }
 }

@@ -9,8 +9,9 @@ namespace Models.ClassModels
         private int health = 0;
         private int score = 0;
         private int sheetCount = 0;
+        private int totalSheetCount = 0;
         private int killCount = 0;
-
+        private int totalEnemyCount = 0;
 
         public string Name => name;
         public int Health => health;
@@ -32,16 +33,19 @@ namespace Models.ClassModels
             get => killCount;
             set => killCount = value;
         }
-
-
-        public StatisticModel(StatisticModel model)
+        
+        public int TotalSheetCount
         {
-            name = model.Name;
-            health = model.Health;
-            score = model.Score;
-            sheetCount = model.SheetCount;
+            get => totalSheetCount;
+            set => totalSheetCount = value;
         }
 
+        public int TotalEnemyCount
+        {
+            get => totalEnemyCount;
+            set => totalEnemyCount = value;
+        }
+        
         public StatisticModel()
         {
         }

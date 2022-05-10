@@ -11,9 +11,9 @@ namespace Modules
 {
     public class FileModule : IFileModule
     {
-        private static string directoryName = "SaveData";
+        private string directoryName = "SavedData";
 
-        public static string DirectoryName
+        public string DirectoryName
         {
             get => directoryName;
             set => directoryName = value;

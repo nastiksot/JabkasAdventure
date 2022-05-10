@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   retryButton: {fileID: 1989476660651381212}
   exitButton: {fileID: 1989476658877111374}
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 8182014987678580420}
   gameOverCanvasGroup: {fileID: 6306172699742140329}
 --- !u!225 &6306172699742140329
 CanvasGroup:

@@ -9,7 +9,7 @@ namespace UI.Levels.MarioGame.Books
         [SerializeField] private SpriteRenderer blockSprite;
         [SerializeField] private Sprite emptyShelfSprite;
         [SerializeField] private Animator bookAnimator;
-        
+
         private bool isContainSheet = true;
         private float hitOffset = 0.3f;
         private Vector3 blockPosition;

@@ -21,7 +21,6 @@ namespace Installers
             BindMarioLevelInstaller();
             BindSwitcher();
             BindTimer();
-            BindFileService();
             BindStatisticService();
             BindParticleService();
             BindRewardService();
@@ -59,11 +58,6 @@ namespace Installers
         private void BindStatisticService()
         {
             Container.Bind<IStatisticService>().To<StatisticService>().AsSingle().NonLazy();
-        }
-
-        private void BindFileService()
-        {
-            Container.Bind<IFileService>().To<FileService>().AsSingle().NonLazy();
         }
 
         private void BindMarioLevelInstaller()

@@ -23,6 +23,7 @@ namespace Installers
             BindInputService();
             BindButtonUIInput();
             BindPauseMenu();
+            BindFileService();
             BindPlayerBehaviour();
         }
 
@@ -33,6 +34,11 @@ namespace Installers
             Container.Bind<IPlayerBehaviour>().To<PlayerBehaviour>().FromInstance(playerInstance).AsSingle().NonLazy();
         }
 
+        private void BindFileService()
+        {
+            Container.Bind<IFileService>().To<FileService>().AsSingle().NonLazy();
+        }
+        
         private void BindInputService()
         {
             Container.Bind<IInputService>().To<InputService>().FromComponentInNewPrefab(InputService).AsSingle();

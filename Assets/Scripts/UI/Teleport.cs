@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Models.ConstantValues;
 using Models.Enum;
@@ -12,11 +13,18 @@ namespace UI
         [SerializeField] private SceneType nextSceneType;
 
         private int sceneLoadDelay = 2000;
-        
+        private Action onTeleportCollision;
+
         private ISceneService sceneService;
         private ButtonUIInput buttonUIInput;
         private IPauseMenuService pauseMenuService;
-        
+
+        public event Action OnTeleportCollision
+        {
+            add => onTeleportCollision += value;
+            remove => onTeleportCollision -= value;
+        }
+
         [Inject]
         private void Construct(ISceneService sceneService, ButtonUIInput buttonUIInput, IPauseMenuService pauseMenuService)
         {
@@ -28,6 +36,7 @@ namespace UI
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return; 
+            onTeleportCollision?.Invoke();
             sceneService.OnSceneLoaded += LoadNextScene;
             SetUIState(false);
             //GetComponent<AudioSource>().Play();

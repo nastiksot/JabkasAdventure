@@ -24,13 +24,18 @@ namespace UI.Levels.MarioGame.Books
 
         private void Awake()
         {
-            for (var i = 0; i < libraryBooks.Count; i++)
+            var libraryBookCount = libraryBooks.Count;
+            var bonusSheetCount = bonusSheets.Count;
+            
+            statisticService.AddTotalSheetCount(libraryBookCount + bonusSheetCount);
+            
+            for (var i = 0; i < libraryBookCount; i++)
             {
                 var t = i;
                 libraryBooks[t].OnBlockCollided += InitializeBonusSheet;
             }
 
-            for (var i = 0; i < bonusSheets.Count; i++)
+            for (var i = 0; i < bonusSheetCount; i++)
             {
                 var t = i;
                 bonusSheets[t].OnSheetCollided += AddSheetOnSheetCollision;

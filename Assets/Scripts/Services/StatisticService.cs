@@ -10,11 +10,15 @@ namespace Services
         public event Action<int> OnScoreChanged;
         public event Action<int> OnSheetAdded;
 
-        public void AddScore(int score)
+        public void AddTotalSheetCount(int count)
         {
-            var newScore = statisticModel.Score + score;
-            statisticModel.Score = newScore;
-            OnScoreChanged?.Invoke(newScore);
+            statisticModel.TotalSheetCount = count;
+        }
+
+        public void AddEnemy()
+        {
+            var enemyCount = statisticModel.TotalEnemyCount + 1;
+            statisticModel.TotalEnemyCount = enemyCount;
         }
 
         public void AddSheet(int score)
@@ -34,6 +38,18 @@ namespace Services
         public StatisticModel GetStatisticModel()
         {
             return statisticModel;
+        }
+
+        public int GetScore()
+        {
+            return statisticModel.Score;
+        }
+
+        public void AddScore(int score)
+        {
+            var newScore = statisticModel.Score + score;
+            statisticModel.Score = newScore;
+            OnScoreChanged?.Invoke(newScore);
         }
     }
 }

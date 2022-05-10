@@ -19,21 +19,24 @@ namespace UI
 
         [Space(6f)] [SerializeField] private CanvasGroup gameOverCanvasGroup;
 
+        private string scorePattern = "Your score: {0}";
         private ButtonUIInput buttonUIInput;
         private ISceneService sceneService;
         private IPlayerBehaviour playerBehaviour;
         private IPauseMenuService pauseMenuService;
         private ITimer timer;
-
+        private IStatisticService statisticService;
+        
         [Inject]
         private void Construct(ISceneService sceneService, IPlayerBehaviour playerBehaviour,
-            ButtonUIInput buttonUIInput, IPauseMenuService pauseMenuService, ITimer timer)
+            ButtonUIInput buttonUIInput, IPauseMenuService pauseMenuService, ITimer timer, IStatisticService statisticService)
         {
             this.sceneService = sceneService;
             this.playerBehaviour = playerBehaviour;
             this.buttonUIInput = buttonUIInput;
             this.pauseMenuService = pauseMenuService;
             this.timer = timer;
+            this.statisticService = statisticService;
         }
 
         private void OnEnable()
@@ -57,7 +60,10 @@ namespace UI
 
         private void SubscribeOnExitButton()
         {
-            exitButton.onClick.AddListener(() => { StartCoroutine(sceneService.LoadSceneAsync(SceneType.Menu)); });
+            exitButton.onClick.AddListener(() =>
+            {
+                StartCoroutine(sceneService.LoadSceneAsync(SceneType.Menu));
+            });
         }
 
         private void SubscribeOnRetryButton()
@@ -74,6 +80,7 @@ namespace UI
         /// </summary>
         private void ShowGameOverMenu()
         {
+            SetScoreText();
             gameOverCanvasGroup.State(true);
             buttonUIInput.SetButtonInputVisibility(false);
             pauseMenuService.SetPauseButtonState(false);
@@ -89,11 +96,10 @@ namespace UI
             gameOverCanvasGroup.State(state);
         }
 
-        /// <summary>
-        /// Save data to file and display statistics
-        /// </summary>
-        private void ShowStatisticData()
+        private void SetScoreText()
         {
+            var score = statisticService.GetScore();
+            scoreText.text = string.Format(scorePattern, score);
         }
     }
 }

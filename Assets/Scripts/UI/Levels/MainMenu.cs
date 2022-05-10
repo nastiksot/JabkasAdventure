@@ -22,6 +22,12 @@ namespace UI.Levels
             this.sceneService = sceneService;
         }
 
+        private void Awake()
+        {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 60;
+        }
+        
         private void Start()
         {
             InitGame();

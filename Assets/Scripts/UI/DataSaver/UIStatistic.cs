@@ -16,25 +16,21 @@ namespace UI.DataSaver
         [SerializeField] private TMP_Text sheetValueText;
         [SerializeField] private TMP_Text timeRemainText;
 
-        [SerializeField] private CanvasGroup statisticDataCanvasGroup;
+        private float timeLeft;
 
-        private string filePath = "DefaultSave";
 
-        private IFileService fileService;
         private IPauseMenuService pauseMenuService;
         private IStatisticService statisticService;
-        private ISceneService sceneService;
         private ITimer timer;
+        public float TimeLeft => timeLeft;
 
         [Inject]
-        private void Construct(ITimer timer, IFileService fileService, IStatisticService statisticService,
-            IPauseMenuService pauseMenuService, ISceneService sceneService)
+        private void Construct(ITimer timer, IStatisticService statisticService,
+            IPauseMenuService pauseMenuService)
         {
             this.timer = timer;
-            this.fileService = fileService;
             this.statisticService = statisticService;
             this.pauseMenuService = pauseMenuService;
-            this.sceneService = sceneService;
         }
 
 
@@ -62,6 +58,7 @@ namespace UI.DataSaver
         /// <param name="seconds"></param>
         private void OnTimeChanged(float seconds)
         {
+            timeLeft = seconds;
             timeRemainText.text = seconds.ToString();
         }
 
@@ -69,7 +66,7 @@ namespace UI.DataSaver
         {
             timer.StopTimer();
         }
-        
+
         /// <summary>
         /// Set sheet number on UI 
         /// </summary>
@@ -86,38 +83,6 @@ namespace UI.DataSaver
         private void OnTotalScoreChanged(int totalScore)
         {
             totalScoreText.text = totalScore.ToString();
-        }
-
-        /// <summary>
-        /// Save data to file
-        /// </summary>
-        public void SaveFileData()
-        {
-            fileService.SaveData(statisticService.GetStatisticModel(), filePath);
-        }
-
-        /// <summary>
-        /// Load data from file
-        /// </summary>
-        /// <param name="playerData"></param>
-        /// <param name="failure"></param>
-        public void LoadFileData(Action<StatisticModel> playerData, Action<BaseError> failure)
-        {
-            fileService.LoadData(filePath, loadedData => { playerData?.Invoke(loadedData); },
-                error => { ToastUtility.ShowToast(error.errorMessage); });
-        }
-
-        /// <summary>
-        /// Update data on UI
-        /// </summary>
-        private void LoadUIFileData()
-        {
-            LoadFileData(data =>
-                {
-                    totalScoreText.text = data.Score.ToString();
-                    sheetValueText.text = data.SheetCount.ToString();
-                },
-                error => { ToastUtility.ShowToast(error.errorMessage); });
         }
     }
 }
