@@ -195,7 +195,7 @@ MonoBehaviour:
   totalScoreText: {fileID: 8419744665148636708}
   sheetValueText: {fileID: 8419744664768313628}
   timeRemainText: {fileID: 8419744664592483506}
-  statisticDataCanvasGroup: {fileID: 2017295840099600934}
+  canvasGroup: {fileID: 2017295840099600934}
 --- !u!225 &2017295840099600934
 CanvasGroup:
   m_ObjectHideFlags: 0

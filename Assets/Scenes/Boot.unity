@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1192205931}
   - component: {fileID: 1192205930}
-  - component: {fileID: 1192205929}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -141,14 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1192205929
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192205928}
-  m_Enabled: 1
 --- !u!20 &1192205930
 Camera:
   m_ObjectHideFlags: 0
@@ -223,7 +214,7 @@ PrefabInstance:
       objectReference: {fileID: 1192205930}
     - target: {fileID: 2190561334817338400, guid: b0c3031ba5b2aef4ea46ca4bb9354381, type: 3}
       propertyPath: m_RenderMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2190561334817338400, guid: b0c3031ba5b2aef4ea46ca4bb9354381, type: 3}
       propertyPath: m_SortingOrder
@@ -490,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseCastDist: 0.5
-  moveSpeed: 200
+  moveSpeed: 5
   raycastPosition: {fileID: 3277274912674265187}
   enemyRigidbody2D: {fileID: 3277274913020673616}
   rewardType: 1

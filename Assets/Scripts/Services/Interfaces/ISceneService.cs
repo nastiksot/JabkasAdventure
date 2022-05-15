@@ -8,7 +8,7 @@ namespace Services.Interfaces
     {
         public SceneType CurrentScene { get;}
         public event Action OnSceneUnloaded;
-        public event Action OnSceneLoaded;
+        public event Action<SceneType> OnSceneLoaded;
         public IEnumerator LoadSceneAsync(SceneType sceneType);
         public IEnumerator UnloadSceneAsync(SceneType sceneType);
     }

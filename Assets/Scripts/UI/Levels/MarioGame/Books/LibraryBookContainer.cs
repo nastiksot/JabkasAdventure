@@ -11,7 +11,7 @@ namespace UI.Levels.MarioGame.Books
         [Header("Prefabs")] [SerializeField] private BonusSheet sheetPrefab;
         [SerializeField] private List<LibraryBook> libraryBooks;
         [SerializeField] private List<BonusSheet> bonusSheets;
-
+        [SerializeField] private AudioSource collectSound;
         private IStatisticService statisticService;
         private IRewardService rewardService;
 
@@ -44,6 +44,7 @@ namespace UI.Levels.MarioGame.Books
 
         private void AddSheetOnSheetCollision(BonusSheet bonusSheet)
         {
+            collectSound.Play();
             bonusSheets.Remove(bonusSheet);
             var reward = rewardService.GetBonusReward(RewardType.Sheet);
             statisticService.AddSheet(reward);

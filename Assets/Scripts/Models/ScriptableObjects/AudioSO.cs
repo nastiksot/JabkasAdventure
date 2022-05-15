@@ -6,10 +6,10 @@ namespace Models.ScriptableObjects
     [CreateAssetMenu(fileName = "AudioComponent", menuName = "ScriptableObjects/AudioComponent", order = 3)]
     public class AudioSO : ScriptableObject
     {
-        [SerializeField] private AudioClip audioClip;
+        [SerializeField] private string audioClipPath;
         [SerializeField] private SceneType sceneType;
 
-        public AudioClip AudioClip => audioClip;
+        public string AudioClipPath => audioClipPath;
         public SceneType SceneType => sceneType;
     }
 }

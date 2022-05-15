@@ -9,12 +9,12 @@ namespace Services
 {
     public class SceneService : ISceneService
     {
-        private Action onSceneLoaded;
+        private Action<SceneType> onSceneLoaded;
         private Action onSceneUnloaded;
 
         public SceneType CurrentScene { get; private set; }
 
-        public event Action OnSceneLoaded
+        public event Action<SceneType> OnSceneLoaded
         {
             add => onSceneLoaded += value;
             remove => onSceneLoaded -= value;
@@ -41,7 +41,7 @@ namespace Services
 
             asyncLoad.allowSceneActivation = false;
             yield return new WaitUntil(() => asyncLoad.progress >= 0.9f);
-            onSceneLoaded?.Invoke();
+            onSceneLoaded?.Invoke(CurrentScene);
             asyncLoad.allowSceneActivation = true;
         }
 

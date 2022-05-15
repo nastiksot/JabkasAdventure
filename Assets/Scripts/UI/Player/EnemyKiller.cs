@@ -1,4 +1,3 @@
-using System;
 using Models.ConstantValues;
 using Services.Interfaces;
 using UI.Enemy;
@@ -13,7 +12,7 @@ namespace UI.Player
         [SerializeField] private BoxCollider2D stomperCollider2D;
         [SerializeField] private float bounceForce;
         [SerializeField] private Vector2 localPositionOffset = new Vector2(0f, -0.558f);
-
+        [SerializeField] private AudioSource enemyDeathAudio;
         private IParticleService particleService;
         private IStatisticService statisticService;
         private IRewardService rewardService;
@@ -50,6 +49,7 @@ namespace UI.Player
             {
                 var reward = rewardService.GetBonusReward(rewardType);
                 statisticService.AddKill(reward);
+                enemyDeathAudio.Play();
                 particleService.InitializeParticle(rewardType, enemyObject.transform.position);
             };
             enemyObject.DestroyEnemy();

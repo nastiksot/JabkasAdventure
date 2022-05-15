@@ -10,7 +10,7 @@ namespace UI.Levels.MarioGame.SwitchBlock
     {
         [SerializeField] Sprite[] blockSprite;
         [SerializeField] private SpriteRenderer spriteRenderer;
-     
+        [SerializeField] private AudioSource switcherAudio;
         private bool isOnSprite;
         private bool setOnSprite = false;
         private bool setOffSprite = false;
@@ -36,7 +36,7 @@ namespace UI.Levels.MarioGame.SwitchBlock
         private void ChangeBlockState(bool isOn)
         {
             isOnSprite = isOn;
-            
+            switcherAudio.Play();
             if (!setOnSprite && isOnSprite)
             {
                 spriteRenderer.sprite = blockSprite[1];

@@ -33,6 +33,7 @@ public class FileDataSaver : MonoBehaviour
 
     private void SaveDataToFile()
     {
+        uiStatistic.SetStatisticUIVisibility(false);
         var timeLeft = (int) uiStatistic.TimeLeft;
         statisticService.AddScore(timeLeft);
         var model = statisticService.GetStatisticModel();

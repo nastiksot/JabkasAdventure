@@ -15,7 +15,7 @@ namespace UI.DataSaver
         [Header("Text")] [SerializeField] private TMP_Text totalScoreText;
         [SerializeField] private TMP_Text sheetValueText;
         [SerializeField] private TMP_Text timeRemainText;
-
+        [SerializeField] private CanvasGroup canvasGroup;
         private float timeLeft;
 
 
@@ -83,6 +83,11 @@ namespace UI.DataSaver
         private void OnTotalScoreChanged(int totalScore)
         {
             totalScoreText.text = totalScore.ToString();
+        }
+
+        public void SetStatisticUIVisibility(bool state)
+        {
+            CanvasTool.State(ref canvasGroup, state);
         }
     }
 }

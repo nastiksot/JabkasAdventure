@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   retryButton: {fileID: 1989476660651381212}
-  exitButton: {fileID: 1989476658877111374}
+  exitButton: {fileID: 1174862212763187155}
   scoreText: {fileID: 8182014987678580420}
   gameOverCanvasGroup: {fileID: 6306172699742140329}
 --- !u!225 &6306172699742140329
@@ -377,8 +377,36 @@ PrefabInstance:
       value: -307
       objectReference: {fileID: 0}
     - target: {fileID: 5483146650451888892, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483146650451888892, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483146650451888892, guid: a83fb263befad974d9a24ef56129b809, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -106.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569343598978274207, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569343598978274207, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 6924864612144166868, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 6924864612144166868, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432644862642934289, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -262
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a83fb263befad974d9a24ef56129b809, type: 3}
@@ -398,9 +426,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1989476658877111374 stripped
+--- !u!114 &1174862212763187155 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5483146649751357298, guid: a83fb263befad974d9a24ef56129b809, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5172934329483390191, guid: a83fb263befad974d9a24ef56129b809, type: 3}
   m_PrefabInstance: {fileID: 6306172699811027772}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

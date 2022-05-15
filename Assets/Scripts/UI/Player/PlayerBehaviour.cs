@@ -20,6 +20,8 @@ namespace UI.Player
         [Header("Raycast Settings"), Space(3f)] [SerializeField]
         private float rayHorizontalDistance;
 
+
+        [SerializeField] private AudioSource audioSource;
         [SerializeField] private float rayVerticalDistance;
         [SerializeField] private Transform rayTransform;
         [SerializeField] private EnemyKiller enemyKillerPrefab;
@@ -179,6 +181,7 @@ namespace UI.Player
         private void JumpMovement()
         {
             playerAnimator.SetJumpAnimation();
+            audioSource.Play();
             playerRigidbody.velocity = Vector2.up * jumpPower;
         }
     }

@@ -9,7 +9,6 @@ namespace UI.Levels.IntroGame
     {
         [SerializeField] private CanvasGroup bubbleMessageCanvasGroup;
         [SerializeField] private AudioSource audioSource;
-
         private void Awake()
         {
             bubbleMessageCanvasGroup.State(false);

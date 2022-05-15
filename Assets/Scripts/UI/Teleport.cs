@@ -36,14 +36,13 @@ namespace UI
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (!col.gameObject.CompareTag(Tags.PLAYER_TAG)) return; 
-            onTeleportCollision?.Invoke();
             sceneService.OnSceneLoaded += LoadNextScene;
+            onTeleportCollision?.Invoke();
             SetUIState(false);
-            //GetComponent<AudioSource>().Play();
             StartCoroutine(sceneService.LoadSceneAsync(SceneType.Loading));
         }
 
-        private async void LoadNextScene()
+        private async void LoadNextScene(SceneType sceneType)
         {
             sceneService.OnSceneLoaded -= LoadNextScene;
             await Task.Delay(sceneLoadDelay);
