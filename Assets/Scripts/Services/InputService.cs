@@ -18,13 +18,22 @@ namespace Services
             playerInput = new PlayerInput();
         }
 
-        private void Start()
+        private void OnEnable()
         {
+            playerInput.Enable();
             playerInput.ButtonInput.Move.started += OnMovePerformed; 
             playerInput.ButtonInput.Move.canceled += OnMoveCanceled; 
             playerInput.ButtonInput.Jump.performed += OnJumpPerformed;
         }
 
+        private void OnDisable()
+        {
+            playerInput.Disable();
+            playerInput.ButtonInput.Move.started -= OnMovePerformed; 
+            playerInput.ButtonInput.Move.canceled -= OnMoveCanceled; 
+            playerInput.ButtonInput.Jump.performed -= OnJumpPerformed;
+        }
+        
         private void OnMoveCanceled(InputAction.CallbackContext obj)
         { 
             OnMoveStopped?.Invoke();
@@ -38,16 +47,6 @@ namespace Services
         private void OnMovePerformed(InputAction.CallbackContext context)
         { 
             OnMoveStarted?.Invoke(context.ReadValue<float>());
-        }
-
-        private void OnEnable()
-        {
-            playerInput.Enable();
-        }
-
-        private void OnDisable()
-        {
-            playerInput.Disable();
         }
     }
 }

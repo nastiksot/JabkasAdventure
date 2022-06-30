@@ -3,17 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "RF8M8262DJE",
         "name": "com.DefaultCompany.JabkasAdventure",
-        "processId": 8886,
+        "processId": 27250,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "RF8M8262DJE",
-            "name": "com.DefaultCompany.JabkasAdventure",
-            "processId": 17617,
-            "exited": true
-        },
         {
             "deviceId": "RF8M8262DJE",
             "name": "com.DefaultCompany.JabkasAdventure",
@@ -42,6 +36,48 @@
             "deviceId": "RF8M8262DJE",
             "name": "com.DefaultCompany.JabkasAdventure",
             "processId": 8886,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8M8262DJE",
+            "name": "com.DefaultCompany.JabkasAdventure",
+            "processId": 20730,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8M8262DJE",
+            "name": "com.DefaultCompany.JabkasAdventure",
+            "processId": 17758,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8M8262DJE",
+            "name": "com.DefaultCompany.JabkasAdventure",
+            "processId": 22850,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8M8262DJE",
+            "name": "com.DefaultCompany.JabkasAdventure",
+            "processId": 24890,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8M8262DJE",
+            "name": "com.DefaultCompany.JabkasAdventure",
+            "processId": 25601,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8M8262DJE",
+            "name": "com.DefaultCompany.JabkasAdventure",
+            "processId": 26771,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8M8262DJE",
+            "name": "com.DefaultCompany.JabkasAdventure",
+            "processId": 27250,
             "exited": false
         }
     ],
